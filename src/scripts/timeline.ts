@@ -3,16 +3,6 @@ import { elem } from "./helpers/utils"
 import SplitType from "split-type"
 
 export function animator() {
-    const timeline = gsap.timeline({
-        scrollTrigger: {
-            trigger: ".scroll-trigger",
-            start: "top top",
-            end: "bottom bottom",
-            scrub: 1,
-            // markers: true,
-        }
-    })
-
     const landscape = window.matchMedia("(orientation: landscape)")
 
     const personName = new SplitType(".person-name", { types: 'chars' })
@@ -34,13 +24,20 @@ export function animator() {
     const MIN_SIZE = 2
     const WMAX = Math.max(window.innerWidth, window.innerHeight)
     const SIZE = gsap.utils.clamp(30, WMAX * 0.1, 200)
-    const WIDTH = "90vw"
-    const HEIGHT = "90vh"
-    const HALF_WIDTH = "50vw"
-    const QWIDTH = "25vw"
     
+    const timeline = gsap.timeline({
+        scrollTrigger: {
+            trigger: ".scroll-trigger",
+            start: "top top",
+            end: "bottom bottom",
+            scrub: 1,
+            // markers: true,
+        }
+    })
+
     timeline
-    .to(".hello-message", { opacity: 0, scale: 5 })
+    .fromTo(".hello-message", { opacity: 1, scale: 1 }, { opacity: 0, scale: 5 })
+    .fromTo(".mouse", { y: 0, opacity: 1 }, { y: 200, opacity: 0 }, "<")
     .add("helloHided")
 
     .to(personName.chars, { scale: 1, opacity: 1, ease: "back.out(1)", stagger: 0.02 }, "helloHided-=0.1")
@@ -140,15 +137,8 @@ export function animator() {
 
     .to(language.chars, { scale: 0, opacity: 0, y: 100 }, "techFirst")
     .to(".desc-language", { opacity: 0, y: 100 }, "<")
-    .to(framework.chars, {
-        scale: 0,
-        opacity: 0,
-        y: 100,
-    }, "techFirst")
-    .to(".desc-framework", {
-        opacity: 0,
-        y: 100,
-    }, "<")
+    .to(framework.chars, { scale: 0, opacity: 0, y: 100 }, "techFirst")
+    .to(".desc-framework", { opacity: 0, y: 100 }, "<")
     .add("techSecond")
 
     .from(database.chars, {
@@ -162,10 +152,7 @@ export function animator() {
         duration: 0.7,
         ease: "bounce.out",
     }, "techSecond")
-    .from(".desc-database", {
-        opacity: 0,
-        y: 100,
-    }, "<")
+    .from(".desc-database", { opacity: 0, y: 100 }, "<")
     .from(other.chars, {
         scale: 0,
         opacity: 0,
@@ -177,36 +164,14 @@ export function animator() {
         duration: 0.7,
         ease: "bounce.out",
     }, "techSecond")
-    .from(".desc-other", {
-        opacity: 0,
-        y: 100,
-    }, "<")
-    .to(animatorFour, {
-        width: MIN_SIZE,
-        height: MIN_SIZE,
-        duration: 1,
-    }, ">")
-    .to(".animator-container", {
-        y: landscape.matches ? "45vh" : 0,
-        duration: 1,
-    }, "<")
-    .to(animatorFour, {
-        width: landscape.matches ? MIN_SIZE : "90vw",
-        height: landscape.matches ? "90vh" : MIN_SIZE,
-        duration: 1,
-    }, ">")
-    .to(".animator-container", {
-        y: 0,
-        duration: 1,
-    }, "<")
+    .from(".desc-other", { opacity: 0,  y: 100 }, "<")
+    .to(animatorFour, { width: MIN_SIZE, height: MIN_SIZE, duration: 1 }, ">")
+    .to(".animator-container", { y: landscape.matches ? "45vh" : 0, duration: 1 }, "<")
+    .to(animatorFour, { width: landscape.matches ? MIN_SIZE : "90vw", height: landscape.matches ? "90vh" : MIN_SIZE, duration: 1 }, ">")
+    .to(".animator-container", { y: 0, duration: 1 }, "<")
     .add("techLast")
 
-
-    .to(database.chars, {
-        scale: 4,
-        opacity: 0,
-        y: 100,
-    }, "techLast")
+    .to(database.chars, { scale: 4, opacity: 0, y: 100 }, "techLast")
     .to(".desc-database", {
         opacity: 0,
         y: 100,
@@ -238,7 +203,7 @@ export function animator() {
         stagger: 0.2,
     }, "techFinish")
     .to(animatorThree, {
-        x: QWIDTH,
+        x: "25vw",
         width: "50vw",
     }, "<")
     .to(".animator-container", {
@@ -315,11 +280,11 @@ export function animator() {
 
     .from(".project-title", {
         opacity: 0,
-        x: HALF_WIDTH,
+        x: "50vw",
     }, "projectIntroLeave")
     .from(".project-desc", {
         opacity: 0,
-        x: HALF_WIDTH,
+        x: "50vw",
     }, ">")
 
     .from(".control", {
@@ -327,15 +292,12 @@ export function animator() {
         opacity: 0,
         duration: 0.2,
     }, "starEnd")
-    .fromTo(".control", {
-        background: "conic-gradient(var(--fill-color) 0%, var(--stoke-color) 0)",
-    }, {
-        background: "conic-gradient(var(--fill-color) 100%, var(--stoke-color) 0)",
+    .to(".circle circle", {
+        strokeDashoffset: 0,
         duration: 1,
     }, ">")
-    .from(".control svg", {
-        opacity: 0,
-        duration: 0.2,
+    .to(".control .icon", {
+        scaleX: 1,
     }, ">-0.2")
     .add("controlEnd")
 
@@ -356,15 +318,12 @@ export function animator() {
     .add("starDone")
 
     
-    .fromTo(".control", {
-        background: "conic-gradient(var(--fill-color) 100%, var(--stoke-color) 0)",
-    }, {
-        background: "conic-gradient(var(--fill-color) 0%, var(--stoke-color) 0)",
+    .to(".circle circle", {
+        strokeDashoffset: 100,
         duration: 1,
     }, "starPaused")
-    .to(".control svg", {
-        opacity: 0,
-        duration: 0.2,
+    .to(".control .icon", {
+        scaleX: 0,
     }, ">")
     .to(".control", {
         opacity: 0,
@@ -380,39 +339,37 @@ export function animator() {
     }, "<")
     .to(".project-title", {
         opacity: 0,
-        x: HALF_WIDTH,
+        x: "50vw",
     }, "<")
     .to(".project-desc", {
         opacity: 0,
-        x: HALF_WIDTH,
+        x: "50vw",
     }, "<")
     .add("projectEnd")
 
     .from(contact.chars, {
         scale: 0,
-        opacity: 0,
         y: "50vh",
-        rotate: -90,
+        rotate: -180,
         stagger: {
             each: 0.01,
             from: "edges",
         },
         duration: 1.5,
         ease: "back.out(1)",
-    }, "projectEnd")
+    }, "projectEnd-=0.2")
     .from(".contacts .row", {
         y: "-25vh",
-        opacity: 0,
+        scale: 0.8,
         stagger: {
             each: 0.1,
             from: "end",
         },
-        // ease: "bounce.out",
-    }, ">-0.25")
+    }, "projectEnd+=0.4")
 
     .from(".footer", {
         y: 200,
         opacity: 0,
         scale: 0,
-    })
+    },"projectEnd")
 }

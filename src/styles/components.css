@@ -6,7 +6,7 @@
     .animator-container {
         position: absolute;
         inset: 0;
-        translate: 0 -25vh;
+        /* translate: 0 -25vh; */
 
         display: flex;
         justify-content: center;
@@ -17,12 +17,19 @@
             width: var(--min-size);
             height: var(--min-size);
             background-color: var(--accent-color);
+            border-radius: var(--min-size);
+            /* background-image: linear-gradient(160deg, #F55 0%, #55F 100%); */
 
             /* backdrop-filter: invert(100%);
             -webkit-backdrop-filter: invert(100%);
             transform: translateZ(0);   */
         }
     }
+}
+
+.section--loading {
+    z-index: 4;
+    background-image: linear-gradient(160deg, var(--bg-color), var(--bg-accent-color));
 }
 
 .section--intro {
@@ -220,7 +227,9 @@
         grid-template-columns: minmax(0, 1fr) var(--x);
         grid-template-rows: minmax(0, 1fr);
 
-        overflow: hidden;
+        @media (orientation: landscape) {
+            overflow: hidden;
+        }
     }
 
     .projects {
@@ -228,10 +237,11 @@
         grid-row: 2 / 3; */
 
         display: flex;
-        justify-content: flex-start;
+        justify-content: stretch;
         align-items: center;
 
         .project {
+            inline-size: 100%;
             display: flex;
             flex-direction: column;
             gap: 1.5rem;
@@ -246,6 +256,7 @@
                 pointer-events: auto;
 
                 max-width: 500px;
+                margin-inline-start: auto;
                 text-align: justify;
                 hyphens: auto;
                 -webkit-hyphens: auto;
@@ -285,15 +296,14 @@
             }
 
             .control {
+                --stoke-color: var(--accent-color);
                 --icon-color: var(--fg-color);
-                --stoke-color: transparent;
-                --fill-color: var(--fg-accent-color);
 
                 block-size: 100%;
                 aspect-ratio: 1 / 1;
                 border: none;
                 border-radius: 100%;
-                background-color: transparent;
+                background-color: transparent !important;
                 padding: 0;
                 cursor: pointer;
 
@@ -302,41 +312,55 @@
                 justify-content: center;
                 align-items: center;
 
-                border-radius: 50%;
-                background: conic-gradient(var(--fill-color) 100%, var(--stoke-color) 0);
-
-                > svg {
+                .icon {
                     position: absolute;
                     z-index: 2;
-                    width: 24px;
-                    height: 24px;
+                    transform-origin: center left;
+                    scale: 0 1;
+
+                    > svg {
+                        rotate: 180deg;
+                        width: 24px;
+                        height: 24px;
+                    }
+
+                    &.icon--back {
+                        transform-origin: center right;
+
+                        > svg {
+                            rotate: 0deg;
+                        }
+                    }
+                }
+
+                .circle {
+                    inline-size: 100%;
+                    block-size: 100%;
+                    transform: rotate(-90deg);
                 }
 
                 &::before {
-                    content: '';
+                    content: "";
+                    display: block;
                     position: absolute;
                     z-index: 0;
-                    inset: 2px;
-                    border-radius: inherit;
-                    background: var(--bg-color);
-                    transition: all .2s ease-in;
+                    inset: 4px;
+                    border-radius: 50%;
+                    background-color: var(--accent-color);
+                    opacity: 0;
+
+                    transition: opacity .3 ease;
                 }
 
                 &:hover {
-                    --icon-color: var(--bg-color);
-                    --stoke-color: var(--bg-color);
-                    --fill-color: var(--bg-color);
-
-                    outline: 2px solid var(--fg-accent-color);
-                    transition: all .2s ease-in;
+                    --icon-color: var(--bg-accent-color);
 
                     &::before {
-                        inset: 2px;
-                        background-color: var(--fg-accent-color);
+                        opacity: 1;
                     }
 
-                    > svg {
-                        opacity: 1!important;
+                    .icon {
+                        transform: scale(1, 1) !important;
                     }
                 }
             }
@@ -423,7 +447,7 @@
                     > a {
                         pointer-events: auto;
                         display: inline-block;
-                        color: var(--fg-color);
+                        color: var(--fg-color) !important;
                         text-decoration: none;
 
                         &:hover {

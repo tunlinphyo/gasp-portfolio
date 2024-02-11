@@ -14,6 +14,7 @@
     <meta name="keywords" content="HTML,CSS,JavaScript,TypeScript,Programmer,Developer,Frontend,Frontend Developer,Software,Software Engineer,React,Vue,Svelte">
     <meta name="creator" content="Tun Lin Phyo">
     <meta name="publisher" content="Tun Lin Phyo">
+    <meta property="article:published_time" content="2024-02-10" />
 
     <meta name="robots" content="index, follow">
     <meta name="googlebot" content="index, follow, noimageindex, max-video-preview:-1, max-image-preview:large, max-snippet:-1">
@@ -23,15 +24,15 @@
     <meta name="twitter:creator:id" content="Tun Lin Phyo">
     <meta name="twitter:title" content="Surface Laptop Go">
     <meta name="twitter:description" content="Experienced Software Engineer with strong UI/UX skills, an analytical mindset, and over 6 years of expertise in the complete product development lifecycle.">
-    <meta name="twitter:image" content="/tunlinphyo.jpg">
+    <meta name="twitter:image" content="/tunlinphyo.jpeg">
 
     <meta property="og:title" content="Tun Lin Phyo">
     <meta property="og:description" content="Experienced Software Engineer with strong UI/UX skills, an analytical mindset, and over 6 years of expertise in the complete product development lifecycle.">
     <meta property="og:site_name" content="Portfolio">
     <meta property="og:url" content="https://tun-lin-phyo.web.app/">
     <meta property="og:locale" content="en_US">
-    <meta property="og:image" content="/tunlinphyo.jpg">
-    <meta property="og:image" content="/tunlinphyo.jpg">
+    <meta property="og:image" content="/tunlinphyo.jpeg">
+    <meta property="og:image" content="/tunlinphyo.jpeg">
     <meta property="og:type" content="website">
 </head>
 
@@ -48,6 +49,8 @@
             </div>
         </section>
 
+        <section class="section section--loading"></section>
+
         <section class="section section--intro">
             <div class="hello">
                 <h2 class="hello-message">
@@ -62,6 +65,14 @@
                 </p>
             </div>
         </section>
+
+
+        <section class="mouse-container">
+            <div class="mouse">
+                <div class="arrow-down"></div>
+            </div>
+        </section>
+
 
         <section class="section section--technical">
             <h2 class="intro-title">Technical Profile</h2>
@@ -130,25 +141,35 @@
             <div class="project-footer">
                 <div class="controls">
                     <button class="control previous">
-                        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="512"
-                            height="512" x="0" y="0" viewBox="0 0 24 24" style="enable-background:new 0 0 512 512" xml:space="preserve"
-                            class="">
-                            <g>
-                                <path
-                                    d="M23 11H6V7.639c0-.695-.852-1.044-1.35-.552L.232 11.448a.773.773 0 0 0 0 1.104l4.418 4.361c.498.492 1.35.143 1.35-.552V13h17a1 1 0 1 0 0-2Z"
-                                    fill="var(--icon-color)" opacity="1" data-original="#000000" class=""></path>
-                            </g>
+                        <div class="icon icon--back">
+                            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="512"
+                                height="512" x="0" y="0" viewBox="0 0 24 24" style="enable-background:new 0 0 512 512" xml:space="preserve"
+                                class="">
+                                <g>
+                                    <path
+                                        d="M23 11H6V7.639c0-.695-.852-1.044-1.35-.552L.232 11.448a.773.773 0 0 0 0 1.104l4.418 4.361c.498.492 1.35.143 1.35-.552V13h17a1 1 0 1 0 0-2Z"
+                                        fill="var(--icon-color)" opacity="1" data-original="#000000" class=""></path>
+                                </g>
+                            </svg>
+                        </div>
+                        <svg class="circle" width="80" height="80" viewBox="0 0 80 80">
+                            <circle cx="40" cy="40" r="39" fill="none" stroke="var(--stoke-color)" stroke-width="2" pathLength="100" stroke-dasharray="100" stroke-dashoffset="100" />
                         </svg>
                     </button>
                     <button class="control next">
-                        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="512"
-                            height="512" x="0" y="0" viewBox="0 0 24 24" style="enable-background:new 0 0 512 512" xml:space="preserve"
-                            class="">
-                            <g>
-                                <path
-                                    d="M23.768 11.448 19.35 7.087c-.498-.492-1.35-.143-1.35.552V11H1a1 1 0 1 0 0 2h17v3.361c0 .695.852 1.044 1.35.552l4.418-4.361a.773.773 0 0 0 0-1.104Z"
-                                    fill="var(--icon-color)" opacity="1" data-original="#000000" class=""></path>
-                            </g>
+                        <div class="icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="512"
+                                height="512" x="0" y="0" viewBox="0 0 24 24" style="enable-background:new 0 0 512 512" xml:space="preserve"
+                                class="">
+                                <g>
+                                    <path
+                                        d="M23 11H6V7.639c0-.695-.852-1.044-1.35-.552L.232 11.448a.773.773 0 0 0 0 1.104l4.418 4.361c.498.492 1.35.143 1.35-.552V13h17a1 1 0 1 0 0-2Z"
+                                        fill="var(--icon-color)" opacity="1" data-original="#000000" class=""></path>
+                                </g>
+                            </svg>
+                        </div>
+                        <svg class="circle" width="80" height="80" viewBox="0 0 80 80">
+                            <circle cx="40" cy="40" r="39" fill="none" stroke="var(--stoke-color)" stroke-width="2" pathLength="100" stroke-dasharray="100" stroke-dashoffset="100" />
                         </svg>
                     </button>
                 </div>
