@@ -1,0 +1,23 @@
+:root {
+    color-scheme: light dark;
+
+    --bg-color: #CCC;
+    --bg-accent-color: #FFF;
+
+    --fg-color: #000;
+    --fg-accent-color: #333;
+
+    --accent-color: #333;
+    --link-color: blue;
+
+    @media (prefers-color-scheme: dark) {
+        --bg-color: #333;
+        --bg-accent-color: #000;
+
+        --fg-color: #FFF;
+        --fg-accent-color: #AAA;
+
+        --accent-color: #CCC;
+        --link-color: skyblue;
+    }
+}
