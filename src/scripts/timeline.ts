@@ -171,20 +171,10 @@ export function animator() {
     .to(".animator-container", { y: 0, duration: 1 }, "<")
     .add("techLast")
 
-    .to(database.chars, { scale: 4, opacity: 0, y: 100 }, "techLast")
-    .to(".desc-database", {
-        opacity: 0,
-        y: 100,
-    }, "<")
-    .to(other.chars, {
-        scale: 4,
-        opacity: 0,
-        y: 100,
-    }, "techLast")
-    .to(".desc-other", {
-        opacity: 0,
-        y: 100,
-    }, "<")
+    .to(database.chars, { scale: 4, opacity: 0, y: 0 }, "techLast")
+    .to(".desc-database", { opacity: 0, y: 100 }, "<")
+    .to(other.chars, { scale: 4, opacity: 0, y: 0 }, "techLast")
+    .to(".desc-other", { opacity: 0, y: 100 }, "<")
     .to(animatorFour, {
         width: MIN_SIZE,
         height: MIN_SIZE,
@@ -277,7 +267,6 @@ export function animator() {
     }, "<")
     .add("starEnd")
 
-
     .from(".project-title", {
         opacity: 0,
         x: "50vw",
@@ -285,6 +274,10 @@ export function animator() {
     .from(".project-desc", {
         opacity: 0,
         x: "50vw",
+    }, ">")
+    .from(".project-link", {
+        opacity: 0,
+        y: 100,
     }, ">")
 
     .from(".control", {
@@ -337,11 +330,15 @@ export function animator() {
     .to(".animator-container", {
         x: 0,
     }, "<")
-    .to(".project-title", {
+    .to(".project-link", {
         opacity: 0,
         x: "50vw",
     }, "<")
     .to(".project-desc", {
+        opacity: 0,
+        x: "50vw",
+    }, "<")
+    .to(".project-title", {
         opacity: 0,
         x: "50vw",
     }, "<")

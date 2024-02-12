@@ -2,6 +2,7 @@ interface CSSProperties {
     display?: string;
     backgroundColor?: string;
     height?: string;
+    zIndex?: number;
 }
 
 interface DataSet {

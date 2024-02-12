@@ -1,5 +1,5 @@
 import gsap from "gsap"
-import { addClass, elem, innerHTML, innerText, removeClass } from "./helpers/utils"
+import { addClass, applyStyles, elem, innerHTML, innerText, removeClass } from "./helpers/utils"
 
 interface Project {
     id: number;
@@ -21,7 +21,8 @@ export default class Projects {
                 Implemented payment plugins such as GMO and Sony. Enabled CSV uploads for Google
                 BigQuery using google/cloud-storage. Provided support to team members in UI/UX
                 and the EC-Cube framework.
-            `
+            `,
+            url: 'https://aej.store.yomiuri.co.jp/'
         },
         {
             id: 2,
@@ -153,5 +154,11 @@ export default class Projects {
     private renderData() {
         innerText(".project-title", this.project.title)
         innerHTML(".project-desc", this.project.description)
+        if (this.project.url) {
+            applyStyles(".project-link", { display: "flex" })
+            elem(".project-link").setAttribute("href", this.project.url || "")
+        } else {
+            applyStyles(".project-link", { display: "none" })
+        }
     }
 }

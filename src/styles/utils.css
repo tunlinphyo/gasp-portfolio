@@ -62,7 +62,7 @@ body::after {
         position: fixed;
         z-index: 1;
         left: 0;
-        bottom: 3vh;
+        bottom: 4vh;
         inline-size: 100%;
         padding: 0 1rem;
 

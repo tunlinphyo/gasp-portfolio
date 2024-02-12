@@ -1,5 +1,6 @@
 import gsap from "gsap"
-import { elem } from "./helpers/utils"
+import { applyStyles, elem } from "./helpers/utils"
+import disabledScroll from "./helpers/disabled-scroll"
 
 export function loading() {
     const animatorOne = elem(".animator--one")
@@ -16,6 +17,7 @@ export function loading() {
         duration: 1.5,
         paused: true,
         onComplete: () => {
+            disabledScroll.off()
             helloEnter.kill()
         }
     })
@@ -40,11 +42,11 @@ export function loading() {
     })
 
     loadingTimeline.play()
+    window.scrollTo(0, 0)
+    disabledScroll.on()
 
     return new Promise((resolve) => {
         setTimeout(() => {
-            window.scrollTo(0, 0)
-
             loadingTimeline.kill()
     
             const hideTimeline = gsap.timeline()
@@ -67,6 +69,7 @@ export function loading() {
             .to(".section--loading", {
                 opacity: 0,
                 onComplete: () => {
+                    applyStyles(".section--fixed", { zIndex: 1 })
                     hideTimeline.kill()
                 }
             })
