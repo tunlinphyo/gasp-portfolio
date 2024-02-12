@@ -193,6 +193,39 @@
         grid-template-columns: var(--x) minmax(0, 1fr) minmax(0, 1fr) var(--x);
     }
 
+    .carousel-container {
+        grid-column: 1 / 5;
+        grid-row: 1 / 2;
+
+        overflow: hidden;
+
+        .carousel {
+            block-size: 100%;
+
+            margin: 0;
+            padding: 0;
+            list-style: none;
+    
+            position: relative;
+
+            > li {
+                block-size: 100%;
+
+                position: absolute;
+                font-weight: 600;
+                font-size: clamp(1.5rem, 4vw, 3rem);
+                text-transform: uppercase;
+                letter-spacing: 0.1em;
+                padding-inline: 3vw;
+                opacity: 0.1;
+
+                display: flex;
+                justify-content: center;
+                align-items: flex-end;
+            }
+        }
+    }
+
     .projects-intro {
         grid-column: 2 / 4;
         grid-row: 2 / 3;
@@ -527,5 +560,14 @@
     }
     50% {
         opacity: 0;
+    }
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-200%);
     }
 }

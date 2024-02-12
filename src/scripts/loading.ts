@@ -86,6 +86,6 @@ export function loading() {
                     hideTimeline.kill()
                 }
             })
-        }, 3000)
+        }, 1000)
     })
 }

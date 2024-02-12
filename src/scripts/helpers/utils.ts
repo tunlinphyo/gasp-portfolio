@@ -3,6 +3,8 @@ interface CSSProperties {
     backgroundColor?: string;
     height?: string;
     zIndex?: number;
+    left?: string;
+    right?: string;
 }
 
 interface DataSet {

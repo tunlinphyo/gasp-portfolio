@@ -1,6 +1,7 @@
 import gsap from "gsap"
 import { elem } from "./helpers/utils"
 import SplitType from "split-type"
+import { initCarousel } from "./carousel"
 
 export function animator() {
     const landscape = window.matchMedia("(orientation: landscape)")
@@ -24,7 +25,7 @@ export function animator() {
     const MIN_SIZE = 2
     const WMAX = Math.max(window.innerWidth, window.innerHeight)
     const SIZE = gsap.utils.clamp(30, WMAX * 0.1, 200)
-    
+
     const timeline = gsap.timeline({
         scrollTrigger: {
             trigger: ".scroll-trigger",
@@ -34,6 +35,8 @@ export function animator() {
             // markers: true,
         }
     })
+
+    const carousel = initCarousel()
 
     timeline
     .fromTo(".hello-message", { opacity: 1, scale: 1 }, { opacity: 0, scale: 5 })
@@ -244,6 +247,15 @@ export function animator() {
     .to(".animator-container", {
         x: landscape.matches ? "-25vw" : "-45vw",
     }, "<")
+    .from(".carousel-container", {
+        opacity: 0,
+        onStart: () => {
+            carousel.play()
+        },
+        onReverseComplete: () => {
+            carousel.pause()
+        }
+    }, "<")
     .add("projectIntroLeave")
 
     .to([animatorOne, animatorThree], {
@@ -297,7 +309,6 @@ export function animator() {
     }, ">-0.2")
     .add("controlEnd")
 
-
     .to([animatorOne, animatorThree], {
         width: MIN_SIZE,
     }, "controlEnd")
@@ -328,7 +339,7 @@ export function animator() {
     }, ">")
 
     .to(animatorThree, {
-        width: window.innerWidth * (landscape.matches ? 0.5 : 0.9),
+        width: landscape.matches ? "50vw" : "90vw",
     }, "starDone")
     .to(".animator-container", {
         x: 0,
@@ -344,6 +355,15 @@ export function animator() {
     .to(".project-title", {
         opacity: 0,
         x: "50vw",
+    }, "<")
+    .to(".carousel-container", {
+        opacity: 0,
+        onComplete: () => {
+            carousel.pause()
+        },
+        onReverseComplete: () => {
+            carousel.play()
+        },
     }, "<")
     .add("projectEnd")
 
