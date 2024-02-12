@@ -220,7 +220,7 @@
                 text-transform: uppercase;
                 letter-spacing: 0.1em;
                 padding-inline: 3vw;
-                opacity: 0.1;
+                opacity: 0.2;
 
                 display: flex;
                 justify-content: center;
@@ -283,6 +283,18 @@
                 /* inline-size: min-content; */
                 font-size: clamp(2rem, 5vw, 5rem);
                 line-height: 1.2;
+            }
+
+            .project-cateogry {
+                inline-size: 100%;
+                margin-inline-start: auto;
+                max-width: 500px;
+                opacity: .5;
+                margin-block: -0.5rem;
+
+                @media (max-width: 991px) {
+                    padding-left: 8vw;
+                }
             }
     
             .project-desc {

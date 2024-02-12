@@ -160,6 +160,7 @@ export default class Projects {
 
     private renderData() {
         innerText(".project-title", this.project.title)
+        innerHTML(".project-cateogry", this.project.category)
         innerHTML(".project-desc", this.project.description)
         if (this.project.url) {
             applyStyles(".project-link", { display: "flex" })

@@ -287,6 +287,10 @@ export function animator(carousel: GSAPTween) {
         opacity: 0,
         x: "50vw",
     }, ">")
+    .from(".project-cateogry", {
+        opacity: 0,
+        x: "50vw",
+    }, "<")
     .from(".project-link", {
         opacity: 0,
         y: 100,
@@ -308,9 +312,11 @@ export function animator(carousel: GSAPTween) {
 
     .to([animatorOne, animatorThree], {
         width: MIN_SIZE,
+        duration: 1,
     }, "controlEnd")
     .to([animatorTwo, animatorFour], {
         height: MIN_SIZE,
+        duration: 1,
     }, "<")
     .add("starPaused")
     .to(animatorThree, {
@@ -341,15 +347,7 @@ export function animator(carousel: GSAPTween) {
     .to(".animator-container", {
         x: 0,
     }, "<")
-    .to(".project-link", {
-        opacity: 0,
-        x: "50vw",
-    }, "<")
-    .to(".project-desc", {
-        opacity: 0,
-        x: "50vw",
-    }, "<")
-    .to(".project-title", {
+    .to(".project", {
         opacity: 0,
         x: "50vw",
     }, "<")

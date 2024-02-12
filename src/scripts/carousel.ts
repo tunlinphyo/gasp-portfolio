@@ -18,7 +18,7 @@ export function initCarousel() {
         x: (i) => lefts[i]
     })
     
-    const animation = gsap.to(".carousel-item", {
+    const animation = gsap.from(".carousel-item", {
         duration: 20,
         ease: "none",
         x: "+=" + tempLeft,
