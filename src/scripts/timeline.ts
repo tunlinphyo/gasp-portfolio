@@ -356,8 +356,8 @@ export function animator() {
         ease: "back.out(1)",
     }, "projectEnd-=0.2")
     .from(".contacts .row", {
-        y: "-25vh",
-        scale: 0.8,
+        y: "-30vh",
+        scale: 0.7,
         stagger: {
             each: 0.1,
             from: "end",

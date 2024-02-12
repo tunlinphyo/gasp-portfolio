@@ -18,11 +18,8 @@
             height: var(--min-size);
             background-color: var(--accent-color);
             border-radius: var(--min-size);
-            /* background-image: linear-gradient(160deg, #F55 0%, #55F 100%); */
 
-            /* backdrop-filter: invert(100%);
-            -webkit-backdrop-filter: invert(100%);
-            transform: translateZ(0);   */
+            will-change: width, height;
         }
     }
 }
