@@ -5,11 +5,13 @@ import { animator } from './scripts/timeline'
 import './style.css'
 import Projects from "./scripts/projects"
 import { loading } from "./scripts/loading"
+import { initCarousel } from "./scripts/carousel"
 
 gsap.registerPlugin(ScrollTrigger)
 
 window.onload = async () => {
     await loading()
-    animator()
+    const carousel = initCarousel()
+    animator(carousel)
     new Projects()
 }

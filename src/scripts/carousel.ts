@@ -19,7 +19,7 @@ export function initCarousel() {
     })
     
     const animation = gsap.to(".carousel-item", {
-        duration: 15,
+        duration: 20,
         ease: "none",
         x: "+=" + tempLeft,
         modifiers: {

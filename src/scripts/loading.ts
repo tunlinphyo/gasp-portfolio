@@ -16,7 +16,7 @@ export function loading() {
     const helloEnter = gsap.from(".hello-message", {
         opacity: 0,
         scale: 0,
-        ease: "elastic.out(1, 0.2)",
+        ease: "elastic.out",
         duration: 1.5,
         paused: true,
         onComplete: () => {

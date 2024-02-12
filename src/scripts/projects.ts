@@ -73,7 +73,9 @@ export default class Projects {
     ]
     protected currentIndex: number = 0
     protected animating: boolean = false
-    constructor() {
+    constructor(
+        // private readonly carousel: GSAPTween
+    ) {
         this.subscribe()
     }
 
@@ -115,6 +117,10 @@ export default class Projects {
             this.index = this.currentIndex + 1
         }
 
+        // const currentTimeScale = this.carousel.timeScale()
+        // console.log(currentTimeScale)
+        // this.carousel.timeScale(0.5)
+
         const controls = elem(".controls")
 
         const timeline = gsap.timeline()
@@ -147,6 +153,7 @@ export default class Projects {
                 onComplete: () => {
                     removeClass(controls, "disabled")
                     this.animating = false
+                    // this.carousel.timeScale(1)
                 },
             })
     }

@@ -1,9 +1,8 @@
 import gsap from "gsap"
 import { elem } from "./helpers/utils"
 import SplitType from "split-type"
-import { initCarousel } from "./carousel"
 
-export function animator() {
+export function animator(carousel: GSAPTween) {
     const landscape = window.matchMedia("(orientation: landscape)")
 
     const personName = new SplitType(".person-name", { types: 'chars' })
@@ -35,8 +34,6 @@ export function animator() {
             // markers: true,
         }
     })
-
-    const carousel = initCarousel()
 
     timeline
     .fromTo(".hello-message", { opacity: 1, scale: 1 }, { opacity: 0, scale: 5 })

@@ -163,6 +163,7 @@
             grid-area: card;
             inline-size: 100%;
             padding: 2.5rem;
+            padding-block-end: 3.5rem;
 
             text-align: center;
             display: flex;
@@ -170,6 +171,8 @@
             justify-content: center;
             align-items: center;
             gap: 1rem;
+
+            /* background-color: #f001; */
 
             .technical-title {
                 font-size: clamp(2rem, 5vw, 5rem);
