@@ -26,7 +26,7 @@ export default class Projects {
         },
         {
             id: 2,
-            title: 'Core Mobile',
+            title: 'CoreMobile',
             category: 'Portfolio &#10141; React, Next',
             description: `
                 Created a portfolio website for CoreMobile, which included the initial loading animation and scroll

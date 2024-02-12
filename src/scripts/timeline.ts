@@ -38,6 +38,9 @@ export function animator() {
     timeline
     .fromTo(".hello-message", { opacity: 1, scale: 1 }, { opacity: 0, scale: 5 })
     .fromTo(".mouse", { y: 0, opacity: 1 }, { y: 200, opacity: 0 }, "<")
+    .to([animatorOne, animatorThree], { width: MIN_SIZE }, "<")
+    .to([animatorTwo, animatorFour], { height: MIN_SIZE }, "<")
+    .to([animatorThree, animatorFour], { rotate: 0, duration: 0 }, ">")
     .add("helloHided")
 
     .to(personName.chars, { scale: 1, opacity: 1, ease: "back.out(1)", stagger: 0.02 }, "helloHided-=0.1")

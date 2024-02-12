@@ -4,6 +4,9 @@ import disabledScroll from "./helpers/disabled-scroll"
 
 export function loading() {
     const animatorOne = elem(".animator--one")
+    const animatorTwo = elem(".animator--two")
+    const animatorThree = elem(".animator--three")
+    const animatorFour = elem(".animator--four")
 
     const loadingTimeline = gsap.timeline({
         repeat: -1,
@@ -58,6 +61,16 @@ export function loading() {
             .to(".animator-container", {
                 x: 0,
                 y: "-25vh",
+            })
+            .to([animatorThree, animatorFour], {
+                rotate: 45,
+                duration: 0,
+            })
+            .to([animatorOne, animatorThree], {
+                width: 14,
+            })
+            .to([animatorTwo, animatorFour], {
+                height: 14,
                 onComplete: () => {
                     if (window.scrollY < 10) {
                         helloEnter.play()
@@ -65,7 +78,7 @@ export function loading() {
                     }
                     resolve(true)
                 }
-            })
+            }, "<")
             .to(".section--loading", {
                 opacity: 0,
                 onComplete: () => {
