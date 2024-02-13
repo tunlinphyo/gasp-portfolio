@@ -38,6 +38,7 @@ export function animator(carousel: GSAPTween) {
     timeline
     .fromTo(".hello-message", { opacity: 1, scale: 1 }, { opacity: 0, scale: 5, duration: 0.6 })
     .fromTo(".mouse", { y: 0, opacity: 1 }, { y: 200, opacity: 0 }, "<")
+    .from(".logo", { y: -120 }, "<")
     .to([animatorOne, animatorThree], { width: MIN_SIZE }, "<")
     .to([animatorTwo, animatorFour], { height: MIN_SIZE }, "<")
     .to([animatorThree, animatorFour], { rotate: 0, duration: 0 }, ">")
