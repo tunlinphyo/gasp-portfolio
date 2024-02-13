@@ -543,6 +543,79 @@
             }
         }
     }
+
+    .test-curve {
+        grid-column: 1 / 4;
+        grid-row: 1 / 5;
+
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        overflow: hidden;
+        padding: 40px;
+
+        .container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: Rotate 15s linear infinite;
+
+            > div {
+                position: absolute;
+                text-transform: uppercase;
+                display: inline-block;
+                font-size: .8rem;
+                font-weight: 600;
+                height: 80px;
+                transform-origin: center;
+                opacity: .6;
+
+                &:nth-child(1) {
+                    rotate: -180deg;
+                }
+                &:nth-child(2) {
+                    rotate: -150deg;
+                }
+                &:nth-child(3) {
+                    rotate: -120deg;
+                }
+                &:nth-child(4) {
+                    rotate: -80deg;
+                }
+                &:nth-child(5) {
+                    rotate: -50deg;
+                }
+                &:nth-child(6) {
+                    rotate: -20deg;
+                }
+                &:nth-child(7) {
+                    rotate: 20deg;
+                }
+                &:nth-child(8) {
+                    rotate: 50deg;
+                }
+                &:nth-child(9) {
+                    rotate: 80deg;
+                }
+                &:nth-child(10) {
+                    rotate: 110deg;
+                }
+                &:nth-child(11) {
+                    rotate: 140deg;
+                }
+            }
+        }
+    }
+}
+
+@keyframes Rotate {
+    from {
+        rotate: 360deg;
+    }
+    to {
+        rotate: 0deg;
+    }
 }
 
 .footer {
