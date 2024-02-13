@@ -23,11 +23,6 @@ body::after {
     position: fixed;
     z-index: 0;
     inset: 0;
-    /* background-image: linear-gradient(160deg, var(--bg-color), var(--bg-accent-color));
-
-    background: linear-gradient(160deg, #232526 0%, #404A54 25%, #707890 50%, #A0A9C2 75%, #D1D9E7 100%);
-    background: linear-gradient(to bottom right, #4C378B 0%, #AA7DC1 50%, #F0C8AA 100%);
-    background: radial-gradient(circle at center, #292C34 0%, #1C1E24 50%, #000000 100%); */
     background-image: var(--bg-image);
 }
 

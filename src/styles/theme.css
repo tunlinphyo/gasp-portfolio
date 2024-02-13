@@ -4,10 +4,10 @@
     --bg-color: #ffffff;
     --bg-accent-color: #dfe9f3;
 
-    --fg-color: #000;
-    --fg-accent-color: #333;
+    --fg-color: #222;
+    --fg-accent-color: #444;
 
-    --accent-color: #333;
+    --accent-color: #444;
     --link-color: blue;
 
     --bg-image: linear-gradient(to top, #dfe9f3 0%, white 100%);
