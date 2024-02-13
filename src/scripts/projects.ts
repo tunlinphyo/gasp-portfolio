@@ -138,7 +138,7 @@ export default class Projects {
                 x: 0,
             }, {
                 x: width * leave,
-                ease: "power2.in",
+                ease: "power4.in",
                 onComplete: () => {
                     this.renderData()
                 },
@@ -149,10 +149,11 @@ export default class Projects {
             }, {
                 x: 0,
                 duration: 0.4,
-                ease: "power1.out",
+                ease: "power4.out",
                 onComplete: () => {
                     removeClass(controls, "disabled")
                     this.animating = false
+                    timeline.kill()
                     // this.carousel.timeScale(1)
                 },
             })

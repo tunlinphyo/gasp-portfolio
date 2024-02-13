@@ -1,9 +1,9 @@
 import gsap from "gsap"
-import { elem } from "./helpers/utils"
+import { elem, isMedia } from "./helpers/utils"
 import SplitType from "split-type"
 
 export function animator(carousel: GSAPTween) {
-    const landscape = window.matchMedia("(orientation: landscape)")
+    const isLandscape = isMedia("(orientation: landscape)")
 
     const personName = new SplitType(".person-name", { types: 'chars' })
     const personAbout = new SplitType(".person-about", { types: 'words,chars' })
@@ -36,7 +36,7 @@ export function animator(carousel: GSAPTween) {
     })
 
     timeline
-    .fromTo(".hello-message", { opacity: 1, scale: 1 }, { opacity: 0, scale: 5 })
+    .fromTo(".hello-message", { opacity: 1, scale: 1 }, { opacity: 0, scale: 5, duration: 0.6 })
     .fromTo(".mouse", { y: 0, opacity: 1 }, { y: 200, opacity: 0 }, "<")
     .to([animatorOne, animatorThree], { width: MIN_SIZE }, "<")
     .to([animatorTwo, animatorFour], { height: MIN_SIZE }, "<")
@@ -76,8 +76,11 @@ export function animator(carousel: GSAPTween) {
         ease: "elastic.out(1, 0.1)",
     }, "<")
     .from(introDesc.lines, { x: 200, opacity: 0, stagger: 0.2 }, ">-0.5")
-    .to(".animator-container", { x: "-50vw", y: 0 }, "starHided")
+    .to(".animator-container", { y: 0 }, "starHided")
+    .to(animatorFour, { height: "25vh", y: "12.5vh" }, "<")
+    .to(animatorFour, { height: MIN_SIZE, y: 0 }, ">")
     .to(animatorThree, { width: "200vw", duration: 1 }, ">")
+    .to(".animator-container", { x: "-50vw" }, "<")
     .to(".animator-container", { x: "50vw" }, ">")
     .to(animatorThree, { width: MIN_SIZE, duration: 1 }, ">")
     .to([animatorOne, animatorThree], { width: "100vmax" }, ">")
@@ -89,7 +92,7 @@ export function animator(carousel: GSAPTween) {
     .to(animatorOne, { width: MIN_SIZE }, "<")
     .to(".animator-container", { x: 0 }, ">")
     .to(animatorThree, { width: MIN_SIZE }, "<")
-    .to(animatorFour, { width: landscape.matches ? MIN_SIZE : "90vw", height: landscape.matches ? "90vh" : MIN_SIZE }, "widthZero")
+    .to(animatorFour, { width: isLandscape ? MIN_SIZE : "90vw", height: isLandscape ? "90vh" : MIN_SIZE }, "widthZero")
     .to(introTitle.chars, {
         scale: 0,
         opacity: 0,
@@ -129,10 +132,10 @@ export function animator(carousel: GSAPTween) {
     }, "techLeaved")
     .from(".desc-framework", { opacity: 0, y: 100 }, "<")
     .to(animatorFour, { width: MIN_SIZE, height: MIN_SIZE, duration: 1 }, ">")
-    .to(".animator-container", { y: landscape.matches ? "-45vh" : 0, duration: 1 }, "<")
+    .to(".animator-container", { y: isLandscape ? "-45vh" : 0, duration: 1 }, "<")
     .to(animatorFour, {
-        width: landscape.matches ? MIN_SIZE : "90vw",
-        height: landscape.matches ? "90vh" : MIN_SIZE,
+        width: isLandscape ? MIN_SIZE : "90vw",
+        height: isLandscape ? "90vh" : MIN_SIZE,
         duration: 1,
     }, ">")
     .to(".animator-container", { y: 0, duration: 1 }, "<")
@@ -169,8 +172,8 @@ export function animator(carousel: GSAPTween) {
     }, "techSecond")
     .from(".desc-other", { opacity: 0,  y: 100 }, "<")
     .to(animatorFour, { width: MIN_SIZE, height: MIN_SIZE, duration: 1 }, ">")
-    .to(".animator-container", { y: landscape.matches ? "45vh" : 0, duration: 1 }, "<")
-    .to(animatorFour, { width: landscape.matches ? MIN_SIZE : "90vw", height: landscape.matches ? "90vh" : MIN_SIZE, duration: 1 }, ">")
+    .to(".animator-container", { y: isLandscape ? "45vh" : 0, duration: 1 }, "<")
+    .to(animatorFour, { width: isLandscape ? MIN_SIZE : "90vw", height: isLandscape ? "90vh" : MIN_SIZE, duration: 1 }, ">")
     .to(".animator-container", { y: 0, duration: 1 }, "<")
     .add("techLast")
 
@@ -200,7 +203,7 @@ export function animator(carousel: GSAPTween) {
         width: "50vw",
     }, "<")
     .to(".animator-container", {
-        x: landscape.matches ? "25vw" : "40vw",
+        x: isLandscape ? "25vw" : "40vw",
     }, "<")
     .to(animatorFour, {
         height: "90vh",
@@ -242,7 +245,7 @@ export function animator(carousel: GSAPTween) {
         width: MIN_SIZE,
     }, ">")
     .to(".animator-container", {
-        x: landscape.matches ? "-25vw" : "-45vw",
+        x: isLandscape ? "-25vw" : "-45vw",
     }, "<")
     .from(".carousel-container", {
         opacity: 0,
@@ -293,7 +296,7 @@ export function animator(carousel: GSAPTween) {
     }, "<")
     .from(".project-link", {
         opacity: 0,
-        y: 100,
+        y: 50,
     }, ">")
 
     .from(".control", {
@@ -327,7 +330,7 @@ export function animator(carousel: GSAPTween) {
     }, ">")
     .add("starDone")
 
-    
+
     .to(".circle circle", {
         strokeDashoffset: 100,
         duration: 1,
@@ -342,7 +345,7 @@ export function animator(carousel: GSAPTween) {
     }, ">")
 
     .to(animatorThree, {
-        width: landscape.matches ? "50vw" : "90vw",
+        width: isLandscape ? "50vw" : "90vw",
     }, "starDone")
     .to(".animator-container", {
         x: 0,
@@ -374,7 +377,7 @@ export function animator(carousel: GSAPTween) {
         ease: "back.out(1)",
     }, "projectEnd-=0.2")
     .from(".contacts .row", {
-        y: "-30vh",
+        y: "-50vh",
         scale: 0.7,
         stagger: {
             each: 0.1,

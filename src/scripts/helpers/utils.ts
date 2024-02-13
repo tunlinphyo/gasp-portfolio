@@ -73,3 +73,8 @@ export function getStyleValue<T extends HTMLElement>(selector: T | string, prope
     const computedStyle = window.getComputedStyle(element)
     return computedStyle.getPropertyValue(property)
 }
+
+export function isMedia(query: string) {
+    const media = window.matchMedia(query)
+    return media.matches
+}

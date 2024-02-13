@@ -24,9 +24,9 @@ export function loading() {
             helloEnter.kill()
         }
     })
-    const mouseEnter = gsap.to(".mouse", { 
-        y: 0, 
-        opacity: 1, 
+    const mouseEnter = gsap.to(".mouse", {
+        y: 0,
+        opacity: 1,
         ease: 'back.out',
         duration: 1,
         paused: true,
@@ -51,7 +51,7 @@ export function loading() {
     return new Promise((resolve) => {
         setTimeout(() => {
             loadingTimeline.kill()
-    
+
             const hideTimeline = gsap.timeline()
 
             hideTimeline.to(animatorOne, {
@@ -61,7 +61,13 @@ export function loading() {
             .to(".animator-container", {
                 x: 0,
                 y: "-25vh",
+                duration: 0.25,
             })
+            .to(animatorTwo, {
+                height: "25vh",
+                y: "12.5vh",
+                duration: 0.25,
+            }, "<")
             .to([animatorThree, animatorFour], {
                 rotate: 45,
                 duration: 0,
@@ -71,6 +77,7 @@ export function loading() {
             })
             .to([animatorTwo, animatorFour], {
                 height: 14,
+                y: 0,
                 onComplete: () => {
                     if (window.scrollY < 10) {
                         helloEnter.play()

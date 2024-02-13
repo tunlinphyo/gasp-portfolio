@@ -13,15 +13,15 @@ export function initCarousel() {
         lefts.push(tempLeft)
         tempLeft += width
     })
-    
+
     gsap.set(".carousel-item", {
         x: (i) => lefts[i]
     })
-    
+
     const animation = gsap.from(".carousel-item", {
         duration: 20,
         ease: "none",
-        x: "+=" + tempLeft,
+        x: `+=${tempLeft}`,
         modifiers: {
           x: gsap.utils.unitize(x => parseFloat(x) % tempLeft)
         },

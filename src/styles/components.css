@@ -193,7 +193,7 @@
     grid-template-rows: 10vh minmax(0, 1fr) 10vh;
 
     @media (min-width: 768px) {
-        grid-template-columns: var(--x) minmax(0, 1fr) minmax(0, 1fr) var(--x);
+        grid-template-columns: var(--x) minmax(0, 1fr) minmax(500px, 1fr) var(--x);
     }
 
     .carousel-container {
@@ -208,7 +208,7 @@
             margin: 0;
             padding: 0;
             list-style: none;
-    
+
             position: relative;
 
             > li {
@@ -296,7 +296,7 @@
                     padding-left: 8vw;
                 }
             }
-    
+
             .project-desc {
                 pointer-events: auto;
 
@@ -306,7 +306,7 @@
                 hyphens: auto;
                 -webkit-hyphens: auto;
                 text-wrap: pretty;
-        
+
                 /* @media (orientation: portrait) {
                     backdrop-filter: blur(10px);
                     -webkit-backdrop-filter: blur(10px);
@@ -488,7 +488,7 @@
         .contacts {
             inline-size: 100%;
             padding-block: 2vh;
-            
+
             @media (min-width: 992px) {
                 max-width: 50vw;
             }
