@@ -1,9 +1,6 @@
 :root {
     color-scheme: light dark;
 
-    --bg-color: #e2ebf0;
-    --bg-accent-color: #cfd9df;
-
     --bg-color: #ffffff;
     --bg-accent-color: #dfe9f3;
 
@@ -13,17 +10,18 @@
     --accent-color: #333;
     --link-color: blue;
 
-    @media (prefers-color-scheme: dark) {
-        --bg-color: #29323c;
-        --bg-accent-color: #384553;
+    --bg-image: linear-gradient(to top, #dfe9f3 0%, white 100%);
 
-        --bg-color: #293134;
-        --bg-accent-color: #565f66;
+    @media (prefers-color-scheme: dark) {
+        --bg-color: #000000;
+        --bg-accent-color: #393C44;
 
         --fg-color: #FFF;
         --fg-accent-color: #CCC;
 
         --accent-color: #CCC;
         --link-color: skyblue;
+
+        --bg-image: radial-gradient(circle at center, #393C44 0%, #1C1E24 50%, #000000 100%);
     }
 }

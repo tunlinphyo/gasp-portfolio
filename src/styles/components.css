@@ -26,7 +26,7 @@
 
 .section--loading {
     z-index: 4;
-    background-image: linear-gradient(160deg, var(--bg-color), var(--bg-accent-color));
+    background-image: var(--bg-image);
 }
 
 .section--intro {
