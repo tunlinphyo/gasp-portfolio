@@ -22,6 +22,6 @@
         --accent-color: #CCC;
         --link-color: skyblue;
 
-        --bg-image: radial-gradient(circle at center, #393C44 0%, #1C1E24 50%, #000000 100%);
+        --bg-image: radial-gradient(circle at center, #292C34 0%, #1C1E24 40%, #000000 100%);
     }
 }
