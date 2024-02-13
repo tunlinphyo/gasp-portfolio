@@ -148,7 +148,6 @@ export default class Projects {
                 x: width * enter,
             }, {
                 x: 0,
-                duration: 0.4,
                 ease: "power4.out",
                 onComplete: () => {
                     removeClass(controls, "disabled")

@@ -4,9 +4,11 @@
     --bg-color: #e2ebf0;
     --bg-accent-color: #cfd9df;
 
+    --bg-color: #ffffff;
+    --bg-accent-color: #dfe9f3;
+
     --fg-color: #000;
     --fg-accent-color: #333;
-    --fg-light: #EEE;
 
     --accent-color: #333;
     --link-color: blue;
@@ -15,10 +17,13 @@
         --bg-color: #29323c;
         --bg-accent-color: #384553;
 
+        --bg-color: #293134;
+        --bg-accent-color: #565f66;
+
         --fg-color: #FFF;
         --fg-accent-color: #CCC;
 
-        --accent-color: #DDD;
+        --accent-color: #CCC;
         --link-color: skyblue;
     }
 }
