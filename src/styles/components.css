@@ -19,6 +19,9 @@
             background-color: var(--accent-color);
             border-radius: var(--min-size);
 
+            /* backdrop-filter: invert(100%);
+            -webkit-backdrop-filter: invert(100%); */
+
             will-change: width, height;
         }
     }
@@ -40,8 +43,8 @@
     pointer-events: none;
 
     @media (min-width: 992px) {
-        --size: 120px;
-        --font-size: 1rem;
+        --size: 110px;
+        --font-size: .9rem;
     }
 
     .logo-container {
@@ -237,7 +240,6 @@
             grid-area: card;
             inline-size: 100%;
             padding: 2.5rem;
-            padding-block-end: 3.5rem;
 
             text-align: center;
             display: flex;
@@ -246,7 +248,9 @@
             align-items: center;
             gap: 1rem;
 
-            /* background-color: #f001; */
+            @media (orientation: landscape) {
+                padding-block-end: 3.5rem;
+            }
 
             .technical-title {
                 font-size: clamp(2rem, 5vw, 5rem);
