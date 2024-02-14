@@ -35,7 +35,7 @@
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    overflow: hidden;
+    /* overflow: hidden; */
 
     pointer-events: none;
 
@@ -295,6 +295,8 @@
                 letter-spacing: 0.1em;
                 padding-inline: 3vw;
                 opacity: 0.2;
+                /* color: transparent;
+                -webkit-text-stroke: 1px var(--fg-color); */
 
                 display: flex;
                 justify-content: center;
