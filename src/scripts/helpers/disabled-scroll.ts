@@ -1,3 +1,5 @@
+// https://www.npmjs.com/package/disable-scroll
+
 const canUseDOM = () =>
   typeof window !== 'undefined' && !!window.document && !!window.document.createElement;
 

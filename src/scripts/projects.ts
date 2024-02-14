@@ -131,31 +131,31 @@ export default class Projects {
         addClass(controls, "disabled")
         this.animating = true
 
-            const project = elem(".projects .project")
-            const width = this.rect.width * 0.9
+        const project = elem(".projects .project")
+        const width = this.rect.width * 0.9
 
-            timeline.fromTo(project, {
-                x: 0,
-            }, {
-                x: width * leave,
-                ease: "power4.in",
-                onComplete: () => {
-                    this.renderData()
-                },
-            })
+        timeline.fromTo(project, {
+            x: 0,
+        }, {
+            x: width * leave,
+            ease: "power4.in",
+            onComplete: () => {
+                this.renderData()
+            },
+        })
 
-            timeline.fromTo(project, {
-                x: width * enter,
-            }, {
-                x: 0,
-                ease: "power4.out",
-                onComplete: () => {
-                    removeClass(controls, "disabled")
-                    this.animating = false
-                    timeline.kill()
-                    // this.carousel.timeScale(1)
-                },
-            })
+        timeline.fromTo(project, {
+            x: width * enter,
+        }, {
+            x: 0,
+            ease: "power4.out",
+            onComplete: () => {
+                removeClass(controls, "disabled")
+                this.animating = false
+                timeline.kill()
+                // this.carousel.timeScale(1)
+            },
+        })
     }
 
     private renderData() {
