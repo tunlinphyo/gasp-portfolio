@@ -5,6 +5,8 @@ interface CSSProperties {
     zIndex?: number;
     left?: string;
     right?: string;
+    translate?: string;
+    content?: string;
 }
 
 interface DataSet {
@@ -77,4 +79,8 @@ export function getStyleValue<T extends HTMLElement>(selector: T | string, prope
 export function isMedia(query: string) {
     const media = window.matchMedia(query)
     return media.matches
+}
+
+export function supportsTouch() {
+    return 'ontouchstart' in window || !!navigator.maxTouchPoints;
 }

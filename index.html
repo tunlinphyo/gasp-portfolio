@@ -39,6 +39,8 @@
 
 <body>
 
+    <div class="cursor" data-text="test"></div>
+
     <main class="main">
 
         <section class="logo">
@@ -77,7 +79,7 @@
 
 
         <section class="mouse-container">
-            <div class="mouse">
+            <div class="mouse cursor--link" data-cursor="scroll">
                 <div class="arrow-down"></div>
             </div>
         </section>
@@ -96,13 +98,24 @@
                     <div class="technical-card">
                         <h3 class="technical-title title-language">Languages</h3>
                         <p class="technical-desc desc-language">
-                            HTML, CSS, JavaScript, TypeScript, PHP, Python, Dark
+                            <span class="cursor--link" data-cursor="97%">HTML</span>,
+                            <span class="cursor--link" data-cursor="98%">CSS</span>,
+                            <span class="cursor--link" data-cursor="95%">JavaScript</span>,
+                            <span class="cursor--link" data-cursor="85%">TypeScript</span>,
+                            <span class="cursor--link" data-cursor="50%">PHP</span>,
+                            <span class="cursor--link" data-cursor="25%">Python</span>,
+                            <span class="cursor--link" data-cursor="25%">Dark</span>
                         </p>
                     </div>
                     <div class="technical-card">
                         <h3 class="technical-title title-database">Database</h3>
                         <p class="technical-desc desc-database">
-                            PostgreSQL, MySQL, MongoDB, Firebase, DynamoDB, GraphQL
+                            <span class="cursor--link" data-cursor="65%">PostgreSQL</span>,
+                            <span class="cursor--link" data-cursor="65%">MySQL</span>,
+                            <span class="cursor--link" data-cursor="70%">MongoDB</span>,
+                            <span class="cursor--link" data-cursor="50%">Firebase</span>,
+                            <span class="cursor--link" data-cursor="40%">DynamoDB</span>,
+                            <span class="cursor--link" data-cursor="30%">GraphQL</span>
                         </p>
                     </div>
                 </div>
@@ -110,13 +123,24 @@
                     <div class="technical-card">
                         <h3 class="technical-title title-framework">Frameworks</h3>
                         <p class="technical-desc desc-framework">
-                            React, Vue, Svelte, Angular, Node, Socket.io, Ionic, Ec-Cube, Symfony
+                            <span class="cursor--link" data-cursor="95%">React</span>,
+                            <span class="cursor--link" data-cursor="97%">Vue</span>,
+                            <span class="cursor--link" data-cursor="90%">Svelte</span>,
+                            <span class="cursor--link" data-cursor="65%">Angular</span>,
+                            <span class="cursor--link" data-cursor="90%">Node</span>,
+                            <span class="cursor--link" data-cursor="80%">Socket.io</span>,
+                            <span class="cursor--link" data-cursor="95%">Ec-Cube</span>,
+                            <span class="cursor--link" data-cursor="75%">Symfony</span>
                         </p>
                     </div>
                     <div class="technical-card">
                         <h3 class="technical-title title-other">Others</h3>
                         <p class="technical-desc desc-other">
-                            Docker, GitHub, Google Cloud Platform (GCP), AWS, Firebase
+                            <span class="cursor--link" data-cursor="55%">Docker</span>,
+                            <span class="cursor--link" data-cursor="75%">GitHub</span>,
+                            <span class="cursor--link" data-cursor="25%">Google Cloud Platform (GCP)</span>,
+                            <span class="cursor--link" data-cursor="25%">AWS</span>,
+                            <span class="cursor--link" data-cursor="65%">Firebase</span>
                         </p>
                     </div>
                 </div>
@@ -153,7 +177,11 @@
                             BigQuery using google/cloud-storage. Provided support to team members in UI/UX
                             and the EC-Cube framework.
                         </p>
-                        <a href="https://aej.store.yomiuri.co.jp/" class="project-link" target="_blank" rel="noopener noreferrer">open website</a>
+                        <a href="https://aej.store.yomiuri.co.jp/"
+                            class="project-link cursor--link"
+                            data-cursor="open"
+                            target="_blank"
+                            rel="noopener noreferrer">open website</a>
                     </div>
                 </div>
             </div>
@@ -161,7 +189,7 @@
 
             <div class="project-footer">
                 <div class="controls">
-                    <button class="control previous">
+                    <button class="control previous cursor--link" data-cursor="prev">
                         <div class="icon icon--back">
                             <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="512"
                                 height="512" x="0" y="0" viewBox="0 0 24 24" style="enable-background:new 0 0 512 512" xml:space="preserve"
@@ -177,7 +205,7 @@
                             <circle cx="40" cy="40" r="39" fill="none" stroke="var(--stoke-color)" stroke-width="2" pathLength="100" stroke-dasharray="100" stroke-dashoffset="100" />
                         </svg>
                     </button>
-                    <button class="control next">
+                    <button class="control next cursor--link" data-cursor="next">
                         <div class="icon">
                             <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="512"
                                 height="512" x="0" y="0" viewBox="0 0 24 24" style="enable-background:new 0 0 512 512" xml:space="preserve"
@@ -207,21 +235,21 @@
                         <div class="label">Phone</div>
                         <div class="devider"></div>
                         <div class="contact-link">
-                            <a href="tel:+818053571990">+81 (080) 5357-1990</a>
+                            <a class="cursor--link" data-cursor="call" href="tel:+818053571990">+81 (080) 5357-1990</a>
                         </div>
                     </div>
                     <div class="row">
                         <div class="label">Email</div>
                         <div class="devider"></div>
                         <div class="contact-link">
-                            <a href="mailto:uniqueof1990@gmail.com">uniqueof1990@gmail.com</a>
+                            <a class="cursor--link" data-cursor="mail" href="mailto:uniqueof1990@gmail.com">uniqueof1990@gmail.com</a>
                         </div>
                     </div>
                     <div class="row">
                         <div class="label">LinkedIn</div>
                         <div class="devider"></div>
                         <div class="contact-link">
-                            <a href="https://www.linkedin.com/in/tun-lin-phyo-3b1475a0/"
+                            <a class="cursor--link" data-cursor="linkedin" href="https://www.linkedin.com/in/tun-lin-phyo-3b1475a0/"
                             target="_blank" rel="noopener noreferrer">tun-lin-phyo-3b1475a0</a>
                         </div>
                     </div>
@@ -229,7 +257,7 @@
                         <div class="label">GitHub</div>
                         <div class="devider"></div>
                         <div class="contact-link">
-                            <a href="https://github.com/tunlinphyo"
+                            <a class="cursor--link" data-cursor="github" href="https://github.com/tunlinphyo"
                                 target="_blank" rel="noopener noreferrer">tunlinphyo</a>
                         </div>
                     </div>

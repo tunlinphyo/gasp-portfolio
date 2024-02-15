@@ -1,6 +1,7 @@
 import gsap from "gsap"
 import { elem, isMedia } from "./helpers/utils"
 import SplitType from "split-type"
+import { MIN_SIZE } from "./helpers/const"
 
 export function animator(carousel: GSAPTween) {
     const isLandscape = isMedia("(orientation: landscape)")
@@ -21,7 +22,6 @@ export function animator(carousel: GSAPTween) {
     const animatorThree = elem(".animator--three")
     const animatorFour = elem(".animator--four")
 
-    const MIN_SIZE = 2
     const WMAX = Math.max(window.innerWidth, window.innerHeight)
     const SIZE = gsap.utils.clamp(30, WMAX * 0.1, 200)
 
@@ -38,7 +38,7 @@ export function animator(carousel: GSAPTween) {
     timeline
     .fromTo(".hello-message", { opacity: 1, scale: 1 }, { opacity: 0, scale: 5, duration: 0.6 })
     .fromTo(".mouse", { y: 0, opacity: 1 }, { y: 200, opacity: 0 }, "<")
-    .from(".logo", { y: -60 }, "<")
+    .to(".logo", { y: 0 }, "<")
     .to([animatorOne, animatorThree], { width: MIN_SIZE }, "<")
     .to([animatorTwo, animatorFour], { height: MIN_SIZE }, "<")
     .to([animatorThree, animatorFour], { rotate: 0, duration: 0 }, ">")
@@ -119,7 +119,7 @@ export function animator(carousel: GSAPTween) {
         duration: 0.7,
         ease: "bounce.out",
     }, "techLeaved")
-    .from(".desc-language", { opacity: 0, y: 100 }, "<")
+    .from(".desc-language", { opacity: 0, y: 100, pointerEvents: 'none' }, "<")
     .from(framework.chars, {
         scale: 0,
         opacity: 0,
@@ -131,7 +131,7 @@ export function animator(carousel: GSAPTween) {
         duration: 0.7,
         ease: "bounce.out",
     }, "techLeaved")
-    .from(".desc-framework", { opacity: 0, y: 100 }, "<")
+    .from(".desc-framework", { opacity: 0, y: 100, pointerEvents: 'none' }, "<")
     .to(animatorFour, { width: MIN_SIZE, height: MIN_SIZE, duration: 1 }, ">")
     .to(".animator-container", { y: isLandscape ? "-45vh" : 0, duration: 1 }, "<")
     .to(animatorFour, {
@@ -143,8 +143,8 @@ export function animator(carousel: GSAPTween) {
     .add("techFirst")
 
     .to(language.chars, { scale: 0, opacity: 0, y: 100 }, "techFirst")
-    .to(".desc-language", { opacity: 0, y: 100 }, "<")
-    .to(framework.chars, { scale: 0, opacity: 0, y: 100 }, "techFirst")
+    .to(".desc-language", { opacity: 0, y: 100, pointerEvents: 'none' }, "<")
+    .to(framework.chars, { scale: 0, opacity: 0, y: 100, pointerEvents: 'none' }, "techFirst")
     .to(".desc-framework", { opacity: 0, y: 100 }, "<")
     .add("techSecond")
 
@@ -159,7 +159,7 @@ export function animator(carousel: GSAPTween) {
         duration: 0.7,
         ease: "bounce.out",
     }, "techSecond")
-    .from(".desc-database", { opacity: 0, y: 100 }, "<")
+    .from(".desc-database", { opacity: 0, y: 100, pointerEvents: 'none' }, "<")
     .from(other.chars, {
         scale: 0,
         opacity: 0,
@@ -171,7 +171,7 @@ export function animator(carousel: GSAPTween) {
         duration: 0.7,
         ease: "bounce.out",
     }, "techSecond")
-    .from(".desc-other", { opacity: 0,  y: 100 }, "<")
+    .from(".desc-other", { opacity: 0,  y: 100, pointerEvents: 'none' }, "<")
     .to(animatorFour, { width: MIN_SIZE, height: MIN_SIZE, duration: 1 }, ">")
     .to(".animator-container", { y: isLandscape ? "45vh" : 0, duration: 1 }, "<")
     .to(animatorFour, { width: isLandscape ? MIN_SIZE : "90vw", height: isLandscape ? "90vh" : MIN_SIZE, duration: 1 }, ">")
@@ -179,9 +179,9 @@ export function animator(carousel: GSAPTween) {
     .add("techLast")
 
     .to(database.chars, { scale: 4, opacity: 0, y: 0 }, "techLast")
-    .to(".desc-database", { opacity: 0, y: 100 }, "<")
+    .to(".desc-database", { opacity: 0, y: 100, pointerEvents: 'none' }, "<")
     .to(other.chars, { scale: 4, opacity: 0, y: 0 }, "techLast")
-    .to(".desc-other", { opacity: 0, y: 100 }, "<")
+    .to(".desc-other", { opacity: 0, y: 100, pointerEvents: 'none' }, "<")
     .to(animatorFour, {
         width: MIN_SIZE,
         height: MIN_SIZE,

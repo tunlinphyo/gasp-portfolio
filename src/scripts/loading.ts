@@ -1,6 +1,7 @@
 import gsap from "gsap"
 import { applyStyles, elem } from "./helpers/utils"
 import disabledScroll from "./helpers/disabled-scroll"
+import { MIN_SIZE } from "./helpers/const"
 
 export function loading() {
     const animatorOne = elem(".animator--one")
@@ -40,7 +41,7 @@ export function loading() {
         duration: 1,
     })
     .to(animatorOne, {
-        width: 2,
+        width: MIN_SIZE,
         duration: 1,
     })
 
@@ -55,7 +56,7 @@ export function loading() {
             const hideTimeline = gsap.timeline()
 
             hideTimeline.to(animatorOne, {
-                width: 2,
+                width: MIN_SIZE,
                 duration: 1,
             })
             .to(".animator-container", {

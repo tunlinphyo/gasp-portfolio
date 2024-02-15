@@ -51,10 +51,10 @@ export default class Projects {
             category: 'Coding &#10141; Vue, Nuxt 3',
             description: `
                 A sample website for Shirt Simulation using Nuxt 3. Created custom plugins (
-                <a href="https://shirt-simulation.vercel.app/document/toasts" target="_blank">Toast,</a>
-                <a href="https://shirt-simulation.vercel.app/document/alerts" target="_blank">Alert,</a>
-                <a href="https://shirt-simulation.vercel.app/document/confirms" target="_blank">Confirm,</a>
-                <a href="https://shirt-simulation.vercel.app/document/loading" target="_blank">Loading</a>
+                <a class="cursor--link" data-cursor="open" href="https://shirt-simulation.vercel.app/document/toasts" target="_blank">Toast,</a>
+                <a class="cursor--link" data-cursor="open" href="https://shirt-simulation.vercel.app/document/alerts" target="_blank">Alert,</a>
+                <a class="cursor--link" data-cursor="open" href="https://shirt-simulation.vercel.app/document/confirms" target="_blank">Confirm,</a>
+                <a class="cursor--link" data-cursor="open" href="https://shirt-simulation.vercel.app/document/loading" target="_blank">Loading</a>
                 ) that can use with modern Js syntax.
             `,
             url: 'https://shirt-simulation.vercel.app/'
