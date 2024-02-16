@@ -1,10 +1,17 @@
 import gsap from "gsap"
-import { dataSet, elem, hasClass, supportsTouch, toggleClass } from "./helpers/utils"
+import { dataSet, elem, hasClass, toggleClass } from "./helpers/utils"
 
 export function initCursor() {
-    if (supportsTouch()) return
+    let isMouse = false
+
+    window.addEventListener('pointermove', (event: PointerEvent) => {
+        if (event.pointerType === 'mouse')  isMouse = true
+        else isMouse = false
+    })
 
     window.addEventListener('mousemove', (e: MouseEvent) => {
+        if (!isMouse) return
+
         gsap.to(".cursor", {
             x: e.clientX,
             y: e.clientY
