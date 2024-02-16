@@ -1,7 +1,7 @@
 import gsap from "gsap"
 import { applyStyles, elem } from "./helpers/utils"
 import disabledScroll from "./helpers/disabled-scroll"
-import { MIN_SIZE } from "./helpers/const"
+import { MIN_SIZE, MIN_SIZE_PX } from "./helpers/const"
 
 export function loading() {
     const animatorOne = elem(".animator--one")
@@ -37,11 +37,11 @@ export function loading() {
     })
 
     loadingTimeline.to(animatorOne, {
-        width: "80vw",
+        "--width": "80vw",
         duration: 1,
     })
     .to(animatorOne, {
-        width: MIN_SIZE,
+        "--width": MIN_SIZE_PX,
         duration: 1,
     })
 
@@ -56,7 +56,7 @@ export function loading() {
             const hideTimeline = gsap.timeline()
 
             hideTimeline.to(animatorOne, {
-                width: MIN_SIZE,
+                "--width": MIN_SIZE_PX,
                 duration: 1,
             })
             .to(".animator-container", {
@@ -65,7 +65,7 @@ export function loading() {
                 duration: 0.25,
             })
             .to(animatorTwo, {
-                height: "25vh",
+                "--height": "25vh",
                 y: "12.5vh",
                 duration: 0.25,
             }, "<")
@@ -74,10 +74,10 @@ export function loading() {
                 duration: 0,
             })
             .to([animatorOne, animatorThree], {
-                width: 14,
+                "--width": "14px",
             })
             .to([animatorTwo, animatorFour], {
-                height: 14,
+                "--height": "14px",
                 y: 0,
                 onComplete: () => {
                     if (window.scrollY < 10) {
