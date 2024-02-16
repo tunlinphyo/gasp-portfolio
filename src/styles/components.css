@@ -470,6 +470,9 @@
             @media (min-width: 768px) {
                 justify-content: flex-end;
             }
+            @media (orientation: landscape) and (max-height: 640px) {
+                justify-content: flex-start;
+            }
 
             .control {
                 --stoke-color: var(--accent-color);
