@@ -145,7 +145,7 @@ export function animator(carousel: GSAPTween) {
     .to(language.chars, { scale: 0, opacity: 0, y: 100 }, "techFirst")
     .to(".desc-language", { opacity: 0, y: 100, pointerEvents: 'none' }, "<")
     .to(framework.chars, { scale: 0, opacity: 0, y: 100, pointerEvents: 'none' }, "techFirst")
-    .to(".desc-framework", { opacity: 0, y: 100 }, "<")
+    .to(".desc-framework", { opacity: 0, y: 100, pointerEvents: 'none' }, "<")
     .add("techSecond")
 
     .from(database.chars, {
