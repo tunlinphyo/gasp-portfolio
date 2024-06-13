@@ -2,6 +2,7 @@ import gsap from "gsap"
 import { elem, isMedia } from "./helpers/utils"
 import SplitType from "split-type"
 import { MIN_SIZE } from "./helpers/const"
+import { setDark, removeDark, setLight, removeLight } from "./theme"
 
 export function animator(carousel: GSAPTween) {
     const isLandscape = isMedia("(orientation: landscape)")
@@ -38,11 +39,25 @@ export function animator(carousel: GSAPTween) {
     timeline
     .fromTo(".hello-message", { opacity: 1, scale: 1 }, { opacity: 0, scale: 5, duration: 0.6 })
     .fromTo(".mouse", { y: 0, opacity: 1 }, { y: 200, opacity: 0 }, "<")
-    .to(".logo", { y: 0 }, "<")
+    .to(".logo", {
+        y: 0,
+        onComplete: () => {
+            setLight()
+        },
+    }, "<")
     .to([animatorOne, animatorThree], { width: MIN_SIZE }, "<")
     .to([animatorTwo, animatorFour], { height: MIN_SIZE }, "<")
-    .to([animatorThree, animatorFour], { rotate: 0, duration: 0 }, ">")
+    .to([animatorThree, animatorFour], {
+        rotate: 0,
+        duration: 0
+    }, ">")
     .add("helloHided")
+    .to(document.body, {
+        duration: 0,
+        onReverseComplete: () => {
+            removeLight()
+        }
+    })
 
     .to(personName.chars, { scale: 1, opacity: 1, ease: "back.out(1)", stagger: 0.02 }, "helloHided-=0.1")
     .to(personAbout.chars, { scale: 1, opacity: 1, ease: "back.out(1)", stagger: 0.01 }, "<")
@@ -61,7 +76,9 @@ export function animator(carousel: GSAPTween) {
     .to(".person-about", { scale: 0, opacity: 0 }, "<")
     .to(".animator-container", { y: "25vh" }, "starMax")
     .to([animatorOne, animatorThree], { width: MIN_SIZE }, "<")
-    .to([animatorTwo, animatorFour], { height: MIN_SIZE }, "<")
+    .to([animatorTwo, animatorFour], {
+        height: MIN_SIZE,
+    }, "<")
     .add("starHided")
 
     .from(introTitle.chars, {
@@ -189,7 +206,6 @@ export function animator(carousel: GSAPTween) {
     }, "<")
     .add("techFinish")
 
-
     .from([
         ".projects-title",
         ...projrctDesc.lines as HTMLElement[]
@@ -241,6 +257,15 @@ export function animator(carousel: GSAPTween) {
             from: "end",
         },
     }, "projectLeave")
+    // .to(document.body, {
+    //     duration: 0,
+    //     onComplete: () => {
+    //         convertTheme()
+    //     },
+    //     onReverseComplete: () => {
+    //         convertTheme()
+    //     }
+    // })
     .to([animatorFour, animatorThree], {
         x: 0,
         width: MIN_SIZE,
@@ -257,7 +282,15 @@ export function animator(carousel: GSAPTween) {
             carousel.pause()
         }
     }, "<")
-    .to(".logo", { y: -60 }, "<")
+    .to(".logo", {
+        y: -60,
+        onStart: () => {
+            setDark()
+        },
+        onReverseComplete: () => {
+            removeDark()
+        }
+    }, "<")
     .add("projectIntroLeave")
 
     .to([animatorOne, animatorThree], {
@@ -365,8 +398,19 @@ export function animator(carousel: GSAPTween) {
             carousel.play()
         },
     }, "<")
-    .to(".logo", { y: 0 }, "<")
+    .to(".logo", {
+        y: 0,
+    }, "<")
     .add("projectEnd")
+    // .to(document.body, {
+    //     duration: 0,
+    //     onComplete: () => {
+    //         convertTheme()
+    //     },
+    //     onReverseComplete: () => {
+    //         convertTheme()
+    //     },
+    // })
 
     .from(contact.chars, {
         scale: 0,
@@ -378,6 +422,12 @@ export function animator(carousel: GSAPTween) {
         },
         duration: 1.5,
         ease: "back.out(1)",
+        onStart: () => {
+            removeDark()
+        },
+        onReverseComplete: () => {
+            setDark()
+        },
     }, "projectEnd-=0.2")
     .from(".contacts .row", {
         y: "-50vh",
