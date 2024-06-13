@@ -30,21 +30,13 @@
         --accent-color: #cccccc;
         --link-color: skyblue;
 
-        /* --bg-image: radial-gradient(circle at center, #000000 10%, transparent 10%),
-            radial-gradient(circle at center, #050508 15%, transparent 15%),
-            radial-gradient(circle at center, #0B0B10 22%, transparent 22%),
-            radial-gradient(circle at center, #101118 32%, transparent 32%),
-            radial-gradient(circle at center, #161820 50%, transparent 50%),
-            radial-gradient(circle at center, #1B1E28 70%, transparent 70%),
-            radial-gradient(circle at center, #292C34 100%, transparent 100%); */
-
-        --bg-image: radial-gradient(circle at center, #000000 10%, transparent 10%),
-            radial-gradient(circle at center, #060606 15%, transparent 15%),
+        --bg-image: radial-gradient(circle at center, #040404 10%, transparent 10%),
+            radial-gradient(circle at center, #080808 15%, transparent 15%),
             radial-gradient(circle at center, #0C0C0C 22%, transparent 22%),
-            radial-gradient(circle at center, #121212 32%, transparent 32%),
-            radial-gradient(circle at center, #181818 50%, transparent 50%),
-            radial-gradient(circle at center, #1E1E1E 70%, transparent 70%),
-            radial-gradient(circle at center, #242424 100%, transparent 100%);
+            radial-gradient(circle at center, #101010 32%, transparent 32%),
+            radial-gradient(circle at center, #141414 50%, transparent 50%),
+            radial-gradient(circle at center, #181818 70%, transparent 70%),
+            radial-gradient(circle at center, #1C1C1C 100%, transparent 100%);
     }
 
     @media (prefers-color-scheme: dark) {
@@ -57,14 +49,6 @@
         --link-color: skyblue;
 
         body[data-schema="light"] {
-            /* --bg-image: radial-gradient(circle at top center, #404061 10%, transparent 10%),
-                radial-gradient(circle at top center, #363654 15%, transparent 15%),
-                radial-gradient(circle at top center, #2D2D46 22%, transparent 22%),
-                radial-gradient(circle at top center, #242438 32%, transparent 32%),
-                radial-gradient(circle at top center, #1B1B2A 50%, transparent 50%),
-                radial-gradient(circle at top center, #12121C 70%, transparent 70%),
-                radial-gradient(circle at top center, #09090E 100%, transparent 100%); */
-
             --bg-image: radial-gradient(circle at top center, #232345 10%, transparent 10%),
                 radial-gradient(circle at top center, #1E1E3B 15%, transparent 15%),
                 radial-gradient(circle at top center, #191931 22%, transparent 22%),
@@ -81,20 +65,12 @@
 
             --link-color: #fff;
 
-            /* --bg-image: radial-gradient(circle at center, #000000 10%, transparent 10%),
-                radial-gradient(circle at center, #030303 15%, transparent 15%),
-                radial-gradient(circle at center, #060606 22%, transparent 22%),
+            --bg-image: radial-gradient(circle at center, #121212 10%, transparent 10%),
+                radial-gradient(circle at center, #0F0F0F 15%, transparent 15%),
+                radial-gradient(circle at center, #0C0C0C 22%, transparent 22%),
                 radial-gradient(circle at center, #090909 32%, transparent 32%),
-                radial-gradient(circle at center, #0C0C0C 50%, transparent 50%),
-                radial-gradient(circle at center, #0F0F0F 70%, transparent 70%),
-                radial-gradient(circle at center, #131313 100%, transparent 100%); */
-
-            --bg-image: radial-gradient(circle at center, #181818 10%, transparent 10%),
-                radial-gradient(circle at center, #141414 15%, transparent 15%),
-                radial-gradient(circle at center, #101010 22%, transparent 22%),
-                radial-gradient(circle at center, #0C0C0C 32%, transparent 32%),
-                radial-gradient(circle at center, #080808 50%, transparent 50%),
-                radial-gradient(circle at center, #040404 70%, transparent 70%),
+                radial-gradient(circle at center, #060606 50%, transparent 50%),
+                radial-gradient(circle at center, #030303 70%, transparent 70%),
                 radial-gradient(circle at center, #000000 100%, transparent 100%);
         }
     }

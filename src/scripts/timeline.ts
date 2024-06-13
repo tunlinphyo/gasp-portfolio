@@ -275,12 +275,12 @@ export function animator(carousel: GSAPTween) {
     }, "<")
     .from(".carousel-container", {
         opacity: 0,
-        onStart: () => {
-            carousel.play()
-        },
-        onReverseComplete: () => {
-            carousel.pause()
-        }
+        // onStart: () => {
+        //     carousel.play()
+        // },
+        // onReverseComplete: () => {
+        //     carousel.pause()
+        // }
     }, "<")
     .to(".logo", {
         y: -60,
