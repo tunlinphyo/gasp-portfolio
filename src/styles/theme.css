@@ -9,7 +9,14 @@
     --accent-color: #444444;
     --link-color: blue;
 
-    --bg-image: linear-gradient(to top, var(--bg-color) 0%, var(--bg-color) 100%);
+    /* --bg-image: linear-gradient(to top, var(--bg-color) 0%, var(--bg-color) 100%); */
+    --bg-image: radial-gradient(circle at center, #ededed 10%, transparent 10%),
+            radial-gradient(circle at center, #f0f0f0 15%, transparent 15%),
+            radial-gradient(circle at center, #f3f3f3 22%, transparent 22%),
+            radial-gradient(circle at center, #f6f6f6 32%, transparent 32%),
+            radial-gradient(circle at center, #f9f9f9 50%, transparent 50%),
+            radial-gradient(circle at center, #fcfcfc 70%, transparent 70%),
+            radial-gradient(circle at center, #ffffff 100%, transparent 100%);
 
     body[data-schema="light"] {
         --bg-image: radial-gradient(circle at top center, #ffffff 10%, transparent 10%),
@@ -47,6 +54,14 @@
 
         --accent-color: #cccccc;
         --link-color: skyblue;
+
+        --bg-image: radial-gradient(circle at center, #000000 10%, transparent 10%),
+            radial-gradient(circle at center, #030303 15%, transparent 15%),
+            radial-gradient(circle at center, #060606 22%, transparent 22%),
+            radial-gradient(circle at center, #090909 32%, transparent 32%),
+            radial-gradient(circle at center, #0C0C0C 50%, transparent 50%),
+            radial-gradient(circle at center, #0F0F0F 70%, transparent 70%),
+            radial-gradient(circle at center, #121212 100%, transparent 100%);
 
         body[data-schema="light"] {
             --bg-image: radial-gradient(circle at top center, #232345 10%, transparent 10%),
