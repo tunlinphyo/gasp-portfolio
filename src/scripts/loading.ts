@@ -1,7 +1,7 @@
 import gsap from "gsap"
 import { applyStyles, elem } from "./helpers/utils"
 import disabledScroll from "./helpers/disabled-scroll"
-import { MIN_SIZE, MIN_SIZE_PX } from "./helpers/const"
+import { MIN_SIZE_PX } from "./helpers/const"
 
 export function loading() {
     const animatorOne = elem(".animator--one")
