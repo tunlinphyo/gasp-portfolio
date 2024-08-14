@@ -12,6 +12,19 @@ interface Project {
 export default class Projects {
     protected readonly projects: Project[] = [
         {
+            id: 4,
+            title: 'OS Simulator',
+            category: 'Coding &#10141; Typescript',
+            description: `
+                Paper OS is a minimalist, web-based operating system simulation designed for a 2-bit screen, 
+                similar to the Playdate game console. It provides a simple, distraction-free interface with 
+                features like notes, a clock, and a calendar. The site offers a unique digital workspace 
+                that mimics the basic functionality of an operating system, making it suitable for focused tasks 
+                in a nostalgic, low-resolution environment.
+            `,
+            url: 'https://paper-os.web.app/'
+        },
+        {
             id: 1,
             title: 'Yomiuri Shimbun',
             category: 'E-commerce &#10141; Ec-Cube 4.2',
@@ -44,20 +57,6 @@ export default class Projects {
                 web-app for United Arrows using Vue.js and Vuex. This involved addressing issues
                 left behind by the previous developer.
             `
-        },
-        {
-            id: 4,
-            title: 'Shirt Simulator',
-            category: 'Coding &#10141; Vue, Nuxt 3',
-            description: `
-                A sample website for Shirt Simulation using Nuxt 3. Created custom plugins (
-                <a class="cursor--link" data-cursor="open" href="https://shirt-simulation.vercel.app/document/toasts" target="_blank">Toast,</a>
-                <a class="cursor--link" data-cursor="open" href="https://shirt-simulation.vercel.app/document/alerts" target="_blank">Alert,</a>
-                <a class="cursor--link" data-cursor="open" href="https://shirt-simulation.vercel.app/document/confirms" target="_blank">Confirm,</a>
-                <a class="cursor--link" data-cursor="open" href="https://shirt-simulation.vercel.app/document/loading" target="_blank">Loading</a>
-                ) that can use with modern Js syntax.
-            `,
-            url: 'https://shirt-simulation.vercel.app/'
         },
         {
             id: 5,

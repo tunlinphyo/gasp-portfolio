@@ -45,6 +45,7 @@ export function animator(carousel: GSAPTween) {
             setLight()
         },
     }, "<")
+    // .to(".mountain", { translateY: 0, stagger: 0.1 }, "<")
     .to([animatorOne, animatorThree], { width: MIN_SIZE }, "<")
     .to([animatorTwo, animatorFour], { height: MIN_SIZE }, "<")
     .to([animatorThree, animatorFour], {
@@ -291,6 +292,10 @@ export function animator(carousel: GSAPTween) {
             removeDark()
         }
     }, "<")
+    // .to(".mountain", { translateY: "100%", stagger: {
+    //     amount: 0.1,
+    //     from: "end",
+    // } }, "<")
     .add("projectIntroLeave")
 
     .to([animatorOne, animatorThree], {
@@ -401,6 +406,7 @@ export function animator(carousel: GSAPTween) {
     .to(".logo", {
         y: 0,
     }, "<")
+    // .to(".mountain", { translateY: 0, stagger: 0.1 }, "<")
     .add("projectEnd")
     // .to(document.body, {
     //     duration: 0,
