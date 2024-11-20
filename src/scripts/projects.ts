@@ -16,13 +16,24 @@ export default class Projects {
             title: 'OS Simulator',
             category: 'Coding &#10141; Typescript',
             description: `
-                Paper OS is a minimalist, web-based operating system simulation designed for a 2-bit screen, 
-                similar to the Playdate game console. It provides a simple, distraction-free interface with 
-                features like notes, a clock, and a calendar. The site offers a unique digital workspace 
-                that mimics the basic functionality of an operating system, making it suitable for focused tasks 
+                Paper OS is a minimalist, web-based operating system simulation designed for a 2-bit screen,
+                similar to the Playdate game console. It provides a simple, distraction-free interface with
+                features like notes, a clock, and a calendar. The site offers a unique digital workspace
+                that mimics the basic functionality of an operating system, making it suitable for focused tasks
                 in a nostalgic, low-resolution environment.
             `,
             url: 'https://paper-os.web.app/'
+        },
+        {
+            id: 6,
+            title: 'Ec-Cube Plugins',
+            category: 'Coding &#10141; PHP',
+            description: `
+                I have developed plugins such as “EC-CUBE Editor.js Blog Integration”, which enables dynamic blog
+                creation with features like image galleries and tables, and “EC-CUBE Editor.js Product Free Area”, which
+                allows for rich content customization on product pages in EC-CUBE 4.2 and 4.3.
+            `,
+            url: 'https://www.ec-cube.net/products/list.php?partner_id=2867/'
         },
         {
             id: 1,

@@ -549,7 +549,7 @@
                 }
 
                 &:hover {
-                    /* --icon-color: var(--bg-accent-color); */
+                    --icon-color: var(--bg-accent-color);
 
                     &::before {
                         opacity: 1;

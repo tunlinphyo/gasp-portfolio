@@ -276,12 +276,12 @@ export function animator(carousel: GSAPTween) {
     }, "<")
     .from(".carousel-container", {
         opacity: 0,
-        // onStart: () => {
-        //     carousel.play()
-        // },
-        // onReverseComplete: () => {
-        //     carousel.pause()
-        // }
+        onStart: () => {
+            carousel.play()
+        },
+        onReverseComplete: () => {
+            carousel.pause()
+        }
     }, "<")
     .to(".logo", {
         y: -60,
@@ -356,6 +356,12 @@ export function animator(carousel: GSAPTween) {
     .to([animatorOne, animatorThree], {
         width: MIN_SIZE,
         duration: 1,
+        onStart: () => {
+            console.log('FPRWARD_START')
+        },
+        onReverseComplete: () => {
+            console.log('REVERT_END')
+        }
     }, "controlEnd")
     .to([animatorTwo, animatorFour], {
         height: MIN_SIZE,
@@ -374,6 +380,12 @@ export function animator(carousel: GSAPTween) {
     .to(".circle circle", {
         strokeDashoffset: 100,
         duration: 1,
+        onComplete: () => {
+            console.log('FPRWARD_END')
+        },
+        onReverseComplete: () => {
+            console.log('REVERT_START')
+        },
     }, "starPaused")
     .to(".control .icon", {
         scaleX: 0,
