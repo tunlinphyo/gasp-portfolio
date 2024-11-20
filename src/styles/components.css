@@ -508,6 +508,10 @@
                 justify-content: center;
                 align-items: center;
 
+                &:disabled {
+                    pointer-events: none;
+                }
+
                 .icon {
                     position: absolute;
                     z-index: 2;

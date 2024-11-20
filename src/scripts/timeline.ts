@@ -1,5 +1,5 @@
 import gsap from "gsap"
-import { elem, isMedia } from "./helpers/utils"
+import { elem, elems, isMedia } from "./helpers/utils"
 import SplitType from "split-type"
 import { MIN_SIZE } from "./helpers/const"
 import { setDark, removeDark, setLight, removeLight } from "./theme"
@@ -35,6 +35,8 @@ export function animator(carousel: GSAPTween) {
             // markers: true,
         }
     })
+
+    const controlBtns = elems(".control");
 
     timeline
     .fromTo(".hello-message", { opacity: 1, scale: 1 }, { opacity: 0, scale: 5, duration: 0.6 })
@@ -347,6 +349,18 @@ export function animator(carousel: GSAPTween) {
     .to(".circle circle", {
         strokeDashoffset: 0,
         duration: 1,
+        onStart: () => {
+            // console.log('FPRWARD_START')
+            controlBtns.forEach(elem => {
+                elem.removeAttribute("disabled")
+            })
+        },
+        onReverseComplete: () => {
+            // console.log('REVERT_END')
+            controlBtns.forEach(elem => {
+                elem.setAttribute("disabled", "disabled")
+            })
+        }
     }, ">")
     .to(".control .icon", {
         scaleX: 1,
@@ -356,12 +370,6 @@ export function animator(carousel: GSAPTween) {
     .to([animatorOne, animatorThree], {
         width: MIN_SIZE,
         duration: 1,
-        onStart: () => {
-            console.log('FPRWARD_START')
-        },
-        onReverseComplete: () => {
-            console.log('REVERT_END')
-        }
     }, "controlEnd")
     .to([animatorTwo, animatorFour], {
         height: MIN_SIZE,
@@ -381,14 +389,20 @@ export function animator(carousel: GSAPTween) {
         strokeDashoffset: 100,
         duration: 1,
         onComplete: () => {
-            console.log('FPRWARD_END')
-        },
-        onReverseComplete: () => {
-            console.log('REVERT_START')
+            // console.log('FPRWARD_END')
+            controlBtns.forEach(elem => {
+                elem.setAttribute("disabled", "disabled")
+            })
         },
     }, "starPaused")
     .to(".control .icon", {
         scaleX: 0,
+        onReverseComplete: () => {
+            // console.log('REVERT_START')
+            controlBtns.forEach(elem => {
+                elem.removeAttribute("disabled")
+            })
+        },
     }, ">")
     .to(".control", {
         opacity: 0,
