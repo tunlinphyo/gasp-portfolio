@@ -56,6 +56,15 @@ export function applyStyles<T extends HTMLElement>(selector: T | string, styles:
     Object.assign(element.style, styles)
 }
 
+export function isVisibleHeadingElement(element: HTMLElement): boolean {
+    const isHeading = /^(H[1-6])$/i.test(element.tagName);
+    const style = getComputedStyle(element);
+    const isVisible = style.opacity !== "0";
+
+    return isHeading && isVisible;
+  }
+
+
 export function debounce<T extends (...args: any[]) => any>(
     func: T,
     delay: number
