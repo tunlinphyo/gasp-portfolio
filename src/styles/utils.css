@@ -47,7 +47,7 @@ body::after {
 }
 
 .cursor {
-    --size: 10px;
+    --size: 20px;
     position: fixed;
     z-index: 9999;
 
@@ -90,6 +90,10 @@ body::after {
         background-color: var(--fg-color);
         /* backdrop-filter: saturate(180%) blur(10px);
         -webkit-backdrop-filter: saturate(180%) blur(10px); */
+    }
+
+    &.animator::before {
+        animation: pulse 1.2s infinite;
     }
 }
 
@@ -198,3 +202,12 @@ body::after {
         scale: 2;
     }
 }
+
+@keyframes pulse {
+    0%, 100% {
+      scale: 1;
+    }
+    50% {
+      scale: 3;
+    }
+  }

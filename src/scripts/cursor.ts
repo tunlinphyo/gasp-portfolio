@@ -18,8 +18,10 @@ export function initCursor() {
         })
 
         const has = hasClass(e.target as HTMLElement, "cursor--link")
+        const animator = hasClass(e.target as HTMLElement, "animator")
 
         toggleClass(".cursor", "active", has)
+        toggleClass(".cursor", "animator", animator)
 
         if (has) {
             const data = elem(e.target as HTMLElement).dataset.cursor
