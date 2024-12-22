@@ -12,6 +12,25 @@ interface Project {
 export default class Projects {
     protected readonly projects: Project[] = [
         {
+            id: 7,
+            title: 'CSSBattle',
+            category: 'Showcase &#10141; Typescript, CSS',
+            description: `
+                Welcome to my CSSBattle showcase! This website is a curated collection of my solutions to challenges on 
+                <a 
+                    href="https://cssbattle.dev" 
+                    class="cursor--link"
+                    data-cursor="open"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >CSSBattle</a>, 
+                a platform that pits developers against creative coding tasks to refine their CSS skills.
+                My goal is to achieve a 100% match with the target designs, emphasizing precision, clarity, 
+                and the use of the latest CSS patterns and best practices.
+            `,
+            url: 'https://css-battle-codes.web.app/about'
+        },
+        {
             id: 4,
             title: 'OS Simulator',
             category: 'Coding &#10141; Typescript',
@@ -27,7 +46,7 @@ export default class Projects {
         {
             id: 6,
             title: 'Ec-Cube Plugins',
-            category: 'Coding &#10141; PHP',
+            category: 'Plugins &#10141; PHP',
             description: `
                 I have developed plugins such as “EC-CUBE Editor.js Blog Integration”, which enables dynamic blog
                 creation with features like image galleries and tables, and “EC-CUBE Editor.js Product Free Area”, which
