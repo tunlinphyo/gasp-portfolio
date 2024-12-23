@@ -93,3 +93,25 @@ export function isMedia(query: string) {
 export function supportsTouch() {
     return 'ontouchstart' in window || !!navigator.maxTouchPoints;
 }
+
+export function scrollToBottom(speed: number): void {
+    const start = window.scrollY || window.pageYOffset
+    const end = document.body.scrollHeight - window.innerHeight
+    const distance = end - start
+
+    let startTime: number | null = null
+
+    function scrollStep(timestamp: number) {
+        if (!startTime) startTime = timestamp
+        const progress = timestamp - startTime
+        const percentage = Math.min(progress / speed, 1)
+
+        window.scrollTo(0, start + distance * percentage)
+
+        if (percentage < 1) {
+            requestAnimationFrame(scrollStep)
+        }
+    }
+
+    requestAnimationFrame(scrollStep)
+}

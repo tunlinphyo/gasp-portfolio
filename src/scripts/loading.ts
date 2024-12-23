@@ -36,6 +36,18 @@ export function loading() {
         }
     })
 
+    const playEnter = gsap.to(".playPause", {
+        scale: 1,
+        opacity: 1,
+        ease: 'elastic.out',
+        duration: 1,
+        delay: 1,
+        paused: true,
+        onComplete: () => {
+            playEnter.kill()
+        }
+    })
+
     loadingTimeline.to(animatorOne, {
         "--width": "80vw",
         duration: 1,
@@ -83,6 +95,7 @@ export function loading() {
                     if (window.scrollY < 10) {
                         helloEnter.play()
                         mouseEnter.play()
+                        playEnter.play()
                     }
                     resolve(true)
                 }

@@ -8,6 +8,8 @@ import { rotateLogo } from "./scripts/logo"
 import { animator } from './scripts/timeline'
 import { initCursor } from "./scripts/cursor"
 import Projects from "./scripts/projects"
+import { elem } from "./scripts/helpers/utils"
+import { SmoothScroller } from "./scripts/helpers/scroll"
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -18,4 +20,29 @@ window.onload = async () => {
     rotateLogo()
     animator(carousel)
     new Projects()
+
+    const playButton = elem('.playPause')
+    const scroller = new SmoothScroller(30000, () => {
+        playButton.classList.remove('scrolling')
+        playButton.dataset.cursor = 'play'
+    })
+
+    console.log(document.body.scrollHeight * 2)
+
+    playButton.addEventListener('click', () => {
+        playButton.setAttribute('disabled', 'disabled')
+        const timeout = setTimeout(() => {
+            clearTimeout(timeout)
+            playButton.removeAttribute('disabled')
+        }, 1000)
+        if (playButton.classList.contains('scrolling')) {
+            playButton.classList.remove('scrolling')
+            playButton.dataset.cursor = 'play'
+            scroller.pause()
+        } else {
+            playButton.classList.add('scrolling')
+            playButton.dataset.cursor = 'pause'
+            scroller.play()
+        }
+    })
 }
