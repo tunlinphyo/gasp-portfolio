@@ -16,16 +16,16 @@ export default class Projects {
             title: 'CSSBattle',
             category: 'Showcase &#10141; Typescript, CSS',
             description: `
-                Welcome to my CSSBattle showcase! This website is a curated collection of my solutions to challenges on 
-                <a 
-                    href="https://cssbattle.dev" 
+                Welcome to my CSSBattle showcase! This website is a curated collection of my solutions to challenges on
+                <a
+                    href="https://cssbattle.dev"
                     class="cursor--link"
                     data-cursor="open"
                     target="_blank"
                     rel="noopener noreferrer"
-                >CSSBattle</a>, 
+                >CSSBattle</a>,
                 a platform that pits developers against creative coding tasks to refine their CSS skills.
-                My goal is to achieve a 100% match with the target designs, emphasizing precision, clarity, 
+                My goal is to achieve a 100% match with the target designs, emphasizing precision, clarity,
                 and the use of the latest CSS patterns and best practices.
             `,
             url: 'https://css-battle-codes.web.app/about'

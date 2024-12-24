@@ -226,7 +226,7 @@ export function animator(carousel: GSAPTween) {
         x: isLandscape ? "25vw" : "40vw",
     }, "<")
     .to(animatorFour, {
-        height: "90vh",
+        height: isLandscape ? "90vh" : "50vh",
     }, ">")
     .to(animatorThree, {
         width: MIN_SIZE,
@@ -432,7 +432,7 @@ export function animator(carousel: GSAPTween) {
     .to(".logo", {
         y: 0,
     }, "<")
-    // .to(".mountain", { translateY: 0, stagger: 0.1 }, "<")
+    .to(".playPause", { scale: 0 }, "<")
     .add("projectEnd")
     // .to(document.body, {
     //     duration: 0,

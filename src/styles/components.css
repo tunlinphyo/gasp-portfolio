@@ -303,12 +303,15 @@
 
     display: grid;
     grid-template-columns: var(--x) 0 minmax(0, 1fr) var(--x);
-    grid-template-rows: 10vh minmax(0, 1fr) 10vh;
+    grid-template-rows: 10vh minmax(0, 1fr) 5vh;
+
+    @media (min-width:500px) {
+        grid-template-rows: 10vh minmax(0, 1fr) 10vh;
+    }
 
     @media (min-width: 768px) {
         grid-template-columns: var(--x) minmax(0, 1fr) minmax(500px, 1fr) var(--x);
     }
-
     .carousel-container {
         grid-column: 1 / 5;
         grid-row: 1 / 2;
@@ -387,7 +390,14 @@
 
         display: flex;
         justify-content: stretch;
-        align-items: center;
+        align-items: flex-start;
+        padding-block-start: 8vh;
+        padding-block-start: 8dvh;
+
+        @media (min-width: 500px) {
+            padding-block-start: 0;
+            align-items: center;
+        }
 
         .project {
             inline-size: 100%;
@@ -430,7 +440,7 @@
                 } */
 
                 @media (max-width: 991px) {
-                    padding-left: 8vw;
+                    padding-left: 6vw;
                 }
 
                 > a {

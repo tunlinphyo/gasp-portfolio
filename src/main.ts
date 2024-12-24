@@ -22,12 +22,10 @@ window.onload = async () => {
     new Projects()
 
     const playButton = elem('.playPause')
-    const scroller = new SmoothScroller(30000, () => {
+    const scroller = new SmoothScroller(27000, () => {
         playButton.classList.remove('scrolling')
         playButton.dataset.cursor = 'play'
     })
-
-    console.log(document.body.scrollHeight * 2)
 
     playButton.addEventListener('click', () => {
         playButton.setAttribute('disabled', 'disabled')

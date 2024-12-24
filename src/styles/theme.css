@@ -12,7 +12,7 @@
     --mountain-one: #001100;
     --mountain-two: #002200;
 
-    --play:#0003;
+    --play:#0002;
 
     /* --bg-image: radial-gradient(circle at center, #FFE6BB 10%, transparent 10%),
         radial-gradient(circle at center, #bfbfbf 15%, transparent 15%),
@@ -74,7 +74,7 @@
 
         --mountain-one: #000000;
         --mountain-two: #000900;
-    
+
         --play:#fff4;
 
         /* --bg-image: radial-gradient(circle at center, #000000 10%, transparent 10%),
@@ -97,7 +97,7 @@
 
             --mountain-one: #001500;
             --mountain-two: #001B00;
-    
+
             --bg-image: radial-gradient(circle at top center, #232345 10%, transparent 10%),
                 radial-gradient(circle at top center, #1E1E3B 15%, transparent 15%),
                 radial-gradient(circle at top center, #191931 22%, transparent 22%),

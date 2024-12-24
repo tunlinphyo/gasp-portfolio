@@ -2,10 +2,13 @@
     --max-width: 1400px;
 
     --header-height: 60px;
-    --section-height: calc(100vh - var(--header-height));
+    --base-height: calc(100vh - var(--header-height));
+    --section-height: calc(100dvh - var(--header-height), var(--base-height));
 
     --x: clamp(1.5rem, 6vw, 6rem);
     --min-size: 2px;
+
+    --80vh: 80dvh;
 }
 
 html,
@@ -110,12 +113,11 @@ body::after {
 
     .playPause {
         --size: 42px;
-        --pad: 20px;
 
         position: fixed;
         z-index: 9;
-        top: var(--pad);
-        right: var(--pad);
+        top: 18px;
+        right: 18px;
         width: var(--size);
         height: var(--size);
         background: transparent;
@@ -125,6 +127,7 @@ body::after {
         opacity: 0;
         scale: 0;
         padding: 10px;
+        cursor: pointer;
 
         display: flex;
         justify-content: center;
@@ -152,9 +155,10 @@ body::after {
 
         @media (min-width: 768px) {
             --size: 60px;
-            --pad: 30px;
             top: initial;
-            bottom: var(--pad);
+            right: initial;
+            left: 30px;
+            bottom: 30px;
         }
     }
 
@@ -165,6 +169,7 @@ body::after {
         left: 0;
         inline-size: 100%;
         block-size: 100vh;
+        block-size: 100dvh;
         overflow: hidden;
         pointer-events: none;
     }
