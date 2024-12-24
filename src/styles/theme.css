@@ -12,6 +12,8 @@
     --mountain-one: #001100;
     --mountain-two: #002200;
 
+    --play:#0003;
+
     /* --bg-image: radial-gradient(circle at center, #FFE6BB 10%, transparent 10%),
         radial-gradient(circle at center, #bfbfbf 15%, transparent 15%),
         radial-gradient(circle at center, #cccccc 22%, transparent 22%),
@@ -39,7 +41,6 @@
 
         --mountain-one: #003300;
         --mountain-two: #004400;
-
     }
 
     body[data-schema="dark"] {
@@ -50,6 +51,8 @@
 
         --accent-color: #cccccc;
         --link-color: skyblue;
+
+        --play:#fff3;
 
         --bg-image: radial-gradient(circle at center, #040404 10%, transparent 10%),
             radial-gradient(circle at center, #080808 15%, transparent 15%),
@@ -72,6 +75,8 @@
         --mountain-one: #000000;
         --mountain-two: #000900;
     
+        --play:#fff4;
+
         /* --bg-image: radial-gradient(circle at center, #000000 10%, transparent 10%),
             radial-gradient(circle at center, #030303 15%, transparent 15%),
             radial-gradient(circle at center, #060606 22%, transparent 22%),
@@ -108,6 +113,8 @@
             --fg-color: #ccc;
 
             --link-color: #fff;
+
+            --play:#fff4;
 
             --bg-image: radial-gradient(circle at center, #000000 10%, transparent 10%),
                 radial-gradient(circle at center, #0F0F0F 15%, transparent 15%),
