@@ -303,6 +303,9 @@ export function animator(carousel: GSAPTween) {
     .to([animatorOne, animatorThree], {
         width: "45vw",
     }, "projectIntroLeave")
+    .to(".project-number", {
+        scale: 1,
+    }, "<")
     .to([animatorTwo, animatorFour], {
         height: "45vw",
     }, "<")
@@ -431,6 +434,9 @@ export function animator(carousel: GSAPTween) {
     }, "<")
     .to(".logo", {
         y: 0,
+    }, "<")
+    .to(".project-number", {
+        scale: 0,
     }, "<")
     .to(".playPause", { scale: 0 }, "<")
     .add("projectEnd")

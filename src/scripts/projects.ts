@@ -9,7 +9,7 @@ interface Project {
     url?: string;
 }
 
-export default class Projects {
+export class Projects {
     protected readonly projects: Project[] = [
         {
             id: 7,
@@ -191,6 +191,7 @@ export default class Projects {
         innerText(".project-title", this.project.title)
         innerHTML(".project-cateogry", this.project.category)
         innerHTML(".project-desc", this.project.description)
+        innerHTML(".project-number", `${String(this.projects.indexOf(this.project) + 1).padStart(2, '0')}`)
         if (this.project.url) {
             applyStyles(".project-link", { display: "flex" })
             elem(".project-link").setAttribute("href", this.project.url || "")
