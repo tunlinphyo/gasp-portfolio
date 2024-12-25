@@ -33,6 +33,7 @@ export function loading() {
         paused: true,
         onComplete: () => {
             mouseEnter.kill()
+            elem('.loading-layer').remove()
         }
     })
 

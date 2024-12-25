@@ -143,8 +143,9 @@
         align-items: center;
 
         .hello-message {
-            font-size: clamp(2.5rem, 9vw, 7rem);
+            font-size: clamp(2.5rem, 12vw, 14rem);
             line-height: 1.5;
+            text-align: center;
 
             /* background-image: url(/tunlinphyo.jpeg);
             background-size: cover;
@@ -401,7 +402,7 @@
         }
 
         .project-number {
-            font-size: clamp(2rem, 15vw, 10rem);
+            font-size: clamp(2.5rem, 20vw, 20rem);
             font-family: "Orbitron", serif;
             font-weight: 800;
             color: var(--fg-color);
@@ -425,8 +426,8 @@
         display: flex;
         justify-content: stretch;
         align-items: flex-start;
-        padding-block-start: 8vh;
-        padding-block-start: 8dvh;
+        padding-block-start: 6vh;
+        padding-block-start: 6dvh;
 
         @media (min-width: 500px) {
             padding-block-start: 0;

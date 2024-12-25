@@ -106,6 +106,13 @@ body::after {
     }
 }
 
+.loading-layer {
+    position: fixed;
+    z-index: 999;
+    inset: 0;
+    cursor: progress;
+}
+
 .main {
     inline-size: 100%;
     position: relative;
@@ -133,8 +140,8 @@ body::after {
         justify-content: center;
         align-items: center;
 
-        &:disabled {
-            pointer-events: none;
+        &.disabled {
+            cursor: not-allowed;
         }
 
         .play{

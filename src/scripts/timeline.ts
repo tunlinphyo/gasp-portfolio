@@ -31,7 +31,7 @@ export function animator(carousel: GSAPTween) {
             trigger: ".scroll-trigger",
             start: "top top",
             end: "bottom bottom",
-            scrub: 1,
+            scrub: 5,
             // markers: true,
         }
     })
@@ -226,7 +226,7 @@ export function animator(carousel: GSAPTween) {
         x: isLandscape ? "25vw" : "40vw",
     }, "<")
     .to(animatorFour, {
-        height: isLandscape ? "90vh" : "50vh",
+        height: isLandscape ? "80vh" : "50vh",
     }, ">")
     .to(animatorThree, {
         width: MIN_SIZE,
@@ -334,6 +334,7 @@ export function animator(carousel: GSAPTween) {
     .from(".project-desc", {
         opacity: 0,
         x: "50vw",
+        pointerEvents: 'none',
     }, ">")
     .from(".project-cateogry", {
         opacity: 0,
@@ -342,6 +343,7 @@ export function animator(carousel: GSAPTween) {
     .from(".project-link", {
         opacity: 0,
         y: 50,
+        pointerEvents: 'none',
     }, ">")
 
     .from(".control", {

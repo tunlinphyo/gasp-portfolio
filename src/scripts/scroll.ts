@@ -1,7 +1,7 @@
 import gsap from "gsap"
 import ScrollTrigger from "gsap/ScrollTrigger"
 import { Observer } from "gsap/Observer"
-import { dataSet, elem, toggleClass } from "./helpers/utils";
+import { addClass, dataSet, elem, hasClass, removeClass, toggleClass } from "./helpers/utils";
 
 interface AutoScrollerConfig {
     initialDirection?: number | string
@@ -24,7 +24,7 @@ export class AutoScroller {
         this.button = elem<HTMLButtonElement>('.playPause')
         this.moveDirection = config.initialDirection ?? "max"
         this.stopDelay = config.stopDelay ?? 0.25
-        this.scrollSpeed = config.scrollSpeed ?? 300
+        this.scrollSpeed = config.scrollSpeed ?? 350
         this.autoScroll = null
         this.scrollTrigger = null
 
@@ -36,6 +36,10 @@ export class AutoScroller {
 
         this.initScrollTrigger()
         this.initTouchEvents()
+
+        // setTimeout(() => {
+        //     this.play()
+        // }, 1500)
     }
 
     private getCurrentScroll(): number {
@@ -84,11 +88,12 @@ export class AutoScroller {
         })
 
         this.button.addEventListener('click', () => {
-            this.button.setAttribute('disabled', 'disabled')
-            const timeout = setTimeout(() => {
-                clearTimeout(timeout)
-                this.button.removeAttribute('disabled')
-            }, 300)
+            if (hasClass(this.button, 'disabled')) return
+
+            addClass(this.button, 'disabled')
+            setTimeout(() => {
+                removeClass(this.button, 'disabled')
+            }, 500)
 
             if (this.isPlaying) {
                 this.pause()
