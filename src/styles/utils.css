@@ -102,6 +102,10 @@ body::after {
     &.animator::before {
         animation: pulse 1.2s infinite;
     }
+
+    &.logo::before {
+        --size: 0;
+    }
 }
 
 .cursor--link {

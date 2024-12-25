@@ -18,9 +18,11 @@ export function initCursor() {
         })
 
         const has = hasClass(e.target as HTMLElement, "cursor--link")
+        const logo = hasClass(e.target as HTMLElement, "cursor--logo")
         const animator = hasClass(e.target as HTMLElement, "animator")
 
         toggleClass(".cursor", "active", has)
+        toggleClass(".cursor", "logo", logo)
         toggleClass(".cursor", "animator", animator)
 
         if (has) {

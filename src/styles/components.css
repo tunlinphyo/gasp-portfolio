@@ -60,6 +60,8 @@
         justify-content: center;
         align-items: center;
         /* animation: Rotate 15s linear infinite; */
+        pointer-events: auto;
+        cursor: pointer;
 
         &::before {
             content: '';
@@ -77,6 +79,7 @@
         }
 
         > div {
+            pointer-events: none;
             position: absolute;
             z-index: 1;
             text-transform: uppercase;
