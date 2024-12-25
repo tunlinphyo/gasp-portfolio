@@ -456,7 +456,7 @@
                 margin-block: -0.5rem;
 
                 @media (max-width: 991px) {
-                    padding-left: 8vw;
+                    padding-left: 6vw;
                 }
             }
 
