@@ -7,7 +7,7 @@
     --fg-accent-color: #444444;
 
     --accent-color: #444444;
-    --link-color: blue;
+    --link-color: #6c5ce7;
 
     --mountain-one: #001100;
     --mountain-two: #002200;
@@ -50,7 +50,7 @@
         --fg-accent-color: #cccccc;
 
         --accent-color: #cccccc;
-        --link-color: skyblue;
+        /* --link-color: #6c5ce7; */
 
         --play:#fff3;
 
@@ -65,12 +65,11 @@
 
     @media (prefers-color-scheme: dark) {
         --bg-color: #000000;
-
         --fg-color: #ffffff;
         --fg-accent-color: #cccccc;
 
         --accent-color: #cccccc;
-        --link-color: skyblue;
+        --link-color: #a29bfe;
 
         --mountain-one: #000000;
         --mountain-two: #000900;
@@ -109,10 +108,8 @@
 
         body[data-schema="dark"] {
             --bg-color: #000;
-
             --fg-color: #ccc;
-
-            --link-color: #fff;
+            /* --link-color: #a29bfe; */
 
             --play:#fff5;
 

@@ -143,7 +143,7 @@
         align-items: center;
 
         .hello-message {
-            font-size: clamp(2.5rem, 12vw, 14rem);
+            font-size: clamp(2.5rem, 14vw, 14rem);
             line-height: 1.5;
             text-align: center;
 
@@ -159,6 +159,7 @@
             }
 
             > span {
+                color: var(--link-color);
                 animation: showHide 1s steps(2, jump-none) infinite;
             }
         }

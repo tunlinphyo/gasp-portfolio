@@ -18,7 +18,7 @@ export function loading() {
         opacity: 0,
         scale: 0,
         ease: "elastic.out",
-        duration: 1.5,
+        duration: 2,
         paused: true,
         onComplete: () => {
             disabledScroll.off()

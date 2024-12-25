@@ -9,6 +9,10 @@
     --min-size: 2px;
 
     --80vh: 80dvh;
+
+    @media (min-width: 1800px) {
+        --x: clamp(1.5rem, 12vw, 12rem);
+    }
 }
 
 html,
@@ -142,6 +146,11 @@ body::after {
 
         &.disabled {
             cursor: not-allowed;
+        }
+
+        &:hover {
+            color: var(--link-color);
+            border-color: var(--link-color);
         }
 
         .play{
