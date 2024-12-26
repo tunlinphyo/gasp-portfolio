@@ -8,19 +8,7 @@
 
     --accent-color: #444444;
     --link-color: #6c5ce7;
-
-    --mountain-one: #001100;
-    --mountain-two: #002200;
-
     --play:#0002;
-
-    /* --bg-image: radial-gradient(circle at center, #FFE6BB 10%, transparent 10%),
-        radial-gradient(circle at center, #bfbfbf 15%, transparent 15%),
-        radial-gradient(circle at center, #cccccc 22%, transparent 22%),
-        radial-gradient(circle at center, #d9d9d9 32%, transparent 32%),
-        radial-gradient(circle at center, #e5e5e5 50%, transparent 50%),
-        radial-gradient(circle at center, #f2f2f2 70%, transparent 70%),
-        radial-gradient(circle at center, #ffffff 100%, transparent 100%); */
 
     --bg-image: radial-gradient(circle at center, #FFA500 10%, transparent 10%),
         radial-gradient(circle at center, #FFC966 15%, transparent 15%),
@@ -38,20 +26,14 @@
             radial-gradient(circle at top center, #e3eff7 50%, transparent 50%),
             radial-gradient(circle at top center, #dcebf5 70%, transparent 70%),
             radial-gradient(circle at top center, #cde1f0 100%, transparent 100%);
-
-        --mountain-one: #003300;
-        --mountain-two: #004400;
     }
 
     body[data-schema="dark"] {
         --bg-color: #000000;
-
         --fg-color: #ffffff;
         --fg-accent-color: #cccccc;
 
         --accent-color: #cccccc;
-        /* --link-color: #6c5ce7; */
-
         --play:#fff3;
 
         --bg-image: radial-gradient(circle at center, #040404 10%, transparent 10%),
@@ -70,19 +52,7 @@
 
         --accent-color: #cccccc;
         --link-color: #a29bfe;
-
-        --mountain-one: #000000;
-        --mountain-two: #000900;
-
         --play:#fff5;
-
-        /* --bg-image: radial-gradient(circle at center, #000000 10%, transparent 10%),
-            radial-gradient(circle at center, #030303 15%, transparent 15%),
-            radial-gradient(circle at center, #060606 22%, transparent 22%),
-            radial-gradient(circle at center, #090909 32%, transparent 32%),
-            radial-gradient(circle at center, #0C0C0C 50%, transparent 50%),
-            radial-gradient(circle at center, #0F0F0F 70%, transparent 70%),
-            radial-gradient(circle at center, #121212 100%, transparent 100%); */
 
         --bg-image: radial-gradient(circle at center, #000000 10%, transparent 10%),
             radial-gradient(circle at center, #222222 15%, transparent 15%),
@@ -93,10 +63,6 @@
             radial-gradient(circle at center, #000000 100%, transparent 100%);
 
         body[data-schema="light"] {
-
-            --mountain-one: #001500;
-            --mountain-two: #001B00;
-
             --bg-image: radial-gradient(circle at top center, #232345 10%, transparent 10%),
                 radial-gradient(circle at top center, #1E1E3B 15%, transparent 15%),
                 radial-gradient(circle at top center, #191931 22%, transparent 22%),
@@ -109,8 +75,6 @@
         body[data-schema="dark"] {
             --bg-color: #000;
             --fg-color: #ccc;
-            /* --link-color: #a29bfe; */
-
             --play:#fff5;
 
             --bg-image: radial-gradient(circle at center, #000000 10%, transparent 10%),

@@ -436,13 +436,11 @@
 
         display: flex;
         justify-content: stretch;
-        align-items: flex-start;
-        padding-block-start: 6vh;
-        padding-block-start: 6dvh;
+        align-items: center;
+        padding-block-end: max(10vh, 80px);
 
-        @media (min-width: 500px) {
-            padding-block-start: 0;
-            align-items: center;
+        @media (min-width: 768px) {
+            padding-block-end: 0;
         }
 
         .project {

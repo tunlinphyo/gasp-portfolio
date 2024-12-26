@@ -162,10 +162,10 @@ export function animator(carousel: GSAPTween) {
     .to(".animator-container", { y: 0, duration: 1 }, "<")
     .add("techFirst")
 
-    .to(language.chars, { scale: 0, opacity: 0, y: 100 }, "techFirst")
-    .to(".desc-language", { opacity: 0, y: 100, pointerEvents: 'none' }, "<")
-    .to(framework.chars, { scale: 0, opacity: 0, y: 100, pointerEvents: 'none' }, "techFirst")
-    .to(".desc-framework", { opacity: 0, y: 100, pointerEvents: 'none' }, "<")
+    .to(language.chars, { scale: 0.5, opacity: 0, y: -100 }, "techFirst")
+    .to(".desc-language", { opacity: 0, y: -100, pointerEvents: 'none' }, "<")
+    .to(framework.chars, { scale: 0.5, opacity: 0, y: -100, pointerEvents: 'none' }, "techFirst")
+    .to(".desc-framework", { opacity: 0, y: -100, pointerEvents: 'none' }, "<")
     .add("techSecond")
 
     .from(database.chars, {
@@ -178,7 +178,7 @@ export function animator(carousel: GSAPTween) {
         },
         duration: 0.7,
         ease: "bounce.out",
-    }, "techSecond")
+    }, "techSecond <")
     .from(".desc-database", { opacity: 0, y: 100, pointerEvents: 'none' }, "<")
     .from(other.chars, {
         scale: 0,
@@ -190,7 +190,7 @@ export function animator(carousel: GSAPTween) {
         },
         duration: 0.7,
         ease: "bounce.out",
-    }, "techSecond")
+    }, "techSecond <")
     .from(".desc-other", { opacity: 0,  y: 100, pointerEvents: 'none' }, "<")
     .to(animatorFour, { width: MIN_SIZE, height: MIN_SIZE, duration: 1 }, ">")
     .to(".animator-container", { y: isLandscape ? "45vh" : 0, duration: 1 }, "<")
