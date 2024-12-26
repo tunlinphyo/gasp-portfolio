@@ -1,5 +1,5 @@
 import gsap from "gsap"
-import { dataSet, elem, hasClass, toggleClass } from "./helpers/utils"
+import { dataSet, elem, hasClass, hasCursorNoneAncestor, toggleClass } from "./helpers/utils"
 
 export function initCursor() {
     let isMouse = false
@@ -18,11 +18,12 @@ export function initCursor() {
         })
 
         const has = hasClass(e.target as HTMLElement, "cursor--link")
-        const logo = hasClass(e.target as HTMLElement, "cursor--logo")
+        const logo = hasClass(e.target as HTMLElement, "logo-container")
         const animator = hasClass(e.target as HTMLElement, "animator")
+        const none = hasCursorNoneAncestor(e.target)
 
         toggleClass(".cursor", "active", has)
-        toggleClass(".cursor", "logo", logo)
+        toggleClass(".cursor", "none", none)
         toggleClass(".cursor", "animator", animator)
 
         if (has) {
@@ -30,6 +31,14 @@ export function initCursor() {
             dataSet(".cursor", { text: data || "" })
         } else {
             dataSet(".cursor", { text: "" })
+        }
+
+        if (logo) {
+            const x = e.clientX - (window.innerWidth * 0.5)
+            const y = e.clientY
+            gsap.to('.logo-container', { x, y })
+        } else {
+            gsap.to('.logo-container', { x: 0, y: 0, duration: .6 })
         }
     })
 }

@@ -93,7 +93,7 @@ body::after {
     }
 
     &.active::before {
-        --size: 50px;
+        --size: 60px;
         background-color: var(--fg-color);
         /* backdrop-filter: saturate(180%) blur(10px);
         -webkit-backdrop-filter: saturate(180%) blur(10px); */
@@ -103,7 +103,7 @@ body::after {
         animation: pulse 1.2s infinite;
     }
 
-    &.logo::before {
+    &.none::before {
         --size: 0;
     }
 }

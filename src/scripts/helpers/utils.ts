@@ -7,6 +7,7 @@ interface CSSProperties {
     right?: string;
     translate?: string;
     content?: string;
+    transition?: string;
 }
 
 interface DataSet {
@@ -32,6 +33,14 @@ export function innerHTML<T extends HTMLElement>(selector: T | string, html: str
 
 export function hasClass<T extends HTMLElement>(selector: T | string, token: string, parent?: HTMLElement) {
     return !!(elem<T>(selector, parent).classList.contains(token))
+}
+
+export function hasCursorNoneAncestor(target: EventTarget | null): boolean {
+    if (!(target instanceof HTMLElement)) {
+        return false;
+    }
+
+    return target.closest('.cursor--none') !== null || hasClass(target, 'cursor--none');
 }
 
 export function addClass<T extends HTMLElement>(selector: T | string, token: string, parent?: HTMLElement) {

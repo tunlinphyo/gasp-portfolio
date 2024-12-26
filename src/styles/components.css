@@ -59,9 +59,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        /* animation: Rotate 15s linear infinite; */
         pointer-events: auto;
-        cursor: pointer;
 
         &::before {
             content: '';
@@ -73,10 +71,19 @@
             background-color: var(--bg-color);
             border-radius: 50%;
 
-            /* transition: background-color .5s ease; */
+            transition: background-color .2s ease;
 
             box-shadow: rgba(50, 50, 93, 0.1) 0px 0px 12px -2px, rgba(0, 0, 0, 0.1) 0px 0px 7px -3px;
         }
+
+        /* &:hover {
+            &::before {
+                background-color: var(--fg-color);
+            }
+            > div {
+                color: var(--bg-color);
+            }
+        } */
 
         > div {
             pointer-events: none;
