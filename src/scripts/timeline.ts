@@ -31,7 +31,7 @@ export function animator(carousel: GSAPTween) {
             trigger: ".scroll-trigger",
             start: "top top",
             end: "bottom bottom",
-            scrub: 7,
+            scrub: 2,
             // markers: true,
         }
     })
