@@ -194,6 +194,37 @@ body::after {
         inline-size: 100%;
         block-size: 1200vh;
     }
+
+    .mouse-container {
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        bottom: 4vh;
+        inline-size: 100%;
+        padding: 0 1rem;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        pointer-events: none;
+
+        .mouse {
+            opacity: 0;
+            translate: 0 -100px;
+            pointer-events: auto;
+            padding: 5px;
+
+            .arrow-down {
+                inline-size: 10px;
+                block-size: 10px;
+                border-radius: 2px;
+                border-bottom: 2px solid var(--accent-color);
+                border-right: 2px solid var(--accent-color);
+                rotate: 45deg;
+            }
+        }
+    }
 }
 
 @keyframes CursorActive {
