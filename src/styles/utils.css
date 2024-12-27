@@ -91,6 +91,8 @@ body::after {
 
     &.active::before {
         --size: 60px;
+        /* backdrop-filter: invert(100%) blur(2px);
+        -webkit-backdrop-filter: invert(100%) blur(2px); */
         background-color: var(--fg-color);
     }
 
@@ -168,7 +170,7 @@ body::after {
             }
         }
 
-        @media (min-width: 768px) {
+        @media (orientation: landscape) and (min-height: 640px) {
             --size: 60px;
             top: initial;
             right: initial;

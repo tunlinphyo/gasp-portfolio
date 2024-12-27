@@ -411,6 +411,10 @@
             grid-row: 2 / 3;
             align-items: center;
         }
+        @media (orientation: landscape) and (max-height: 640px) {
+            grid-column: 2 / 4;
+            justify-content: flex-end;
+        }
 
         .project-number {
             font-size: clamp(2.5rem, 20vw, 20rem);
