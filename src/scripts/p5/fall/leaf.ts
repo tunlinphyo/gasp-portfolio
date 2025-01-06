@@ -12,7 +12,7 @@ function getRandomSize(p: p5) {
 
 
 export class Leaf {
-    private img: any
+    private img: p5.Image
     public pos: p5.Vector
     private vel: p5.Vector
     private acc: p5.Vector
@@ -21,11 +21,11 @@ export class Leaf {
     private xOff: number = 0
     private r: number
 
-    constructor(private p: p5, img: any) {
+    constructor(private p: p5, private imgs: p5.Image[]) {
       this.r = getRandomSize(this.p);
       let x = this.p.random(this.p.width);
       let y = this.p.random(this.p.height * -1, -this.r);
-      this.img = img;
+      this.img = this.p.random(this.imgs);
       this.pos = this.p.createVector(x, y);
       this.vel = this.p.createVector(0, 0);
       this.acc = this.p.createVector();
@@ -44,6 +44,7 @@ export class Leaf {
     }
 
     randomize() {
+      this.img = this.p.random(this.imgs);
       this.r = getRandomSize(this.p);
       let x = this.p.random(this.p.width);
       let y = this.p.random(this.p.height * -1, -this.r);
@@ -72,10 +73,12 @@ export class Leaf {
 
       // Wrapping Left and Right
       if (this.pos.x < -this.r) {
-        this.pos.x = this.p.width + this.r;
+        // this.pos.x = this.p.width + this.r;
+        this.randomize();
       }
       if (this.pos.x > this.p.width + this.r) {
-        this.pos.x = -this.r;
+        // this.pos.x = -this.r;
+        this.randomize();
       }
 
       this.angle += this.dir * this.vel.mag() / 180;

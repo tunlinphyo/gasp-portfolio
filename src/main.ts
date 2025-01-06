@@ -45,8 +45,8 @@ window.onload = async () => {
                 new p5(fallSketch)
                 break
             case Season.WINTER:
-                document.body.classList.add('winter')
-                new p5(snowSketch)
+                document.body.classList.add('autumn')
+                new p5(fallSketch)
                 break
             default:
                 break
