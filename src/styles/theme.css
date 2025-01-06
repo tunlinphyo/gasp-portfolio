@@ -9,6 +9,7 @@
     --accent-color: #444444;
     --link-color: #6c5ce7;
     --play:#0002;
+    --glass: none;
 
     --bg-image: radial-gradient(circle at center, #FFA500 10%, transparent 10%),
         radial-gradient(circle at center, #FFC966 15%, transparent 15%),
@@ -35,6 +36,7 @@
 
         --accent-color: #cccccc;
         --play:#fff3;
+        --glass: blur(5px);
 
         --bg-image: radial-gradient(circle at center, #040404 10%, transparent 10%),
             radial-gradient(circle at center, #080808 15%, transparent 15%),
@@ -53,6 +55,7 @@
         --accent-color: #cccccc;
         --link-color: #a29bfe;
         --play:#fff5;
+        --glass: blur(2px);
 
         --bg-image: radial-gradient(circle at center, #000000 10%, transparent 10%),
             radial-gradient(circle at center, #222222 15%, transparent 15%),
@@ -76,6 +79,7 @@
             --bg-color: #000;
             --fg-color: #ccc;
             --play:#fff5;
+            --glass: blur(5px);
 
             --bg-image: radial-gradient(circle at center, #000000 10%, transparent 10%),
                 radial-gradient(circle at center, #0F0F0F 15%, transparent 15%),

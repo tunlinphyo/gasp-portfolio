@@ -104,7 +104,7 @@ export function loading() {
             .to(".section--loading", {
                 opacity: 0,
                 onComplete: () => {
-                    applyStyles(".section--fixed", { zIndex: 1 })
+                    applyStyles(".section--fixed", { zIndex: 2 })
                     hideTimeline.kill()
                 }
             })

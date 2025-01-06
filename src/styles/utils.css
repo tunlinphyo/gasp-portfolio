@@ -179,9 +179,23 @@ body::after {
         }
     }
 
-    .section {
+    .p5Canvas {
+        position: fixed;
+        z-index: 0;
+        inset: 0;
+        pointer-events: none;
+        filter: var(--glass);
+    }
+
+    .glass {
         position: fixed;
         z-index: 1;
+        inset: 0;
+    }
+
+    .section {
+        position: fixed;
+        z-index: 2;
         top: 0;
         left: 0;
         inline-size: 100%;

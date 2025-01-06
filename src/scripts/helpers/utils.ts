@@ -102,3 +102,9 @@ export function isMedia(query: string) {
 export function supportsTouch() {
     return 'ontouchstart' in window || !!navigator.maxTouchPoints;
 }
+
+export function wait(delay: number = 300): Promise<void> {
+    return new Promise(resolve => {
+        setTimeout(() => resolve(), delay)
+    })
+}

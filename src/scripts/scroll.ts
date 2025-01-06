@@ -114,7 +114,7 @@ export class AutoScroller {
             this.autoScroll.kill()
             this.autoScroll = null
         }
-        console.log('ON_WHEEL')
+        // console.log('ON_WHEEL')
         this.isPlaying = false
         this.updateButton()
     }
@@ -125,7 +125,7 @@ export class AutoScroller {
         // } else if (this.isPlaying) {
         //     this.play()
         // }
-        console.log('ON_STOP')
+        // console.log('ON_STOP')
         // this.updateButton()
     }
 
@@ -177,6 +177,6 @@ export class AutoScroller {
     }
 
     private onTouchEnd(): void {
-        console.log('TOUCH_END')
+        // console.log('TOUCH_END')
     }
 }
