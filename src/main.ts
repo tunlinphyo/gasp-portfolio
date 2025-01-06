@@ -35,13 +35,17 @@ window.onload = async () => {
 
         switch(season) {
             case Season.SPRING:
+                document.body.classList.add('spring')
                 break
             case Season.SUMMER:
+                document.body.classList.add('summer')
                 break
             case Season.AUTUMN:
+                document.body.classList.add('autumn')
                 new p5(fallSketch)
                 break
             case Season.WINTER:
+                document.body.classList.add('winter')
                 new p5(snowSketch)
                 break
             default:

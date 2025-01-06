@@ -1,5 +1,6 @@
 import p5 from 'p5'
 import { Snow } from './snow'
+import { Leaves } from './fall'
 
 export const snowSketch = (p: p5) => {
     let snow: Snow
@@ -31,7 +32,7 @@ export const snowSketch = (p: p5) => {
 
 
 export const fallSketch = (p: p5) => {
-    let snow: Snow
+    let leaves: Leaves
     let img: p5.Image
     let loaded: boolean = false
 
@@ -43,13 +44,13 @@ export const fallSketch = (p: p5) => {
 
     p.setup = () => {
         p.frameRate(60)
-        snow = new Snow(p, img)
-        snow.setup()
+        leaves = new Leaves(p, img)
+        leaves.setup()
     }
 
     p.draw = () => {
         if (loaded) {
-            snow.draw()
+            leaves.draw()
         }
     }
 

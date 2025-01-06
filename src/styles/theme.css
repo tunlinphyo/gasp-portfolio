@@ -36,7 +36,7 @@
 
         --accent-color: #cccccc;
         --play:#fff3;
-        --glass: blur(5px);
+        --glass: blur(3px);
 
         --bg-image: radial-gradient(circle at center, #040404 10%, transparent 10%),
             radial-gradient(circle at center, #080808 15%, transparent 15%),
@@ -55,7 +55,14 @@
         --accent-color: #cccccc;
         --link-color: #a29bfe;
         --play:#fff5;
-        --glass: blur(2px);
+        --glass: blur(1px);
+        /* --glass: none; */
+        body.winter {
+            --glass: blur(1px);
+        }
+        body.autumn {
+            --glass: none;
+        }
 
         --bg-image: radial-gradient(circle at center, #000000 10%, transparent 10%),
             radial-gradient(circle at center, #222222 15%, transparent 15%),
@@ -79,7 +86,7 @@
             --bg-color: #000;
             --fg-color: #ccc;
             --play:#fff5;
-            --glass: blur(5px);
+            --glass: blur(3px);
 
             --bg-image: radial-gradient(circle at center, #000000 10%, transparent 10%),
                 radial-gradient(circle at center, #0F0F0F 15%, transparent 15%),

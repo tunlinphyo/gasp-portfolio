@@ -20,7 +20,7 @@ export class Snow {
 
     setup() {
         this.p.createCanvas(window.innerWidth, window.innerHeight)
-        this.gravity = this.p.createVector(0, 0.3);
+        this.gravity = this.p.createVector(0, 0.03);
         for (let x = 0; x < this.spritesheet.width; x += 32) {
             for (let y = 0; y < this.spritesheet.height; y += 32) {
                 let img = this.spritesheet.get(x, y, 32, 32);
@@ -28,7 +28,6 @@ export class Snow {
                 this.textures.push(img);
             }
         }
-
 
         let design = this.p.random(this.textures);
         this.snow.push(new Snowflake(this.p, design));
@@ -52,7 +51,7 @@ export class Snow {
             let yOff = flake.pos.y / this.p.height;
             let wAngle = this.p.noise(xOff, yOff, this.zOff) * this.p.TWO_PI;
             let wind = p5.Vector.fromAngle(wAngle);
-            wind.mult(0.2);
+            wind.mult(0.02);
 
             flake.applyForce(this.gravity);
             flake.applyForce(wind);
