@@ -15,7 +15,8 @@ export class Leaves {
         this.p = p
         this.spritesheet = img
         // this.maxCount = this.p.constrain(Math.round(Math.sqrt(innerWidth * innerHeight) * 0.1), 50, 300)
-        this.maxCount = Math.round((innerWidth * innerHeight) ** (1 / 6))
+        this.maxCount = Math.round((innerWidth * innerHeight) ** (1 / 5))
+        console.log(this.maxCount)
     }
 
     setup() {
@@ -25,7 +26,7 @@ export class Leaves {
             for (let y = 0; y < this.spritesheet.height; y += 32) {
                 let img = this.spritesheet.get(x, y, 32, 32);
                 // this.p.image(img, x, y);
-                console.log(x, y)
+                // console.log(x, y)
                 if (
                     !((x == 0 && y == 0) || (x == 32 && y == 32) || (x == 160 && y == 96))
                 ) {

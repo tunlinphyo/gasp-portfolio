@@ -72,13 +72,15 @@ export class Leaf {
       }
 
       // Wrapping Left and Right
-      if (this.pos.x < -this.r) {
-        // this.pos.x = this.p.width + this.r;
-        this.randomize();
+      if (this.pos.x < (this.r * -2)) {
+        this.pos.x = this.p.width + this.r;
+        this.img = this.p.random(this.imgs);
+        // this.randomize();
       }
-      if (this.pos.x > this.p.width + this.r) {
-        // this.pos.x = -this.r;
-        this.randomize();
+      if (this.pos.x > this.p.width + (this.r * 2)) {
+        this.pos.x = -this.r;
+        this.img = this.p.random(this.imgs);
+        // this.randomize();
       }
 
       this.angle += this.dir * this.vel.mag() / 180;
