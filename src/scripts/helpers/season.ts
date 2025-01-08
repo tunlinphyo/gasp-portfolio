@@ -8,37 +8,34 @@ export enum Season {
 }
 
 export class JapanSeason {
-    private month: number;
-
-    constructor() {
-        this.month = new Date().getMonth() + 1; // Adjust to 1-based index
+    private static getCurrentMonth(): number {
+        return new Date().getMonth() + 1; // Adjust to 1-based index
     }
 
-    /**
-     * Get the current season in Japan
-     * @returns {Season} Season enum
-     */
-    public getCurrentSeason(): Season {
-        if (this.isSpring()) return Season.SPRING;
-        if (this.isSummer()) return Season.SUMMER;
-        if (this.isAutumn()) return Season.AUTUMN;
-        if (this.isWinter()) return Season.WINTER;
+    public static getCurrentSeason(): Season {
+        const month = this.getCurrentMonth();
+
+        if (this.isSpring(month)) return Season.SPRING;
+        if (this.isSummer(month)) return Season.SUMMER;
+        if (this.isAutumn(month)) return Season.AUTUMN;
+        if (this.isWinter(month)) return Season.WINTER;
+
         return Season.UNKNOWN;
     }
 
-    private isSpring(): boolean {
-        return this.month >= 3 && this.month <= 5;
+    private static isSpring(month: number): boolean {
+        return month >= 3 && month <= 5;
     }
 
-    private isSummer(): boolean {
-        return this.month >= 6 && this.month <= 8;
+    private static isSummer(month: number): boolean {
+        return month >= 6 && month <= 8;
     }
 
-    private isAutumn(): boolean {
-        return this.month >= 9 && this.month <= 11;
+    private static isAutumn(month: number): boolean {
+        return month >= 9 && month <= 11;
     }
 
-    private isWinter(): boolean {
-        return this.month === 12 || this.month <= 2;
+    private static isWinter(month: number): boolean {
+        return month === 12 || month <= 2;
     }
 }

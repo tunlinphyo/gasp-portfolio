@@ -14,13 +14,12 @@ export class Snow {
     constructor(p: p5, img: p5.Image) {
         this.p = p
         this.spritesheet = img
-        // this.maxCount = this.p.constrain(Math.round(Math.sqrt(innerWidth * innerHeight) * 0.1), 50, 300)
-        this.maxCount = Math.round((innerWidth * innerHeight) ** (1 / 2.5))
+        this.maxCount = Math.round((this.p.windowWidth * this.p.windowHeight) ** (1 / 2.5))
     }
 
     setup() {
-        this.p.createCanvas(window.innerWidth, window.innerHeight)
-        this.gravity = this.p.createVector(0, 0.03);
+        this.p.createCanvas(this.p.windowWidth, this.p.windowHeight)
+        this.gravity = this.p.createVector(0, 0.3);
         for (let x = 0; x < this.spritesheet.width; x += 32) {
             for (let y = 0; y < this.spritesheet.height; y += 32) {
                 let img = this.spritesheet.get(x, y, 32, 32);
@@ -51,7 +50,7 @@ export class Snow {
             let yOff = flake.pos.y / this.p.height;
             let wAngle = this.p.noise(xOff, yOff, this.zOff) * this.p.TWO_PI;
             let wind = p5.Vector.fromAngle(wAngle);
-            wind.mult(0.02);
+            wind.mult(0.1);
 
             flake.applyForce(this.gravity);
             flake.applyForce(wind);

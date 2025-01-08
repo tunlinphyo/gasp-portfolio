@@ -55,13 +55,10 @@
         --accent-color: #cccccc;
         --link-color: #a29bfe;
         --play:#fff5;
-        --glass: blur(1px);
+        --glass: none;
         /* --glass: none; */
         body.winter {
             --glass: blur(1px);
-        }
-        body.autumn {
-            --glass: none;
         }
 
         --bg-image: radial-gradient(circle at center, #000000 10%, transparent 10%),

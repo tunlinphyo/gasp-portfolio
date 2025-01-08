@@ -3,7 +3,7 @@ import { Leaf } from './leaf'
 
 export class Leaves {
     private p: p5
-    private leaf: Leaf[] = []
+    private leaves: Leaf[] = []
     private gravity: any
     // private zOff: number = 0
 
@@ -15,12 +15,12 @@ export class Leaves {
         this.p = p
         this.spritesheet = img
         // this.maxCount = this.p.constrain(Math.round(Math.sqrt(innerWidth * innerHeight) * 0.1), 50, 300)
-        this.maxCount = Math.round((innerWidth * innerHeight) ** (1 / 5))
+        this.maxCount = Math.round((this.p.windowWidth * this.p.windowHeight) ** (1 / 6))
         console.log(this.maxCount)
     }
 
     setup() {
-        this.p.createCanvas(window.innerWidth, window.innerHeight)
+        this.p.createCanvas(this.p.windowWidth, this.p.windowHeight)
         this.gravity = this.p.createVector(0, 0.001);
         for (let x = 0; x < this.spritesheet.width; x += 32) {
             for (let y = 0; y < this.spritesheet.height; y += 32) {
@@ -37,7 +37,7 @@ export class Leaves {
 
 
         for(let i = 0; i < this.maxCount; i++) {
-            this.leaf.push(new Leaf(this.p, this.textures));
+            this.leaves.push(new Leaf(this.p, this.textures));
         }
     }
 
@@ -46,18 +46,18 @@ export class Leaves {
         this.p.background(0, 0)
         // this.zOff += 0.1;
 
-        for (let flake of this.leaf) {
+        for (let leaf of this.leaves) {
             // let xOff = flake.pos.x / this.p.width;
             // let yOff = flake.pos.y / this.p.height;
             // let wAngle = this.p.noise(xOff, yOff, this.zOff) * this.p.TWO_PI;
             // let wind = p5.Vector.fromAngle(wAngle);
             let wind = p5.Vector.random2D()
-            wind.mult(0.01);
+            wind.mult(0.04);
 
-            flake.applyForce(this.gravity);
-            flake.applyForce(wind);
-            flake.update();
-            flake.render();
+            leaf.applyForce(this.gravity);
+            leaf.applyForce(wind);
+            leaf.update();
+            leaf.render();
         }
 
     }

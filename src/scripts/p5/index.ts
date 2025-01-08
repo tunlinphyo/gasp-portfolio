@@ -1,6 +1,7 @@
 import p5 from 'p5'
 import { Snow } from './snow'
 import { Leaves } from './fall'
+import { Flowers } from './sakura'
 
 export const snowSketch = (p: p5) => {
     let snow: Snow
@@ -30,7 +31,6 @@ export const snowSketch = (p: p5) => {
     }
 }
 
-
 export const fallSketch = (p: p5) => {
     let leaves: Leaves
     let img: p5.Image
@@ -52,6 +52,24 @@ export const fallSketch = (p: p5) => {
         if (loaded) {
             leaves.draw()
         }
+    }
+
+    p.windowResized = () => {
+        p.resizeCanvas(p.windowWidth, p.windowHeight)
+    }
+}
+
+export const sakuraSketch = (p: p5) => {
+    let flowers: Flowers
+
+    p.setup = () => {
+        p.frameRate(60)
+        flowers = new Flowers(p)
+        flowers.setup()
+    }
+
+    p.draw = () => {
+        flowers.draw()
     }
 
     p.windowResized = () => {

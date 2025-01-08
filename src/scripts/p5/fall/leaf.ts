@@ -58,7 +58,7 @@ export class Leaf {
       this.xOff = this.p.sin(this.angle * 2) * 2 * this.r;
 
       this.vel.add(this.acc);
-      this.vel.limit(this.r * 0.2);
+      this.vel.limit(this.r * 0.1);
 
       if (this.vel.mag() < 1) {
         this.vel.normalize();
@@ -72,15 +72,17 @@ export class Leaf {
       }
 
       // Wrapping Left and Right
-      if (this.pos.x < (this.r * -2)) {
+      if (this.pos.x < (this.r * -5)) {
         this.pos.x = this.p.width + this.r;
-        this.img = this.p.random(this.imgs);
-        // this.randomize();
+        if (this.pos.y > 0) {
+          this.img = this.p.random(this.imgs);
+        }
       }
-      if (this.pos.x > this.p.width + (this.r * 2)) {
+      if (this.pos.x > this.p.width + (this.r * 5)) {
         this.pos.x = -this.r;
-        this.img = this.p.random(this.imgs);
-        // this.randomize();
+        if (this.pos.y > 0) {
+          this.img = this.p.random(this.imgs);
+        }
       }
 
       this.angle += this.dir * this.vel.mag() / 180;

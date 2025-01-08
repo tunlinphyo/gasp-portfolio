@@ -77,7 +77,7 @@ export class Snowflake {
         this.pos.x = -this.r;
       }
 
-      this.angle += this.dir * this.vel.mag() / 180;
+      this.angle += this.dir * this.vel.mag() / 200;
 
     }
 
