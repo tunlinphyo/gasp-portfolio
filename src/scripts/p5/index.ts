@@ -2,6 +2,8 @@ import p5 from 'p5'
 import { Snow } from './snow'
 import { Leaves } from './fall'
 import { Flowers } from './sakura'
+import { Water } from './water'
+import { FireWorkWorker } from './firework'
 
 export const snowSketch = (p: p5) => {
     let snow: Snow
@@ -70,6 +72,46 @@ export const sakuraSketch = (p: p5) => {
 
     p.draw = () => {
         flowers.draw()
+    }
+
+    p.windowResized = () => {
+        p.resizeCanvas(p.windowWidth, p.windowHeight)
+    }
+}
+
+export const fireworkSketch = (p: p5) => {
+    let worker: FireWorkWorker
+
+    p.setup = () => {
+        p.frameRate(60)
+        worker = new FireWorkWorker(p)
+        worker.setup()
+    }
+
+    p.draw = () => {
+        worker.draw()
+    }
+
+    p.windowResized = () => {
+        p.resizeCanvas(p.windowWidth, p.windowHeight)
+    }
+}
+
+export const waterSketch = (p: p5) => {
+    let water: Water
+
+    p.setup = () => {
+        p.frameRate(60)
+        water = new Water(p)
+        water.setup()
+    }
+
+    p.draw = () => {
+        water.draw()
+    }
+
+    p.mouseMoved = () => {
+        water.mouseMoved()
     }
 
     p.windowResized = () => {

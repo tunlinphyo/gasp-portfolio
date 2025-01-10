@@ -11,7 +11,7 @@ import { initCursor } from "./scripts/cursor"
 import { Projects } from "./scripts/projects"
 import { AutoScroller } from "./scripts/scroll"
 import p5 from "p5"
-import { fallSketch, sakuraSketch, snowSketch } from "./scripts/p5"
+import { fallSketch, fireworkSketch, sakuraSketch, snowSketch } from "./scripts/p5"
 import { wait } from "./scripts/helpers/utils"
 import { BrowserCheck } from "./scripts/helpers/browser"
 import { JapanSeason, Season } from "./scripts/helpers/season"
@@ -35,17 +35,19 @@ window.onload = async () => {
         switch(season) {
             case Season.SPRING:
                 document.body.classList.add('spring')
+                new p5(sakuraSketch)
                 break
             case Season.SUMMER:
                 document.body.classList.add('summer')
+                new p5(fireworkSketch)
                 break
             case Season.AUTUMN:
                 document.body.classList.add('autumn')
                 new p5(fallSketch)
                 break
             case Season.WINTER:
-                document.body.classList.add('autumn')
-                new p5(sakuraSketch)
+                document.body.classList.add('winter')
+                new p5(snowSketch)
                 break
             default:
                 break

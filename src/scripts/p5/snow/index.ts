@@ -42,7 +42,7 @@ export class Snow {
         if (count === 0 && this.snow.length < this.maxCount) {
             let design = this.p.random(this.textures);
             this.snow.push(new Snowflake(this.p, design));
-            console.log(this.snow.length)
+            // console.log(this.snow.length)
         }
 
         for (let flake of this.snow) {

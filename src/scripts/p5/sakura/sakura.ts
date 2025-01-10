@@ -13,16 +13,16 @@ export interface TreeConfig {
 
 export class SakuraTree {
     private config: TreeConfig = {
-        size: 150,
+        size: 200,
         maxLevel: 12,
         rot: 0.37,
-        lenRand: 0.8,
+        lenRand: 1,
         branchProb: 0.95,
         rotRand: 0.2,
         flowerProb: 0.67,
         mutating: true
     }
-    private paramSeed: number = Math.floor(Math.random() * 1000)
+    private paramSeed: number = Math.floor(Math.random() * 5000)
     private randBias: number = 0
     private prog: number = 1
     private growing: boolean = true
@@ -105,7 +105,7 @@ export class SakuraTree {
             let flowerSize = (this.config.size / 100) * p * (1 / 6) * (len / level)
 
             this.p.strokeWeight(1)
-            this.p.stroke(207, 70, 70)
+            this.p.stroke(255, 132, 217)
 
             this.p.rotate(-this.p.PI)
             for (let i = 0; i <= 8; i++) {
