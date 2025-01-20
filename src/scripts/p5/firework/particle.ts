@@ -21,7 +21,7 @@ export class Particle {
             this.vel.mult(this.p.random(8, 20))
         }
 
-        this.lifespan = firework ? (30 * Math.abs(this.vel.y)) : 180
+        this.lifespan = firework ? (30 * Math.abs(this.vel.y)) : 200
         this.acc = this.p.createVector(0, 0)
         this.hu = hu || this.p.random(255)
     }

@@ -28,7 +28,7 @@ export class FireWorkWorker {
             }
         }
 
-        if (this.p.random(1) < 0.04) {
+        if (window.firework && this.p.random(1) < 0.04) {
             this.fireworks.push(new Firework(this.p))
         }
     }

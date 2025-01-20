@@ -25,7 +25,6 @@ export class SakuraTree {
     private paramSeed: number = Math.floor(Math.random() * 5000)
     private randBias: number = 0
     private prog: number = 1
-    private growing: boolean = true
 
     constructor(private p: p5) {
         this.startGrow = this.startGrow.bind(this)
@@ -35,7 +34,6 @@ export class SakuraTree {
     }
 
     public startGrow() {
-        this.growing = true
         this.prog = 1
         this.grow()
     }
@@ -131,7 +129,6 @@ export class SakuraTree {
         if (this.prog > this.config.maxLevel + 3) {
             this.prog = this.config.maxLevel + 3
             this.p.loop()
-            this.growing = false
             return
         }
 

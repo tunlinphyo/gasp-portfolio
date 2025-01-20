@@ -27,6 +27,9 @@ window.onload = async () => {
     new Projects()
     new AutoScroller()
 
+    const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)')
+    window.firework = prefersDarkMode.matches ? true : false
+
     BrowserCheck.runIfComputerBrowser(async () => {
         await wait(1000)
 
