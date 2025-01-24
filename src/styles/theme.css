@@ -3,8 +3,8 @@
 
     --bg-color: #ffffff;
 
-    --fg-color: #222222;
-    --fg-accent-color: #444444;
+    --fg-color: #272c34;
+    --fg-accent-color: #677488;
 
     --accent-color: #444444;
     --link-color: #6c5ce7;
@@ -31,7 +31,7 @@
 
     body[data-schema="dark"] {
         --bg-color: #000000;
-        --fg-color: #ffffff;
+        --fg-color: #fafafa;
         --fg-accent-color: #cccccc;
 
         --accent-color: #cccccc;
@@ -41,13 +41,13 @@
             --glass: blur(3px);
         }
 
-        --bg-image: radial-gradient(circle at center, #040404 10%, transparent 10%),
-            radial-gradient(circle at center, #080808 15%, transparent 15%),
-            radial-gradient(circle at center, #0C0C0C 22%, transparent 22%),
-            radial-gradient(circle at center, #101010 32%, transparent 32%),
-            radial-gradient(circle at center, #141414 50%, transparent 50%),
-            radial-gradient(circle at center, #181818 70%, transparent 70%),
-            radial-gradient(circle at center, #1C1C1C 100%, transparent 100%);
+        --bg-image: radial-gradient(circle at center, #040406 10%, transparent 10%),
+            radial-gradient(circle at center, #0b0c0d 15%, transparent 15%),
+            radial-gradient(circle at center, #101215 22%, transparent 22%),
+            radial-gradient(circle at center, #16181c 32%, transparent 32%),
+            radial-gradient(circle at center, #1c1f24 50%, transparent 50%),
+            radial-gradient(circle at center, #21262c 70%, transparent 70%),
+            radial-gradient(circle at center, #272c34 100%, transparent 100%);
     }
 
     @media (prefers-color-scheme: dark) {
@@ -65,12 +65,12 @@
         }
 
         --bg-image: radial-gradient(circle at center, #000000 10%, transparent 10%),
-            radial-gradient(circle at center, #222222 15%, transparent 15%),
-            radial-gradient(circle at center, #1B1B1B 22%, transparent 22%),
-            radial-gradient(circle at center, #151515 32%, transparent 32%),
-            radial-gradient(circle at center, #0E0E0E 50%, transparent 50%),
-            radial-gradient(circle at center, #080808 70%, transparent 70%),
-            radial-gradient(circle at center, #000000 100%, transparent 100%);
+            radial-gradient(circle at center, #272c34 15%, transparent 15%),
+            radial-gradient(circle at center, #21262c 22%, transparent 22%),
+            radial-gradient(circle at center, #1c1f24 32%, transparent 32%),
+            radial-gradient(circle at center, #16181c 50%, transparent 50%),
+            radial-gradient(circle at center, #101215 70%, transparent 70%),
+            radial-gradient(circle at center, #0b0c0d 100%, transparent 100%);
 
         body[data-schema="light"] {
             --bg-image: radial-gradient(circle at top center, #232345 10%, transparent 10%),
@@ -92,12 +92,12 @@
             }
 
             --bg-image: radial-gradient(circle at center, #000000 10%, transparent 10%),
-                radial-gradient(circle at center, #0F0F0F 15%, transparent 15%),
-                radial-gradient(circle at center, #0C0C0C 22%, transparent 22%),
-                radial-gradient(circle at center, #090909 32%, transparent 32%),
-                radial-gradient(circle at center, #060606 50%, transparent 50%),
-                radial-gradient(circle at center, #030303 70%, transparent 70%),
-                radial-gradient(circle at center, #000000 100%, transparent 100%);
+                radial-gradient(circle at center, #21262c 15%, transparent 15%),
+                radial-gradient(circle at center, #1c1f24 22%, transparent 22%),
+                radial-gradient(circle at center, #16181c 32%, transparent 32%),
+                radial-gradient(circle at center, #101215 50%, transparent 50%),
+                radial-gradient(circle at center, #0b0c0d 70%, transparent 70%),
+                radial-gradient(circle at center, #050505 100%, transparent 100%);
         }
     }
 }
