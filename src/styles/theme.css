@@ -1,7 +1,7 @@
 :root {
     color-scheme: light dark;
 
-    --bg-color: #ffffff;
+    --bg-color: #eaf3f9;
 
     --fg-color: #272c34;
     --fg-accent-color: #677488;
@@ -10,6 +10,17 @@
     --link-color: #6c5ce7;
     --play:#0002;
     --glass: none;
+
+    --c-1: #FFA500;
+    --c-2: #FFC966;
+    --c-3: #FFDB99;
+    --c-4: #FFEDCC;
+    --c-5: #FFF0E0;
+    --c-6: #FFF5F2;
+    --c-7: #ffffff;
+
+    --ci: #FFA500;
+    --cl: #ffffff;
 
     --bg-image: radial-gradient(circle at center, #FFA500 10%, transparent 10%),
         radial-gradient(circle at center, #FFC966 15%, transparent 15%),
@@ -20,6 +31,14 @@
         radial-gradient(circle at center, #ffffff 100%, transparent 100%);
 
     body[data-schema="light"] {
+        --c-1: #ffffff;
+        --c-2: #f8fbfd;
+        --c-3: #f1f7fb;
+        --c-4: #eaf3f9;
+        --c-5: #e3eff7;
+        --c-6: #dcebf5;
+        --c-7: #cde1f0;
+
         --bg-image: radial-gradient(circle at top center, #ffffff 10%, transparent 10%),
             radial-gradient(circle at top center, #f8fbfd 15%, transparent 15%),
             radial-gradient(circle at top center, #f1f7fb 22%, transparent 22%),
@@ -30,7 +49,7 @@
     }
 
     body[data-schema="dark"] {
-        --bg-color: #000000;
+        /* --bg-color: #000000; */
         --fg-color: #fafafa;
         --fg-accent-color: #cccccc;
 
@@ -40,6 +59,14 @@
         &.winter {
             --glass: blur(3px);
         }
+
+        --c-1: #040406;
+        --c-2: #0b0c0d;
+        --c-3: #101215;
+        --c-4: #16181c;
+        --c-5: #1c1f24;
+        --c-6: #21262c;
+        --c-7: #272c34;
 
         --bg-image: radial-gradient(circle at center, #040406 10%, transparent 10%),
             radial-gradient(circle at center, #0b0c0d 15%, transparent 15%),

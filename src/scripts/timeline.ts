@@ -41,6 +41,14 @@ export function animator(carousel: GSAPTween) {
     timeline
     .fromTo(".hello-message", { opacity: 1, scale: 1 }, { opacity: 0, scale: 5, duration: 0.6 })
     .fromTo(".mouse", { y: 0, opacity: 1 }, { y: 200, opacity: 0 }, "<")
+    .fromTo(".background", { y: 0 }, { y: '-50vh' }, "<")
+    .fromTo(".circle--one", { '--w': '15vw', '--h': '15vh' }, { '--w': '5vw', '--h': '5vh' }, "<")
+    .fromTo(".circle--two", { '--w': '25vw', '--h': '25vh' }, { '--w': '5vw', '--h': '5vh' }, "<")
+    .fromTo(".circle--three", { '--w': '40vw', '--h': '40vh' }, { '--w': '5vw', '--h': '5vh' }, "<")
+    .fromTo(".circle--four", { '--w': '60vw', '--h': '60vh' }, { '--w': '5vw', '--h': '5vh' }, "<")
+    .fromTo(".circle--five", { '--w': '85vw', '--h': '85vh' }, { '--w': '5vw', '--h': '5vh' }, "<")
+    .fromTo(".circle--six", { '--w': '115vw', '--h': '115vh' }, { '--w': '5vw', '--h': '5vh' }, "<")
+    .fromTo(".circle--seven", { '--w': '200vw', '--h': '200vh' }, { '--w': '5vw', '--h': '5vh' }, "<")
     .to(".logo", {
         y: 0,
         onComplete: () => {
@@ -61,6 +69,13 @@ export function animator(carousel: GSAPTween) {
             removeLight()
         }
     })
+    .to(".circle--one", { '--w': '16vw', '--h': '16vh' }, "helloHided")
+    .to(".circle--two", { '--w': '30vw', '--h': '30vh' }, "helloHided+=0.05")
+    .to(".circle--three", { '--w': '40vw', '--h': '40vh' }, "helloHided+=0.1")
+    .to(".circle--four", { '--w': '65vw', '--h': '65vh' }, "helloHided+=0.15")
+    .to(".circle--five", { '--w': '90vw', '--h': '90vh' }, "helloHided+=0.2")
+    .to(".circle--six", { '--w': '120vw', '--h': '120vh' }, "helloHided+=0.25")
+    .to(".circle--seven", { '--w': '200vw', '--h': '200vh' }, "helloHided+=0.3")
 
     .to(personName.chars, { scale: 1, opacity: 1, ease: "back.out(1)", stagger: 0.02 }, "helloHided-=0.1")
     .to(personAbout.chars, { scale: 1, opacity: 1, ease: "back.out(1)", stagger: 0.01 }, "<")
@@ -260,6 +275,14 @@ export function animator(carousel: GSAPTween) {
             from: "end",
         },
     }, "projectLeave")
+    .to(".circle--one", { '--w': '0vw', '--h': '0vw' }, "projectLeave")
+    .to(".circle--two", { '--w': '0vw', '--h': '0vw' }, "projectLeave+=0.05")
+    .to(".circle--three", { '--w': '0vw', '--h': '0vw' }, "projectLeave+=0.1")
+    .to(".circle--four", { '--w': '0vw', '--h': '0vw' }, "projectLeave+=0.15")
+    .to(".circle--five", { '--w': '0vw', '--h': '0vw' }, "projectLeave+=0.2")
+    .to(".circle--six", { '--w': '0vw', '--h': '0vw' }, "projectLeave+=0.25")
+    .to(".circle--seven", { '--w': '0vw', '--h': '0vw' }, "projectLeave+=0.3")
+    .add("circleHided")
     // .to(document.body, {
     //     duration: 0,
     //     onComplete: () => {
@@ -299,6 +322,14 @@ export function animator(carousel: GSAPTween) {
     //     from: "end",
     // } }, "<")
     .add("projectIntroLeave")
+    .to(".background", { y: 0, duration: 0 }, "circleHided")
+    .to(".circle--seven", { '--w': '200vw', '--h': '200vh' }, "circleHided")
+    .to(".circle--six", { '--w': '120vw', '--h': '120vh' }, "<+=0.05")
+    .to(".circle--five", { '--w': '90vw', '--h': '90vh' }, "<+=0.1")
+    .to(".circle--four", { '--w': '65vw', '--h': '65vh' }, "<+=0.15")
+    .to(".circle--three", { '--w': '40vw', '--h': '40vh' }, "<+=0.2")
+    .to(".circle--two", { '--w': '30vw', '--h': '30vh' }, "<+=0.25")
+    .to(".circle--one", { '--w': '16vw', '--h': '16vw' }, "<+=0.3")
 
     .to([animatorOne, animatorThree], {
         width: "45vw",
@@ -388,6 +419,13 @@ export function animator(carousel: GSAPTween) {
         width: MIN_SIZE,
     }, ">")
     .add("starDone")
+    .to(".circle--one", { '--w': '0vw', '--h': '0vw' }, "starDone")
+    .to(".circle--two", { '--w': '0vw', '--h': '0vw' }, "starDone+=0.025")
+    .to(".circle--three", { '--w': '0vw', '--h': '0vw' }, "starDone+=0.05")
+    .to(".circle--four", { '--w': '0vw', '--h': '0vw' }, "starDone+=0.075")
+    .to(".circle--five", { '--w': '0vw', '--h': '0vw' }, "starDone+=0.1")
+    .to(".circle--six", { '--w': '0vw', '--h': '0vw' }, "starDone+=0.125")
+    .to(".circle--seven", { '--w': '0vw', '--h': '0vw' }, "starDone+=0.15")
 
 
     .to(".circle circle", {

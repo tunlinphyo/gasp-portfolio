@@ -136,7 +136,8 @@
 
 .section--loading {
     z-index: 4;
-    background-image: var(--bg-image);
+    /* background-image: var(--bg-image); */
+    background-color: var(--bg-color);
 }
 
 .section--intro {

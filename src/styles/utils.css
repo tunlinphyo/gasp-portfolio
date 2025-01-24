@@ -38,14 +38,70 @@ body {
     } */
 }
 
+.background {
+    position: fixed;
+    z-index: 1;
+    inset: 0;
+    /* background-color: var(--bg-color); */
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    --size: 13vw;
+    --w: 15vw;
+    --h: 15vh;
+    --color: var(--c-1);
+
+    .circle {
+        width: calc((var(--w) + var(--h)) * 0.5);
+        height: calc((var(--w) + var(--h)) * 0.5);
+        border-radius: 100%;
+        position: absolute;
+        background-color: var(--color);
+        scale: 0;
+
+        &.circle--two {
+            --w: 25vw;
+            --h: 25vh;
+            --color: var(--c-2);
+        }
+        &.circle--three {
+            --w: 40vw;
+            --h: 40vh;
+            --color: var(--c-3);
+        }
+        &.circle--four {
+            --w: 60vw;
+            --h: 60vh;
+            --color: var(--c-4);
+        }
+        &.circle--five {
+            --w: 85vw;
+            --h: 85vh;
+            --color: var(--c-5);
+        }
+        &.circle--six {
+            --w: 115vw;
+            --h: 115vh;
+            --color: var(--c-6);
+        }
+        &.circle--seven {
+            --w: 200vw;
+            --h: 200vh;
+            --color: var(--c-7);
+        }
+    }
+}
+
 body::after {
     content: "";
     display: block;
     position: fixed;
     z-index: 0;
     inset: 0;
-    background-image: var(--bg-image);
-    background-position: top;
+    /* background-image: var(--bg-image); */
+    background-color: var(--bg-color);
+    /* background-position: top; */
 }
 
 .background-blur {
@@ -247,6 +303,15 @@ body::after {
                 rotate: 45deg;
             }
         }
+    }
+}
+
+@keyframes InitBg {
+    0%, 100% {
+        background-image: var(--bg-image);
+    }
+    50% {
+        background-image: var(--bg-image-2);
     }
 }
 

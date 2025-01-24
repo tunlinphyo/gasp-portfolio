@@ -49,6 +49,16 @@ export function loading() {
         }
     })
 
+    const circleEnter = gsap.to(".circle", {
+        scale: 1,
+        ease: 'power1.out',
+        stagger: 0.05,
+        paused: true,
+        onComplete: () => {
+            circleEnter.kill()
+        }
+    })
+
     loadingTimeline.to(animatorOne, {
         "--width": "80vw",
         duration: 1,
@@ -97,6 +107,7 @@ export function loading() {
                         helloEnter.play()
                         mouseEnter.play()
                         playEnter.play()
+                        circleEnter.play()
                     }
                     resolve(true)
                 }
