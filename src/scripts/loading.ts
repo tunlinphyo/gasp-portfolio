@@ -18,7 +18,7 @@ export function loading() {
         opacity: 0,
         scale: 0,
         ease: "elastic.out",
-        duration: 2,
+        duration: 1.5,
         paused: true,
         onComplete: () => {
             disabledScroll.off()
@@ -42,14 +42,14 @@ export function loading() {
         opacity: 1,
         ease: 'elastic.out',
         duration: 1,
-        delay: 1,
+        // delay: 1,
         paused: true,
         onComplete: () => {
             playEnter.kill()
         }
     })
 
-    const circleEnter = gsap.to(".circle", {
+    const circleEnter = gsap.to(".bg", {
         scale: 1,
         ease: 'power1.out',
         stagger: 0.05,

@@ -39,13 +39,23 @@
 <body>
 
     <div class="background">
-        <div class="circle circle--seven"></div>
-        <div class="circle circle--six"></div>
-        <div class="circle circle--five"></div>
-        <div class="circle circle--four"></div>
-        <div class="circle circle--three"></div>
-        <div class="circle circle--two"></div>
-        <div class="circle circle--one"></div>
+        <div class="bg bg--seven"></div>
+        <div class="bg bg--six"></div>
+        <div class="bg bg--five"></div>
+        <div class="bg bg--four"></div>
+        <div class="bg bg--three"></div>
+        <div class="bg bg--two"></div>
+        <div class="bg bg--one"></div>
+    </div>
+
+    <div class="lights">
+        <div class="light light--seven"></div>
+        <div class="light light--six"></div>
+        <div class="light light--five"></div>
+        <div class="light light--four"></div>
+        <div class="light light--three"></div>
+        <div class="light light--two"></div>
+        <div class="light light--one"></div>
     </div>
 
     <div class="cursor" data-text=""></div>
@@ -54,7 +64,7 @@
 
     <main class="main">
 
-        <button type="button" class="playPause cursor--link" data-cursor="play">
+        <button type="button" class="playPause cursor--link" data-cursor="play" aria-label="Play Pause">
             <svg class="play" xmlns="http://www.w3.org/2000/svg" id="Filled" viewBox="0 0 24 24" width="24" height="24">
                 <path fill="currentColor" d="M20.492,7.969,10.954.975A5,5,0,0,0,3,5.005V19a4.994,4.994,0,0,0,7.954,4.03l9.538-6.994a5,5,0,0,0,0-8.062Z" />
             </svg>
@@ -219,7 +229,7 @@
 
             <div class="project-footer">
                 <div class="controls">
-                    <button class="control previous cursor--link" disabled data-cursor="prev">
+                    <button class="control previous cursor--link" disabled data-cursor="prev" aria-label="Previous">
                         <div class="icon icon--back">
                             <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="512"
                                 height="512" x="0" y="0" viewBox="0 0 24 24" style="enable-background:new 0 0 512 512" xml:space="preserve"
@@ -235,7 +245,7 @@
                             <circle cx="40" cy="40" r="39" fill="none" stroke="var(--stoke-color)" stroke-width="2" pathLength="100" stroke-dasharray="100" stroke-dashoffset="100" />
                         </svg>
                     </button>
-                    <button class="control next cursor--link" disabled data-cursor="next">
+                    <button class="control next cursor--link" disabled data-cursor="next" aria-label="Next">
                         <div class="icon">
                             <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="512"
                                 height="512" x="0" y="0" viewBox="0 0 24 24" style="enable-background:new 0 0 512 512" xml:space="preserve"

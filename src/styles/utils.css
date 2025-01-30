@@ -17,11 +17,15 @@
 
 html,
 body {
-    min-inline-size: 100%;
+    inline-size: 100%;
     min-block-size: 100%;
     font-family: 'Poppins', sans-serif;
     color: var(--fg-color);
     background-color: var(--bg-color);
+
+    h1,h2,h3 {
+        color: var(--title-color);
+    }
 
     /* transition: background-color .5s ease; */
 
@@ -47,45 +51,46 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    --size: 13vw;
-    --w: 15vw;
-    --h: 15vh;
+    --w: 14vw;
+    --h: 14vh;
     --color: var(--c-1);
 
-    .circle {
-        width: calc((var(--w) + var(--h)) * 0.5);
-        height: calc((var(--w) + var(--h)) * 0.5);
+    .bg {
+        /* width: calc((var(--w) + var(--h)) * 0.5);
+        height: calc((var(--w) + var(--h)) * 0.5); */
+        width: max(var(--w), var(--h));
+        height: max(var(--w), var(--h));
         border-radius: 100%;
         position: absolute;
         background-color: var(--color);
         scale: 0;
 
-        &.circle--two {
-            --w: 25vw;
-            --h: 25vh;
+        &.bg--two {
+            --w: 22vw;
+            --h: 22vh;
             --color: var(--c-2);
         }
-        &.circle--three {
-            --w: 40vw;
-            --h: 40vh;
+        &.bg--three {
+            --w: 34vw;
+            --h: 34vh;
             --color: var(--c-3);
         }
-        &.circle--four {
-            --w: 60vw;
-            --h: 60vh;
+        &.bg--four {
+            --w: 50vw;
+            --h: 50vh;
             --color: var(--c-4);
         }
-        &.circle--five {
-            --w: 85vw;
-            --h: 85vh;
+        &.bg--five {
+            --w: 74vw;
+            --h: 74vh;
             --color: var(--c-5);
         }
-        &.circle--six {
-            --w: 115vw;
-            --h: 115vh;
+        &.bg--six {
+            --w: 100vw;
+            --h: 100vh;
             --color: var(--c-6);
         }
-        &.circle--seven {
+        &.bg--seven {
             --w: 200vw;
             --h: 200vh;
             --color: var(--c-7);
@@ -93,16 +98,69 @@ body {
     }
 }
 
-body::after {
+.lights {
+    position: fixed;
+    z-index: 1;
+    inset: 0;
+    translate: 0 -75%;
+    /* opacity: 0; */
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    --h: 22vh;
+    --color: var(--l-1);
+
+    .light {
+        width: var(--h);
+        height: var(--h);
+        border-radius: 100%;
+        position: absolute;
+        background-color: var(--color);
+        scale: 0;
+
+        /* @media (orientation:landscape) {
+            width: calc((var(--w) + var(--h)) * 0.5);
+            height: calc((var(--w) + var(--h)) * 0.5);
+        } */
+
+        &.light--two {
+            --h: 36vh;
+            --color: var(--l-2);
+        }
+        &.light--three {
+            --h: 58vh;
+            --color: var(--l-3);
+        }
+        &.light--four {
+            --h: 86vh;
+            --color: var(--l-4);
+        }
+        &.light--five {
+            --h: 125vh;
+            --color: var(--l-5);
+        }
+        &.light--six {
+            --h: 180vh;
+            --color: var(--l-6);
+        }
+        &.light--seven {
+            --h: 260vh;
+            --color: var(--l-7);
+        }
+    }
+}
+
+/* body::after {
     content: "";
     display: block;
     position: fixed;
     z-index: 0;
     inset: 0;
-    /* background-image: var(--bg-image); */
+    background-image: var(--bg-image);
     background-color: var(--bg-color);
-    /* background-position: top; */
-}
+    background-position: top;
+} */
 
 .background-blur {
     background-color: var(--bg-header);
