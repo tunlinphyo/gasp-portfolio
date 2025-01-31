@@ -46,9 +46,6 @@ export function animator(carousel: GSAPTween) {
     .to(".light", { scale: 1, stagger: 0.05 }, "<")
     .to(".logo", {
         y: 0,
-        onComplete: () => {
-            setLight()
-        },
     }, "<")
     .to('.bg', { scale: 0.5, stagger: { each: 0.05, from: "end" } }, "<")
     // .to(".mountain", { translateY: 0, stagger: 0.1 }, "<")
@@ -59,8 +56,11 @@ export function animator(carousel: GSAPTween) {
         duration: 0
     }, ">")
     .add("helloHided")
-    .to(document.body, {
+    .to(null, {
         duration: 0,
+        onComplete: () => {
+            setLight()
+        },
         onReverseComplete: () => {
             removeLight()
         }
