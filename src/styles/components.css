@@ -282,7 +282,7 @@
         .technical-card {
             grid-area: card;
             inline-size: 100%;
-            padding: 2.5rem;
+            /* padding: 2.5rem; */
 
             text-align: center;
             display: flex;
@@ -300,11 +300,23 @@
             }
 
             .technical-desc {
-                max-width: 400px;
+                max-width: 480px;
                 pointer-events: auto;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                gap: 5px;
 
                 > span {
                     cursor: none;
+                    white-space: nowrap;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    border: 1px solid var(--l-1);
+                    padding: 3px 8px;
+                    border-radius: 15px;
                 }
             }
         }

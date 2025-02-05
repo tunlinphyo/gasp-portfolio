@@ -3,6 +3,7 @@ import { elem, elems, isMedia } from "./helpers/utils"
 import SplitType from "split-type"
 import { MIN_SIZE } from "./helpers/const"
 import { setDark, removeDark, setLight, removeLight } from "./theme"
+import { showCookieConsent } from "./cookie-consent"
 
 export function animator(carousel: GSAPTween) {
     const isLandscape = isMedia("(orientation: landscape)")
@@ -39,17 +40,18 @@ export function animator(carousel: GSAPTween) {
     const controlBtns = elems(".control");
 
     timeline
-    .fromTo(".hello-message", { opacity: 1, scale: 1 }, { opacity: 0, scale: 5, duration: 0.6 })
+    .fromTo(".hello-message", { opacity: 1, scale: 1 }, { opacity: 0, scale: 0.25 })
     .fromTo(".mouse", { y: 0, opacity: 1 }, { y: 200, opacity: 0 }, "<")
+    .add('bgStart')
     .to(".background", { opacity: 0 }, "<")
-    .to(".lights", { y: '-50%' }, "<")
+    .to('.bg', { scale: 0.5, stagger: { each: 0.05, from: "end" } }, "<")
+    .to(".lights", { y: '-50%' }, "-=0.5")
     .to(".light", { scale: 1, stagger: 0.05 }, "<")
     .to(".logo", {
         y: 0,
     }, "<")
-    .to('.bg', { scale: 0.5, stagger: { each: 0.05, from: "end" } }, "<")
     // .to(".mountain", { translateY: 0, stagger: 0.1 }, "<")
-    .to([animatorOne, animatorThree], { width: MIN_SIZE }, "<")
+    .to([animatorOne, animatorThree], { width: MIN_SIZE }, "bgStart")
     .to([animatorTwo, animatorFour], { height: MIN_SIZE }, "<")
     .to([animatorThree, animatorFour], {
         rotate: 0,
@@ -71,6 +73,7 @@ export function animator(carousel: GSAPTween) {
     .to(animatorOne, { width: "80vw" }, "<")
     .to(animatorTwo, { height: SIZE }, ">")
     .to(animatorOne, { width: SIZE }, ">")
+    .add("cookieShow")
     .to([animatorOne, animatorTwo], { rotate: 45 }, ">")
     .to(animatorThree, { width: SIZE }, ">")
     .to(animatorFour, { height: SIZE }, "<")
@@ -101,6 +104,12 @@ export function animator(carousel: GSAPTween) {
         ease: "elastic.out(1, 0.1)",
     }, "<")
     .from(introDesc.lines, { x: 200, opacity: 0, stagger: 0.2 }, ">-0.5")
+    .to('#cookieBanner', {
+        y: 0,
+        onStart: () => {
+            showCookieConsent()
+        }
+    }, "cookieShow")
     .to(".animator-container", { y: 0 }, "starHided")
     .to(animatorFour, { height: "25vh", y: "12.5vh" }, "<")
     .to(animatorFour, { height: MIN_SIZE, y: 0 }, ">")
@@ -111,13 +120,14 @@ export function animator(carousel: GSAPTween) {
     .to([animatorOne, animatorThree], { width: "100vmax" }, ">")
     .to([animatorTwo, animatorFour], { height: "100vmax" }, "<")
     .to(introDesc.lines, { x: -200, opacity: 0 }, "<")
+    .to('#cookieBanner', { y: isLandscape ? 0 : '100%' }, "<")
     .add("linesOne")
 
     .to([animatorTwo, animatorFour], { height: MIN_SIZE }, ">")
     .to(animatorOne, { width: MIN_SIZE }, "<")
     .to(".animator-container", { x: 0 }, ">")
     .to(animatorThree, { width: MIN_SIZE }, "<")
-    .to(animatorFour, { width: isLandscape ? MIN_SIZE : "90vw", height: isLandscape ? "90vh" : MIN_SIZE }, "widthZero")
+    .to(animatorFour, { width: isLandscape ? MIN_SIZE : "80vw", height: isLandscape ? "80vh" : MIN_SIZE }, "widthZero")
     .to(introTitle.chars, {
         scale: 0,
         opacity: 0,
@@ -131,7 +141,6 @@ export function animator(carousel: GSAPTween) {
         ease: "elastic.in(1, 0.1)",
     }, "linesOne")
     .add("techLeaved")
-
     .from(language.chars, {
         scale: 0,
         opacity: 0,
@@ -159,8 +168,8 @@ export function animator(carousel: GSAPTween) {
     .to(animatorFour, { width: MIN_SIZE, height: MIN_SIZE, duration: 1 }, ">")
     .to(".animator-container", { y: isLandscape ? "-45vh" : 0, duration: 1 }, "<")
     .to(animatorFour, {
-        width: isLandscape ? MIN_SIZE : "90vw",
-        height: isLandscape ? "90vh" : MIN_SIZE,
+        width: isLandscape ? MIN_SIZE : "80vw",
+        height: isLandscape ? "80vh" : MIN_SIZE,
         duration: 1,
     }, ">")
     .to(".animator-container", { y: 0, duration: 1 }, "<")
@@ -198,7 +207,7 @@ export function animator(carousel: GSAPTween) {
     .from(".desc-other", { opacity: 0,  y: 100, pointerEvents: 'none' }, "<")
     .to(animatorFour, { width: MIN_SIZE, height: MIN_SIZE, duration: 1 }, ">")
     .to(".animator-container", { y: isLandscape ? "45vh" : 0, duration: 1 }, "<")
-    .to(animatorFour, { width: isLandscape ? MIN_SIZE : "90vw", height: isLandscape ? "90vh" : MIN_SIZE, duration: 1 }, ">")
+    .to(animatorFour, { width: isLandscape ? MIN_SIZE : "80vw", height: isLandscape ? "80vh" : MIN_SIZE, duration: 1 }, ">")
     .to(".animator-container", { y: 0, duration: 1 }, "<")
     .add("techLast")
 
@@ -253,6 +262,7 @@ export function animator(carousel: GSAPTween) {
         x: 0,
     }, "<")
     .add("lightHide")
+    .to('#cookieBanner', { y: '100%' }, "projectLeave")
     .to([
         ".projects-title",
         ...projrctDesc.lines as HTMLElement[]
@@ -450,7 +460,7 @@ export function animator(carousel: GSAPTween) {
     .add("projectEnd")
     .to(".logo", {
         y: 0,
-    }, "projectEnd-=0.5")
+    }, "projectEnd-=0.6")
     // .to('.lights', { opacity: 1 }, "<")
     .to('.background', { opacity: 0 }, "<")
     .to(".lights", { y: '-50%' }, "<")

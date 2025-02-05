@@ -1,5 +1,6 @@
 import gsap from "gsap"
 import { addClass, applyStyles, elem, innerHTML, innerText, removeClass } from "./helpers/utils"
+import { trackEvent } from "./firebase"
 
 interface Project {
     id: number;
@@ -127,9 +128,11 @@ export class Projects {
     protected subscribe() {
         elem(".control.previous").addEventListener("click", () => {
             this.renderProject("previous")
+            trackEvent("button_click", { button_name: "Previous Button" })
         })
         elem(".control.next").addEventListener("click", () => {
             this.renderProject("next")
+            trackEvent("button_click", { button_name: "Next Button" })
         })
     }
 

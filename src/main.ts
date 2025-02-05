@@ -15,6 +15,8 @@ import { fallSketch, fireworkSketch, sakuraSketch, snowSketch } from "./scripts/
 import { wait } from "./scripts/helpers/utils"
 import { BrowserCheck } from "./scripts/helpers/browser"
 import { JapanSeason, Season } from "./scripts/helpers/season"
+import { initCookieConsent } from "./scripts/cookie-consent"
+import { trackEvent } from "./scripts/firebase"
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
 
@@ -26,6 +28,14 @@ window.onload = async () => {
     animator(carousel)
     new Projects()
     new AutoScroller()
+    initCookieConsent()
+
+    document.addEventListener("click", (event) => {
+        const target = event.target as HTMLElement
+        if (target.tagName === "A") {
+            trackEvent("link_click", { link_text: target.innerText, link_url: target.getAttribute("href") })
+        }
+    })
 
     // const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)')
     // window.firework = prefersDarkMode.matches ? true : false

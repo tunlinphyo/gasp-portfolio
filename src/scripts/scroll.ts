@@ -2,6 +2,7 @@ import gsap from "gsap"
 import ScrollTrigger from "gsap/ScrollTrigger"
 import { Observer } from "gsap/Observer"
 import { addClass, dataSet, elem, hasClass, removeClass, toggleClass } from "./helpers/utils";
+import { trackEvent } from "./firebase";
 
 interface AutoScrollerConfig {
     initialDirection?: number | string
@@ -97,8 +98,10 @@ export class AutoScroller {
 
             if (this.isPlaying) {
                 this.pause()
+                trackEvent("button_click", { button_name: "Pause Button" })
             } else {
                 this.play()
+                trackEvent("button_click", { button_name: "Play Button" })
             }
         })
     }

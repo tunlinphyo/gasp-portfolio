@@ -20,7 +20,8 @@
     --c-6: #FFF5F2;
     --c-7: #ffffff;
 
-    --l-0: #cfe5f6;
+    /* --l-0: #cfe5f6; */
+    --l-0: #f8fbfd;
     --l-1: #cde1f0;
     --l-2: #dcebf5;
     --l-3: #e3eff7;
@@ -28,6 +29,9 @@
     --l-5: #f1f7fb;
     --l-6: #f8fbfd;
     --l-7: #ffffff;
+
+    --cookie-bg: var(--l-6);
+    --cookie-fg: var(--fg-color);
 
     /* --l-0: #b3b9c3;
     --l-1: #c6cad2;
@@ -100,6 +104,8 @@
         --l-5: #0F0F1D;
         --l-6: #0A0A13;
         --l-7: #050509;
+
+        --cookie-bg: var(--l-1);
 
         body[data-schema="light"] {
 
