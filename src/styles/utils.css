@@ -119,6 +119,8 @@ body {
         background-color: var(--color);
         scale: 0;
 
+        will-change: scale;
+
         /* @media (orientation:landscape) {
             width: calc((var(--w) + var(--h)) * 0.5);
             height: calc((var(--w) + var(--h)) * 0.5);
