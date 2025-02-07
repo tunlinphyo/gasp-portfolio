@@ -282,7 +282,7 @@
         .technical-card {
             grid-area: card;
             inline-size: 100%;
-            /* padding: 2.5rem; */
+            padding: 1.5rem;
 
             text-align: center;
             display: flex;
@@ -315,8 +315,16 @@
                     justify-content: center;
                     align-items: center;
                     border: 1px solid var(--l-1);
-                    padding: 3px 8px;
-                    border-radius: 15px;
+                    padding: 4px 8px;
+                    border-radius: 20px;
+                    background-color: var(--bg-color);
+                    transition: scale .3s ease;
+
+                    &:hover {
+                        position: relative;
+                        z-index: 1;
+                        scale: 1.4;
+                    }
                 }
             }
         }
@@ -407,7 +415,11 @@
         @media (orientation: landscape) {
             overflow: hidden;
         }
+        .hidden-data {
+            display: none;
+        }
     }
+
 
     .project-number-container {
         grid-column: 1 / 5;
@@ -587,21 +599,6 @@
                     position: absolute;
                     z-index: 2;
                     transform-origin: center left;
-                    scale: 0 1;
-
-                    > svg {
-                        rotate: 180deg;
-                        width: 24px;
-                        height: 24px;
-                    }
-
-                    &.icon--back {
-                        transform-origin: center right;
-
-                        > svg {
-                            rotate: 0deg;
-                        }
-                    }
                 }
 
                 .circle {
@@ -624,7 +621,7 @@
                 }
 
                 &:hover {
-                    --icon-color: var(--bg-accent-color);
+                    --icon-color: var(--bg-color);
 
                     &::before {
                         opacity: 1;

@@ -1,6 +1,6 @@
 import gsap from "gsap"
 import { addClass, applyStyles, elem, innerHTML, innerText, removeClass } from "./helpers/utils"
-import { trackEvent } from "./firebase"
+import { FirebaseAnalytics } from "./firebase"
 
 interface Project {
     id: number;
@@ -25,7 +25,7 @@ export class Projects {
                     target="_blank"
                     rel="noopener noreferrer"
                 >CSSBattle</a>,
-                a platform that pits developers against creative coding tasks to refine their CSS skills.
+                a platform that pits developers afirebaseinst creative coding tasks to refine their CSS skills.
                 My goal is to achieve a 100% match with the target designs, emphasizing precision, clarity,
                 and the use of the latest CSS patterns and best practices.
             `,
@@ -37,7 +37,7 @@ export class Projects {
             category: 'Coding &#10141; Typescript',
             description: `
                 Paper OS is a minimalist, web-based operating system simulation designed for a 2-bit screen,
-                similar to the Playdate game console. It provides a simple, distraction-free interface with
+                similar to the Playdate firebaseme console. It provides a simple, distraction-free interface with
                 features like notes, a clock, and a calendar. The site offers a unique digital workspace
                 that mimics the basic functionality of an operating system, making it suitable for focused tasks
                 in a nostalgic, low-resolution environment.
@@ -50,7 +50,7 @@ export class Projects {
             category: 'Plugins &#10141; PHP',
             description: `
                 I have developed plugins such as “EC-CUBE Editor.js Blog Integration”, which enables dynamic blog
-                creation with features like image galleries and tables, and “EC-CUBE Editor.js Product Free Area”, which
+                creation with features like image firebaselleries and tables, and “EC-CUBE Editor.js Product Free Area”, which
                 allows for rich content customization on product pages in EC-CUBE 4.2 and 4.3.
             `,
             url: 'https://www.ec-cube.net/products/list.php?partner_id=2867/'
@@ -103,9 +103,7 @@ export class Projects {
     ]
     protected currentIndex: number = 0
     protected animating: boolean = false
-    constructor(
-        // private readonly carousel: GSAPTween
-    ) {
+    constructor(private firebase: FirebaseAnalytics) {
         this.subscribe()
     }
 
@@ -128,11 +126,11 @@ export class Projects {
     protected subscribe() {
         elem(".control.previous").addEventListener("click", () => {
             this.renderProject("previous")
-            trackEvent("button_click", { button_name: "Previous Button" })
+            this.firebase.trackEvent("button_click", { button_name: "Previous Button" })
         })
         elem(".control.next").addEventListener("click", () => {
             this.renderProject("next")
-            trackEvent("button_click", { button_name: "Next Button" })
+            this.firebase.trackEvent("button_click", { button_name: "Next Button" })
         })
     }
 
@@ -191,6 +189,10 @@ export class Projects {
     }
 
     private renderData() {
+        // const projects = document.querySelectorAll('.hidden-data li') as NodeListOf<HTMLLIElement>
+        // console.log('PROJECT', projects[this.currentIndex].innerHTML)
+        // const projectContainer = document.getElementById('project') as HTMLElement
+        // innerHTML(projectContainer, projects[this.currentIndex].innerHTML)
         innerText(".project-title", this.project.title)
         innerHTML(".project-cateogry", this.project.category)
         innerHTML(".project-desc", this.project.description)

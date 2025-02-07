@@ -250,6 +250,12 @@ body {
     &.none::before {
         --size: 0;
     }
+    &.hover::before {
+        --size: 0;
+        /* backdrop-filter: blur(2px);
+        -webkit-backdrop-filter: blur(2px);
+        background-color: transparent; */
+    }
 }
 
 .cursor--link {
@@ -431,6 +437,7 @@ body {
         }
 
         .cookie-icon {
+            flex-shrink: 0;
             width: 30px;
             height: 30px;
             display: grid;
@@ -470,12 +477,12 @@ body {
                 &:first-child {
                     background-color: var(--cookie-bg);
                     color: var(--cookie-fg);
-                    border-radius: 20px 4px 4px 20px;
+                    border-radius: 20px 5px 5px 20px;
                 }
 
                 &:last-child {
                     background-color: transparent;
-                    border-radius: 4px 20px 20px 4px;
+                    border-radius: 5px 20px 20px 5px;
                 }
 
                 &:hover {

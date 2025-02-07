@@ -30,7 +30,7 @@
     --l-6: #f8fbfd;
     --l-7: #ffffff;
 
-    --cookie-bg: var(--l-6);
+    --cookie-bg: var(--bg-color);
     --cookie-fg: var(--fg-color);
 
     /* --l-0: #b3b9c3;
@@ -105,7 +105,7 @@
         --l-6: #0A0A13;
         --l-7: #050509;
 
-        --cookie-bg: var(--l-1);
+        /* --cookie-bg: var(--l-1); */
 
         body[data-schema="light"] {
 

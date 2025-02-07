@@ -2,7 +2,7 @@ import gsap from "gsap"
 import ScrollTrigger from "gsap/ScrollTrigger"
 import { Observer } from "gsap/Observer"
 import { addClass, dataSet, elem, hasClass, removeClass, toggleClass } from "./helpers/utils";
-import { trackEvent } from "./firebase";
+import { FirebaseAnalytics } from "./firebase";
 
 interface AutoScrollerConfig {
     initialDirection?: number | string
@@ -21,7 +21,7 @@ export class AutoScroller {
     private isPlaying: boolean = false
     private touchStartY: number = 0
 
-    constructor(config: AutoScrollerConfig = {}) {
+    constructor(config: AutoScrollerConfig = {}, private firebase: FirebaseAnalytics) {
         this.button = elem<HTMLButtonElement>('.playPause')
         this.moveDirection = config.initialDirection ?? "max"
         this.stopDelay = config.stopDelay ?? 0.25
@@ -98,10 +98,10 @@ export class AutoScroller {
 
             if (this.isPlaying) {
                 this.pause()
-                trackEvent("button_click", { button_name: "Pause Button" })
+                this.firebase.trackEvent("scroll_pause", { button_name: "Pause Button" })
             } else {
                 this.play()
-                trackEvent("button_click", { button_name: "Play Button" })
+                this.firebase.trackEvent("scroll_play", { button_name: "Play Button" })
             }
         })
     }

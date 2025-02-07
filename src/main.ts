@@ -15,27 +15,25 @@ import { fallSketch, fireworkSketch, sakuraSketch, snowSketch } from "./scripts/
 import { wait } from "./scripts/helpers/utils"
 import { BrowserCheck } from "./scripts/helpers/browser"
 import { JapanSeason, Season } from "./scripts/helpers/season"
-import { initCookieConsent } from "./scripts/cookie-consent"
-import { trackEvent } from "./scripts/firebase"
+import { CookieConsent } from "./scripts/cookie-consent"
+import { Utils } from "./scripts/utils"
+import { FirebaseAnalytics } from "./scripts/firebase"
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
 
 window.onload = async () => {
+    const firebase = new FirebaseAnalytics()
+    new CookieConsent(firebase)
     await loading()
     initCursor()
     const carousel = initCarousel()
     rotateLogo()
     animator(carousel)
-    new Projects()
-    new AutoScroller()
-    initCookieConsent()
+    new Projects(firebase)
+    new AutoScroller({}, firebase)
 
-    document.addEventListener("click", (event) => {
-        const target = event.target as HTMLElement
-        if (target.tagName === "A") {
-            trackEvent("link_click", { link_text: target.innerText, link_url: target.getAttribute("href") })
-        }
-    })
+    // Utils.trackLinksClick(firebase)
+    Utils.animateHoverElemets()
 
     // const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)')
     // window.firework = prefersDarkMode.matches ? true : false
@@ -46,7 +44,7 @@ window.onload = async () => {
 
         const season = JapanSeason.getCurrentSeason()
 
-        switch(season) {
+        switch (season) {
             case Season.SPRING:
                 document.body.classList.add('spring')
                 new p5(sakuraSketch)
@@ -68,4 +66,19 @@ window.onload = async () => {
         }
 
     })
+
+    const sendGAEvent = async (event_name: string, event_data = {}) => {
+        // https://<your-region>-<your-project-id>.cloudfunctions.net/sendGAEvent
+        const client_id = 'test-user'
+        await fetch("http://localhost:5001/fir-test-ab23d/us-central1/sendGAEvent", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ client_id, event_name, event_data })
+        });
+    };
+
+    // Example usage:
+    sendGAEvent("test_event", { button_name: "Test" })
 }

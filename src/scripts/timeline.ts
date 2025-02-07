@@ -3,7 +3,6 @@ import { elem, elems, isMedia } from "./helpers/utils"
 import SplitType from "split-type"
 import { MIN_SIZE } from "./helpers/const"
 import { setDark, removeDark, setLight, removeLight } from "./theme"
-import { showCookieConsent } from "./cookie-consent"
 
 export function animator(carousel: GSAPTween) {
     const isLandscape = isMedia("(orientation: landscape)")
@@ -106,9 +105,6 @@ export function animator(carousel: GSAPTween) {
     .from(introDesc.lines, { x: 200, opacity: 0, stagger: 0.2 }, ">-0.5")
     .to('#cookieBanner', {
         y: 0,
-        onStart: () => {
-            showCookieConsent()
-        }
     }, "cookieShow")
     .to(".animator-container", { y: 0 }, "starHided")
     .to(animatorFour, { height: "25vh", y: "12.5vh" }, "<")
@@ -382,9 +378,9 @@ export function animator(carousel: GSAPTween) {
             })
         }
     }, ">")
-    .to(".control .icon", {
-        scaleX: 1,
-    }, ">-0.2")
+    .to(".arrow path", {
+        strokeDashoffset: 0,
+    }, ">")
     .add("controlEnd")
 
     .to([animatorOne, animatorThree], {
@@ -405,6 +401,15 @@ export function animator(carousel: GSAPTween) {
     .add("starDone")
 
 
+    .to(".arrow path", {
+        strokeDashoffset: 100,
+        onReverseComplete: () => {
+            // console.log('REVERT_START')
+            controlBtns.forEach(elem => {
+                elem.removeAttribute("disabled")
+            })
+        },
+    }, "starPaused")
     .to(".circle circle", {
         strokeDashoffset: 100,
         duration: 1,
@@ -412,15 +417,6 @@ export function animator(carousel: GSAPTween) {
             // console.log('FPRWARD_END')
             controlBtns.forEach(elem => {
                 elem.setAttribute("disabled", "disabled")
-            })
-        },
-    }, "starPaused")
-    .to(".control .icon", {
-        scaleX: 0,
-        onReverseComplete: () => {
-            // console.log('REVERT_START')
-            controlBtns.forEach(elem => {
-                elem.removeAttribute("disabled")
             })
         },
     }, ">")

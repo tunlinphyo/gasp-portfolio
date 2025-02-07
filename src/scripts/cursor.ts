@@ -18,11 +18,13 @@ export function initCursor() {
         })
 
         const has = hasClass(e.target as HTMLElement, "cursor--link")
+        const hover = hasClass(e.target as HTMLElement, "cursor--hover")
         const logo = hasClass(e.target as HTMLElement, "logo-container")
         const animator = hasClass(e.target as HTMLElement, "animator")
         const none = hasCursorNoneAncestor(e.target)
 
         toggleClass(".cursor", "active", has)
+        toggleClass(".cursor", "hover", hover)
         toggleClass(".cursor", "none", none)
         toggleClass(".cursor", "animator", animator)
 
