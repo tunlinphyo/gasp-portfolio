@@ -1,6 +1,5 @@
 import gsap from "gsap"
-import { addClass, applyStyles, elem, innerHTML, innerText, removeClass } from "./helpers/utils"
-import { FirebaseAnalytics } from "./firebase"
+import { addClass, applyStyles, elem, innerHTML, innerText, removeClass, dataSet } from './helpers/utils';
 
 interface Project {
     id: number;
@@ -22,6 +21,7 @@ export class Projects {
                     href="https://cssbattle.dev"
                     class="cursor--link"
                     data-cursor="open"
+                    data-link="CSSBattles Official"
                     target="_blank"
                     rel="noopener noreferrer"
                 >CSSBattle</a>,
@@ -103,7 +103,7 @@ export class Projects {
     ]
     protected currentIndex: number = 0
     protected animating: boolean = false
-    constructor(private firebase: FirebaseAnalytics) {
+    constructor() {
         this.subscribe()
     }
 
@@ -126,11 +126,9 @@ export class Projects {
     protected subscribe() {
         elem(".control.previous").addEventListener("click", () => {
             this.renderProject("previous")
-            this.firebase.trackEvent("button_click", { button_name: "Previous Button" })
         })
         elem(".control.next").addEventListener("click", () => {
             this.renderProject("next")
-            this.firebase.trackEvent("button_click", { button_name: "Next Button" })
         })
     }
 
@@ -189,10 +187,6 @@ export class Projects {
     }
 
     private renderData() {
-        // const projects = document.querySelectorAll('.hidden-data li') as NodeListOf<HTMLLIElement>
-        // console.log('PROJECT', projects[this.currentIndex].innerHTML)
-        // const projectContainer = document.getElementById('project') as HTMLElement
-        // innerHTML(projectContainer, projects[this.currentIndex].innerHTML)
         innerText(".project-title", this.project.title)
         innerHTML(".project-cateogry", this.project.category)
         innerHTML(".project-desc", this.project.description)
@@ -200,8 +194,10 @@ export class Projects {
         if (this.project.url) {
             applyStyles(".project-link", { display: "flex" })
             elem(".project-link").setAttribute("href", this.project.url || "")
+            dataSet(elem(".project-link"), { link: this.project.title })
         } else {
             applyStyles(".project-link", { display: "none" })
         }
+        window.umami.track('Project', { name: this.project.title })
     }
 }

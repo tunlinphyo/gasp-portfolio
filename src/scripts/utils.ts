@@ -1,11 +1,19 @@
-import { FirebaseAnalytics } from "./firebase"
-
 export class Utils {
-    public static trackLinksClick(firebase: FirebaseAnalytics) {
+    public static trackLinksClick() {
         document.addEventListener("click", (event) => {
             const target = event.target as HTMLElement
-            if (target.tagName === "A") {
-                firebase.trackEvent("link_click", { link_text: target.innerText, link_url: target.getAttribute("href") })
+            if (target.tagName === "A" && target.hasAttribute("data-link")) {
+                window.umami.track('Link', { target: target.dataset.link })
+            }
+        })
+    }
+
+    public static trackContactClick() {
+        const contacts = document.querySelector('.contacts') as HTMLElement
+        contacts.addEventListener("click", (event) => {
+            const target = event.target as HTMLElement
+            if (target.tagName === "A" && target.hasAttribute("data-contact")) {
+                window.umami.track('Contact', { target: target.dataset.contact })
             }
         })
     }

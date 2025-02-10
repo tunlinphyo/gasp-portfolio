@@ -14,10 +14,8 @@
   },
   "dependencies": {
     "@types/p5": "^1.7.6",
-    "firebase": "^11.2.0",
     "gsap": "^3.12.5",
     "p5": "^1.11.2",
-    "split-type": "^0.3.4",
-    "uuid": "^11.0.5"
+    "split-type": "^0.3.4"
   }
 }

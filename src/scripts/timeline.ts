@@ -72,7 +72,6 @@ export function animator(carousel: GSAPTween) {
     .to(animatorOne, { width: "80vw" }, "<")
     .to(animatorTwo, { height: SIZE }, ">")
     .to(animatorOne, { width: SIZE }, ">")
-    .add("cookieShow")
     .to([animatorOne, animatorTwo], { rotate: 45 }, ">")
     .to(animatorThree, { width: SIZE }, ">")
     .to(animatorFour, { height: SIZE }, "<")
@@ -103,9 +102,6 @@ export function animator(carousel: GSAPTween) {
         ease: "elastic.out(1, 0.1)",
     }, "<")
     .from(introDesc.lines, { x: 200, opacity: 0, stagger: 0.2 }, ">-0.5")
-    .to('#cookieBanner', {
-        y: 0,
-    }, "cookieShow")
     .to(".animator-container", { y: 0 }, "starHided")
     .to(animatorFour, { height: "25vh", y: "12.5vh" }, "<")
     .to(animatorFour, { height: MIN_SIZE, y: 0 }, ">")
@@ -116,7 +112,6 @@ export function animator(carousel: GSAPTween) {
     .to([animatorOne, animatorThree], { width: "100vmax" }, ">")
     .to([animatorTwo, animatorFour], { height: "100vmax" }, "<")
     .to(introDesc.lines, { x: -200, opacity: 0 }, "<")
-    .to('#cookieBanner', { y: isLandscape ? 0 : '100%' }, "<")
     .add("linesOne")
 
     .to([animatorTwo, animatorFour], { height: MIN_SIZE }, ">")
@@ -147,6 +142,9 @@ export function animator(carousel: GSAPTween) {
         },
         duration: 0.7,
         ease: "bounce.out",
+        onStart: () => {
+            window.umami.track('Scroll', { position: 'Technical' })
+        }
     }, "techLeaved")
     .from(".desc-language", { opacity: 0, y: 100, pointerEvents: 'none' }, "<")
     .from(framework.chars, {
@@ -258,7 +256,6 @@ export function animator(carousel: GSAPTween) {
         x: 0,
     }, "<")
     .add("lightHide")
-    .to('#cookieBanner', { y: '100%' }, "projectLeave")
     .to([
         ".projects-title",
         ...projrctDesc.lines as HTMLElement[]
@@ -291,6 +288,7 @@ export function animator(carousel: GSAPTween) {
         opacity: 0,
         onStart: () => {
             carousel.play()
+            window.umami.track('Scroll', { position: 'Projects' })
         },
         onReverseComplete: () => {
             carousel.pause()
@@ -483,6 +481,7 @@ export function animator(carousel: GSAPTween) {
         ease: "back.out(1)",
         onStart: () => {
             removeDark()
+            window.umami.track('Scroll', { position: 'Contact' })
         },
         onReverseComplete: () => {
             setDark()
