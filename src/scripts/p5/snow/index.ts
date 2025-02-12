@@ -18,7 +18,9 @@ export class Snow {
     }
 
     setup() {
-        this.p.createCanvas(this.p.windowWidth, this.p.windowHeight)
+        const cnv = this.p.createCanvas(this.p.windowWidth, this.p.windowHeight)
+        cnv.attribute("aria-hidden", "true")
+        cnv.attribute("role", "presentation")
         this.gravity = this.p.createVector(0, 0.3);
         for (let x = 0; x < this.spritesheet.width; x += 32) {
             for (let y = 0; y < this.spritesheet.height; y += 32) {

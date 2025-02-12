@@ -10,7 +10,9 @@ export class Flowers {
     }
 
     setup() {
-        this.p.createCanvas(this.p.windowWidth, this.p.windowHeight)
+        const cnv = this.p.createCanvas(this.p.windowWidth, this.p.windowHeight)
+        cnv.attribute("aria-hidden", "true")
+        cnv.attribute("role", "presentation")
         for (let i = 0; i < 10; i++) {
             this.petals.push(new Petal(this.p))
         }

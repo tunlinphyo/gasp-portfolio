@@ -50,7 +50,7 @@ export class Projects {
             category: 'Plugins &#10141; PHP',
             description: `
                 I have developed plugins such as “EC-CUBE Editor.js Blog Integration”, which enables dynamic blog
-                creation with features like image firebaselleries and tables, and “EC-CUBE Editor.js Product Free Area”, which
+                creation with features like image galleries and tables, and “EC-CUBE Editor.js Product Free Area”, which
                 allows for rich content customization on product pages in EC-CUBE 4.2 and 4.3.
             `,
             url: 'https://www.ec-cube.net/products/list.php?partner_id=2867/'

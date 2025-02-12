@@ -3,3 +3,66 @@
         pointer-events: auto;
     }
 }
+
+
+@media (prefers-reduced-motion: reduce) {
+    body {
+        font-size: 18px;
+    }
+
+    .visually-hidden {
+        width: 100%;
+        max-width: 800px;
+        height: auto;
+        overflow: none;
+        clip: none;
+        clip-path: none;
+        position: initial;
+        white-space: wrap;
+
+        display: block;
+        visibility: visible;
+
+        margin: 0 auto;
+        padding: 5vw;
+
+        & h1 {
+            font-size: 3rem;
+            font-family: "Orbitron", serif;;
+        }
+
+        & h3 {
+            margin-top: 3vh;
+        }
+
+        & section {
+            margin-bottom: 5vh;
+        }
+
+        .tech-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 5vw;
+        }
+
+        & footer {
+            text-align: center;
+            font-size: .95em;
+        }
+
+        .p5Canvas {
+            display: none;
+        }
+    }
+}
+
+
+.main {
+    @media (prefers-reduced-motion: reduce) {
+        display: none;
+
+        .p5Canvas {
+            display: none;
+        }
+    }
+}

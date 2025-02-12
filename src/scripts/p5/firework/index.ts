@@ -10,7 +10,9 @@ export class FireWorkWorker {
     }
 
     setup() {
-        this.p.createCanvas(this.p.windowWidth, this.p.windowHeight)
+        const cnv = this.p.createCanvas(this.p.windowWidth, this.p.windowHeight)
+        cnv.attribute("aria-hidden", "true")
+        cnv.attribute("role", "presentation")
         this.p.colorMode(this.p.HSB)
         this.p.stroke(255)
         this.p.strokeWeight(8)

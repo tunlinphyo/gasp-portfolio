@@ -55,6 +55,10 @@ body {
     --h: 14vh;
     --color: var(--c-1);
 
+    @media (prefers-reduced-motion: reduce) {
+        display: none;
+    }
+
     .bg {
         /* width: calc((var(--w) + var(--h)) * 0.5);
         height: calc((var(--w) + var(--h)) * 0.5); */
@@ -110,6 +114,10 @@ body {
     align-items: center;
     --h: 20vh;
     --color: var(--l-1);
+
+    @media (prefers-reduced-motion: reduce) {
+        display: none;
+    }
 
     .light {
         width: var(--h);
@@ -269,6 +277,16 @@ body {
     z-index: 999;
     inset: 0;
     cursor: progress;
+}
+
+.visually-hidden:not(:focus):not(:active) {
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    clip-path: inset(50%);
+    position: absolute;
+    white-space: nowrap;
 }
 
 .main {

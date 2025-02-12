@@ -22,6 +22,11 @@ gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
 
 window.onload = async () => {
     new UmamiAnalytics(import.meta.env.VITE_UMAMI_ANALYTICS, import.meta.env.VITE_UMAMI_SITE_ID)
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        return
+    }
+
     await loading()
     initCursor()
     const carousel = initCarousel()
