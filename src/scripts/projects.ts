@@ -1,5 +1,5 @@
 import gsap from "gsap"
-import { addClass, applyStyles, elem, innerHTML, innerText, removeClass } from "./helpers/utils"
+import { addClass, applyStyles, elem, innerHTML, innerText, removeClass, dataSet } from './helpers/utils';
 
 interface Project {
     id: number;
@@ -9,8 +9,52 @@ interface Project {
     url?: string;
 }
 
-export default class Projects {
+export class Projects {
     protected readonly projects: Project[] = [
+        {
+            id: 7,
+            title: 'CSSBattle',
+            category: 'Showcase &#10141; Typescript, CSS',
+            description: `
+                Welcome to my CSSBattle showcase! This website is a curated collection of my solutions to challenges on
+                <a
+                    href="https://cssbattle.dev"
+                    class="cursor--link"
+                    data-cursor="open"
+                    data-link="CSSBattles Official"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >CSSBattle</a>,
+                a platform that pits developers afirebaseinst creative coding tasks to refine their CSS skills.
+                My goal is to achieve a 100% match with the target designs, emphasizing precision, clarity,
+                and the use of the latest CSS patterns and best practices.
+            `,
+            url: 'https://css-battle-codes.web.app/about'
+        },
+        {
+            id: 4,
+            title: 'OS Simulator',
+            category: 'Coding &#10141; Typescript',
+            description: `
+                Paper OS is a minimalist, web-based operating system simulation designed for a 2-bit screen,
+                similar to the Playdate firebaseme console. It provides a simple, distraction-free interface with
+                features like notes, a clock, and a calendar. The site offers a unique digital workspace
+                that mimics the basic functionality of an operating system, making it suitable for focused tasks
+                in a nostalgic, low-resolution environment.
+            `,
+            url: 'https://paper-os.web.app/'
+        },
+        {
+            id: 6,
+            title: 'Ec-Cube Plugins',
+            category: 'Plugins &#10141; PHP',
+            description: `
+                I have developed plugins such as “EC-CUBE Editor.js Blog Integration”, which enables dynamic blog
+                creation with features like image galleries and tables, and “EC-CUBE Editor.js Product Free Area”, which
+                allows for rich content customization on product pages in EC-CUBE 4.2 and 4.3.
+            `,
+            url: 'https://www.ec-cube.net/products/list.php?partner_id=2867/'
+        },
         {
             id: 1,
             title: 'Yomiuri Shimbun',
@@ -46,20 +90,6 @@ export default class Projects {
             `
         },
         {
-            id: 4,
-            title: 'Shirt Simulator',
-            category: 'Coding &#10141; Vue, Nuxt 3',
-            description: `
-                A sample website for Shirt Simulation using Nuxt 3. Created custom plugins (
-                <a class="cursor--link" data-cursor="open" href="https://shirt-simulation.vercel.app/document/toasts" target="_blank">Toast,</a>
-                <a class="cursor--link" data-cursor="open" href="https://shirt-simulation.vercel.app/document/alerts" target="_blank">Alert,</a>
-                <a class="cursor--link" data-cursor="open" href="https://shirt-simulation.vercel.app/document/confirms" target="_blank">Confirm,</a>
-                <a class="cursor--link" data-cursor="open" href="https://shirt-simulation.vercel.app/document/loading" target="_blank">Loading</a>
-                ) that can use with modern Js syntax.
-            `,
-            url: 'https://shirt-simulation.vercel.app/'
-        },
-        {
             id: 5,
             title: 'Inhouse Furniture',
             category: 'E-commerce &#10141; Svelte',
@@ -73,9 +103,7 @@ export default class Projects {
     ]
     protected currentIndex: number = 0
     protected animating: boolean = false
-    constructor(
-        // private readonly carousel: GSAPTween
-    ) {
+    constructor() {
         this.subscribe()
     }
 
@@ -162,11 +190,14 @@ export default class Projects {
         innerText(".project-title", this.project.title)
         innerHTML(".project-cateogry", this.project.category)
         innerHTML(".project-desc", this.project.description)
+        innerHTML(".project-number", `${String(this.projects.indexOf(this.project) + 1).padStart(2, '0')}`)
         if (this.project.url) {
             applyStyles(".project-link", { display: "flex" })
             elem(".project-link").setAttribute("href", this.project.url || "")
+            dataSet(elem(".project-link"), { link: this.project.title })
         } else {
             applyStyles(".project-link", { display: "none" })
         }
+        window.umami.track('Project', { name: this.project.title })
     }
 }

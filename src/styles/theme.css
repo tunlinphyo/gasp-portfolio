@@ -1,77 +1,160 @@
 :root {
     color-scheme: light dark;
 
+    --title-color: #39404b;
     --bg-color: #ffffff;
 
-    --fg-color: #222222;
-    --fg-accent-color: #444444;
+    --fg-color: #272c34;
+    --fg-accent-color: #677488;
 
-    --accent-color: #444444;
-    --link-color: blue;
+    --accent-color: #272c34;
+    --link-color: #6c5ce7;
+    --play:#0002;
+    --glass: none;
 
-    --bg-image: linear-gradient(to top, var(--bg-color) 0%, var(--bg-color) 100%);
+    --c-1: #FFA500;
+    --c-2: #FFC966;
+    --c-3: #FFDB99;
+    --c-4: #FFEDCC;
+    --c-5: #FFF0E0;
+    --c-6: #FFF5F2;
+    --c-7: #ffffff;
+
+    /* --l-0: #cfe5f6; */
+    --l-0: #f8fbfd;
+    --l-1: #cde1f0;
+    --l-2: #dcebf5;
+    --l-3: #e3eff7;
+    --l-4: #eaf3f9;
+    --l-5: #f1f7fb;
+    --l-6: #f8fbfd;
+    --l-7: #ffffff;
+
+    --cookie-bg: var(--bg-color);
+    --cookie-fg: var(--fg-color);
+
+    /* --l-0: #b3b9c3;
+    --l-1: #c6cad2;
+    --l-2: #d0d3da;
+    --l-3: #d9dce1;
+    --l-4: #e2e5e8;
+    --l-5: #eceef0;
+    --l-6: #f6f6f8;
+    --l-7: #ffffff; */
 
     body[data-schema="light"] {
-        --bg-image: radial-gradient(circle at top center, #ffffff 10%, transparent 10%),
-            radial-gradient(circle at top center, #f8fbfd 15%, transparent 15%),
-            radial-gradient(circle at top center, #f1f7fb 22%, transparent 22%),
-            radial-gradient(circle at top center, #eaf3f9 32%, transparent 32%),
-            radial-gradient(circle at top center, #e3eff7 50%, transparent 50%),
-            radial-gradient(circle at top center, #dcebf5 70%, transparent 70%),
-            radial-gradient(circle at top center, #cde1f0 100%, transparent 100%);
+        --c-1: #040406;
+        --c-2: #0b0c0d;
+        --c-3: #101215;
+        --c-4: #16181c;
+        --c-5: #1c1f24;
+        --c-6: #21262c;
+        --c-7: #272c34;
     }
 
     body[data-schema="dark"] {
         --bg-color: #000000;
-
-        --fg-color: #ffffff;
+        --fg-color: #fafafa;
         --fg-accent-color: #cccccc;
 
         --accent-color: #cccccc;
-        --link-color: skyblue;
+        --play:#fff3;
+        --glass: none;
+        &.winter {
+            --glass: blur(1px);
+        }
 
-        --bg-image: radial-gradient(circle at center, #040404 10%, transparent 10%),
-            radial-gradient(circle at center, #080808 15%, transparent 15%),
-            radial-gradient(circle at center, #0C0C0C 22%, transparent 22%),
-            radial-gradient(circle at center, #101010 32%, transparent 32%),
-            radial-gradient(circle at center, #141414 50%, transparent 50%),
-            radial-gradient(circle at center, #181818 70%, transparent 70%),
-            radial-gradient(circle at center, #1C1C1C 100%, transparent 100%);
+        --c-1: #040406;
+        --c-2: #0b0c0d;
+        --c-3: #101215;
+        --c-4: #16181c;
+        --c-5: #1c1f24;
+        --c-6: #21262c;
+        --c-7: #272c34;
     }
 
     @media (prefers-color-scheme: dark) {
+        --title-color: #edeef0;
         --bg-color: #000000;
-
         --fg-color: #ffffff;
         --fg-accent-color: #cccccc;
 
-        --accent-color: #cccccc;
-        --link-color: skyblue;
+        --accent-color: #fafafa;
+        --link-color: #a29bfe;
+        --play:#fff5;
+        --glass: none;
+        /* --glass: none; */
+        body.winter {
+            --glass: blur(1px);
+        }
+
+        --c-1: #000000;
+        --c-2: #272c34;
+        --c-3: #21262c;
+        --c-4: #1c1f24;
+        --c-5: #16181c;
+        --c-6: #101215;
+        --c-7: #0b0c0d;
+
+        --l-0: #000000;
+        --l-1: #232345;
+        --l-2: #1E1E3B;
+        --l-3: #191931;
+        --l-4: #141427;
+        --l-5: #0F0F1D;
+        --l-6: #0A0A13;
+        --l-7: #050509;
+
+        /* --cookie-bg: var(--l-1); */
 
         body[data-schema="light"] {
-            --bg-image: radial-gradient(circle at top center, #232345 10%, transparent 10%),
-                radial-gradient(circle at top center, #1E1E3B 15%, transparent 15%),
-                radial-gradient(circle at top center, #191931 22%, transparent 22%),
-                radial-gradient(circle at top center, #141427 32%, transparent 32%),
-                radial-gradient(circle at top center, #0F0F1D 50%, transparent 50%),
-                radial-gradient(circle at top center, #0A0A13 70%, transparent 70%),
-                radial-gradient(circle at top center, #050509 100%, transparent 100%);
+
+            --c-1: #000000;
+            --c-2: #1c1f24;
+            --c-3: #171a1e;
+            --c-4: #131518;
+            --c-5: #0e0f11;
+            --c-6: #0a0a0b;
+            --c-7: #050505;
+
+            /* --c-1: #9E9E9E;
+            --c-2: #BDBDBD;
+            --c-3: #E0E0E0;
+            --c-4: #EEEEEE;
+            --c-5: #F5F5F5;
+            --c-6: #FAFAFA;
+            --c-7: #ffffff; */
+
         }
 
         body[data-schema="dark"] {
             --bg-color: #000;
+            --fg-color: #fafafa;
+            --play:#fff5;
+            /* --glass: blur(3px); */
 
-            --fg-color: #ccc;
+            /* --bg-color: #ffffff;
+            --fg-color: #272c34;
+            --fg-accent-color: #677488;
 
-            --link-color: #fff;
+            --accent-color: #272c34;
+            --play:#0002; */
 
-            --bg-image: radial-gradient(circle at center, #121212 10%, transparent 10%),
-                radial-gradient(circle at center, #0F0F0F 15%, transparent 15%),
-                radial-gradient(circle at center, #0C0C0C 22%, transparent 22%),
-                radial-gradient(circle at center, #090909 32%, transparent 32%),
-                radial-gradient(circle at center, #060606 50%, transparent 50%),
-                radial-gradient(circle at center, #030303 70%, transparent 70%),
-                radial-gradient(circle at center, #000000 100%, transparent 100%);
+            --c-1: #000000;
+            --c-2: #1c1f24;
+            --c-3: #171a1e;
+            --c-4: #131518;
+            --c-5: #0e0f11;
+            --c-6: #0a0a0b;
+            --c-7: #050505;
+
+            /* --c-1: #9E9E9E;
+            --c-2: #BDBDBD;
+            --c-3: #E0E0E0;
+            --c-4: #EEEEEE;
+            --c-5: #F5F5F5;
+            --c-6: #FAFAFA;
+            --c-7: #ffffff; */
         }
     }
 }

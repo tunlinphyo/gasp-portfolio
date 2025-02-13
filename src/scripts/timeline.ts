@@ -1,5 +1,5 @@
 import gsap from "gsap"
-import { elem, isMedia } from "./helpers/utils"
+import { elem, elems, isMedia } from "./helpers/utils"
 import SplitType from "split-type"
 import { MIN_SIZE } from "./helpers/const"
 import { setDark, removeDark, setLight, removeLight } from "./theme"
@@ -31,29 +31,37 @@ export function animator(carousel: GSAPTween) {
             trigger: ".scroll-trigger",
             start: "top top",
             end: "bottom bottom",
-            scrub: 1,
+            scrub: 2,
             // markers: true,
         }
     })
 
+    const controlBtns = elems(".control");
+
     timeline
-    .fromTo(".hello-message", { opacity: 1, scale: 1 }, { opacity: 0, scale: 5, duration: 0.6 })
+    .fromTo(".hello-message", { opacity: 1, scale: 1 }, { opacity: 0, scale: 0.25 })
     .fromTo(".mouse", { y: 0, opacity: 1 }, { y: 200, opacity: 0 }, "<")
+    .add('bgStart')
+    .to(".background", { opacity: 0 }, "<")
+    .to('.bg', { scale: 0.5, stagger: { each: 0.05, from: "end" } }, "<")
+    .to(".lights", { y: '-50%' }, "-=0.5")
+    .to(".light", { scale: 1, stagger: 0.05 }, "<")
     .to(".logo", {
         y: 0,
-        onComplete: () => {
-            setLight()
-        },
     }, "<")
-    .to([animatorOne, animatorThree], { width: MIN_SIZE }, "<")
+    // .to(".mountain", { translateY: 0, stagger: 0.1 }, "<")
+    .to([animatorOne, animatorThree], { width: MIN_SIZE }, "bgStart")
     .to([animatorTwo, animatorFour], { height: MIN_SIZE }, "<")
     .to([animatorThree, animatorFour], {
         rotate: 0,
         duration: 0
     }, ">")
     .add("helloHided")
-    .to(document.body, {
+    .to(null, {
         duration: 0,
+        onComplete: () => {
+            setLight()
+        },
         onReverseComplete: () => {
             removeLight()
         }
@@ -110,7 +118,7 @@ export function animator(carousel: GSAPTween) {
     .to(animatorOne, { width: MIN_SIZE }, "<")
     .to(".animator-container", { x: 0 }, ">")
     .to(animatorThree, { width: MIN_SIZE }, "<")
-    .to(animatorFour, { width: isLandscape ? MIN_SIZE : "90vw", height: isLandscape ? "90vh" : MIN_SIZE }, "widthZero")
+    .to(animatorFour, { width: isLandscape ? MIN_SIZE : "80vw", height: isLandscape ? "80vh" : MIN_SIZE }, "widthZero")
     .to(introTitle.chars, {
         scale: 0,
         opacity: 0,
@@ -124,7 +132,6 @@ export function animator(carousel: GSAPTween) {
         ease: "elastic.in(1, 0.1)",
     }, "linesOne")
     .add("techLeaved")
-
     .from(language.chars, {
         scale: 0,
         opacity: 0,
@@ -135,6 +142,9 @@ export function animator(carousel: GSAPTween) {
         },
         duration: 0.7,
         ease: "bounce.out",
+        onStart: () => {
+            window.umami.track('Scroll', { position: 'Technical' })
+        }
     }, "techLeaved")
     .from(".desc-language", { opacity: 0, y: 100, pointerEvents: 'none' }, "<")
     .from(framework.chars, {
@@ -152,17 +162,17 @@ export function animator(carousel: GSAPTween) {
     .to(animatorFour, { width: MIN_SIZE, height: MIN_SIZE, duration: 1 }, ">")
     .to(".animator-container", { y: isLandscape ? "-45vh" : 0, duration: 1 }, "<")
     .to(animatorFour, {
-        width: isLandscape ? MIN_SIZE : "90vw",
-        height: isLandscape ? "90vh" : MIN_SIZE,
+        width: isLandscape ? MIN_SIZE : "80vw",
+        height: isLandscape ? "80vh" : MIN_SIZE,
         duration: 1,
     }, ">")
     .to(".animator-container", { y: 0, duration: 1 }, "<")
     .add("techFirst")
 
-    .to(language.chars, { scale: 0, opacity: 0, y: 100 }, "techFirst")
-    .to(".desc-language", { opacity: 0, y: 100, pointerEvents: 'none' }, "<")
-    .to(framework.chars, { scale: 0, opacity: 0, y: 100, pointerEvents: 'none' }, "techFirst")
-    .to(".desc-framework", { opacity: 0, y: 100, pointerEvents: 'none' }, "<")
+    .to(language.chars, { scale: 0.5, opacity: 0, y: -100 }, "techFirst")
+    .to(".desc-language", { opacity: 0, y: -100, pointerEvents: 'none' }, "<")
+    .to(framework.chars, { scale: 0.5, opacity: 0, y: -100, pointerEvents: 'none' }, "techFirst")
+    .to(".desc-framework", { opacity: 0, y: -100, pointerEvents: 'none' }, "<")
     .add("techSecond")
 
     .from(database.chars, {
@@ -175,7 +185,7 @@ export function animator(carousel: GSAPTween) {
         },
         duration: 0.7,
         ease: "bounce.out",
-    }, "techSecond")
+    }, "techSecond <")
     .from(".desc-database", { opacity: 0, y: 100, pointerEvents: 'none' }, "<")
     .from(other.chars, {
         scale: 0,
@@ -187,11 +197,11 @@ export function animator(carousel: GSAPTween) {
         },
         duration: 0.7,
         ease: "bounce.out",
-    }, "techSecond")
+    }, "techSecond <")
     .from(".desc-other", { opacity: 0,  y: 100, pointerEvents: 'none' }, "<")
     .to(animatorFour, { width: MIN_SIZE, height: MIN_SIZE, duration: 1 }, ">")
     .to(".animator-container", { y: isLandscape ? "45vh" : 0, duration: 1 }, "<")
-    .to(animatorFour, { width: isLandscape ? MIN_SIZE : "90vw", height: isLandscape ? "90vh" : MIN_SIZE, duration: 1 }, ">")
+    .to(animatorFour, { width: isLandscape ? MIN_SIZE : "80vw", height: isLandscape ? "80vh" : MIN_SIZE, duration: 1 }, ">")
     .to(".animator-container", { y: 0, duration: 1 }, "<")
     .add("techLast")
 
@@ -223,7 +233,7 @@ export function animator(carousel: GSAPTween) {
         x: isLandscape ? "25vw" : "40vw",
     }, "<")
     .to(animatorFour, {
-        height: "90vh",
+        height: isLandscape ? "80vh" : "50vh",
     }, ">")
     .to(animatorThree, {
         width: MIN_SIZE,
@@ -245,6 +255,7 @@ export function animator(carousel: GSAPTween) {
     .to(".animator-container", {
         x: 0,
     }, "<")
+    .add("lightHide")
     .to([
         ".projects-title",
         ...projrctDesc.lines as HTMLElement[]
@@ -275,27 +286,35 @@ export function animator(carousel: GSAPTween) {
     }, "<")
     .from(".carousel-container", {
         opacity: 0,
-        // onStart: () => {
-        //     carousel.play()
-        // },
-        // onReverseComplete: () => {
-        //     carousel.pause()
-        // }
+        onStart: () => {
+            carousel.play()
+            window.umami.track('Scroll', { position: 'Projects' })
+        },
+        onReverseComplete: () => {
+            carousel.pause()
+        }
     }, "<")
+    .add("projectIntroLeave")
     .to(".logo", {
-        y: -60,
+        y: -100,
+    }, "lightHide")
+    .to(".lights", { y: '-60%' }, "<")
+    .to('.light', { scale: 0, stagger: { each: 0.05, from: "end" } }, "<")
+    .to('.background', { opacity: 1 }, "<")
+    .to('.bg', { scale: 1, stagger: 0.1 }, "<")
+
+    .to([animatorOne, animatorThree], {
+        width: "45vw",
         onStart: () => {
             setDark()
         },
         onReverseComplete: () => {
             removeDark()
         }
-    }, "<")
-    .add("projectIntroLeave")
-
-    .to([animatorOne, animatorThree], {
-        width: "45vw",
     }, "projectIntroLeave")
+    .to(".project-number", {
+        scale: 1,
+    }, "<")
     .to([animatorTwo, animatorFour], {
         height: "45vw",
     }, "<")
@@ -324,6 +343,7 @@ export function animator(carousel: GSAPTween) {
     .from(".project-desc", {
         opacity: 0,
         x: "50vw",
+        pointerEvents: 'none',
     }, ">")
     .from(".project-cateogry", {
         opacity: 0,
@@ -332,6 +352,7 @@ export function animator(carousel: GSAPTween) {
     .from(".project-link", {
         opacity: 0,
         y: 50,
+        pointerEvents: 'none',
     }, ">")
 
     .from(".control", {
@@ -342,10 +363,22 @@ export function animator(carousel: GSAPTween) {
     .to(".circle circle", {
         strokeDashoffset: 0,
         duration: 1,
+        onStart: () => {
+            // console.log('FPRWARD_START')
+            controlBtns.forEach(elem => {
+                elem.removeAttribute("disabled")
+            })
+        },
+        onReverseComplete: () => {
+            // console.log('REVERT_END')
+            controlBtns.forEach(elem => {
+                elem.setAttribute("disabled", "disabled")
+            })
+        }
     }, ">")
-    .to(".control .icon", {
-        scaleX: 1,
-    }, ">-0.2")
+    .to(".arrow path", {
+        strokeDashoffset: 0,
+    }, ">")
     .add("controlEnd")
 
     .to([animatorOne, animatorThree], {
@@ -366,12 +399,24 @@ export function animator(carousel: GSAPTween) {
     .add("starDone")
 
 
+    .to(".arrow path", {
+        strokeDashoffset: 100,
+        onReverseComplete: () => {
+            // console.log('REVERT_START')
+            controlBtns.forEach(elem => {
+                elem.removeAttribute("disabled")
+            })
+        },
+    }, "starPaused")
     .to(".circle circle", {
         strokeDashoffset: 100,
         duration: 1,
-    }, "starPaused")
-    .to(".control .icon", {
-        scaleX: 0,
+        onComplete: () => {
+            // console.log('FPRWARD_END')
+            controlBtns.forEach(elem => {
+                elem.setAttribute("disabled", "disabled")
+            })
+        },
     }, ">")
     .to(".control", {
         opacity: 0,
@@ -398,10 +443,22 @@ export function animator(carousel: GSAPTween) {
             carousel.play()
         },
     }, "<")
+    .to('.bg', { scale: 0.5, stagger: {
+        each: 0.1,
+        from: "end"
+    } }, "<")
+    .to(".project-number", {
+        scale: 0,
+    }, "<")
+    .to(".playPause", { scale: 0 }, "<")
+    .add("projectEnd")
     .to(".logo", {
         y: 0,
-    }, "<")
-    .add("projectEnd")
+    }, "projectEnd-=0.6")
+    // .to('.lights', { opacity: 1 }, "<")
+    .to('.background', { opacity: 0 }, "<")
+    .to(".lights", { y: '-50%' }, "<")
+    .to('.light', { scale: 1, stagger: 0.05 }, "<")
     // .to(document.body, {
     //     duration: 0,
     //     onComplete: () => {
@@ -424,11 +481,12 @@ export function animator(carousel: GSAPTween) {
         ease: "back.out(1)",
         onStart: () => {
             removeDark()
+            window.umami.track('Scroll', { position: 'Contact' })
         },
         onReverseComplete: () => {
             setDark()
         },
-    }, "projectEnd-=0.2")
+    }, "projectEnd-=0.5")
     .from(".contacts .row", {
         y: "-50vh",
         scale: 0.7,
@@ -436,7 +494,7 @@ export function animator(carousel: GSAPTween) {
             each: 0.1,
             from: "end",
         },
-    }, "projectEnd+=0.4")
+    }, "projectEnd+=0.1")
 
     .from(".footer", {
         y: 200,

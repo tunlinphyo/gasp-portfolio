@@ -1,0 +1,108 @@
+@counter-style happy-list {
+    system: cyclic;
+    symbols: "🤙" "📫" "🤝" "🧑‍💻";
+    suffix: "  ";
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .visually-hidden {
+        width: 100%;
+        max-width: 800px;
+        height: auto;
+        overflow: none;
+        clip: none;
+        clip-path: none;
+        position: initial;
+        white-space: wrap;
+
+        display: block;
+        visibility: visible;
+
+        margin: 0 auto;
+        padding: 5vw;
+
+        & h1 {
+            font-size: clamp(1.2rem, 10vw, 3rem);
+            font-family: "Orbitron", serif;
+            margin-block: 5vh;
+        }
+
+        & h3 {
+            margin-top: 3vh;
+        }
+
+        & section {
+            margin-bottom: 5vh;
+        }
+
+        & ol, & ul {
+            padding-inline-start: 28px;
+        }
+
+        & ol {
+            list-style: upper-roman;
+        }
+
+        & ul {
+            list-style-type: happy-list;
+        }
+
+        & a {
+            color: var(--link-color);
+            text-decoration: none;
+            font-weight: 600;
+
+            &:hover {
+                outline: 2px solid var(--link-color);
+                outline-offset: 1px;
+            }
+        }
+
+        & p {
+            text-align: justify;
+
+            &[aria-label="Project Link"] {
+                margin-top: 1vh;
+                & a {
+                    display: inline-flex;
+                    padding: .2rem 2rem;
+                    border: 2px solid var(--link-color);
+                    color: var(--link-color);
+                    text-decoration: none;
+                    font-size: .9rem;
+                    font-weight: 600;
+                    text-transform: uppercase;
+                }
+            }
+        }
+
+        .tech-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 5vw;
+        }
+
+        & footer p {
+            text-align: center;
+            font-size: .95em;
+        }
+
+        .p5Canvas {
+            display: none;
+        }
+    }
+
+    .loading-layer {
+        display: none;
+    }
+
+    .main {
+        display: none;
+
+        .p5Canvas {
+            display: none;
+        }
+    }
+}
+
+

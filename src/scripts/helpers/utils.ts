@@ -7,6 +7,7 @@ interface CSSProperties {
     right?: string;
     translate?: string;
     content?: string;
+    transition?: string;
 }
 
 interface DataSet {
@@ -34,6 +35,14 @@ export function hasClass<T extends HTMLElement>(selector: T | string, token: str
     return !!(elem<T>(selector, parent).classList.contains(token))
 }
 
+export function hasCursorNoneAncestor(target: EventTarget | null): boolean {
+    if (!(target instanceof HTMLElement)) {
+        return false;
+    }
+
+    return target.closest('.cursor--none') !== null || hasClass(target, 'cursor--none');
+}
+
 export function addClass<T extends HTMLElement>(selector: T | string, token: string, parent?: HTMLElement) {
     elem<T>(selector, parent).classList.add(token)
 }
@@ -56,11 +65,20 @@ export function applyStyles<T extends HTMLElement>(selector: T | string, styles:
     Object.assign(element.style, styles)
 }
 
+export function isVisibleHeadingElement(element: HTMLElement): boolean {
+    const isHeading = /^(H[1-6])$/i.test(element.tagName);
+    const style = getComputedStyle(element);
+    const isVisible = style.opacity !== "0";
+
+    return isHeading && isVisible;
+  }
+
+
 export function debounce<T extends (...args: any[]) => any>(
     func: T,
     delay: number
 ): (...args: Parameters<T>) => void {
-    let timeoutId: number
+    let timeoutId: any
 
     return (...args: Parameters<T>): void => {
         clearTimeout(timeoutId)
@@ -83,4 +101,10 @@ export function isMedia(query: string) {
 
 export function supportsTouch() {
     return 'ontouchstart' in window || !!navigator.maxTouchPoints;
+}
+
+export function wait(delay: number = 300): Promise<void> {
+    return new Promise(resolve => {
+        setTimeout(() => resolve(), delay)
+    })
 }

@@ -33,6 +33,29 @@ export function loading() {
         paused: true,
         onComplete: () => {
             mouseEnter.kill()
+            elem('.loading-layer').remove()
+        }
+    })
+
+    const playEnter = gsap.to(".playPause", {
+        scale: 1,
+        opacity: 1,
+        ease: 'elastic.out',
+        duration: 1,
+        // delay: 1,
+        paused: true,
+        onComplete: () => {
+            playEnter.kill()
+        }
+    })
+
+    const circleEnter = gsap.to(".bg", {
+        scale: 1,
+        ease: 'power1.out',
+        stagger: 0.05,
+        paused: true,
+        onComplete: () => {
+            circleEnter.kill()
         }
     })
 
@@ -83,6 +106,8 @@ export function loading() {
                     if (window.scrollY < 10) {
                         helloEnter.play()
                         mouseEnter.play()
+                        playEnter.play()
+                        circleEnter.play()
                     }
                     resolve(true)
                 }
@@ -90,7 +115,7 @@ export function loading() {
             .to(".section--loading", {
                 opacity: 0,
                 onComplete: () => {
-                    applyStyles(".section--fixed", { zIndex: 1 })
+                    applyStyles(".section--fixed", { zIndex: 2 })
                     hideTimeline.kill()
                 }
             })

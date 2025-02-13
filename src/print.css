@@ -1,0 +1,40 @@
+* {
+    display: block !important;
+}
+body {
+    font-size: 12pt; /* Adjust font size for better readability */
+    color: black; /* Ensure text is black for printing */
+    background: none !important; /* Remove background colors/images */
+}
+
+a {
+    text-decoration: none; /* Remove underlines */
+    color: black; /* Ensure links are printed in black */
+}
+
+a[href]:after {
+    content: " (" attr(href) ")"; /* Show URLs next to links */
+}
+
+img {
+    max-width: 100%; /* Ensure images fit within the printed page */
+    height: auto;
+}
+
+nav, footer, .no-print {
+    display: none; /* Hide elements that are not needed in print */
+}
+
+table {
+    border-collapse: collapse; /* Ensure table borders are printed properly */
+    width: 100%;
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 5px;
+}
+
+h2 * {
+    display: inline;
+}
