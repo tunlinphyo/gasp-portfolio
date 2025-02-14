@@ -37,7 +37,7 @@ export class Projects {
             category: 'Coding &#10141; Typescript',
             description: `
                 Paper OS is a minimalist, web-based operating system simulation designed for a 2-bit screen,
-                similar to the Playdate firebaseme console. It provides a simple, distraction-free interface with
+                similar to the Playdate console. It provides a simple, distraction-free interface with
                 features like notes, a clock, and a calendar. The site offers a unique digital workspace
                 that mimics the basic functionality of an operating system, making it suitable for focused tasks
                 in a nostalgic, low-resolution environment.

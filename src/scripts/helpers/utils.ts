@@ -65,6 +65,15 @@ export function applyStyles<T extends HTMLElement>(selector: T | string, styles:
     Object.assign(element.style, styles)
 }
 
+export function updateInert<T extends HTMLElement>(selector: T | string, shouldInert: boolean = true, parent?: HTMLElement): void {
+    const element = elem<T>(selector, parent)
+    if (shouldInert) {
+        element.setAttribute("inert", "")
+    } else {
+        element.removeAttribute("inert")
+    }
+}
+
 export function isVisibleHeadingElement(element: HTMLElement): boolean {
     const isHeading = /^(H[1-6])$/i.test(element.tagName);
     const style = getComputedStyle(element);
