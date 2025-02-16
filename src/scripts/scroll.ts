@@ -97,12 +97,18 @@ export class AutoScroller {
 
             if (this.isPlaying) {
                 this.pause()
-                window.umami.track('Animation', { type: 'pause' })
             } else {
                 this.play()
-                window.umami.track('Animation', { type: 'play' })
             }
         })
+    }
+
+    public toggle() {
+        if (this.isPlaying) {
+            this.pause()
+        } else {
+            this.play()
+        }
     }
 
     private initTouchEvents(): void {
@@ -140,6 +146,7 @@ export class AutoScroller {
         this.isPlaying = true
         this.updateButton()
         dataSet(".cursor", { text: 'pause' })
+        window.umami.track('Animation', { type: 'play' })
     }
 
     private pause(): void {
@@ -149,6 +156,7 @@ export class AutoScroller {
         this.isPlaying = false
         this.updateButton()
         dataSet(".cursor", { text: 'play' })
+        window.umami.track('Animation', { type: 'pause' })
     }
 
     private updateButton() {

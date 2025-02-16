@@ -24,6 +24,7 @@ export class Projects {
                     data-link="CSSBattles Official"
                     target="_blank"
                     rel="noopener noreferrer"
+                    tabindex="0"
                 >CSSBattle</a>,
                 a platform that pits developers afirebaseinst creative coding tasks to refine their CSS skills.
                 My goal is to achieve a 100% match with the target designs, emphasizing precision, clarity,
@@ -132,7 +133,7 @@ export class Projects {
         })
     }
 
-    private renderProject(action: "previous" | "next") {
+    public renderProject(action: "previous" | "next") {
         if (this.animating) return
 
         let isNext = true
@@ -187,7 +188,7 @@ export class Projects {
     }
 
     private renderData() {
-        innerText(".project-title", this.project.title)
+        innerText(".project-header", this.project.title)
         innerHTML(".project-cateogry", this.project.category)
         innerHTML(".project-desc", this.project.description)
         innerHTML(".project-number", `${String(this.projects.indexOf(this.project) + 1).padStart(2, '0')}`)

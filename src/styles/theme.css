@@ -12,6 +12,14 @@
     --play:#0002;
     --glass: none;
 
+    --outline-color: chartreuse;
+    --outline-bg: chartreuse;
+    --outline-link-fg: #000;
+
+    --outline-color: hotpink;
+    --outline-bg: hotpink;
+    --outline-link-fg: #fff;
+
     --c-1: #FFA500;
     --c-2: #FFC966;
     --c-3: #FFDB99;
@@ -87,6 +95,10 @@
         body.winter {
             --glass: blur(1px);
         }
+
+        /* --outline-color: #B388FF;
+        --outline-bg: #B388FF;
+        --outline-link-fg: #000; */
 
         --c-1: #000000;
         --c-2: #272c34;

@@ -125,7 +125,7 @@
                     <li>
                         <h3>CSSBattle</h3>
                         <p role="note" aria-label="Technologies">
-                            Showcase &#10141; Typescript, CSS
+                            Showcase: &#10141; Typescript, CSS
                         </p>
                         <p>
                             Welcome to my CSSBattle showcase! This website is a curated collection of my solutions to challenges on
@@ -141,7 +141,7 @@
                     <li>
                         <h3>OS Simulator</h3>
                         <p role="note" aria-label="Technologies">
-                            Coding &#10141; Typescript
+                            Coding: &#10141; Typescript
                         </p>
                         <p>
                             Paper OS is a minimalist, web-based operating system simulation designed for a 2-bit screen,
@@ -157,7 +157,7 @@
                     <li>
                         <h3 id="EcCubePlugins">Ec-Cube Plugins</h3>
                         <p role="note" aria-label="Technologies">
-                            Plugins &#10141; PHP
+                            Plugins: &#10141; PHP
                         </p>
                         <p>
                             I have developed plugins such as “EC-CUBE Editor.js Blog Integration”, which enables dynamic blog
@@ -171,7 +171,7 @@
                     <li>
                         <h3 id="YomiuriShimbun">Yomiuri Shimbun</h3>
                         <p role="note" aria-label="Technologies">
-                            E-commerce &#10141; Ec-Cube 4.2
+                            E-commerce: &#10141; Ec-Cube 4.2
                         </p>
                         <p>
                             Led a team in developing multiple websites for Yomiuri Shinbun using EC-Cube 4.2.
@@ -187,7 +187,7 @@
                     <li>
                         <h3 id="CoreMobile">CoreMobile</h3>
                         <p role="note" aria-label="Technologies">
-                            Portfolio &#10141; React, Next
+                            Portfolio: &#10141; React, Next
                         </p>
                         <p>
                             Created a portfolio website for CoreMobile, which included the initial loading animation and scroll
@@ -201,7 +201,7 @@
                     <li>
                         <h3 id="UnitedArrows">United Arrows</h3>
                         <p role="note" aria-label="Technologies">
-                            Apparel EC &#10141; Vue, VueX
+                            Apparel: EC &#10141; Vue, VueX
                         </p>
                         <p>
                             Fixed bugs, improved stability, and implemented new features for a Clothing simulation
@@ -212,7 +212,7 @@
                     <li>
                         <h3 id="InhouseFurniture">Inhouse Furniture</h3>
                         <p role="note" aria-label="Technologies">
-                            E-commerce &#10141; Svelte
+                            E-commerce: &#10141; Svelte
                         </p>
                         <p>
                             Structured the project using Sapper (predecessor of SvelteKit) and implemented APIs with the backend.
@@ -283,7 +283,7 @@
 
     <section class="loading-layer" aria-hidden="true" role="presentation"></section>
 
-    <main class="main" aria-hidden="true" role="presentation">
+    <main class="main" aria-hidden="true" role="presentation" inert>
 
         <button type="button" tabindex="0" aria-hidden="true" role="presentation" class="playPause cursor--link" data-cursor="play" aria-label="Play Pause">
             <svg class="play" xmlns="http://www.w3.org/2000/svg" id="Filled" viewBox="0 0 24 24" width="24" height="24">
@@ -321,7 +321,7 @@
                 </h2>
             </div>
             <div class="person">
-                <h1 class="person-name">Software Engineer</h1>
+                <h1 class="person-name" tabindex="0">Software Engineer</h1>
                 <p class="person-about">
                     with strong UI/UX skills, an analytical mindset,
                     and over 6 years of expertise in the complete product development lifecycle.
@@ -336,7 +336,9 @@
         </section>
 
         <section class="section section--technical" aria-hidden="true" role="presentation">
-            <h2 class="intro-title">Technical Profile</h2>
+            <div class="intro-title-container">
+                <h2 class="intro-title" tabindex="0">Technical Profile</h2>
+            </div>
             <div class="intro-description">
                 <p>
                     Strong proficiency in CSS and UI/UX skills, with extensive knowledge of software engineering principles,
@@ -344,22 +346,22 @@
                 </p>
             </div>
             <div class="technical-cards-container">
-                <div class="technical-cards card--start" inert>
+                <div class="technical-cards card--start">
                     <div class="technical-card">
-                        <h3 class="technical-title title-language">Languages</h3>
+                        <h3 class="technical-title title-language" tabindex="0" data-scroll="4.5">Languages</h3>
                         <p class="technical-desc desc-language">
-                            <span class="cursor--hover" tabindex="0">💪 HTML</span>
-                            <span class="cursor--hover" tabindex="0">💪 CSS</span>
-                            <span class="cursor--hover" tabindex="0">💪 JavaScript</span>
-                            <span class="cursor--hover" tabindex="0">👍 TypeScript</span>
-                            <span class="cursor--hover" tabindex="0">👌 PHP</span>
-                            <span class="cursor--hover" tabindex="0">👌 Python</span>
-                            <span class="cursor--hover" tabindex="0">👎 Dark</span>
+                            <span class="cursor--hover" tabindex="-1">💪 HTML</span>
+                            <span class="cursor--hover" tabindex="-1">💪 CSS</span>
+                            <span class="cursor--hover" tabindex="-1">💪 JavaScript</span>
+                            <span class="cursor--hover" tabindex="-1">👍 TypeScript</span>
+                            <span class="cursor--hover" tabindex="-1">👌 PHP</span>
+                            <span class="cursor--hover" tabindex="-1">👌 Python</span>
+                            <span class="cursor--hover" tabindex="-1">👎 Dark</span>
                         </p>
                     </div>
                     <div class="technical-card">
-                        <h3 class="technical-title title-database">Database</h3>
-                        <p class="technical-desc desc-database">
+                        <h3 class="technical-title title-database" tabindex="0" data-scroll="5.5">Database</h3>
+                        <p class="technical-desc desc-database" inert>
                             <span class="cursor--hover" tabindex="0">👍 PostgreSQL</span>
                             <span class="cursor--hover" tabindex="0">👍 MySQL</span>
                             <span class="cursor--hover" tabindex="0">👌 MongoDB</span>
@@ -369,10 +371,10 @@
                         </p>
                     </div>
                 </div>
-                <div class="technical-cards card--end" inert>
+                <div class="technical-cards card--end">
                     <div class="technical-card">
-                        <h3 class="technical-title title-framework">Frameworks</h3>
-                        <p class="technical-desc desc-framework">
+                        <h3 class="technical-title title-framework" tabindex="0" data-scroll="4.5">Frameworks</h3>
+                        <p class="technical-desc desc-framework" inert>
                             <span class="cursor--hover" tabindex="0">💪 React</span>
                             <span class="cursor--hover" tabindex="0">💪 Vue</span>
                             <span class="cursor--hover" tabindex="0">👍 Svelte</span>
@@ -384,8 +386,8 @@
                         </p>
                     </div>
                     <div class="technical-card">
-                        <h3 class="technical-title title-other">Others</h3>
-                        <p class="technical-desc desc-other">
+                        <h3 class="technical-title title-other" tabindex="0" data-scroll="5.5">Others</h3>
+                        <p class="technical-desc desc-other" inert>
                             <span class="cursor--hover" tabindex="0">👌 Docker</span>
                             <span class="cursor--hover" tabindex="0">👍 GitHub</span>
                             <span class="cursor--hover" tabindex="0">👌 Firebase</span>
@@ -399,7 +401,7 @@
 
         <section class="section section--projects" aria-hidden="true" role="presentation">
             <div class="projects-intro">
-                <h2 class="projects-title">Previous Works</h2>
+                <h2 class="projects-title" tabindex="0">Previous Works</h2>
                 <p class="projects-description">
                     Manage projects, provide guidance to development teams, and communicate effectively with stakeholders.
                 </p>
@@ -424,9 +426,11 @@
             <div class="hidden-boundry">
                 <div class="projects">
                     <div class="project" id="project" hidden>
-                        <h3 class="project-title">CSSBattle</h3>
+                        <div class="project-title">
+                            <h3 class="project-header" tabindex="0">CSSBattle</h3>
+                        </div>
                         <label for="project" class="project-cateogry">Showcase &#10141; Typescript, CSS</label>
-                        <p class="project-desc">
+                        <p class="project-desc" inert>
                             Welcome to my CSSBattle showcase! This website is a curated collection of my solutions to challenges on
                             <a
                                 href="https://cssbattle.dev"
@@ -435,7 +439,7 @@
                                 data-link="CSSBattles Official"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                inert
+                                tabindex="0"
                             >CSSBattle</a>,
                             a platform that pits developers against creative coding tasks to refine their CSS skills.
                             My goal is to achieve a 100% match with the target designs, emphasizing precision, clarity,
@@ -447,6 +451,7 @@
                             data-link="CSSBattle"
                             target="_blank"
                             inert
+                            tabindex="0"
                             rel="noopener noreferrer">open website</a>
                     </div>
                 </div>
@@ -479,17 +484,17 @@
             </div>
         </section>
 
-        <section class="section section--contact" aria-hidden="true" role="presentation" inert>
+        <section class="section section--contact" aria-hidden="true" role="presentation">
             <div class="contact-start">
-                <h2>Contact Me</h2>
+                <h2 class="contact-me" tabindex="0">Contact Me</h2>
             </div>
             <div class="contact-end">
-                <div class="contacts">
+                <div class="contacts" inert>
                     <div class="row">
                         <div class="label">Phone</div>
                         <div class="devider"></div>
                         <div class="contact-link">
-                            <a class="cursor--link" data-contact="Phone" data-cursor="🤙" href="tel:+818053571990"
+                            <a class="cursor--link" tabindex="0" data-contact="Phone" data-cursor="🤙" href="tel:+818053571990"
                                 target="_blank" rel="noopener noreferrer">+81 (080) 5357-1990</a>
                         </div>
                     </div>
@@ -497,7 +502,7 @@
                         <div class="label">Email</div>
                         <div class="devider"></div>
                         <div class="contact-link">
-                            <a class="cursor--link" data-contact="Email" data-cursor="📫" href="mailto:tunlinphyo.it@gmail.com"
+                            <a class="cursor--link" tabindex="0" data-contact="Email" data-cursor="📫" href="mailto:tunlinphyo.it@gmail.com"
                                 target="_blank" rel="noopener noreferrer">tunlinphyo.it@gmail.com</a>
                         </div>
                     </div>
@@ -505,7 +510,7 @@
                         <div class="label">LinkedIn</div>
                         <div class="devider"></div>
                         <div class="contact-link">
-                            <a class="cursor--link" data-contact="LinkedIn" data-cursor="🤝" href="https://www.linkedin.com/in/tunlinphyo"
+                            <a class="cursor--link" tabindex="0" data-contact="LinkedIn" data-cursor="🤝" href="https://www.linkedin.com/in/tunlinphyo"
                                 target="_blank" rel="noopener noreferrer">in/tunlinphyo</a>
                         </div>
                     </div>
@@ -513,12 +518,18 @@
                         <div class="label">GitHub</div>
                         <div class="devider"></div>
                         <div class="contact-link">
-                            <a class="cursor--link" data-contact="GitHub" data-cursor="🧑‍💻" href="https://github.com/tunlinphyo"
+                            <a class="cursor--link" tabindex="0" data-contact="GitHub" data-cursor="🧑‍💻" href="https://github.com/tunlinphyo"
                                 target="_blank" rel="noopener noreferrer">tunlinphyo</a>
                         </div>
                     </div>
                 </div>
             </div>
+        </section>
+
+        <section class="goto-container" aria-hidden="true" role="presentation">
+            <button class="goto-top" tabindex="0" aria-label="Go to top">
+                <div class="arrow-up"></div>
+            </button>
         </section>
 
         <footer class="footer" aria-hidden="true" role="presentation">

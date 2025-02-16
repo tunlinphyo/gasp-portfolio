@@ -1,5 +1,5 @@
 import gsap from "gsap"
-import { elem, elems, isMedia } from "./helpers/utils"
+import { elem, elems, isMedia, updateInert } from "./helpers/utils"
 import SplitType from "split-type"
 import { MIN_SIZE } from "./helpers/const"
 import { setDark, removeDark, setLight, removeLight } from "./theme"
@@ -368,12 +368,18 @@ export function animator(carousel: GSAPTween) {
             controlBtns.forEach(elem => {
                 elem.removeAttribute("disabled")
             })
+            updateInert(".project-footer", false)
+            updateInert(".project-desc", false)
+            updateInert(".project-link", false)
         },
         onReverseComplete: () => {
             // console.log('REVERT_END')
             controlBtns.forEach(elem => {
                 elem.setAttribute("disabled", "disabled")
             })
+            updateInert(".project-footer", true)
+            updateInert(".project-desc", true)
+            updateInert(".project-link", true)
         }
     }, ">")
     .to(".arrow path", {
@@ -406,6 +412,9 @@ export function animator(carousel: GSAPTween) {
             controlBtns.forEach(elem => {
                 elem.removeAttribute("disabled")
             })
+            updateInert(".project-footer", false)
+            updateInert(".project-desc", false)
+            updateInert(".project-link", false)
         },
     }, "starPaused")
     .to(".circle circle", {
@@ -416,6 +425,9 @@ export function animator(carousel: GSAPTween) {
             controlBtns.forEach(elem => {
                 elem.setAttribute("disabled", "disabled")
             })
+            updateInert(".project-footer", true)
+            updateInert(".project-desc", true)
+            updateInert(".project-link", true)
         },
     }, ">")
     .to(".control", {
@@ -438,9 +450,11 @@ export function animator(carousel: GSAPTween) {
         opacity: 0,
         onComplete: () => {
             carousel.pause()
+            updateInert(".contacts", false)
         },
         onReverseComplete: () => {
             carousel.play()
+            updateInert(".contacts", true)
         },
     }, "<")
     .to('.bg', { scale: 0.5, stagger: {

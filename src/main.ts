@@ -17,6 +17,7 @@ import { BrowserCheck } from "./scripts/helpers/browser"
 import { JapanSeason, Season } from "./scripts/helpers/season"
 import { Utils } from "./scripts/utils"
 import { UmamiAnalytics } from "./scripts/umami"
+import { KeyboardHandler } from "./scripts/keyboard"
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
 
@@ -32,8 +33,9 @@ window.onload = async () => {
     const carousel = initCarousel()
     rotateLogo()
     animator(carousel)
-    new Projects()
-    new AutoScroller()
+    const project = new Projects()
+    const scroll = new AutoScroller()
+    new KeyboardHandler(project, scroll)
 
     Utils.trackLinksClick()
     Utils.trackContactClick()

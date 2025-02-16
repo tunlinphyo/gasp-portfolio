@@ -190,6 +190,12 @@
         .person-name {
             font-size: clamp(2rem, 9vw, 7rem);
             line-height: 1.5;
+            border-radius: 4px;
+
+            &:focus {
+                outline: 3px solid var(--outline-color);
+                outline-offset: 10px;
+            }
 
             .char {
                 transform-origin: bottom left;
@@ -219,14 +225,24 @@
         grid-template-columns: var(--x) minmax(0, 1fr) minmax(0, 1fr) var(--x);
     }
 
-    .intro-title {
+    .intro-title-container {
         grid-column: 2 / 4;
         grid-row: 2 / 3;
         padding-block-end: 2rem;
 
-        font-size: clamp(2.2rem, 8vw, 7rem);
-        line-height: 1.2;
-        /* text-transform: uppercase; */
+        .intro-title {
+            display: inline-block;
+            font-size: clamp(2.2rem, 8vw, 7rem);
+            line-height: 1.2;
+            border-radius: 4px;
+            /* text-transform: uppercase; */
+    
+            &:focus {
+                outline: 3px solid var(--outline-color);
+                outline-offset: 10px;
+            }
+    
+        }
     }
     .intro-description {
         grid-column: 3 / 4;
@@ -297,6 +313,12 @@
 
             .technical-title {
                 font-size: clamp(2rem, 5vw, 5rem);
+                border-radius: 4px;
+
+                &:focus {
+                    outline: 3px solid var(--outline-color);
+                    outline-offset: 10px;
+                }
             }
 
             .technical-desc {
@@ -395,7 +417,13 @@
         .projects-title {
             font-size: clamp(2.2rem, 8vw, 7rem);
             line-height: 1.2;
+            border-radius: 4px;
             /* text-transform: uppercase; */
+                
+            &:focus {
+                outline: 3px solid var(--outline-color);
+                outline-offset: 10px;
+            }
         }
 
         .projects-description {
@@ -479,10 +507,22 @@
             gap: 1.5rem;
 
             .project-title {
-                /* inline-size: min-content; */
-                font-size: clamp(2rem, 5vw, 5rem);
-                line-height: 1.2;
-                color: var(--link-color);
+                @media (min-width: 768px) {
+                    padding-inline-start: 13px;
+                }
+
+                .project-header {
+                    display: inline-block;
+                    font-size: clamp(2rem, 5vw, 5rem);
+                    line-height: 1.2;
+                    color: var(--link-color);
+                    border-radius: 4px;
+    
+                    &:focus {
+                        outline: 3px solid var(--outline-color);
+                        outline-offset: 10px;
+                    }
+                }
             }
 
             .project-cateogry {
@@ -519,12 +559,37 @@
                 > a {
                     color: var(--link-color);
                     text-decoration: none;
+                    position: relative;
+                    overflow: hidden;
 
                     &:hover {
                         color: var(--link-color);
                         text-decoration: underline;
                         text-underline-offset: 3px;
                         text-decoration-style: double;
+                    }
+
+                    &::before {
+                        content: '';
+                        display: block;
+                        position: absolute;
+                        z-index: -1;
+                        inset: 0 -5px;
+                        background-color: var(--outline-bg);
+                        border-radius: 5px;
+                        translate: 0 105%;
+                        scale: 1 0;
+                        transition: translate .2s ease, scale .2s ease;
+                    }
+
+                    &:focus {
+                        outline: none;
+                        color: var(--outline-link-fg);
+
+                        &::before {
+                            translate: 0 0;
+                            scale: 1;
+                        }
                     }
                 }
             }
@@ -544,6 +609,11 @@
                     text-decoration: underline;
                     text-underline-offset: 6px;
                     text-decoration-style: double;
+                }
+
+                &:focus {
+                    outline: 3px solid var(--outline-color);
+                    outline-offset: 10px;
                 }
             }
         }
@@ -593,6 +663,11 @@
 
                 &:disabled {
                     pointer-events: none;
+                }
+
+                &:focus {
+                    outline: 3px solid var(--outline-color);
+                    outline-offset: 5px;
                 }
 
                 .icon {
@@ -665,6 +740,12 @@
         > h2 {
             font-size: clamp(2.2rem, 8vw, 7rem);
             line-height: 1.2;
+            border-radius: 4px;
+
+            &:focus {
+                outline: 3px solid var(--outline-color);
+                outline-offset: 10px;
+            }
         }
     }
 
@@ -687,7 +768,7 @@
 
             .row {
                 display: grid;
-                grid-template-columns: 60px 1px minmax(0, 1fr);
+                grid-template-columns: 64px 1px minmax(0, 1fr);
                 gap: 1rem;
                 overflow: hidden;
                 align-items: center;
@@ -711,18 +792,41 @@
 
                 .contact-link {
                     overflow: hidden;
+                    padding-inline-start: 5px;
 
                     > a {
                         pointer-events: auto;
                         display: inline-block;
                         color: var(--fg-color) !important;
                         text-decoration: none;
+                        position: relative;
 
                         &:hover {
                             color: var(--link-color) !important;
                             text-decoration: underline;
                             text-underline-offset: 3px;
                             text-decoration-style: double;
+                        }
+                
+                        &::before {
+                            content: '';
+                            display: block;
+                            position: absolute;
+                            z-index: -1;
+                            inset: 0 -5px;
+                            background-color: var(--outline-bg);
+                            border-radius: 5px;
+                            translate: 0 105%;
+                            transition: translate .2s ease;
+                        }
+
+                        &:focus {
+                            outline: none;
+                            color: var(--outline-link-fg) !important;
+
+                            &::before {
+                                translate: 0 0;
+                            }
                         }
 
                         .char {
