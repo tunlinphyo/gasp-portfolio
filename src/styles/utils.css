@@ -305,6 +305,44 @@ body {
     position: relative;
     z-index: 1;
 
+    .open-shortcuts {
+        position: fixed;
+        z-index: 0;
+        left: 18px;
+        top: 18px;
+        background: none;
+        border: 2px solid var(--play);
+        border-radius: 5px;
+        backdrop-filter: blur(10px);
+        color: var(--fg-color);
+
+        width: 50px;
+        height: 50px;
+        display: grid;
+        place-content: center;
+
+
+        opacity: 0;
+        pointer-events: none;
+
+        @media (hover: hover) {
+            opacity: 1;
+            pointer-events: auto;
+            cursor: pointer;
+        }
+
+        &:focus {
+            opacity: 1;
+            outline: 3px solid var(--outline-color);
+            outline-offset: 5px;
+        }
+
+        @media (orientation: landscape) and (min-height: 640px) {
+            top: 30px;
+            left: 30px;
+        }
+    }
+
     .playPause {
         --size: 42px;
 
@@ -429,55 +467,149 @@ body {
         }
     }
 
-    .goto-container {
+    .toast-container {
         position: fixed;
-        z-index: 1;
-        left: 0;
-        bottom: 4vh;
-        inline-size: 100%;
-        padding: 1rem;
+        z-index: 9;
+
+        left: 0; right: 0;
+        bottom: 0;
+        padding: 5vh;
 
         display: flex;
         justify-content: center;
         align-items: center;
 
-        pointer-events: none;
-
-        .goto-top {
-            opacity: 0;
-            pointer-events: none;
-            padding-top: 5px;
-            background-color: transparent;
-            border: none;
-            width: 60px;
-            height: 60px;
-            border: 2px solid var(--accent-color);
-            border-radius: 50%;
-
+        .toast {
+            padding: 15px 20px;
+            border: 1px solid #bbb;
+            border-radius: 10px;
+            text-align: center;
             display: flex;
             justify-content: center;
             align-items: center;
+            color: var(--fg-color);
+            backdrop-filter: blur(10px);
 
-            &.focused {
+            opacity: 0;
+            scale: .8;
+            translate: 0 100%;
+            transition: all .3s ease;
+
+            &.show {
                 opacity: 1;
-                pointer-events: auto;
+                scale: 1;
+                translate: 0 0;
             }
 
-            &:focus {
-                outline: 3px solid var(--outline-color);
-                outline-offset: 5px;
-            }
-
-            .arrow-up {
-                inline-size: 10px;
-                block-size: 10px;
-                border-radius: 2px;
-                border-bottom: 2px solid var(--accent-color);
-                border-right: 2px solid var(--accent-color);
-                rotate: -135deg;
+            .key {
+                display: inline-flex;
+                margin-inline: .5em;
+                width: 40px;
+                height: 40px;
+                border: 1px solid #bbb;
+                border-radius: 5px;
+                display: grid;
+                place-content: center;
             }
         }
     }
+}
+
+.shortcuts-modal {
+    margin: auto;
+
+    border: none;
+    border-radius: 10px;
+    padding: 20px;
+    background: var(--modal-bg);
+    backdrop-filter: var(--modal-filter);
+
+    &::backdrop {
+        animation: fadeIn .5s ease-out;
+        /* background-color: var(--modal-backdrop);
+        backdrop-filter: blur(5px); */
+        background-image: radial-gradient(transparent 2px, var(--modal-backdrop) 1px);
+        background-size: 4px 4px;
+        backdrop-filter: brightness(100%) blur(3px);
+    }
+
+    &[open] {
+        animation: popupIn .3s ease-out;
+    }
+
+    & form {
+        display: flex;
+        justify-content: flex-end;
+
+        & button {
+            width: 36px;
+            height: 36px;
+            background: none;
+            border: none;
+            border-radius: 50px;
+            padding: 0;
+            color: var(--fg-color);
+            cursor: pointer;
+
+            &:focus {
+                outline: 2px solid var(--outline-color);
+                outline-offset: 5px;
+            }
+        }
+    }
+
+    .shortcuts-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: stretch;
+        padding: 20px;
+        gap: 5px;
+
+        .shortcuts-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            color: var(--fg-color);
+
+            .key {
+                flex-shrink: 0;
+                display: inline-flex;
+                width: 40px;
+                height: 40px;
+                border: 1px solid #bbb;
+                border-radius: 5px;
+                display: grid;
+                place-content: center;
+                background-color: var(--bg-color);
+                color: var(--fg-color);
+
+                &.key--auto {
+                    width: initial;
+                    padding-inline: 10px;
+                    white-space: nowrap;
+                }
+            }
+        }
+    }
+}
+
+@keyframes popupIn {
+    from {
+        opacity: 0;
+        translate: 0 20px;
+    }
+    to {
+        opacity: 1;
+        translate: 0 0;
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 @keyframes InitBg {

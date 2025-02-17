@@ -2,35 +2,40 @@ import gsap from "gsap";
 import { elem, elems, updateInert } from "./helpers/utils";
 import { Projects } from "./projects";
 import { AutoScroller } from "./scroll";
+import { Toast } from "./toast";
 
 export class KeyboardHandler {
+    private shortcutEl: HTMLButtonElement
+    private playPause: HTMLElement
     private introEl: HTMLElement
     private techInteroEl: HTMLElement
     private techTitles: NodeListOf<HTMLElement>
     private projectTitle: HTMLElement
     private pTitle: HTMLElement
     private contactEl: HTMLElement
-    private totopEl: HTMLButtonElement
+    private modalEl: HTMLDialogElement
 
     private steps: HTMLElement[] = []
-    private _step: number = -1;
+    private _step: number = -1
+    private isTouchFocus: boolean = false
 
     constructor(
         private project: Projects,
-        private scroll: AutoScroller
+        private scroll: AutoScroller,
+        private toast: Toast
     ) {
+        this.shortcutEl = elem<HTMLButtonElement>('.open-shortcuts')
+        this.playPause = elem('.playPause')
         this.introEl = elem('.person-name')
         this.techInteroEl = elem('.intro-title')
         this.techTitles = elems('.technical-title')
         this.projectTitle = elem('.projects-title')
         this.pTitle = elem('.project-header')
         this.contactEl = elem('.contact-me')
-        this.totopEl = elem<HTMLButtonElement>('.goto-top')
+        this.modalEl = elem<HTMLDialogElement>('.shortcuts-modal')
 
         this.steps = [
-            elem('.playPause'), this.introEl, this.techInteroEl, 
-            this.techTitles[0], this.techTitles[1], this.techTitles[2], this.techTitles[3],
-            this.projectTitle, this.pTitle, this.contactEl
+            this.introEl, this.techInteroEl, this.projectTitle, this.contactEl
         ]
 
         updateInert(elem('.main'), false)
@@ -44,91 +49,88 @@ export class KeyboardHandler {
         const max = this.steps.length - 1
         this._step = Math.max(0, Math.min(step, max))
 
-        console.log(this._step, max)
-
         if (this._step > -1) {
             const elem = this.steps[this._step]
-            console.log("ELEM", elem)
             elem.focus()
         }
     }
 
     eventListeners() {
+        this.shortcutEl.addEventListener('click', () => {
+            this.modalEl.showModal()
+        })
+        this.shortcutEl.addEventListener("focus", () => {
+            this.scrollTo(0, -1)
+        })
+
+        document.addEventListener("touchstart", () => {
+            this.isTouchFocus = true
+        }, { passive: true })
+
+        // Detect keyboard navigation (e.g., Tab key)
+        document.addEventListener("keydown", () => {
+            this.isTouchFocus = false
+        })
+
+        this.playPause.addEventListener("focus", () => {
+            if (this.isTouchFocus) return
+            this.toast.show(Toast.PLAY_PAUSE)
+            this.scrollTo(0, -1)
+        })
+        this.playPause.addEventListener("blur", () => {
+            this.toast.hide()
+        })
+
         this.introEl.addEventListener("focus", () => {
-            this._step = 1
-            gsap.to(window, {
-                duration: 0,
-                scrollTo: { y: window.innerHeight },
-                ease: "none",
-                // overwrite: true,
-            })
+            this.scrollTo(window.innerHeight, 0)
         })
 
         this.techInteroEl.addEventListener("focus", () => {
-            this._step = 2
-            gsap.to(window, {
-                duration: 0,
-                scrollTo: { y: (window.innerHeight * 2.5) },
-                ease: "none",
-                // overwrite: true,
-            })
+            this.scrollTo(window.innerHeight * 2.5, 1)
         })
 
-        this.techTitles.forEach((elem, index) => {
+        this.techTitles.forEach((elem) => {
             const scroll = Number(elem.dataset.scroll)
             elem.addEventListener("focus", () => {
-                this._step = 3 + index
-                gsap.to(window, {
-                    duration: 0,
-                    scrollTo: { y: (window.innerHeight * scroll) },
-                    ease: "none",
-                    // overwrite: true,
-                })
+                this.scrollTo(window.innerHeight * scroll)
             })
         })
 
         this.projectTitle.addEventListener("focus", () => {
-            this._step = 7
-            gsap.to(window, {
-                duration: 0,
-                scrollTo: { y: (window.innerHeight * 6.9) },
-                ease: "none",
-                // overwrite: true,
-            })
+            this.scrollTo(window.innerHeight * 6.9, 2)
         })
 
         this.pTitle.addEventListener("focus", () => {
-            this._step = 8
-            gsap.to(window, {
-                duration: 0,
-                scrollTo: { y: (window.innerHeight * 9.5) },
-                ease: "none",
-                // overwrite: true,
-            })
+            this.toast.show(Toast.PREV_NEXT)
+            this.scrollTo(window.innerHeight * 9.5)
+        })
+        this.pTitle.addEventListener("blur", () => {
+            this.toast.hide()
         })
 
         this.contactEl.addEventListener("focus", () => {
-            this._step = 9
-            gsap.to(window, {
-                duration: 0,
-                scrollTo: { y: (window.innerHeight * 20) },
-                ease: "none",
-                // overwrite: true,
-            })
+            this.scrollTo(window.innerHeight * 20, 3)
         })
 
-        this.totopEl.addEventListener("focus", () => {
-            this.totopEl.classList.add('focused')
+        elem('.last-focus').addEventListener("focus", () => {
+            this.toast.show(Toast.GO_TOP)
         })
-        this.totopEl.addEventListener("blur", () => {
-            this.totopEl.classList.remove('focused')
-        })
-        this.totopEl.addEventListener("click", () => {
-            this.introEl.focus()
+        elem('.last-focus').addEventListener("blur", () => {
+            this.toast.hide()
         })
 
         document.addEventListener("keydown", (event) => {
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                return
+            }
+
             const key = event.key
+            if (this.modalEl.open) {
+                if (key === "s") {
+                    this.modalEl.close()
+                }
+                return
+            }
             const projectControls = elem('.project-footer')
             if (!projectControls.hasAttribute('inert')) {
                 if (key === "ArrowLeft") {
@@ -136,15 +138,39 @@ export class KeyboardHandler {
                 } else if (key === "ArrowRight") {
                     this.project.renderProject("next")
                 }
-            } 
-            
+            }
+
             if (key === "k") {
-                this.scroll.toggle()
+                this.scroll.toggle(true)
             } else if (key === "j" || key === "ArrowUp") {
                 this.step -= 1
             } else if (key === "l" || key === "ArrowDown") {
                 this.step += 1
+            } else if (key === "t") {
+                this.introEl.focus()
+            } else if (key === "o") {
+                this.techTitles[0].focus()
+            } else if (key === "p") {
+                this.pTitle.focus()
+            } else if (key === "c") {
+                this.contactEl.focus()
+            } else if (key === "s") {
+                this.modalEl.showModal()
             }
+        })
+    }
+
+    private scrollTo(y: number, step?: number) {
+        this.scroll.onWheel()
+
+        if (step !== null && step !== undefined) {
+            this._step = step
+        }
+
+        gsap.to(window, {
+            duration: 0,
+            scrollTo: { y },
+            ease: "none",
         })
     }
 }

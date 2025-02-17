@@ -4,7 +4,44 @@
     suffix: "  ";
 }
 
+@font-face {
+    font-family: 'BrushScript';
+    src: url('/fonts/Brush\ Script.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
 @media (prefers-reduced-motion: reduce) {
+    :root {
+        --title-color: #65758b;
+        --bg-color: #fff;
+        --bg-accent-color: #eceef3;
+        --fg-color: #38414e;
+        --link-color: cornflowerblue;
+
+        @media (prefers-color-scheme: dark) {
+            --title-color: #ccc;
+            --bg-color: #475364;
+            --bg-accent-color: #262d37;
+            --fg-color: #fafafa;
+            --link-color: hotpink;
+        }
+    }
+
+    html {
+        background-color: var(--bg-accent-color);
+
+        body {
+            background-color: inherit;
+
+            @media (min-width: 840px) {
+                padding: 20px;
+            }
+        }
+    }
+
+
     .visually-hidden {
         width: 100%;
         max-width: 800px;
@@ -21,14 +58,52 @@
         margin: 0 auto;
         padding: 5vw;
 
-        & h1 {
-            font-size: clamp(1.2rem, 10vw, 3rem);
-            font-family: "Orbitron", serif;
-            margin-block: 5vh;
+        background-color: var(--bg-color);
+
+        & header {
+            margin-block-end: 5vh;
+            padding-block-end: 1vh;
+            border-bottom: 2px solid var(--title-color);
+
+            & h1 {
+                text-align: right;
+                font-size: clamp(1.2rem, 10vw, 3.5rem);
+                font-family: "BrushScript", "Orbitron", serif;
+            }
+
+            > div {
+                text-align: right;
+            }
+        }
+
+        & a {
+            color: var(--fg-color);
+            text-decoration: none;
+            border-radius: 2px;
+
+            &:hover {
+                outline: 2px solid var(--link-color);
+                outline-offset: 2px;
+            }
+        }
+
+        & h1,
+        & h2,
+        & h3 {
+            color: var(--title-color);
+        }
+
+        & h2 {
+            border-bottom: 2px solid var(--title-color);
+            margin-bottom: 1vh;
         }
 
         & h3 {
             margin-top: 3vh;
+
+            & a {
+                color: inherit;
+            }
         }
 
         & section {
@@ -40,51 +115,88 @@
         }
 
         & ol {
-            list-style: upper-roman;
+            list-style: decimal-leading-zero;
         }
+
+        & ol {
+            list-style: none;
+            counter-reset: list-counter;
+            padding-left: 0;
+
+            & li {
+                counter-increment: list-counter;
+                font-family: "Arial", sans-serif;
+                position: relative;
+                padding-left: 2rem;
+
+                &::before {
+                    content: counter(list-counter, decimal-leading-zero) ". " / "";
+                    font-family: "Courier New", monospace;
+                    font-weight: bold;
+                    color: var(--title-color);
+                    position: absolute;
+                    left: 0;
+                }
+            }
+        }
+
+        .aria-projects {
+            & li::before {
+                top: 3px;
+            }
+        }
+
 
         & ul {
             list-style-type: happy-list;
-        }
 
-        & a {
-            color: var(--link-color);
-            text-decoration: none;
-            font-weight: 600;
-
-            &:hover {
-                outline: 2px solid var(--link-color);
-                outline-offset: 1px;
+            & p {
+                display: grid;
+                grid-template-columns: .4fr 1fr;
             }
         }
 
         & p {
             text-align: justify;
+            color: var(--fg-color);
 
-            &[aria-label="Project Link"] {
-                margin-top: 1vh;
-                & a {
-                    display: inline-flex;
-                    padding: .2rem 2rem;
-                    border: 2px solid var(--link-color);
-                    color: var(--link-color);
-                    text-decoration: none;
-                    font-size: .9rem;
-                    font-weight: 600;
-                    text-transform: uppercase;
-                }
+            & strong {
+                color: inherit;
+            }
+
+
+        }
+
+        small[role="note"] {
+            display: block;
+            margin-block: 4px;
+            color: var(--title-color);
+        }
+
+        .aria-project-link {
+            margin-top: 1vh;
+            & a {
+                display: inline-flex;
+                padding: .2rem 2rem;
+                border: 2px solid var(--title-color);
+                color: var(--fg-color);
+                text-decoration: none;
+                font-size: .9rem;
+                font-weight: 600;
+                text-transform: uppercase;
             }
         }
 
         .tech-group {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 5vw;
+            gap: 20px;
         }
 
         & footer p {
             text-align: center;
             font-size: .95em;
+            color: var(--title-color);
         }
 
         .p5Canvas {

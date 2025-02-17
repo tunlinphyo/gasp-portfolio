@@ -10,7 +10,7 @@ export function animator(carousel: GSAPTween) {
     const personName = new SplitType(".person-name", { types: 'chars' })
     const personAbout = new SplitType(".person-about", { types: 'words,chars' })
     const introTitle = new SplitType(".intro-title", { types: 'chars' })
-    const introDesc = new SplitType(".intro-description > p", { types: 'lines' })
+    // const introDesc = new SplitType(".intro-description > p", { types: 'lines' })
     const language = new SplitType(".title-language", { types: 'chars' })
     const framework = new SplitType(".title-framework", { types: 'chars' })
     const database = new SplitType(".title-database", { types: 'chars' })
@@ -41,6 +41,7 @@ export function animator(carousel: GSAPTween) {
     timeline
     .fromTo(".hello-message", { opacity: 1, scale: 1 }, { opacity: 0, scale: 0.25 })
     .fromTo(".mouse", { y: 0, opacity: 1 }, { y: 200, opacity: 0 }, "<")
+    .to('.open-shortcuts', { scale: 0 }, "<")
     .add('bgStart')
     .to(".background", { opacity: 0 }, "<")
     .to('.bg', { scale: 0.5, stagger: { each: 0.05, from: "end" } }, "<")
@@ -101,9 +102,9 @@ export function animator(carousel: GSAPTween) {
         duration: 1.5,
         ease: "elastic.out(1, 0.1)",
     }, "<")
-    .from(introDesc.lines, { x: 200, opacity: 0, stagger: 0.2 }, ">-0.5")
-    .to(".animator-container", { y: 0 }, "starHided")
-    .to(animatorFour, { height: "25vh", y: "12.5vh" }, "<")
+    .from('.intro-description > li', { x: 200, opacity: 0, stagger: 0.2 }, ">-0.5")
+    // .to(".animator-container", { y: '25vh' }, "starHided")
+    .to(animatorFour, { height: "50vh", y: "-12.5vh" }, "starHided")
     .to(animatorFour, { height: MIN_SIZE, y: 0 }, ">")
     .to(animatorThree, { width: "200vw", duration: 1 }, ">")
     .to(".animator-container", { x: "-50vw" }, "<")
@@ -111,7 +112,8 @@ export function animator(carousel: GSAPTween) {
     .to(animatorThree, { width: MIN_SIZE, duration: 1 }, ">")
     .to([animatorOne, animatorThree], { width: "100vmax" }, ">")
     .to([animatorTwo, animatorFour], { height: "100vmax" }, "<")
-    .to(introDesc.lines, { x: -200, opacity: 0 }, "<")
+    .to('.intro-description > li', { x: -200, opacity: 0 }, "<")
+    .to(".animator-container", { y: 0 }, "<")
     .add("linesOne")
 
     .to([animatorTwo, animatorFour], { height: MIN_SIZE }, ">")

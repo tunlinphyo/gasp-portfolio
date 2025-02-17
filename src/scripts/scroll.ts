@@ -103,11 +103,11 @@ export class AutoScroller {
         })
     }
 
-    public toggle() {
+    public toggle(keyboard: boolean = false) {
         if (this.isPlaying) {
-            this.pause()
+            this.pause(keyboard)
         } else {
-            this.play()
+            this.play(keyboard)
         }
     }
 
@@ -117,7 +117,7 @@ export class AutoScroller {
         window.addEventListener("touchend", this.onTouchEnd, { passive: true })
     }
 
-    private onWheel(): void {
+    public onWheel(): void {
         if (this.autoScroll) {
             this.autoScroll.kill()
             this.autoScroll = null
@@ -137,7 +137,7 @@ export class AutoScroller {
         // this.updateButton()
     }
 
-    private play(): void {
+    private play(keyboard: boolean = false): void {
         if (!this.autoScroll) {
             this.initAutoScroll()
         } else {
@@ -145,18 +145,18 @@ export class AutoScroller {
         }
         this.isPlaying = true
         this.updateButton()
-        dataSet(".cursor", { text: 'pause' })
         window.umami.track('Animation', { type: 'play' })
+        if (!keyboard) dataSet(".cursor", { text: 'pause' })
     }
 
-    private pause(): void {
+    private pause(keyboard: boolean = false): void {
         if (this.autoScroll) {
             this.autoScroll.pause()
         }
         this.isPlaying = false
         this.updateButton()
-        dataSet(".cursor", { text: 'play' })
         window.umami.track('Animation', { type: 'pause' })
+        if (!keyboard) dataSet(".cursor", { text: 'play' })
     }
 
     private updateButton() {

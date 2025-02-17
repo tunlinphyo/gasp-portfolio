@@ -18,31 +18,36 @@ import { JapanSeason, Season } from "./scripts/helpers/season"
 import { Utils } from "./scripts/utils"
 import { UmamiAnalytics } from "./scripts/umami"
 import { KeyboardHandler } from "./scripts/keyboard"
+import { Toast } from "./scripts/toast"
+import { ReducedMotionListener } from "./scripts/reduce-motion"
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
 
 window.onload = async () => {
     new UmamiAnalytics(import.meta.env.VITE_UMAMI_ANALYTICS, import.meta.env.VITE_UMAMI_SITE_ID)
 
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        return
-    }
+    const motion = new ReducedMotionListener()
+    motion.listen(async (isReduced) => {
+        window.umami.track('Motion', { value: isReduced })
+        window.location.reload()
+    })
+
+    if (ReducedMotionListener.isReduced()) return
 
     await loading()
     initCursor()
+    const toast = new Toast()
     const carousel = initCarousel()
     rotateLogo()
     animator(carousel)
     const project = new Projects()
     const scroll = new AutoScroller()
-    new KeyboardHandler(project, scroll)
+    new KeyboardHandler(project, scroll, toast)
 
     Utils.trackLinksClick()
     Utils.trackContactClick()
     Utils.animateHoverElemets()
 
-    // const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)')
-    // window.firework = prefersDarkMode.matches ? true : false
     window.firework = false
 
     BrowserCheck.runIfComputerBrowser(async () => {
