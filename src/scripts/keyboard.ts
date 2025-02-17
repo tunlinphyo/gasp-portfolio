@@ -86,7 +86,7 @@ export class KeyboardHandler {
         })
 
         this.techInteroEl.addEventListener("focus", () => {
-            this.scrollTo(window.innerHeight * 2.5, 1)
+            this.scrollTo(window.innerHeight * 2.8, 1)
         })
 
         this.techTitles.forEach((elem) => {

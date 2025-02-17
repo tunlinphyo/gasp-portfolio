@@ -484,9 +484,10 @@ body {
             border: 1px solid #bbb;
             border-radius: 10px;
             text-align: center;
-            display: flex;
+            vertical-align: center;
+            /* display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: center; */
             color: var(--fg-color);
             backdrop-filter: blur(10px);
 
@@ -503,13 +504,13 @@ body {
 
             .key {
                 display: inline-flex;
+                justify-content: center;
+                align-items: center;
                 margin-inline: .5em;
                 width: 40px;
                 height: 40px;
                 border: 1px solid #bbb;
                 border-radius: 5px;
-                display: grid;
-                place-content: center;
             }
         }
     }

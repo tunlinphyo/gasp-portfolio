@@ -97,7 +97,7 @@
         --glass: none;
         --modal-bg: #5557;
         --modal-backdrop: #1E1E3B;
-        --modal-filter: blur(25px) brightness(250%);
+        --modal-filter: blur(25px) brightness(200%);
 
         body.winter {
             --glass: blur(1px);
