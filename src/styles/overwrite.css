@@ -31,6 +31,7 @@
 
     html {
         background-color: var(--bg-accent-color);
+        font-size: 16px;
 
         body {
             background-color: inherit;
@@ -73,6 +74,7 @@
 
             > div {
                 text-align: right;
+                font-size: 16px;
             }
         }
 
@@ -146,8 +148,11 @@
             }
         }
 
+        /* .aria-technical {
+            list-style-type: star-list;
+        } */
 
-        & ul {
+        .aria-contact {
             list-style-type: happy-list;
 
             & p {
@@ -159,6 +164,7 @@
         & p {
             text-align: justify;
             color: var(--fg-color);
+            font-size: 16px;
 
             & strong {
                 color: inherit;
@@ -167,7 +173,11 @@
 
         }
 
-        small[role="note"] {
+        small {
+            font-size: .95em;
+        }
+
+        & small[role="note"] {
             display: block;
             margin-block: 4px;
             color: var(--title-color);
