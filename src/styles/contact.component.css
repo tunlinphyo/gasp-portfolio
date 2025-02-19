@@ -1,0 +1,137 @@
+.page--contact {
+    .contact-container {
+        grid-column: body;
+        grid-row: body;
+
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+        padding-block: 8vh;
+
+        .contact-start {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+
+            .contact-heading-container {
+                display: grid;
+                grid-template-areas: heading;
+
+                & h2,
+                .h2 {
+                    grid-area: heading;
+                    font-size: clamp(2.2rem, 8vw, 7rem);
+                    line-height: 1.2;
+                    border-radius: 4px;
+                    font-weight: bold;
+                    color: var(--title-color);
+                }
+
+                & h2 {
+                    color: transparent;
+
+                    &:focus {
+                        outline: 3px solid var(--outline-color);
+                        outline-offset: 10px;
+                    }
+                }
+            }
+        }
+
+        .contact-end {
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding-block: 2vh;
+
+            .contact-list {
+                inline-size: 100%;
+                list-style: none;
+                padding: 0;
+
+                @media (min-width: 992px) {
+                    max-width: 50vw;
+                }
+
+                & li {
+                    margin-top: .5rem;
+
+                    & p {
+                        display: grid;
+                        grid-template-columns: 68px 1px minmax(0, 1fr);
+                        gap: 1rem;
+                        overflow: hidden;
+                        align-items: center;
+
+                        & label {
+                            color: var(--fg-accent-color);
+                        }
+
+                        .devider {
+                            inline-size: 2px;
+                            block-size: 12px;
+                            border-radius: 2px;
+                            background-color: var(--accent-color);
+                            color: transparent;
+                        }
+
+                        .contact-link {
+                            overflow: hidden;
+                            padding-inline-start: 5px;
+
+                            > a {
+                                pointer-events: auto;
+                                display: inline-block;
+                                color: var(--fg-color) !important;
+                                text-decoration: none;
+                                position: relative;
+
+                                &:hover {
+                                    color: var(--link-color) !important;
+                                    text-decoration: underline;
+                                    text-underline-offset: 3px;
+                                    text-decoration-style: double;
+                                }
+
+                                &::before {
+                                    content: '';
+                                    display: block;
+                                    position: absolute;
+                                    z-index: -1;
+                                    inset: 0 -5px;
+                                    background-color: var(--outline-bg);
+                                    border-radius: 5px;
+                                    translate: 0 105%;
+                                    transition: translate .2s ease;
+                                }
+
+                                @media (prefers-reduced-motion: reduce) {
+                                    &::before {
+                                        transition: none;
+                                    }
+                                }
+
+                                &:focus {
+                                    outline: none;
+                                    color: var(--outline-link-fg) !important;
+
+                                    &::before {
+                                        translate: 0 0;
+                                    }
+                                }
+
+                                .char {
+                                    display: inline-block;
+                                    translate: 20px 0;
+                                    opacity: 0;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

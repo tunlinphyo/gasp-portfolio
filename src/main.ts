@@ -3,23 +3,24 @@ import ScrollTrigger from "gsap/ScrollTrigger"
 import ScrollToPlugin from "gsap/ScrollToPlugin"
 
 import './style.css'
-import { loading } from "./scripts/loading"
-import { initCarousel } from "./scripts/carousel"
-import { rotateLogo } from "./scripts/logo"
-import { animator } from './scripts/timeline'
-import { initCursor } from "./scripts/cursor"
-import { Projects } from "./scripts/projects"
+import { Timeline } from "./scripts/timeline"
+import { PageLoading } from "./scripts/loading"
+import { ThemeManager } from "./scripts/theme"
+import { Carousel } from "./scripts/carousel"
 import { AutoScroller } from "./scripts/scroll"
-import p5 from "p5"
-import { fallSketch, fireworkSketch, sakuraSketch, snowSketch } from "./scripts/p5"
-import { elem, wait } from "./scripts/helpers/utils"
-import { BrowserCheck } from "./scripts/helpers/browser"
-import { JapanSeason, Season } from "./scripts/helpers/season"
-import { Utils } from "./scripts/utils"
-import { UmamiAnalytics } from "./scripts/umami"
-import { KeyboardHandler } from "./scripts/keyboard"
+import { Projects } from "./scripts/projects"
 import { Toast } from "./scripts/toast"
+import { KeyboardHandler } from "./scripts/keyboard"
+import { Cursor } from "./scripts/cursor"
+import { App } from "./scripts"
+import { UmamiAnalytics } from "./scripts/umami"
+import { LogoRotator } from "./scripts/logo"
 import { ReducedMotionListener } from "./scripts/reduce-motion"
+import { BrowserCheck } from "./scripts/browser"
+import { Utils } from './scripts/utils'
+import p5 from "p5"
+import { JapanSeason, Season } from "./scripts/season"
+import { fallSketch, fireworkSketch, sakuraSketch, snowSketch } from "./scripts/p5"
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
 
@@ -32,29 +33,39 @@ window.onload = async () => {
         window.location.reload()
     })
 
-    if (ReducedMotionListener.isReduced()) return
+    if (ReducedMotionListener.isReduced()) {
+        await Utils.wait(1000)
+        new LogoRotator("body")
+        App.noMotionHandle()
+        new Projects()
 
-    await loading()
-    initCursor()
+        return
+    }
+
+    const loading = new PageLoading()
+    await loading.init()
+    new Cursor()
+    new LogoRotator(".scroll-trigger")
+
+    const theme = new ThemeManager()
+    const carousel = new Carousel('.carousel')
+    new Timeline(theme, carousel)
     const toast = new Toast()
-    const carousel = initCarousel()
-    rotateLogo()
-    animator(carousel)
-    const project = new Projects()
+    const projects = new Projects()
     const scroll = new AutoScroller()
-    new KeyboardHandler(project, scroll, toast)
+    new KeyboardHandler(projects, scroll, toast)
 
-    Utils.trackLinksClick()
-    Utils.trackContactClick()
-    Utils.animateHoverElemets()
+    App.trackLinksClick()
+    App.trackContactClick()
+    App.animateHoverElemets()
 
     window.firework = false
 
     BrowserCheck.runIfComputerBrowser(async () => {
-        await wait(1000)
+        await Utils.wait(1000)
 
-        const season = JapanSeason.getCurrentSeason()
-        const mainEl = elem('.main')
+        const season = Season.SUMMER // JapanSeason.getCurrentSeason()
+        const mainEl = Utils.elem('.page-main')
 
         switch (season) {
             case Season.SPRING:

@@ -15,8 +15,8 @@
     --modal-backdrop: #FFC966;
     --modal-filter: blur(20px) brightness(120%);
 
-    --outline-color: hotpink;
-    --outline-bg: hotpink;
+    --outline-color: var(--link-color);
+    --outline-bg: var(--link-color);
     --outline-link-fg: #fff;
 
     --c-1: #FFA500;
@@ -39,6 +39,7 @@
 
     --cookie-bg: var(--bg-color);
     --cookie-fg: var(--fg-color);
+    --light-border: #f8fbfd;
 
     /* --l-0: #b3b9c3;
     --l-1: #c6cad2;
@@ -92,7 +93,7 @@
         --fg-accent-color: #cccccc;
 
         --accent-color: #fafafa;
-        --link-color: #a29bfe;
+    --link-color: #a29bfe;
         --play:#fff5;
         --glass: none;
         --modal-bg: #5557;
@@ -103,6 +104,8 @@
             --glass: blur(1px);
         }
 
+        --outline-link-fg: #000;
+
         --c-1: #000000;
         --c-2: #272c34;
         --c-3: #21262c;
@@ -110,6 +113,14 @@
         --c-5: #16181c;
         --c-6: #101215;
         --c-7: #0b0c0d;
+
+        --c-1: #1F0D1E;
+        --c-2: #4E2757;
+        --c-3: #351736;
+        --c-4: #29122A;
+        --c-5: #1F0D1E;
+        --c-6: #140713;
+        --c-7: #000000;
 
         --l-0: #000000;
         --l-1: #232345;
@@ -121,6 +132,7 @@
         --l-7: #050509;
 
         /* --cookie-bg: var(--l-1); */
+        --light-border: #5e658e;
 
         body[data-schema="light"] {
             --modal-backdrop: #1c1f24;

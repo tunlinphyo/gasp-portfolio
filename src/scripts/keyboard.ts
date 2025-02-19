@@ -1,8 +1,8 @@
-import gsap from "gsap";
-import { elem, elems, updateInert } from "./helpers/utils";
-import { Projects } from "./projects";
-import { AutoScroller } from "./scroll";
-import { Toast } from "./toast";
+import gsap from "gsap"
+import { Projects } from "./projects"
+import { AutoScroller } from "./scroll"
+import { Toast } from "./toast"
+import { Utils } from './utils';
 
 export class KeyboardHandler {
     private shortcutEl: HTMLButtonElement
@@ -24,21 +24,21 @@ export class KeyboardHandler {
         private scroll: AutoScroller,
         private toast: Toast
     ) {
-        this.shortcutEl = elem<HTMLButtonElement>('.open-shortcuts')
-        this.playPause = elem('.playPause')
-        this.introEl = elem('.person-name')
-        this.techInteroEl = elem('.intro-title')
-        this.techTitles = elems('.technical-title')
-        this.projectTitle = elem('.projects-title')
-        this.pTitle = elem('.project-header')
-        this.contactEl = elem('.contact-me')
-        this.modalEl = elem<HTMLDialogElement>('.shortcuts-modal')
+        this.shortcutEl = Utils.elem<HTMLButtonElement>('.open-shortcuts')
+        this.playPause = Utils.elem('.playPause')
+        this.introEl = Utils.elem('.about-heading-container h2')
+        this.techInteroEl = Utils.elem('.techIntro-heading-container h2')
+        this.techTitles = Utils.elems('.techList-heading-container h3')
+        this.projectTitle = Utils.elem('.projectIntro-heading')
+        this.pTitle = Utils.elem('.project-heading')
+        this.contactEl = Utils.elem('.contact-heading-container h2')
+        this.modalEl = Utils.elem<HTMLDialogElement>('.shortcuts-modal')
 
         this.steps = [
             this.introEl, this.techInteroEl, this.projectTitle, this.contactEl
         ]
 
-        updateInert(elem('.main'), false)
+        // Utils.updateInert(Utils.elem('.main'), false)
         this.eventListeners()
     }
 
@@ -82,7 +82,7 @@ export class KeyboardHandler {
         })
 
         this.introEl.addEventListener("focus", () => {
-            this.scrollTo(window.innerHeight, 0)
+            this.scrollTo(window.innerHeight * 0.9, 0)
         })
 
         this.techInteroEl.addEventListener("focus", () => {
@@ -97,7 +97,7 @@ export class KeyboardHandler {
         })
 
         this.projectTitle.addEventListener("focus", () => {
-            this.scrollTo(window.innerHeight * 6.9, 2)
+            this.scrollTo(window.innerHeight * 7.5, 2)
         })
 
         this.pTitle.addEventListener("focus", () => {
@@ -112,10 +112,10 @@ export class KeyboardHandler {
             this.scrollTo(window.innerHeight * 20, 3)
         })
 
-        elem('.last-focus').addEventListener("focus", () => {
+        Utils.elem('.last-focus').addEventListener("focus", () => {
             this.toast.show(Toast.GO_TOP)
         })
-        elem('.last-focus').addEventListener("blur", () => {
+        Utils.elem('.last-focus').addEventListener("blur", () => {
             this.toast.hide()
         })
 
@@ -131,7 +131,7 @@ export class KeyboardHandler {
                 }
                 return
             }
-            const projectControls = elem('.project-footer')
+            const projectControls = Utils.elem('.projectFooter')
             if (!projectControls.hasAttribute('inert')) {
                 if (key === "ArrowLeft") {
                     this.project.renderProject("previous")

@@ -1,0 +1,64 @@
+.cursor {
+    --size: 20px;
+    position: fixed;
+    z-index: 9999;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    translate: 50vw -25vh;
+    pointer-events: none;
+
+    /* mix-blend-mode: darken; */
+
+    &::before {
+        content: '';
+        display: block;
+        width: var(--size);
+        height: var(--size);
+        border-radius: var(--size);
+
+        position: absolute;
+        transition: all .2s ease;
+
+        backdrop-filter: invert(100%);
+        -webkit-backdrop-filter: invert(100%);
+    }
+    &::after {
+        content: attr(data-text);
+        position: absolute;
+        z-index: 1;
+        text-transform: capitalize;
+        font-size: 14px;
+        color: var(--bg-color);
+    }
+
+    &.active::before {
+        --size: 60px;
+        /* backdrop-filter: invert(100%) blur(2px);
+        -webkit-backdrop-filter: invert(100%) blur(2px); */
+        background-color: var(--fg-color);
+    }
+
+    &.animator::before {
+        animation: pulse 1.2s infinite;
+    }
+
+    &.none::before {
+        --size: 0;
+    }
+    &.hover::before {
+        --size: 0;
+        /* backdrop-filter: blur(2px);
+        -webkit-backdrop-filter: blur(2px);
+        background-color: transparent; */
+    }
+}
+
+.cursor--link,
+.cursor--hover {
+    & * {
+        pointer-events: none;
+    }
+}

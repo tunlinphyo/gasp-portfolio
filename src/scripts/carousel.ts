@@ -1,33 +1,59 @@
 import gsap from "gsap"
-import { applyStyles, elems } from "./helpers/utils"
+import { Utils } from './utils'
 
-export function initCarousel() {
-    const carousels = elems(".carousel-item")
-    const lefts: number[] = []
-    let tempLeft = 0
+export class Carousel {
+    private carousel: HTMLOListElement
+    private carouselItems: NodeListOf<HTMLLIElement>
+    private lefts: number[]
+    private tempLeft: number
+    private animation: GSAPTween | null
 
-    applyStyles(".carousel", { left: `${carousels[0].clientWidth * -1}px`})
+    constructor(selector: string) {
+        this.carousel = Utils.elem<HTMLOListElement>(selector)
+        this.carouselItems = Utils.elems('li', this.carousel)
+        this.lefts = []
+        this.tempLeft = 0
+        this.animation = null
 
-    Array.from(carousels).forEach((item) => {
-        const width = item.clientWidth
-        lefts.push(tempLeft)
-        tempLeft += width
-    })
+        this.init()
+    }
 
-    gsap.set(".carousel-item", {
-        x: (i) => lefts[i]
-    })
+    private init() {
+        if (!this.carouselItems.length) return
 
-    const animation = gsap.from(".carousel-item", {
-        duration: 30,
-        ease: "none",
-        x: `+=${tempLeft}`,
-        modifiers: {
-          x: gsap.utils.unitize(x => parseFloat(x) % tempLeft)
-        },
-        repeat: -1,
-        paused: true,
-    })
+        Utils.applyStyles(this.carousel, { left: `${this.carouselItems[0].clientWidth * -1}px` })
 
-    return animation
+        this.carouselItems.forEach((item) => {
+            const width = item.clientWidth
+            this.lefts.push(this.tempLeft)
+            this.tempLeft += width
+        })
+
+        gsap.set(".carousel-item", {
+            x: (i) => this.lefts[i]
+        })
+
+        this.animation = gsap.from([...this.carouselItems], {
+            duration: 30,
+            ease: "none",
+            x: `+=${this.tempLeft}`,
+            modifiers: {
+                x: gsap.utils.unitize(x => parseFloat(x) % this.tempLeft)
+            },
+            repeat: -1,
+            paused: true,
+        })
+    }
+
+    public play() {
+        if (this.animation) {
+            this.animation.play()
+        }
+    }
+
+    public pause() {
+        if (this.animation) {
+            this.animation.pause()
+        }
+    }
 }

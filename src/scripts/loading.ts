@@ -1,124 +1,130 @@
 import gsap from "gsap"
-import { applyStyles, elem } from "./helpers/utils"
-import disabledScroll from "./helpers/disabled-scroll"
-import { MIN_SIZE_PX } from "./helpers/const"
+// import { Utils } from './utils'
+import disabledScroll from "./disabled-scroll"
 
-export function loading() {
-    const animatorOne = elem(".animator--one")
-    const animatorTwo = elem(".animator--two")
-    const animatorThree = elem(".animator--three")
-    const animatorFour = elem(".animator--four")
+export class PageLoading {
+    private loadingTimeline: GSAPTimeline
+    private helloEnter: GSAPTween
+    private mouseEnter: GSAPTween
+    private circleEnter: GSAPTween
+    private playEnter: GSAPTween
 
-    const loadingTimeline = gsap.timeline({
-        repeat: -1,
-        paused: true,
-    })
+    constructor() {
+        this.loadingTimeline = gsap.timeline({
+            repeat: -1,
+            paused: true,
+        })
 
-    const helloEnter = gsap.from(".hello-message", {
-        opacity: 0,
-        scale: 0,
-        ease: "elastic.out",
-        duration: 1.5,
-        paused: true,
-        onComplete: () => {
-            disabledScroll.off()
-            helloEnter.kill()
-        }
-    })
-    const mouseEnter = gsap.to(".mouse", {
-        y: 0,
-        opacity: 1,
-        ease: 'back.out',
-        duration: 1,
-        paused: true,
-        onComplete: () => {
-            mouseEnter.kill()
-            elem('.loading-layer').remove()
-        }
-    })
+        this.helloEnter = gsap.from(".intro-heading", {
+            opacity: 0,
+            scale: 0,
+            ease: "elastic.out",
+            duration: 1.5,
+            paused: true,
+            onComplete: () => {
+                disabledScroll.off()
+                this.helloEnter.kill()
+            }
+        })
 
-    const playEnter = gsap.to(".playPause", {
-        scale: 1,
-        opacity: 1,
-        ease: 'elastic.out',
-        duration: 1,
-        // delay: 1,
-        paused: true,
-        onComplete: () => {
-            playEnter.kill()
-        }
-    })
+        this.mouseEnter = gsap.to(".mouse", {
+            y: 0,
+            opacity: 1,
+            ease: 'back.out',
+            duration: 1,
+            paused: true,
+            onComplete: () => {
+                this.mouseEnter.kill()
+            }
+        })
 
-    const circleEnter = gsap.to(".bg", {
-        scale: 1,
-        ease: 'power1.out',
-        stagger: 0.05,
-        paused: true,
-        onComplete: () => {
-            circleEnter.kill()
-        }
-    })
+        this.circleEnter = gsap.to(".bg", {
+            scale: 1,
+            ease: 'power1.out',
+            stagger: 0.05,
+            paused: true,
+            onComplete: () => {
+                this.circleEnter.kill()
+            }
+        })
 
-    loadingTimeline.to(animatorOne, {
-        "--width": "80vw",
-        duration: 1,
-    })
-    .to(animatorOne, {
-        "--width": MIN_SIZE_PX,
-        duration: 1,
-    })
+        this.playEnter = gsap.to(".playPause", {
+            scale: 1,
+            opacity: 1,
+            ease: 'elastic.out',
+            duration: 1,
+            // delay: 1,
+            paused: true,
+            onComplete: () => {
+                this.playEnter.kill()
+            }
+        })
 
-    loadingTimeline.play()
-    window.scrollTo(0, 0)
-    disabledScroll.on()
+    }
 
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            loadingTimeline.kill()
+    async init() {
+        this.loadingTimeline.to('.animator--one', {
+            "--width": "80vw",
+            duration: 1,
+        })
+        .to('.animator--one', {
+            "--width": '2px',
+            duration: 1,
+        })
 
-            const hideTimeline = gsap.timeline()
+        this.loadingTimeline.play()
+        window.scrollTo(0, 0)
+        disabledScroll.on()
 
-            hideTimeline.to(animatorOne, {
-                "--width": MIN_SIZE_PX,
-                duration: 1,
-            })
-            .to(".animator-container", {
-                x: 0,
-                y: "-25vh",
-                duration: 0.25,
-            })
-            .to(animatorTwo, {
-                "--height": "25vh",
-                y: "12.5vh",
-                duration: 0.25,
-            }, "<")
-            .to([animatorThree, animatorFour], {
-                rotate: 45,
-                duration: 0,
-            })
-            .to([animatorOne, animatorThree], {
-                "--width": "14px",
-            })
-            .to([animatorTwo, animatorFour], {
-                "--height": "14px",
-                y: 0,
-                onComplete: () => {
-                    if (window.scrollY < 10) {
-                        helloEnter.play()
-                        mouseEnter.play()
-                        playEnter.play()
-                        circleEnter.play()
+        return new Promise((resolve) => {
+            setTimeout(() => {
+                this.loadingTimeline.kill()
+
+                const hideTimeline = gsap.timeline()
+
+                hideTimeline.to('.animator--one', {
+                    "--width": '2px',
+                    duration: 1,
+                })
+                .to(".animator-container", {
+                    x: 0,
+                    y: "-25vh",
+                    duration: 0.25,
+                })
+                .to('.animator--two', {
+                    "--height": "25vh",
+                    y: "12.5vh",
+                    duration: 0.25,
+                }, "<")
+                .to(['.animator--three', '.animator--four'], {
+                    rotate: 45,
+                    duration: 0,
+                })
+                .to(['.animator--one', '.animator--three'], {
+                    "--width": "14px",
+                })
+                .to(['.animator--two', '.animator--four'], {
+                    "--height": "14px",
+                    y: 0,
+                    onComplete: () => {
+                        if (window.scrollY < 10) {
+                            this.helloEnter.play()
+                            this.mouseEnter.play()
+                            this.playEnter.play()
+                            this.circleEnter.play()
+                        }
+                        resolve(true)
                     }
-                    resolve(true)
-                }
-            }, "<")
-            .to(".section--loading", {
-                opacity: 0,
-                onComplete: () => {
-                    applyStyles(".section--fixed", { zIndex: 2 })
-                    hideTimeline.kill()
-                }
-            })
-        }, 1000)
-    })
+                }, "<")
+                .to(".page-loading", {
+                    opacity: 0,
+                    onComplete: () => {
+                        // Utils.applyStyles(".section--fixed", { zIndex: 2 })
+                        hideTimeline.kill()
+                    }
+                })
+            }, 1000)
+        })
+    }
+
 }

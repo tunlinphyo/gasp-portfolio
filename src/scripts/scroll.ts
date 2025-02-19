@@ -1,7 +1,8 @@
 import gsap from "gsap"
 import ScrollTrigger from "gsap/ScrollTrigger"
 import { Observer } from "gsap/Observer"
-import { addClass, dataSet, elem, hasClass, removeClass, toggleClass } from "./helpers/utils"
+// import { addClass, dataSet, elem, hasClass, removeClass, toggleClass } from "./helpers/utils"
+import { Utils } from './utils';
 
 interface AutoScrollerConfig {
     initialDirection?: number | string
@@ -21,7 +22,7 @@ export class AutoScroller {
     private touchStartY: number = 0
 
     constructor(config: AutoScrollerConfig = {}) {
-        this.button = elem<HTMLButtonElement>('.playPause')
+        this.button = Utils.elem<HTMLButtonElement>('.playPause')
         this.moveDirection = config.initialDirection ?? "max"
         this.stopDelay = config.stopDelay ?? 0.25
         this.scrollSpeed = config.scrollSpeed ?? 350
@@ -88,11 +89,11 @@ export class AutoScroller {
         })
 
         this.button.addEventListener('click', () => {
-            if (hasClass(this.button, 'disabled')) return
+            if (Utils.hasClass(this.button, 'disabled')) return
 
-            addClass(this.button, 'disabled')
+            Utils.addClass(this.button, 'disabled')
             setTimeout(() => {
-                removeClass(this.button, 'disabled')
+                Utils.removeClass(this.button, 'disabled')
             }, 500)
 
             if (this.isPlaying) {
@@ -146,7 +147,7 @@ export class AutoScroller {
         this.isPlaying = true
         this.updateButton()
         window.umami.track('Animation', { type: 'play' })
-        if (!keyboard) dataSet(".cursor", { text: 'pause' })
+        if (!keyboard) Utils.dataSet(".cursor", { text: 'pause' })
     }
 
     private pause(keyboard: boolean = false): void {
@@ -156,12 +157,12 @@ export class AutoScroller {
         this.isPlaying = false
         this.updateButton()
         window.umami.track('Animation', { type: 'pause' })
-        if (!keyboard) dataSet(".cursor", { text: 'play' })
+        if (!keyboard) Utils.dataSet(".cursor", { text: 'play' })
     }
 
     private updateButton() {
-        toggleClass(this.button, 'scrolling', this.isPlaying)
-        dataSet(this.button, { cursor: this.isPlaying ? 'pause' : 'play' })
+        Utils.toggleClass(this.button, 'scrolling', this.isPlaying)
+        Utils.dataSet(this.button, { cursor: this.isPlaying ? 'pause' : 'play' })
     }
 
     public destroy(): void {

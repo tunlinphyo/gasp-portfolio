@@ -7,5 +7,11 @@
 @import url(./styles/theme.css) layer(theme);
 @import url(./styles/utils.css) layer(utils);
 
-@import url(./styles/components.css) layer(component);
+@import url(./styles/intro.component.css) layer(component);
+@import url(./styles/about.component.css) layer(component);
+@import url(./styles/technical.component.css) layer(component);
+@import url(./styles/project.component.css) layer(component);
+@import url(./styles/contact.component.css) layer(component);
+
+@import url(./styles/cursor.css) layer(overwrite);
 @import url(./styles/overwrite.css) layer(overwrite);

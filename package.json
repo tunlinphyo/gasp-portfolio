@@ -1,5 +1,5 @@
 {
-  "name": "tlp-portfolio",
+  "name": "portfolio-2025",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -9,13 +9,13 @@
     "preview": "vite preview"
   },
   "devDependencies": {
-    "typescript": "^5.2.2",
-    "vite": "^5.0.8"
+    "typescript": "~5.7.2",
+    "vite": "^6.1.0"
   },
   "dependencies": {
     "@types/p5": "^1.7.6",
-    "gsap": "^3.12.5",
-    "p5": "^1.11.2",
+    "gsap": "^3.12.7",
+    "p5": "^1.11.3",
     "split-type": "^0.3.4"
   }
 }
