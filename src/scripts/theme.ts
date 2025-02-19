@@ -1,4 +1,4 @@
-import { Utils } from "./utils";
+// import { Utils } from "./utils"
 
 export class ThemeManager {
     private root: HTMLElement
@@ -14,7 +14,7 @@ export class ThemeManager {
 
     removeDark() {
         this.root.dataset.schema = 'light';
-        const prefersDarkMode = Utils.isMedia('(prefers-color-scheme: dark)')
+        // const prefersDarkMode = Utils.isMedia('(prefers-color-scheme: dark)')
         window.firework = false // prefersDarkMode
     }
 
