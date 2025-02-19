@@ -64,7 +64,7 @@ window.onload = async () => {
     BrowserCheck.runIfComputerBrowser(async () => {
         await Utils.wait(1000)
 
-        const season = Season.SUMMER // JapanSeason.getCurrentSeason()
+        const season =  JapanSeason.getCurrentSeason()
         const mainEl = Utils.elem('.page-main')
 
         switch (season) {
