@@ -336,7 +336,7 @@
 
         .projectIntro-container {
             padding-inline: clamp(1.5rem, 6vw, 6rem);
-            padding-block: clamp(3rem, 5vw, 5rem);
+            padding-block: clamp(5rem, 10vw, 10rem);
             border-bottom: 2px solid var(--border-color);
         }
 
@@ -377,12 +377,16 @@
             }
 
             .projectNumber-container {
-                display: none;
+                /* display: none; */
+                .projectNumber {
+                    scale: 1;
+                    font-size: clamp(2rem, 10vw, 10rem);
+                }
             }
 
             .projects {
                 overflow: initial;
-                /* min-height: 50vh; */
+                min-height: 40vh;
                 align-items: flex-start;
 
                 .project {

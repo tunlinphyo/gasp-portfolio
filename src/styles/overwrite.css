@@ -40,7 +40,7 @@
             --fg-color: #fff;
             --link-color: #7a3a7c;
             --border-color: #9996;
-            --card-filter: blur(20px) brightness(150%);
+            --card-filter: blur(30px) brightness(150%);
             --outline-link-fg: #fff;
 
             --l-1: #5c2e68;
@@ -67,12 +67,6 @@
             background-color: inherit;
             padding-block-start: 25vh;
             padding-inline: 8px;
-
-            background-color: black;
-            background-image: radial-gradient(white 2px, transparent 2px),
-                                radial-gradient(white 2px, transparent 2px);
-            background-size: 100px 100px, 150px 150px;
-            background-position: 0 0, 50px 50px;
 
             @media (min-width: 840px) {
                 padding-block-end: 20px;
