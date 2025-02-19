@@ -5,13 +5,15 @@
 
 @import url(./styles/reset.css) layer(reset);
 @import url(./styles/theme.css) layer(theme);
-@import url(./styles/utils.css) layer(utils);
 
-@import url(./styles/intro.component.css) layer(component);
-@import url(./styles/about.component.css) layer(component);
-@import url(./styles/technical.component.css) layer(component);
-@import url(./styles/project.component.css) layer(component);
-@import url(./styles/contact.component.css) layer(component);
+@import url(./styles/utils/utils.css) layer(utils);
+@import url(./styles/utils/dialog.css) layer(utils);
+
+@import url(./styles/components/intro.css) layer(component);
+@import url(./styles/components/about.css) layer(component);
+@import url(./styles/components/technical.css) layer(component);
+@import url(./styles/components/projects.css) layer(component);
+@import url(./styles/components/contact.css) layer(component);
 
 @import url(./styles/cursor.css) layer(overwrite);
 @import url(./styles/overwrite.css) layer(overwrite);

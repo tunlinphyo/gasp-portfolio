@@ -1,50 +1,7 @@
+@import url(./project-intro.css);
+
 .page--project {
     /* display: none; */
-
-    .projectIntro-container {
-        grid-column: body;
-        grid-row: body;
-
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: flex-start;
-        gap: 1.5rem;
-
-        .projectIntro-heading {
-            font-size: clamp(2.2rem, 8vw, 7rem);
-            line-height: 1.2;
-            border-radius: 4px;
-
-            &:focus {
-                outline: 3px solid var(--outline-color);
-                outline-offset: 10px;
-            }
-        }
-
-        .projectIntro-message-container {
-            display: grid;
-            grid-template-areas: message;
-
-            width: 95%;
-            max-width: 500px;
-
-            & p,
-            .p {
-                grid-area: message;
-            }
-
-            .p {
-                .line {
-                    pointer-events: none;
-                }
-            }
-
-            & p {
-                color: transparent;
-            }
-        }
-    }
 
     .project-container {
         --size: max(10vh, 80px);
@@ -332,14 +289,7 @@
 @media (prefers-reduced-motion: reduce) {
     .page--project {
         display: block;
-        /* padding-block: clamp(3rem, 5vw, 5rem); */
-
-        .projectIntro-container {
-            padding-inline: clamp(1.5rem, 6vw, 6rem);
-            padding-block: clamp(5rem, 10vw, 10rem);
-            border-bottom: 2px solid var(--border-color);
-        }
-
+        
         .project-container {
             padding-block: clamp(3rem, 8vw, 8rem);
             gap: 24px 0;

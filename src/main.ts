@@ -16,11 +16,11 @@ import { App } from "./scripts"
 import { UmamiAnalytics } from "./scripts/umami"
 import { LogoRotator } from "./scripts/logo"
 import { ReducedMotionListener } from "./scripts/reduce-motion"
-import { BrowserCheck } from "./scripts/browser"
 import { Utils } from './scripts/utils'
-import p5 from "p5"
-import { JapanSeason, Season } from "./scripts/season"
-import { fallSketch, fireworkSketch, sakuraSketch, snowSketch } from "./scripts/p5"
+// import { BrowserCheck } from "./scripts/browser"
+// import p5 from "p5"
+// import { JapanSeason, Season } from "./scripts/season"
+// import { fallSketch, fireworkSketch, sakuraSketch, snowSketch } from "./scripts/p5"
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
 
@@ -59,33 +59,33 @@ window.onload = async () => {
     App.trackContactClick()
     App.animateHoverElemets()
 
-    window.firework = false
+    // window.firework = false
 
-    BrowserCheck.runIfComputerBrowser(async () => {
-        await Utils.wait(1000)
+    // BrowserCheck.runIfComputerBrowser(async () => {
+    //     await Utils.wait(1000)
 
-        const season =  JapanSeason.getCurrentSeason()
-        const mainEl = Utils.elem('.page-main')
+    //     const season =  JapanSeason.getCurrentSeason()
+    //     const mainEl = Utils.elem('.page-main')
 
-        switch (season) {
-            case Season.SPRING:
-                document.body.classList.add('spring')
-                new p5(sakuraSketch, mainEl)
-                break
-            case Season.SUMMER:
-                document.body.classList.add('summer')
-                new p5(fireworkSketch, mainEl)
-                break
-            case Season.AUTUMN:
-                document.body.classList.add('autumn')
-                new p5(fallSketch, mainEl)
-                break
-            case Season.WINTER:
-                document.body.classList.add('winter')
-                new p5(snowSketch, mainEl)
-                break
-            default:
-                break
-        }
-    })
+    //     switch (season) {
+    //         case Season.SPRING:
+    //             document.body.classList.add('spring')
+    //             new p5(sakuraSketch, mainEl)
+    //             break
+    //         case Season.SUMMER:
+    //             document.body.classList.add('summer')
+    //             new p5(fireworkSketch, mainEl)
+    //             break
+    //         case Season.AUTUMN:
+    //             document.body.classList.add('autumn')
+    //             new p5(fallSketch, mainEl)
+    //             break
+    //         case Season.WINTER:
+    //             document.body.classList.add('winter')
+    //             new p5(snowSketch, mainEl)
+    //             break
+    //         default:
+    //             break
+    //     }
+    // })
 }
