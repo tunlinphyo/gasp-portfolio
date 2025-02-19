@@ -1,6 +1,6 @@
 @counter-style happy-list {
     system: cyclic;
-    symbols: "🤙" "📫" "🤝" "🧑‍💻";
+    symbols: "🤙""📫""🤝""🧑‍💻";
     suffix: "  ";
 }
 
@@ -38,31 +38,27 @@
             --bg-color: #000;
             --bg-accent-color: #262d37;
             --fg-color: #fff;
-            --link-color: #7a3a7c;
+            --link-color: #5c135c;
             --border-color: #9996;
-            --card-filter: blur(30px) brightness(150%);
+            --card-filter: blur(25px) brightness(150%);
             --outline-link-fg: #fff;
 
-            --l-1: #5c2e68;
-            --l-2: #4E2757;
-            --l-3: #351736;
-            --l-4: #29122A;
-            --l-5: #1F0D1E;
-            --l-6: #140713;
-            --l-7: #000000;
-
-            --l-1: #5C2E68;
-            --l-2: #482454;
-            --l-3: #351A40;
-            --l-4: #26122F;
-            --l-5: #190A1F;
-            --l-6: #0C0410;
+            --l-1: #430D4B;
+            --l-2: #350A3B;
+            --l-3: #28082D;
+            --l-4: #1C061F;
+            --l-5: #120415;
+            --l-6: #09020A;
             --l-7: #000000;
         }
     }
 
     html {
         background-color: var(--bg-color);
+
+        scrollbar-width: thin;
+        scrollbar-color: var(--link-color) var(--bg-color);
+
         body {
             background-color: inherit;
             padding-block-start: 25vh;
@@ -120,5 +116,3 @@
         }
     }
 }
-
-

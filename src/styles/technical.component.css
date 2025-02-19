@@ -168,7 +168,7 @@
         display: block;
 
         .techIntro-container {
-            padding-block: clamp(3rem, 6vw, 6rem);
+            padding-block: clamp(3rem, 8vw, 8rem);
             border-bottom: 2px solid var(--border-color);
 
             grid-template-columns:
@@ -238,6 +238,8 @@
                 ;
 
                 .techList-group {
+                    padding-block: clamp(1rem, 4vw, 4rem);
+
                     &.frameworks-group,
                     &.languages-group {
                         grid-row: top;

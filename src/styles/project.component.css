@@ -234,7 +234,7 @@
 
                     &:focus {
                         outline: 3px solid var(--outline-color);
-                        outline-offset: 10px;
+                        outline-offset: 5px;
                     }
                 }
             }
@@ -341,7 +341,7 @@
         }
 
         .project-container {
-            padding-block: clamp(3rem, 6vw, 6rem);
+            padding-block: clamp(3rem, 8vw, 8rem);
             gap: 24px 0;
 
             grid-template-rows: 1fr var(--size);
