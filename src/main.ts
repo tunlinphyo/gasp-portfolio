@@ -42,8 +42,7 @@ window.onload = async () => {
         return
     }
 
-    const loading = new PageLoading()
-    await loading.init()
+    await (new PageLoading()).init()
     new Cursor()
     new LogoRotator(".scroll-trigger")
 
