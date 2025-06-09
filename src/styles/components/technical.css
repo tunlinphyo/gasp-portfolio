@@ -25,9 +25,17 @@
                 display: inline-block;
                 font-size: clamp(2.2rem, 8vw, 7rem);
                 line-height: 1.2;
-                font-weight: bold;
+                font-weight: 600;
                 color: var(--title-color);
             }
+
+            /* .h2 {
+                .char {
+                    &:first-child {
+                        color: hotpink;
+                    }
+                }
+            } */
 
             h2 {
                 color: transparent;
@@ -42,6 +50,7 @@
 
         .techIntro-list {
             grid-column: body;
+            list-style: none;
 
             @media (min-width: 768px) {
                 grid-column: right;
@@ -52,6 +61,17 @@
 
             & li {
                 margin-bottom: 1vh;
+                font-weight: 400;
+
+                & p {
+                    &::first-letter {
+                        font-weight: 600;
+                        color: var(--link-color);
+                        /* -webkit-initial-letter: 2;
+                        initial-letter: 2;
+                        margin-right: .5em; */
+                    }
+                }
             }
         }
     }
@@ -110,7 +130,7 @@
                     grid-area: subheading;
                     font-size: clamp(2rem, 5vw, 5rem);
                     border-radius: 4px;
-                    font-weight: bold;
+                    font-weight: 600;
                     color: var(--title-color);
                 }
 

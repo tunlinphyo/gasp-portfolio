@@ -121,9 +121,9 @@
                         display: inline-block;
                         font-size: clamp(2rem, 5vw, 5rem);
                         line-height: 1.2;
-                        color: var(--link-color);
+                        /* color: var(--link-color); */
                         border-radius: 4px;
-                        font-weight: bold;
+                        font-weight: 600;
 
                         &:focus {
                             outline: 3px solid var(--outline-color);
@@ -152,6 +152,14 @@
                     text-wrap: pretty;
                     padding-left: 6vw;
 
+                    &::first-letter {
+                        -webkit-initial-letter: 2;
+                        initial-letter: 2;
+                        font-weight: 600;
+                        margin-right: .5em;
+                        color: var(--link-color);
+                    }
+
                     > a {
                         color: var(--link-color);
                         text-decoration: none;
@@ -168,6 +176,10 @@
                         &:focus {
                             outline: 2px solid var(--outline-color);
                             outline-offset: 2px;
+
+                            & .arrow path {
+                                stroke-dashoffset: 0px !important;
+                            }
                         }
                     }
                 }
@@ -243,6 +255,10 @@
                 &:focus {
                     outline: 3px solid var(--outline-color);
                     outline-offset: 5px;
+
+                    & .arrow path {
+                        stroke-dashoffset: 0px !important;
+                    }
                 }
 
                 &::before {
@@ -268,6 +284,10 @@
                     .icon {
                         transform: scale(1, 1) !important;
                     }
+
+                    & .arrow path {
+                        stroke-dashoffset: 0px !important;
+                    }
                 }
             }
 
@@ -289,7 +309,7 @@
 @media (prefers-reduced-motion: reduce) {
     .page--project {
         display: block;
-        
+
         .project-container {
             padding-block: clamp(3rem, 8vw, 8rem);
             gap: 24px 0;

@@ -11,13 +11,26 @@
         align-items: center;
 
         text-align: center;
+        /* color: blueviolet; */
 
         .intro-heading {
             font-size: clamp(2.5rem, 14vw, 14rem);
             line-height: 1.5;
+            font-weight: 800;
+
+            color: transparent;
+            -webkit-text-stroke: clamp(1px, 0.2vw, 4px) var(--fg-accent-color);
+            background: none;
+
+            background: linear-gradient(90deg, transparent 44%, light-dark(var(--c-1), var(--link-color)) 50%, transparent 56%, transparent 100%);
+            background-size: 250%;
+            background-position: right;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: moveGradient 8s linear infinite;
 
             > span {
-                color: var(--link-color);
+                color: var(--c-2);
             }
         }
     }
@@ -58,4 +71,13 @@
     .page--intro {
         display: none;
     }
+}
+
+@keyframes moveGradient {
+  0% {
+    background-position: right;
+  }
+  100% {
+    background-position: left;
+  }
 }

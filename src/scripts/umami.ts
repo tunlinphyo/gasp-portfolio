@@ -1,6 +1,9 @@
 export class UmamiAnalytics {
     constructor(websiteSrc?: string, websiteId?: string) {
         if (websiteSrc && websiteId) this.loadScript(websiteSrc, websiteId)
+        else window.umami = {
+            track() {}
+        }
     }
 
     private loadScript(websiteSrc: string, websiteId: string): void {

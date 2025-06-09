@@ -24,9 +24,17 @@
                     font-size: clamp(2.2rem, 8vw, 7rem);
                     line-height: 1.2;
                     border-radius: 4px;
-                    font-weight: bold;
+                    font-weight: 600;
                     color: var(--title-color);
                 }
+
+                /* .h2 {
+                    .char {
+                        &:first-child {
+                            color: hotpink;
+                        }
+                    }
+                } */
 
                 & h2 {
                     color: transparent;

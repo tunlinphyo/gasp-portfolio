@@ -126,7 +126,7 @@ export class KeyboardHandler {
 
             const key = event.key
             if (this.modalEl.open) {
-                if (key === "s") {
+                if (key === "s" || key === "Meta") {
                     this.modalEl.close()
                 }
                 return
@@ -139,6 +139,8 @@ export class KeyboardHandler {
                     this.project.renderProject("next")
                 }
             }
+
+            console.log('KEY', key)
 
             if (key === "k") {
                 this.scroll.toggle(true)
@@ -154,7 +156,7 @@ export class KeyboardHandler {
                 this.pTitle.focus()
             } else if (key === "c") {
                 this.contactEl.focus()
-            } else if (key === "s") {
+            } else if (key === "s" || key === "Meta") {
                 this.modalEl.showModal()
             }
         })

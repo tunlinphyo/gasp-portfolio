@@ -24,7 +24,7 @@
             .h2 {
                 grid-area: title;
                 font-size: clamp(2rem, 9vw, 7rem);
-                font-weight: bold;
+                font-weight: 600;
                 line-height: 1.5;
                 color: var(--title-color);
             }
@@ -34,6 +34,10 @@
                     transform-origin: bottom left;
                     opacity: 0;
                     scale: 0.5 0;
+
+                    /* &:first-child {
+                        color: hotpink;
+                    } */
                 }
             }
 
