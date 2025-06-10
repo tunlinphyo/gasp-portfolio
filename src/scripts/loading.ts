@@ -1,6 +1,7 @@
 import gsap from "gsap"
 // import { Utils } from './utils'
 import disabledScroll from "./disabled-scroll"
+import { Utils } from "./utils"
 
 export class PageLoading {
     private loadingTimeline: GSAPTimeline
@@ -24,6 +25,7 @@ export class PageLoading {
             onComplete: () => {
                 disabledScroll.off()
                 this.helloEnter.kill()
+                Utils.addClass('.intro-heading', 'with-animation')
             }
         })
 

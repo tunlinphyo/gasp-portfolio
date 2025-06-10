@@ -78,13 +78,13 @@
         --modal-backdrop: #16181c;
         --modal-filter: blur(15px) brightness(150%);
 
-        --c-1: #040406;
-        --c-2: #0b0c0d;
-        --c-3: #101215;
-        --c-4: #16181c;
-        --c-5: #1c1f24;
-        --c-6: #21262c;
-        --c-7: #272c34;
+        --c-1: #0a0b0d;
+        --c-2: #121415;
+        --c-3: #181a1d;
+        --c-4: #1e2125;
+        --c-5: #24282d;
+        --c-6: #2a2f36;
+        --c-7: #30363f;
     }
 
     @media (prefers-color-scheme: dark) {

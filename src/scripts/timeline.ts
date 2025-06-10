@@ -80,10 +80,12 @@ export class Timeline {
             onComplete: () => {
                 console.log('ON_SET_LIGHT')
                 this.theme.setLight()
+                Utils.removeClass('.intro-heading', 'with-animation')
             },
             onReverseComplete: () => {
                 console.log('REV_REMOVE_LIGHT')
                 this.theme.removeLight()
+                Utils.addClass('.intro-heading', 'with-animation')
             }
         }, "introHide")
     }

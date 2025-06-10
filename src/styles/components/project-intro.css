@@ -14,9 +14,9 @@
             line-height: 1.2;
             border-radius: 4px;
 
-            /* &::first-letter {
-                color: hotpink;
-            } */
+            &::first-letter {
+                color: var(--link-color);
+            }
 
             &:focus {
                 outline: 3px solid var(--outline-color);

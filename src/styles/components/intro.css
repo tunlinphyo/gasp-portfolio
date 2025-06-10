@@ -16,18 +16,25 @@
         .intro-heading {
             font-size: clamp(2.5rem, 14vw, 14rem);
             line-height: 1.5;
-            font-weight: 800;
+            font-weight: 700;
+            /* font-family: 'Times New Roman', Times, serif; */
 
             color: transparent;
-            -webkit-text-stroke: clamp(1px, 0.2vw, 4px) var(--fg-accent-color);
+            -webkit-text-stroke: clamp(1px, 0.25vw, 5px) var(--fg-color);
             background: none;
+            /* text-shadow: 2px 2px 4px #000; */
+            /* filter: drop-shadow(2px 2px 4px #000); */
 
-            background: linear-gradient(90deg, transparent 44%, light-dark(var(--c-1), var(--link-color)) 50%, transparent 56%, transparent 100%);
+            /* background: linear-gradient(90deg, var(--fg-color) 45%, var(--c-3) 50%, var(--fg-color) 55% 100%); */
+            background: radial-gradient(circle at center, var(--c-3), var(--fg-color) 10% 100%);
             background-size: 250%;
             background-position: right;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: moveGradient 8s linear infinite;
+
+            &.with-animation {
+                animation: moveGradient 10s linear infinite;
+            }
 
             > span {
                 color: var(--c-2);

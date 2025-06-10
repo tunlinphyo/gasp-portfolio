@@ -61,6 +61,7 @@
                     display: flex;
                     justify-content: center;
                     align-items: flex-end;
+                    font-family: 'Times New Roman', Times, serif;
                 }
             }
         }
@@ -158,6 +159,7 @@
                         font-weight: 600;
                         margin-right: .5em;
                         color: var(--link-color);
+                        font-family: 'Times New Roman', Times, serif;
                     }
 
                     > a {

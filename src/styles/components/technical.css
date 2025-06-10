@@ -29,13 +29,13 @@
                 color: var(--title-color);
             }
 
-            /* .h2 {
+            .h2 {
                 .char {
                     &:first-child {
-                        color: hotpink;
+                        color: var(--link-color);
                     }
                 }
-            } */
+            }
 
             h2 {
                 color: transparent;
