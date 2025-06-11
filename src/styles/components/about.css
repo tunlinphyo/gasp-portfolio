@@ -35,11 +35,9 @@
                     opacity: 0;
                     scale: 0.5 0;
 
-                    /* text-shadow: 2px 2px 4px #000; */
-
-                    &:first-child {
+                    /* &:first-child {
                         color: var(--link-color);
-                    }
+                    } */
                 }
             }
 
@@ -47,7 +45,7 @@
                 color: transparent;
                 border-radius: 4px;
 
-                &:focus {
+                &:focus-visible {
                     outline: 3px solid var(--outline-color);
                     outline-offset: 10px;
                 }

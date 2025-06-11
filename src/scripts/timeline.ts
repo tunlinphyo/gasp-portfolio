@@ -80,12 +80,10 @@ export class Timeline {
             onComplete: () => {
                 console.log('ON_SET_LIGHT')
                 this.theme.setLight()
-                Utils.removeClass('.intro-heading', 'with-animation')
             },
             onReverseComplete: () => {
                 console.log('REV_REMOVE_LIGHT')
                 this.theme.removeLight()
-                Utils.addClass('.intro-heading', 'with-animation')
             }
         }, "introHide")
     }
@@ -282,6 +280,7 @@ export class Timeline {
             strokeDashoffset: 0,
             duration: 1,
             onStart: () => {
+                showImages()
                 this.controlBtns.forEach(elem => {
                     elem.removeAttribute("disabled")
                 })
@@ -290,6 +289,7 @@ export class Timeline {
                 Utils.updateInert(".project-link", false)
             },
             onReverseComplete: () => {
+                hideImages()
                 this.controlBtns.forEach(elem => {
                     elem.setAttribute("disabled", "disabled")
                 })
@@ -306,6 +306,7 @@ export class Timeline {
         .to(".arrow path", {
             strokeDashoffset: 100,
             onReverseComplete: () => {
+                showImages()
                 this.controlBtns.forEach(elem => {
                     elem.removeAttribute("disabled")
                 })
@@ -319,6 +320,7 @@ export class Timeline {
             strokeDashoffset: 100,
             duration: 1,
             onComplete: () => {
+                hideImages()
                 this.controlBtns.forEach(elem => {
                     elem.setAttribute("disabled", "disabled")
                 })
@@ -429,7 +431,7 @@ export class Timeline {
         .to(".animator-container", { x: "-50vw" }, "<")
         .to(animatorThree, { width: MIN_SIZE, duration: 1 }, ">")
         .to(animatorThree, { width: "200vw", duration: 1 }, ">")
-        .to(".animator-container", { x: "50vw" }, ">")
+        .to(".animator-container", { x: "45vw" }, ">")
         .to(animatorThree, { width: MIN_SIZE, duration: 1 }, ">")
         .to(animatorFour, { height: "100vmax" }, ">")
         .to(".animator-container", { y: 0 }, "<")
@@ -592,4 +594,12 @@ export class Timeline {
     private isLandscape() {
         return Utils.isMedia("(orientation: landscape)")
     }
+}
+
+function showImages() {
+    // Utils.addClass('.projectImages', 'show')
+}
+
+function hideImages() {
+    // Utils.removeClass('.projectImages', 'show')
 }

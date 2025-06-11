@@ -9,7 +9,7 @@
         grid-template-columns: subgrid;
         grid-template-rows: auto 1fr;
 
-        padding-block: max(7vh, 40px);
+        padding-block: max(5vh, 40px);
 
         .techIntro-heading-container {
             grid-column: body;
@@ -17,7 +17,7 @@
             display: grid;
             grid-template-areas: heading;
             justify-content: flex-start;
-            padding-block-end: 2rem;
+            padding-block-end: 1rem;
 
             & h2,
             .h2 {
@@ -29,19 +29,19 @@
                 color: var(--title-color);
             }
 
-            .h2 {
+            /* .h2 {
                 .char {
                     &:first-child {
                         color: var(--link-color);
                     }
                 }
-            }
+            } */
 
             h2 {
                 color: transparent;
                 border-radius: 4px;
 
-                &:focus {
+                &:focus-visible {
                     outline: 3px solid var(--outline-color);
                     outline-offset: 10px;
                 }
@@ -51,6 +51,7 @@
         .techIntro-list {
             grid-column: body;
             list-style: none;
+            padding-inline-start: 1.5rem;
 
             @media (min-width: 768px) {
                 grid-column: right;
@@ -60,16 +61,20 @@
             }
 
             & li {
-                margin-bottom: 1vh;
                 font-weight: 400;
 
                 & p {
-                    &::first-letter {
-                        font-weight: 600;
+                    display: grid;
+                    grid-template-columns: 1.5em 1fr;
+                    justify-content: flex-start;
+                    align-items: baseline;
+
+                    & > span {
+                        font-weight: 800;
+                        font-size: 1.5em;
                         color: var(--link-color);
-                        /* -webkit-initial-letter: 2;
-                        initial-letter: 2;
-                        margin-right: .5em; */
+                        text-align: center;
+                        translate: 0 2px;
                     }
                 }
             }
@@ -134,11 +139,17 @@
                     color: var(--title-color);
                 }
 
+                /* .h3 {
+                    .char:first-child {
+                        color: var(--link-color);
+                    }
+                } */
+
                 & h3 {
                     color: transparent;
                     border-radius: 4px;
 
-                    &:focus {
+                    &:focus-visible {
                         outline: 3px solid var(--outline-color);
                         outline-offset: 10px;
                     }

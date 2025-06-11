@@ -1,0 +1,59 @@
+.shortcuts-modal {
+    & form {
+        display: flex;
+        justify-content: flex-end;
+
+        & button {
+            width: 36px;
+            height: 36px;
+            background: none;
+            border: none;
+            border-radius: 50px;
+            padding: 0;
+            color: var(--fg-color);
+            cursor: pointer;
+
+            &:focus-visible {
+                outline: 2px solid var(--outline-color);
+                outline-offset: 5px;
+            }
+        }
+    }
+
+    .shortcuts-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: stretch;
+        padding: 20px;
+        gap: 5px;
+
+        .shortcuts-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            color: var(--fg-color);
+
+            .key {
+                flex-shrink: 0;
+                display: inline-flex;
+                width: 40px;
+                height: 40px;
+                border: 1px solid #bbb;
+                border-radius: 5px;
+                display: grid;
+                place-content: center;
+                background-color: var(--bg-color);
+                color: var(--fg-color);
+
+                &.key--auto {
+                    width: initial;
+                    padding-inline: 10px;
+                    white-space: nowrap;
+                }
+            }
+        }
+    }
+}

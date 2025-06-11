@@ -25,8 +25,7 @@
             /* text-shadow: 2px 2px 4px #000; */
             /* filter: drop-shadow(2px 2px 4px #000); */
 
-            /* background: linear-gradient(90deg, var(--fg-color) 45%, var(--c-3) 50%, var(--fg-color) 55% 100%); */
-            background: radial-gradient(circle at center, var(--c-3), var(--fg-color) 10% 100%);
+            /* background: radial-gradient(circle at center, var(--link-color), transparent 10% 100%);
             background-size: 250%;
             background-position: right;
             -webkit-background-clip: text;
@@ -34,10 +33,10 @@
 
             &.with-animation {
                 animation: moveGradient 10s linear infinite;
-            }
+            } */
 
             > span {
-                color: var(--c-2);
+                color: var(--link-color);
             }
         }
     }

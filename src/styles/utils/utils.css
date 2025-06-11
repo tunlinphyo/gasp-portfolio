@@ -1,3 +1,9 @@
+@import url(./animations.css);
+@import url(./dialog.css);
+@import url(./logo.css);
+@import url(./backgrounds.css);
+@import url(./shortcut-modal.css);
+
 html, body {
     inline-size: 100%;
     min-block-size: 100%;
@@ -17,252 +23,6 @@ body {
         position: fixed;
         z-index: -2;
         opacity: 0;
-    }
-
-    .logo {
-        --size: 90px;
-        --font-size: .85rem;
-        position: fixed;
-        z-index: 9;
-        inset: 0;
-
-        display: flex;
-        justify-content: center;
-        align-items: flex-start;
-        /* overflow: hidden; */
-
-        pointer-events: none;
-        translate: 0 -100px;
-
-        @media (min-width: 992px) {
-            --size: 110px;
-            --font-size: .9rem;
-        }
-
-        .logo-container {
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            pointer-events: auto;
-
-            &::before {
-                content: '';
-                display: block;
-                position: absolute;
-                z-index: 0;
-                inline-size: calc(var(--size) + 4px);
-                block-size: calc(var(--size) + 4px);
-                background-color: var(--l-0);
-                border-radius: 50%;
-
-                transition: background-color .2s ease;
-
-                box-shadow: rgba(50, 50, 93, 0.1) 0px 0px 12px -2px, rgba(0, 0, 0, 0.1) 0px 0px 7px -3px;
-            }
-
-            /* &:hover {
-                &::before {
-                    background-color: var(--fg-color);
-                }
-                > div {
-                    color: var(--bg-color);
-                }
-            } */
-
-            > div {
-                pointer-events: none;
-                position: absolute;
-                z-index: 1;
-                text-transform: uppercase;
-                display: inline-block;
-                font-size: var(--font-size);
-                font-weight: 600;
-                height: var(--size);
-                transform-origin: center;
-                opacity: .6;
-                /* font-family: 'Times New Roman', Times, serif; */
-
-                &:nth-child(1) {
-                    rotate: -80deg;
-                }
-                &:nth-child(2) {
-                    rotate: -50deg;
-                }
-                &:nth-child(3) {
-                    rotate: -20deg;
-                }
-                &:nth-child(4) {
-                    rotate: 20deg;
-                }
-                &:nth-child(5) {
-                    rotate: 50deg;
-                }
-                &:nth-child(6) {
-                    rotate: 80deg;
-                }
-                &:nth-child(7) {
-                    rotate: 120deg;
-                }
-                &:nth-child(8) {
-                    rotate: 150deg;
-                }
-                &:nth-child(9) {
-                    rotate: 180deg;
-                }
-                &:nth-child(10) {
-                    rotate: 210deg;
-                }
-                &:nth-child(11) {
-                    rotate: 240deg;
-                }
-            }
-        }
-    }
-
-    .background {
-        position: fixed;
-        z-index: 1;
-        inset: 0;
-        /* background-color: var(--bg-color); */
-
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        --w: 14vw;
-        --h: 14vh;
-        --color: var(--c-1);
-
-        background-image: url(https://i.ibb.co/nrmkm7d/five-bells-washed-out-logo.png);
-        background-size: 140%;
-        background-repeat: no-repeat;
-        background-position: center;
-
-        @media (prefers-reduced-motion: reduce) {
-            display: none;
-        }
-
-        .bg {
-            /* width: calc((var(--w) + var(--h)) * 0.5);
-            height: calc((var(--w) + var(--h)) * 0.5); */
-            width: max(var(--w), var(--h));
-            height: max(var(--w), var(--h));
-            border-radius: 100%;
-            position: absolute;
-            background-color: var(--color);
-            scale: 0;
-            /* box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; */
-
-            &.bg--two {
-                --w: 22vw;
-                --h: 22vh;
-                --color: var(--c-2);
-            }
-            &.bg--three {
-                --w: 34vw;
-                --h: 34vh;
-                --color: var(--c-3);
-            }
-            &.bg--four {
-                --w: 50vw;
-                --h: 50vh;
-                --color: var(--c-4);
-            }
-            &.bg--five {
-                --w: 74vw;
-                --h: 74vh;
-                --color: var(--c-5);
-            }
-            &.bg--six {
-                --w: 100vw;
-                --h: 100vh;
-                --color: var(--c-6);
-            }
-            &.bg--seven {
-                --w: 200vw;
-                --h: 200vh;
-                --color: var(--c-7);
-            }
-        }
-    }
-
-    .lights {
-        position: fixed;
-        z-index: 1;
-        inset: 0;
-        translate: 0 -75%;
-        /* opacity: 0; */
-
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        --h: 20vh;
-        --color: var(--l-1);
-
-        .light {
-            width: var(--h);
-            height: var(--h);
-            border-radius: 100%;
-            position: absolute;
-            background-color: var(--color);
-            scale: 0;
-
-            will-change: scale;
-
-            /* @media (orientation:landscape) {
-                width: calc((var(--w) + var(--h)) * 0.5);
-                height: calc((var(--w) + var(--h)) * 0.5);
-            } */
-
-            &.light--two {
-                --h: 32vh;
-                --color: var(--l-2);
-            }
-            &.light--three {
-                --h: 50vh;
-                --color: var(--l-3);
-            }
-            &.light--four {
-                --h: 75vh;
-                --color: var(--l-4);
-            }
-            &.light--five {
-                --h: 110vh;
-                --color: var(--l-5);
-            }
-            &.light--six {
-                --h: 160vh;
-                --color: var(--l-6);
-            }
-            &.light--seven {
-                --h: 250vh;
-                --color: var(--l-7);
-            }
-
-            @media (min-width: 992px) {
-                --h: 24vh;
-
-                &.light--two {
-                    --h: 36vh;
-                }
-                &.light--three {
-                    --h: 58vh;
-                }
-                &.light--four {
-                    --h: 86vh;
-                }
-                &.light--five {
-                    --h: 125vh;
-                }
-                &.light--six {
-                    --h: 180vh;
-                }
-                &.light--seven {
-                    --h: 260vh;
-                }
-            }
-
-        }
     }
 
     .page-main {
@@ -294,7 +54,7 @@ body {
                 cursor: pointer;
             }
 
-            &:focus {
+            &:focus-visible {
                 opacity: 1;
                 outline: 3px solid var(--outline-color);
                 outline-offset: 5px;
@@ -337,7 +97,7 @@ body {
                 border-color: var(--link-color);
             }
 
-            &:focus {
+            &:focus-visible {
                 outline: 3px solid var(--outline-color);
                 outline-offset: 5px;
             }
@@ -419,53 +179,6 @@ body {
         pointer-events: none;
     }
 
-    .animation {
-        position: fixed;
-        z-index: 6;
-        inset: 0;
-        pointer-events: none;
-
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        .animator-container {
-            position: absolute;
-            inset: 0;
-            /* translate: 0 -25vh; */
-
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            --tx: 0;
-            --ty: 0;
-            translate: var(--tx) var(--ty);
-
-            .animator {
-                --width: var(--min-size);
-                --height: var(--min-size);
-                position: absolute;
-                width: var(--width);
-                height: var(--height);
-                background-color: var(--accent-color);
-                border-radius: var(--min-size);
-                /* box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; */
-
-                /* backdrop-filter: invert(100%);
-                -webkit-backdrop-filter: invert(100%); */
-
-                will-change: width, height;
-
-                /* &.animator--three {
-                    background-color: cornflowerblue;
-                }
-                &.animator--four {
-                    background-color: hotpink;
-                } */
-            }
-        }
-    }
-
     .page-footer {
         position: fixed;
         z-index: 4;
@@ -490,7 +203,7 @@ body {
         }
     }
 
-    .visually-hidden:not(:focus):not(:active) {
+    .visually-hidden:not(:focus-visible):not(:active) {
         width: 1px;
         height: 1px;
         overflow: hidden;
@@ -544,66 +257,6 @@ body {
                 height: 40px;
                 border: 1px solid #bbb;
                 border-radius: 5px;
-            }
-        }
-    }
-
-    .shortcuts-modal {
-        & form {
-            display: flex;
-            justify-content: flex-end;
-
-            & button {
-                width: 36px;
-                height: 36px;
-                background: none;
-                border: none;
-                border-radius: 50px;
-                padding: 0;
-                color: var(--fg-color);
-                cursor: pointer;
-
-                &:focus {
-                    outline: 2px solid var(--outline-color);
-                    outline-offset: 5px;
-                }
-            }
-        }
-
-        .shortcuts-list {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: stretch;
-            padding: 20px;
-            gap: 5px;
-
-            .shortcuts-item {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                gap: 20px;
-                color: var(--fg-color);
-
-                .key {
-                    flex-shrink: 0;
-                    display: inline-flex;
-                    width: 40px;
-                    height: 40px;
-                    border: 1px solid #bbb;
-                    border-radius: 5px;
-                    display: grid;
-                    place-content: center;
-                    background-color: var(--bg-color);
-                    color: var(--fg-color);
-
-                    &.key--auto {
-                        width: initial;
-                        padding-inline: 10px;
-                        white-space: nowrap;
-                    }
-                }
             }
         }
     }

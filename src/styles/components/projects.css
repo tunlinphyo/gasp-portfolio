@@ -2,6 +2,7 @@
 
 .page--project {
     /* display: none; */
+    overflow: hidden;
 
     .project-container {
         --size: max(10vh, 80px);
@@ -75,9 +76,108 @@
             justify-content: center;
             align-items: center;
 
+            position: relative;
+            z-index: 2;
+
             @media (min-width: 768px) {
                 grid-area: number;
+                /* opacity: 1; */
             }
+
+            /* .projectImages {
+                position: absolute;
+                inset: 0;
+                margin: 0;
+                padding: 0;
+                border: none;
+                outline: none;
+
+                display: none;
+                justify-content: center;
+                align-items: center;
+
+                @media (min-width: 768px) {
+                    display: flex;
+                }
+
+                & label {
+                    width: 100%;
+                    position: absolute;
+                    inset: auto;
+                    z-index: 0;
+
+                    opacity: 0;
+                    scale: 0;
+                    transform-origin: center left;
+                    transition: opacity .3s ease, scale .3s ease, transform .7s var(--ease-spring-3);
+
+                    input {
+                        display: none;
+                    }
+
+                    img {
+                        width: 100%;
+                        display: block;
+                    }
+
+                    &:nth-of-type(1) {
+                        transform: translate(50vw, -50vh) rotateZ(18deg);
+                    }
+                    &:nth-of-type(2) {
+                        transform: translate(50vw, -50vh) rotateZ(15deg);
+                    }
+                    &:nth-of-type(3) {
+                        transform: translate(50vw, -50vh) rotateZ(12deg);
+                    }
+                    &:nth-of-type(4) {
+                        transform: translate(50vw, -50vh) rotateZ(9deg);
+                    }
+                    &:nth-of-type(5) {
+                        transform: translate(50vw, -50vh) rotateZ(6deg);
+                    }
+                    &:nth-of-type(6) {
+                        transform: translate(50vw, -50vh) rotateZ(3deg);
+                    }
+                    &:nth-of-type(7) {
+                        transform: translate(50vw, -50vh) rotateZ(-3deg);
+                    }
+                }
+
+                &.show {
+                    & label {
+                        opacity: 1;
+                        scale: .85;
+
+                        &:has(:checked) {
+                            z-index: 1;
+                            scale: 1;
+                            transform: translate(0%, 5%) rotateZ(0deg);
+                        }
+
+                        &:nth-of-type(1):not(:has(:checked)) {
+                            transform: translate(4%, 8%) rotateZ(-21deg);
+                        }
+                        &:nth-of-type(2):not(:has(:checked)) {
+                            transform: translate(5%, 10%) rotateZ(-18deg);
+                        }
+                        &:nth-of-type(3):not(:has(:checked)) {
+                            transform: translate(6%, 12%) rotateZ(-15deg);
+                        }
+                        &:nth-of-type(4):not(:has(:checked)) {
+                            transform: translate(7%, 14%) rotateZ(-12deg);
+                        }
+                        &:nth-of-type(5):not(:has(:checked)) {
+                            transform: translate(8%, 16%) rotateZ(-9deg);
+                        }
+                        &:nth-of-type(6):not(:has(:checked)) {
+                            transform: translate(9%, 18%) rotateZ(-6deg);
+                        }
+                        &:nth-of-type(7):not(:has(:checked)) {
+                            transform: translate(10%, 20%) rotateZ(-3deg);
+                        }
+                    }
+                }
+            } */
 
             .projectNumber {
                 font-size: clamp(2.5rem, 20vw, 20rem);
@@ -93,6 +193,7 @@
 
                 @media (min-width:768px) {
                     block-size: auto;
+                    /* display: none; */
                 }
             }
         }
@@ -102,7 +203,10 @@
             display: grid;
             grid-template-columns: subgrid;
             grid-template-areas: "content .";
-            overflow: hidden;
+            /* overflow: hidden; */
+
+            position: relative;
+            z-index: 0;
 
             @media (min-width: 768px) {
                 padding-inline-start: 18px;
@@ -126,7 +230,7 @@
                         border-radius: 4px;
                         font-weight: 600;
 
-                        &:focus {
+                        &:focus-visible {
                             outline: 3px solid var(--outline-color);
                             outline-offset: 10px;
                         }
@@ -175,7 +279,7 @@
                             text-decoration-style: double;
                         }
 
-                        &:focus {
+                        &:focus-visible {
                             outline: 2px solid var(--outline-color);
                             outline-offset: 2px;
 
@@ -203,7 +307,7 @@
                         text-decoration-style: double;
                     }
 
-                    &:focus {
+                    &:focus-visible {
                         outline: 3px solid var(--outline-color);
                         outline-offset: 5px;
                     }
@@ -254,7 +358,7 @@
                     transform: rotate(-90deg);
                 }
 
-                &:focus {
+                &:focus-visible {
                     outline: 3px solid var(--outline-color);
                     outline-offset: 5px;
 

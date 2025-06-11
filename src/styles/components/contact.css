@@ -28,18 +28,18 @@
                     color: var(--title-color);
                 }
 
-                .h2 {
+                /* .h2 {
                     .char {
                         &:first-child {
                             color: var(--link-color);
                         }
                     }
-                }
+                } */
 
                 & h2 {
                     color: transparent;
 
-                    &:focus {
+                    &:focus-visible {
                         outline: 3px solid var(--outline-color);
                         outline-offset: 10px;
                     }
@@ -121,7 +121,7 @@
                                     }
                                 }
 
-                                &:focus {
+                                &:focus-visible {
                                     outline: none;
                                     color: var(--outline-link-fg) !important;
 

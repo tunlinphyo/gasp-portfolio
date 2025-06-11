@@ -15,6 +15,7 @@ export class Projects {
     protected readonly projects: Project[]
     protected currentIndex: number = 0
     protected animating: boolean = false
+
     constructor() {
         this.projects = this.getPorjects()
         this.subscribe()
@@ -83,7 +84,7 @@ export class Projects {
             timeline.fromTo(project, {
                 x: 0,
             }, {
-                x: width * leave,
+                x: leave < 0 ? window.innerWidth * leave : width * leave,
                 ease: "power4.in",
                 onComplete: () => {
                     this.renderData()
@@ -91,7 +92,7 @@ export class Projects {
             })
 
             timeline.fromTo(project, {
-                x: width * enter,
+                x: leave > 0 ? window.innerWidth * enter : width * enter,
             }, {
                 x: 0,
                 ease: "power4.out",
@@ -118,6 +119,9 @@ export class Projects {
             Utils.applyStyles(".project-link", { display: "none" })
         }
         window.umami.track('Project', { name: this.project.title })
+        const inputEl = Utils.elem<HTMLInputElement>(`input[name="project-image"][value="${this.projects.indexOf(this.project) + 1}"]`)
+        console.log('INPUTEL', inputEl)
+        if (inputEl) inputEl.checked = true
     }
 
     private getPorjects() {

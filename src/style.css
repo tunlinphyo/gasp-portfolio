@@ -7,7 +7,6 @@
 @import url(./styles/theme.css) layer(theme);
 
 @import url(./styles/utils/utils.css) layer(utils);
-@import url(./styles/utils/dialog.css) layer(utils);
 
 @import url(./styles/components/intro.css) layer(component);
 @import url(./styles/components/about.css) layer(component);

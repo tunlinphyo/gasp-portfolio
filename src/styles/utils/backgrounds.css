@@ -1,0 +1,158 @@
+.background {
+    position: fixed;
+    z-index: 1;
+    inset: 0;
+    /* background-color: var(--bg-color); */
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    --w: 14vw;
+    --h: 14vh;
+    --color: var(--c-1);
+
+    background-image: url(https://i.ibb.co/nrmkm7d/five-bells-washed-out-logo.png);
+    background-size: 140%;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    @media (prefers-reduced-motion: reduce) {
+        display: none;
+    }
+
+    .bg {
+        width: max(var(--w), var(--h));
+        height: max(var(--w), var(--h));
+        border-radius: 100%;
+        position: absolute;
+        background-color: var(--color);
+        scale: 0;
+        /* border: 1px solid #fff; */
+        /* box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; */
+
+        &.bg--two {
+            --w: 22vw;
+            --h: 22vh;
+            --color: var(--c-2);
+        }
+
+        &.bg--three {
+            --w: 34vw;
+            --h: 34vh;
+            --color: var(--c-3);
+        }
+
+        &.bg--four {
+            --w: 50vw;
+            --h: 50vh;
+            --color: var(--c-4);
+        }
+
+        &.bg--five {
+            --w: 74vw;
+            --h: 74vh;
+            --color: var(--c-5);
+        }
+
+        &.bg--six {
+            --w: 100vw;
+            --h: 100vh;
+            --color: var(--c-6);
+        }
+
+        &.bg--seven {
+            --w: 200vw;
+            --h: 200vh;
+            --color: var(--c-7);
+        }
+    }
+}
+
+.lights {
+    position: fixed;
+    z-index: 1;
+    inset: 0;
+    translate: 0 -75%;
+    /* opacity: 0; */
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    --h: 20vh;
+    --color: var(--l-1);
+
+    .light {
+        width: var(--h);
+        height: var(--h);
+        border-radius: 100%;
+        position: absolute;
+        background-color: var(--color);
+        scale: 0;
+
+        will-change: scale;
+
+        /* @media (orientation:landscape) {
+                width: calc((var(--w) + var(--h)) * 0.5);
+                height: calc((var(--w) + var(--h)) * 0.5);
+            } */
+
+        &.light--two {
+            --h: 32vh;
+            --color: var(--l-2);
+        }
+
+        &.light--three {
+            --h: 50vh;
+            --color: var(--l-3);
+        }
+
+        &.light--four {
+            --h: 75vh;
+            --color: var(--l-4);
+        }
+
+        &.light--five {
+            --h: 110vh;
+            --color: var(--l-5);
+        }
+
+        &.light--six {
+            --h: 160vh;
+            --color: var(--l-6);
+        }
+
+        &.light--seven {
+            --h: 250vh;
+            --color: var(--l-7);
+        }
+
+        @media (min-width: 992px) {
+            --h: 24vh;
+
+            &.light--two {
+                --h: 36vh;
+            }
+
+            &.light--three {
+                --h: 58vh;
+            }
+
+            &.light--four {
+                --h: 86vh;
+            }
+
+            &.light--five {
+                --h: 125vh;
+            }
+
+            &.light--six {
+                --h: 180vh;
+            }
+
+            &.light--seven {
+                --h: 260vh;
+            }
+        }
+
+    }
+}
