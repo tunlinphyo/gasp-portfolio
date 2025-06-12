@@ -86,8 +86,9 @@
         height: var(--h);
         border-radius: 100%;
         position: absolute;
-        background-color: var(--color);
         scale: 0;
+
+        background-color: var(--color);
 
         will-change: scale;
 

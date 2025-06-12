@@ -26,7 +26,7 @@
             position: absolute;
             width: var(--width);
             height: var(--height);
-            background-color: var(--link-color);
+            background-color: var(--fg-color);
             border-radius: var(--min-size);
             /* background-color: var(--link-color); */
             /* box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; */

@@ -20,7 +20,7 @@
             /* font-family: 'Times New Roman', Times, serif; */
 
             color: transparent;
-            -webkit-text-stroke: clamp(1px, 0.25vw, 5px) var(--fg-color);
+            -webkit-text-stroke: clamp(2px, 0.25vw, 5px) var(--fg-color);
             background: none;
             /* text-shadow: 2px 2px 4px #000; */
             /* filter: drop-shadow(2px 2px 4px #000); */

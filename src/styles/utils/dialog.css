@@ -12,7 +12,7 @@ dialog {
 
     &::backdrop {
         animation: fadeOut .3s linear;
-        background-image: radial-gradient(transparent 2px, var(--modal-backdrop) 1px);
+        background-image: radial-gradient(transparent 2px, var(--modal-backdrop) 2px);
         background-size: 4px 4px;
         backdrop-filter: brightness(100%) blur(3px);
     }

@@ -101,10 +101,10 @@ export class PageLoading {
                     duration: 0,
                 })
                 .to(['.animator--one', '.animator--three'], {
-                    "--width": "14px",
+                    "--width": "16px",
                 })
                 .to(['.animator--two', '.animator--four'], {
-                    "--height": "14px",
+                    "--height": "16px",
                     y: 0,
                     onComplete: () => {
                         if (window.scrollY < 10) {
