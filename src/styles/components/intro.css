@@ -17,22 +17,10 @@
             font-size: clamp(2.5rem, 14vw, 14rem);
             line-height: 1.5;
             font-weight: 800;
-            /* font-family: 'Times New Roman', Times, serif; */
-
-            color: var(--title-color);
-            /* -webkit-text-stroke: clamp(2px, 0.5vw, 10px) var(--fg-color);
+            color: transparent;
+            -webkit-text-stroke: clamp(2px, 0.25vw, 5px) var(--fg-color);
             background: none;
-            paint-order: stroke fill; */
-
-            /* background: radial-gradient(circle at center, var(--link-color), transparent 10% 100%);
-            background-size: 250%;
-            background-position: right;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-
-            &.with-animation {
-                animation: moveGradient 10s linear infinite;
-            } */
+            paint-order: stroke fill;
 
             > span {
                 color: var(--link-color);
