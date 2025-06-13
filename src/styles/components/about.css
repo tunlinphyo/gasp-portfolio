@@ -24,9 +24,9 @@
             .h2 {
                 grid-area: title;
                 font-size: clamp(2rem, 9vw, 7rem);
-                font-weight: 600;
                 line-height: 1.5;
                 color: var(--title-color);
+                font-weight: 600;
             }
 
             .h2 {

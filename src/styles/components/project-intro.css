@@ -13,6 +13,8 @@
             font-size: clamp(2.2rem, 8vw, 7rem);
             line-height: 1.2;
             border-radius: 4px;
+            font-weight: 600;
+            color: var(--title-color);
 
             /* &::first-letter {
                 color: var(--link-color);

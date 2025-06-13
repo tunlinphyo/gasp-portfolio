@@ -16,14 +16,13 @@
         .intro-heading {
             font-size: clamp(2.5rem, 14vw, 14rem);
             line-height: 1.5;
-            font-weight: 700;
+            font-weight: 800;
             /* font-family: 'Times New Roman', Times, serif; */
 
-            color: transparent;
-            -webkit-text-stroke: clamp(2px, 0.25vw, 5px) var(--fg-color);
+            color: var(--title-color);
+            /* -webkit-text-stroke: clamp(2px, 0.5vw, 10px) var(--fg-color);
             background: none;
-            /* text-shadow: 2px 2px 4px #000; */
-            /* filter: drop-shadow(2px 2px 4px #000); */
+            paint-order: stroke fill; */
 
             /* background: radial-gradient(circle at center, var(--link-color), transparent 10% 100%);
             background-size: 250%;

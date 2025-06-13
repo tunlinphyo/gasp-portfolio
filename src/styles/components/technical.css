@@ -25,8 +25,9 @@
                 display: inline-block;
                 font-size: clamp(2.2rem, 8vw, 7rem);
                 line-height: 1.2;
-                font-weight: 600;
+
                 color: var(--title-color);
+                font-weight: 600;
             }
 
             /* .h2 {
@@ -70,7 +71,7 @@
                     align-items: baseline;
 
                     & > span {
-                        font-weight: 800;
+                        font-weight: 700;
                         font-size: 1.5em;
                         color: var(--link-color);
                         text-align: center;
