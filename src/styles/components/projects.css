@@ -228,7 +228,7 @@
                         line-height: 1.2;
                         /* color: var(--link-color); */
                         border-radius: 4px;
-                        font-weight: 600;¥
+                        font-weight: 600;
 
                         &:focus-visible {
                             outline: 3px solid var(--outline-color);
