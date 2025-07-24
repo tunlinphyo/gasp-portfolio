@@ -116,3 +116,15 @@
         }
     }
 }
+
+@media (prefers-reduced-motion: reduce) and (prefers-reduced-transparency) {
+    html {
+        body {
+            .page-main {
+                .page {
+                    background-color: var(--bg-color);
+                }
+            }
+        }
+    }
+}

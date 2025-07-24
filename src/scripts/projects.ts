@@ -72,6 +72,44 @@ export class Projects {
         const leave = isNext ? -1 : 1
         const enter = isNext ? 1 : -1
 
+        // const isReduceMotion = ReducedMotionListener.isReduced()
+
+        // Utils.addClass(controls, "disabled")
+        // this.animating = true
+
+        // const project = Utils.elem(".projects .project")
+        // const width = this.rect.width * 0.9
+
+        // const getWidth = (isLeave: boolean) => {
+        //     return isReduceMotion
+        //         ? 100
+        //         : (isLeave ? window.innerWidth : width)
+        // }
+
+        // timeline.fromTo(project, {
+        //     x: 0,
+        // }, {
+        //     x: getWidth(leave < 0) * leave,
+        //     ease: "power4.in",
+        //     duration: isReduceMotion ? 0.1 : 0.5,
+        //     onComplete: () => {
+        //         this.renderData()
+        //     },
+        // })
+
+        // timeline.fromTo(project, {
+        //     x: getWidth(leave > 0) * enter,
+        // }, {
+        //     x: 0,
+        //     ease: "power4.out",
+        //     duration: isReduceMotion ? 0.1 : 0.5,
+        //     onComplete: () => {
+        //         Utils.removeClass(controls, "disabled")
+        //         this.animating = false
+        //         timeline.kill()
+        //     },
+        // })
+
         if (ReducedMotionListener.isReduced()) {
             this.renderData()
         } else {
@@ -100,7 +138,6 @@ export class Projects {
                     Utils.removeClass(controls, "disabled")
                     this.animating = false
                     timeline.kill()
-                    // this.carousel.timeScale(1)
                 },
             })
         }
