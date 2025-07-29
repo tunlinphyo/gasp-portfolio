@@ -6,7 +6,7 @@ A creative and interactive portfolio site built by myself, showcasing personal w
 
 ## 🚀 Live Website
 
-[🔗 View the site](https://css-battle-codes.web.app/)
+[🔗 View the site](https://tunlinphyo.com/)
 
 ---
 
