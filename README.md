@@ -73,12 +73,3 @@ Specializes in Web Components, UI/UX systems, and performance-first web apps.
 [Portfolio Website](https://tunlinphyo.com)
 
 ---
-
-## 📌 To-Do
-
-- [ ] Add README screenshots or video demo
-- [ ] Describe all keyboard shortcuts
-- [ ] Add P5.js sketches showcase or modules
-- [ ] Write a companion blog post or article
-
----
