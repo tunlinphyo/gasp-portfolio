@@ -17,7 +17,7 @@ A creative and interactive portfolio site built by myself, showcasing personal w
 - 🎹 Full keyboard navigation and shortcut handling
 - 🖱️ Cursor and animation effects for immersive interaction
 - 🧱 Modular architecture and clean project structure
-- 🎛️ Integrated with **P5.js** for generative or interactive canvas work *(currently disabled)*
+- 🎛️ Integrated with **P5.js** for generative or interactive canvas work
 - ☁️ Deployed on **Firebase Hosting**
 
 ---
