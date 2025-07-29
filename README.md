@@ -1,4 +1,4 @@
-# GASP Portfolio
+# Portfolio
 
 A creative and interactive portfolio site built by myself, showcasing personal work, frontend design skills, and system-level engineering capabilities using native Web Components, TypeScript, and Firebase.
 
@@ -6,7 +6,7 @@ A creative and interactive portfolio site built by myself, showcasing personal w
 
 ## 🚀 Live Website
 
-[🔗 View the site](https://tunlinphyo.com)
+[🔗 View the site](https://css-battle-codes.web.app/)
 
 ---
 
