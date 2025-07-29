@@ -1,0 +1,47 @@
+.animation {
+    position: fixed;
+    z-index: 6;
+    inset: 0;
+    pointer-events: none;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .animator-container {
+        position: absolute;
+        inset: 0;
+        /* translate: 0 -25vh; */
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        --tx: 0;
+        --ty: 0;
+        translate: var(--tx) var(--ty);
+
+        .animator {
+            --width: var(--min-size);
+            --height: var(--min-size);
+            position: absolute;
+            width: var(--width);
+            height: var(--height);
+            background-color: var(--fg-color);
+            border-radius: var(--min-size);
+            /* background-color: var(--link-color); */
+            /* box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; */
+
+            /* backdrop-filter: invert(100%);
+            -webkit-backdrop-filter: invert(100%); */
+
+            will-change: width, height;
+
+            /* &.animator--three {
+                background-color: cornflowerblue;
+            }
+            &.animator--four {
+                background-color: hotpink;
+            } */
+        }
+    }
+}

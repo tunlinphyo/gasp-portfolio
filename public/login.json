@@ -1,0 +1,28 @@
+{
+    "result": "001",
+    "sf": 0,
+    "trf": 0,
+    "mac": 1,
+    "sessionToken": "STG5AEF6A6A004A16F8EA45F9B478352A5CAC641ADCC9B2772051AC95D1F55ED3AC",
+    "mem": {
+        "for": 0,
+        "uh": "05D0D94C7",
+        "rk": 0,
+        "id": "tun.coremobile@proton.me",
+        "mailadr": "tun.coremobile@proton.me",
+        "sf": 0,
+        "nwsem": "05D0D94C7@ymem-dev.yomiuri.co.jp",
+        "nwsf": 0,
+        "nwss": "00",
+        "nwse": "00",
+        "ta": 1,
+        "am": 1,
+        "chanref": 0,
+        "mac": 1,
+        "trf": 0,
+        "bf": 0,
+        "nwdf": 0,
+        "subreadersf": 0,
+        "crmycstatus": 2
+    }
+}

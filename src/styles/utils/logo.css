@@ -1,0 +1,110 @@
+.logo {
+    --size: 90px;
+    --font-size: .85rem;
+    position: fixed;
+    z-index: 9;
+    inset: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    /* overflow: hidden; */
+
+    pointer-events: none;
+    translate: 0 -100px;
+
+    @media (min-width: 992px) {
+        --size: 110px;
+        --font-size: .9rem;
+    }
+
+    .logo-container {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        pointer-events: auto;
+
+        &::before {
+            content: '';
+            display: block;
+            position: absolute;
+            z-index: 0;
+            inline-size: calc(var(--size) + 4px);
+            block-size: calc(var(--size) + 4px);
+            background-color: var(--l-0);
+            border-radius: 50%;
+
+            transition: background-color .2s ease;
+
+            box-shadow: rgba(50, 50, 93, 0.1) 0px 0px 12px -2px, rgba(0, 0, 0, 0.1) 0px 0px 7px -3px;
+        }
+
+        /* &:hover {
+                &::before {
+                    background-color: var(--fg-color);
+                }
+                > div {
+                    color: var(--bg-color);
+                }
+            } */
+
+        >div {
+            pointer-events: none;
+            position: absolute;
+            z-index: 1;
+            text-transform: uppercase;
+            display: inline-block;
+            font-size: var(--font-size);
+            font-weight: 600;
+            height: var(--size);
+            transform-origin: center;
+            opacity: .6;
+            /* font-family: 'Times New Roman', Times, serif; */
+
+            &:nth-child(1) {
+                rotate: -80deg;
+            }
+
+            &:nth-child(2) {
+                rotate: -50deg;
+            }
+
+            &:nth-child(3) {
+                rotate: -20deg;
+            }
+
+            &:nth-child(4) {
+                rotate: 20deg;
+            }
+
+            &:nth-child(5) {
+                rotate: 50deg;
+            }
+
+            &:nth-child(6) {
+                rotate: 80deg;
+            }
+
+            &:nth-child(7) {
+                rotate: 120deg;
+            }
+
+            &:nth-child(8) {
+                rotate: 150deg;
+            }
+
+            &:nth-child(9) {
+                rotate: 180deg;
+            }
+
+            &:nth-child(10) {
+                rotate: 210deg;
+            }
+
+            &:nth-child(11) {
+                rotate: 240deg;
+            }
+        }
+    }
+}

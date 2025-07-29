@@ -1,22 +1,28 @@
-export function setDark() {
-    const root = document.body
-    root.dataset.schema = 'dark'
-    window.firework = true
-}
+// import { Utils } from "./utils"
 
-export function removeDark() {
-    const root = document.body
-    root.dataset.schema = 'light'
-    const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)')
-    window.firework = prefersDarkMode.matches ? true : false
-}
+export class ThemeManager {
+    private root: HTMLElement
 
-export function setLight() {
-    const root = document.body
-    root.dataset.schema = 'light'
-}
+    constructor() {
+        this.root = document.body;
+    }
 
-export function removeLight() {
-    const root = document.body
-    root.dataset.schema = ''
+    setDark() {
+        this.root.dataset.schema = 'dark';
+        window.firework = true;
+    }
+
+    removeDark() {
+        this.root.dataset.schema = 'light';
+        // const prefersDarkMode = Utils.isMedia('(prefers-color-scheme: dark)')
+        window.firework = false // prefersDarkMode
+    }
+
+    setLight() {
+        this.root.dataset.schema = 'light';
+    }
+
+    removeLight() {
+        this.root.dataset.schema = '';
+    }
 }

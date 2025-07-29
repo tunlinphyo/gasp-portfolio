@@ -1,11 +1,18 @@
 @layer reset, theme, utils, component, overwrite;
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
 
 @import url(./styles/reset.css) layer(reset);
 @import url(./styles/theme.css) layer(theme);
-@import url(./styles/utils.css) layer(utils);
 
-@import url(./styles/components.css) layer(component);
+@import url(./styles/utils/utils.css) layer(utils);
+
+@import url(./styles/components/intro.css) layer(component);
+@import url(./styles/components/about.css) layer(component);
+@import url(./styles/components/technical.css) layer(component);
+@import url(./styles/components/projects.css) layer(component);
+@import url(./styles/components/contact.css) layer(component);
+
+@import url(./styles/cursor.css) layer(overwrite);
 @import url(./styles/overwrite.css) layer(overwrite);

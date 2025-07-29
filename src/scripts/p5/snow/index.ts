@@ -14,7 +14,8 @@ export class Snow {
     constructor(p: p5, img: p5.Image) {
         this.p = p
         this.spritesheet = img
-        this.maxCount = Math.round((this.p.windowWidth * this.p.windowHeight) ** (1 / 2.5))
+        this.maxCount = Math.round((this.p.windowWidth * this.p.windowHeight) ** (1 / 2.8))
+        console.log('MAX_COUNT', this.maxCount)
     }
 
     setup() {
@@ -39,7 +40,7 @@ export class Snow {
         this.p.background(0, 0)
         this.zOff += 0.1;
 
-        const count = this.p.frameCount % 10
+        const count = this.p.frameCount % 30
 
         if (count === 0 && this.snow.length < this.maxCount) {
             let design = this.p.random(this.textures);

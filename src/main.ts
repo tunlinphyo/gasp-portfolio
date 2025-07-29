@@ -3,70 +3,88 @@ import ScrollTrigger from "gsap/ScrollTrigger"
 import ScrollToPlugin from "gsap/ScrollToPlugin"
 
 import './style.css'
-import { loading } from "./scripts/loading"
-import { initCarousel } from "./scripts/carousel"
-import { rotateLogo } from "./scripts/logo"
-import { animator } from './scripts/timeline'
-import { initCursor } from "./scripts/cursor"
-import { Projects } from "./scripts/projects"
+import { Timeline } from "./scripts/timeline"
+import { PageLoading } from "./scripts/loading"
+import { ThemeManager } from "./scripts/theme"
+import { Carousel } from "./scripts/carousel"
 import { AutoScroller } from "./scripts/scroll"
-import p5 from "p5"
-import { fallSketch, fireworkSketch, sakuraSketch, snowSketch } from "./scripts/p5"
-import { wait } from "./scripts/helpers/utils"
-import { BrowserCheck } from "./scripts/helpers/browser"
-import { JapanSeason, Season } from "./scripts/helpers/season"
-import { Utils } from "./scripts/utils"
+import { Projects } from "./scripts/projects"
+import { Toast } from "./scripts/toast"
+import { KeyboardHandler } from "./scripts/keyboard"
+import { Cursor } from "./scripts/cursor"
+import { App } from "./scripts"
 import { UmamiAnalytics } from "./scripts/umami"
+import { LogoRotator } from "./scripts/logo"
+import { ReducedMotionListener } from "./scripts/reduce-motion"
+import { Utils } from './scripts/utils'
+// import { BrowserCheck } from "./scripts/browser"
+// import p5 from "p5"
+// import { JapanSeason, Season } from "./scripts/season"
+// import { fallSketch, fireworkSketch, sakuraSketch, snowSketch } from "./scripts/p5"
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
 
 window.onload = async () => {
     new UmamiAnalytics(import.meta.env.VITE_UMAMI_ANALYTICS, import.meta.env.VITE_UMAMI_SITE_ID)
 
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const motion = new ReducedMotionListener()
+    motion.listen(async (isReduced) => {
+        window.umami.track('Motion', { value: isReduced })
+        window.location.reload()
+    })
+
+    if (ReducedMotionListener.isReduced()) {
+        await Utils.wait(1000)
+        new LogoRotator("body")
+        App.noMotionHandle()
+        new Projects()
+
         return
     }
 
-    await loading()
-    initCursor()
-    const carousel = initCarousel()
-    rotateLogo()
-    animator(carousel)
-    new Projects()
-    new AutoScroller()
+    await (new PageLoading()).init()
+    new Cursor()
+    new LogoRotator(".scroll-trigger")
 
-    Utils.trackLinksClick()
-    Utils.trackContactClick()
-    Utils.animateHoverElemets()
+    const theme = new ThemeManager()
+    const carousel = new Carousel('.carousel')
+    new Timeline(theme, carousel)
+    const toast = new Toast()
+    const projects = new Projects()
+    const scroll = new AutoScroller()
+    new KeyboardHandler(projects, scroll, toast)
 
-    // const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)')
-    // window.firework = prefersDarkMode.matches ? true : false
-    window.firework = false
+    App.trackLinksClick()
+    App.trackContactClick()
+    App.animateHoverElemets()
 
-    BrowserCheck.runIfComputerBrowser(async () => {
-        await wait(1000)
+    // window.firework = false
 
-        const season = JapanSeason.getCurrentSeason()
+    // BrowserCheck.runIfComputerBrowser(async () => {
+    //     await Utils.wait(1000)
 
-        switch (season) {
-            case Season.SPRING:
-                document.body.classList.add('spring')
-                new p5(sakuraSketch)
-                break
-            case Season.SUMMER:
-                document.body.classList.add('summer')
-                new p5(fireworkSketch)
-                break
-            case Season.AUTUMN:
-                document.body.classList.add('autumn')
-                new p5(fallSketch)
-                break
-            case Season.WINTER:
-                document.body.classList.add('winter')
-                new p5(snowSketch)
-                break
-            default:
-                break
-        }
-    })
+    //     const season =  JapanSeason.getCurrentSeason()
+    //     const mainEl = Utils.elem('.page-main')
+
+    //     switch (season) {
+    //         case Season.SPRING:
+    //             document.body.classList.add('spring')
+    //             new p5(sakuraSketch, mainEl)
+    //             break
+    //         case Season.SUMMER:
+    //             document.body.classList.add('summer')
+    //             new p5(fireworkSketch, mainEl)
+    //             break
+    //         case Season.AUTUMN:
+    //             document.body.classList.add('autumn')
+    //             new p5(fallSketch, mainEl)
+    //             break
+    //         case Season.WINTER:
+    //             document.body.classList.add('winter')
+    //             new p5(snowSketch, mainEl)
+    //             break
+    //         default:
+    //             break
+    //     }
+    // })
 }
