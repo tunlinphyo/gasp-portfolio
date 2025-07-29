@@ -34,19 +34,6 @@ A creative and interactive portfolio site built by myself, showcasing personal w
 
 ---
 
-## 📁 Folder Structure
-
-```
-src/
-├── scripts/            # Scripts
-├── styles/             # Theming, reset, animations, cursors
-├── main.ts             # App entry point and component registration
-├── globals.d.ts        # TypeScript declarations
-├── ...
-```
-
----
-
 ## 📦 Setup & Development
 
 ```bash
@@ -68,8 +55,17 @@ npm run preview
 ## 🙋‍♂️ About the Author
 
 **Tun Lin Phyo**
-Frontend Engineer based in Tokyo 🇯🇵
-Specializes in Web Components, UI/UX systems, and performance-first web apps.
-[Portfolio Website](https://tunlinphyo.com)
+Frontend Engineer and system-level UI builder based in Tokyo 🇯🇵.
+He specializes in **Web Components**, **custom reactive architectures**, and **performance-first web applications** — all without relying on heavy frameworks.
+
+- 💻 Passionate about UI/UX systems, clean architecture, and modular design
+- 🔧 Builds projects with Vite, custom stores, and native browser APIs
+- 🌐 [Portfolio Website](https://tunlinphyo.com)
+
+---
+
+## 📝 License
+
+MIT License
 
 ---
