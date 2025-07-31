@@ -1,6 +1,6 @@
 # Portfolio
 
-A creative and interactive portfolio site I built myself, showcasing my personal work and frontend design skills using GSAP, with a focus on accessibility.
+A creative and interactive portfolio site showcasing personal work and frontend design skills using GSAP, thoughtfully built with accessibility in mind to ensure a smooth and inclusive experience for all users.
 
 ---
 
