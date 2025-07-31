@@ -1,6 +1,6 @@
 # Portfolio
 
-A creative and interactive portfolio site built by myself, showcasing personal work, frontend design skills, and system-level engineering capabilities using native Web Components, TypeScript, and Firebase.
+A creative and interactive portfolio site I built myself, showcasing my personal work and frontend design skills using GSAP, with a focus on accessibility.
 
 ---
 
@@ -12,11 +12,10 @@ A creative and interactive portfolio site built by myself, showcasing personal w
 
 ## ✨ Features
 
-- ⚡ Powered by **Vanilla Web Components** with no frameworks
+- ⚡ Powered by **GSAP**
 - 🎨 Custom design system using CSS theme variables
 - 🎹 Full keyboard navigation and shortcut handling
 - 🖱️ Cursor and animation effects for immersive interaction
-- 🧱 Modular architecture and clean project structure
 - 🎛️ Integrated with **P5.js** for generative or interactive canvas work
 - ☁️ Deployed on **Firebase Hosting**
 
@@ -26,7 +25,7 @@ A creative and interactive portfolio site built by myself, showcasing personal w
 
 | Area        | Tools/Technologies                     |
 |-------------|----------------------------------------|
-| Frontend    | HTML, CSS, TypeScript, Web Components  |
+| Frontend    | HTML, CSS, TypeScript, GSAP  |
 | Animations  | P5.js, Custom CSS animations           |
 | Build Tool  | Vite                                   |
 | Deployment  | Firebase Hosting                       |

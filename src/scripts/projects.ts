@@ -193,7 +193,7 @@ export class Projects {
     }
 
     private getCategory(elem: HTMLElement) {
-        const tag = Utils.elem('small[role="note"]', elem)
+        const tag = Utils.elem('small', elem)
 
         return tag.textContent || ''
     }
