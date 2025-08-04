@@ -33,6 +33,20 @@ A creative and interactive portfolio site showcasing personal work and frontend 
 
 ---
 
+## 📊 Lighthouse Performance
+
+### 📱 Mobile
+
+![Lighthouse Mobile Result](./images/lighthouse-mobile.png)
+
+### 🖥️ Desktop
+
+![Lighthouse Desktop Result](./images/lighthouse-desktop.png)
+
+> Scores reflect strong performance, accessibility, SEO, and best practices.
+
+---
+
 ## 📦 Setup & Development
 
 ```bash
