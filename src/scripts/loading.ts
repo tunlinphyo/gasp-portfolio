@@ -8,6 +8,10 @@ export class PageLoading {
     private mouseEnter: GSAPTween
     private circleEnter: GSAPTween
     private playEnter: GSAPTween
+    private loop?: GSAPTimeline
+
+    private loadingFinished: Boolean = false
+    private dataLoaded: Boolean = false
 
     constructor() {
         this.loadingTimeline = gsap.timeline({
@@ -63,7 +67,8 @@ export class PageLoading {
     }
 
     async init() {
-        this.loadingTimeline.to('.animator--one', {
+        this.loadingTimeline
+        .to('.animator--one', {
             "--width": "80vw",
             duration: 1,
         })
@@ -76,7 +81,7 @@ export class PageLoading {
         window.scrollTo(0, 0)
         disabledScroll.on()
 
-        return new Promise((resolve) => {
+        return new Promise(resolve => {
             setTimeout(() => {
                 this.loadingTimeline.kill()
 
@@ -90,6 +95,9 @@ export class PageLoading {
                     x: 0,
                     y: "-25vh",
                     duration: 0.25,
+                    onComplete: () => {
+                        resolve(true)
+                    }
                 })
                 .to('.animator--two', {
                     "--height": "25vh",
@@ -107,24 +115,79 @@ export class PageLoading {
                     "--height": "16px",
                     y: 0,
                     onComplete: () => {
-                        if (window.scrollY < 10) {
-                            this.helloEnter.play()
-                            this.mouseEnter.play()
-                            this.playEnter.play()
-                            this.circleEnter.play()
-                        }
-                        resolve(true)
+                        hideTimeline.kill()
+                        this.loadingFinished = true
+                        if (this.dataLoaded)
+                            this.hide()
+                        else
+                            this.infiniteLoop()
                     }
                 }, "<")
-                .to(".page-loading", {
-                    opacity: 0,
-                    onComplete: () => {
-                        // Utils.applyStyles(".section--fixed", { zIndex: 2 })
-                        hideTimeline.kill()
-                    }
-                })
             }, 1000)
         })
     }
 
+    infiniteLoop() {
+        this.loop = gsap.timeline({
+            repeat: -1,
+            defaults: { duration: 0.5, ease: "power1.inOut" },
+            repeatRefresh: true,
+        })
+            .to(['.animator--one', '.animator--three'], {
+                "--width": "16px",
+            })
+            .to(['.animator--two', '.animator--four'], {
+                "--height": "16px",
+            }, "<")
+            .to(['.animator--one', '.animator--three'], {
+                "--width": "2px",
+            })
+            .to(['.animator--two', '.animator--four'], {
+                "--height": "2px",
+            }, "<")
+            .to(['.animator--one', '.animator--three'], {
+                "--width": "16px",
+            })
+            .to(['.animator--two', '.animator--four'], {
+                "--height": "16px",
+            }, "<")
+    }
+
+    killLoop() {
+        this.loop?.to(['.animator--one', '.animator--three'], {
+                "--width": "16px",
+            })
+            .to(['.animator--two', '.animator--four'], {
+                "--height": "16px",
+                onComplete: () => {
+                    this.loop?.kill()
+                }
+            }, "<")
+    }
+
+    hide() {
+        this.dataLoaded = true
+        if (!this.loadingFinished) return
+        gsap.to(".page-loading", {
+            opacity: 0,
+            onStart: () => {
+                this.killLoop()
+                if (window.scrollY < 10) {
+                    this.helloEnter.play()
+                    this.mouseEnter.play()
+                    this.playEnter.play()
+                    this.circleEnter.play()
+                }
+            }
+        })
+    }
+
+    enter() {
+        if (window.scrollY < 10) {
+            this.helloEnter.play()
+            this.mouseEnter.play()
+            this.playEnter.play()
+            this.circleEnter.play()
+        }
+    }
 }
