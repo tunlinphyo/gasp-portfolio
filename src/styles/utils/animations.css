@@ -39,25 +39,21 @@
 
     .loading-bouncer {
         position: absolute;
-        width: 32px;
-        height: 32px;
-        border: 2px solid var(--fg-color);
-        /* background-color: var(--fg-color); */
-        border-radius: 50%;
+        width: var(--min-size);
+        height: 20vh;
+        background-color: var(--fg-color);
+        border-radius: var(--min-size);
         animation: loadingBouncer 1.5s ease infinite;
     }
 }
 
 @keyframes loadingBouncer {
     0%, 100% {
-        translate: 0 -8px;
-        scale: 1 0.6;
-    }
-    20%, 80% {
-        scale: 1 1.1;
+        translate: 0 -4vh;
+        height: 8vh;
     }
     50% {
-        translate: 0 -60px;
-        scale: 1;
+        translate: 0 -25vh;
+        height: 20vh;
     }
 }

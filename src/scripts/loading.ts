@@ -90,8 +90,8 @@ export class PageLoading {
 
         return new Promise(resolve => {
             gsap.to('.loading-bouncer', {
-                scale: 0,
-                y: -200,
+                height: 0,
+                y: '0',
                 onComplete: () => {
                     const el = document.querySelector<HTMLElement>('.loading-bouncer')
                     el?.remove()
