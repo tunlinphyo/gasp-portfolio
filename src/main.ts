@@ -51,35 +51,34 @@ async function main() {
     ])
     gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
 
-    const [{ ThemeManager }, { Carousel }, { Timeline }] = await Promise.all([
+    const [{ ThemeManager }, { Carousel }, { Timeline }, { loadGoogleFont }] = await Promise.all([
         import("./scripts/theme"),
         import("./scripts/carousel"),
         import("./scripts/timeline"),
+        import("./scripts/fonts"),
     ])
 
     const theme = new ThemeManager()
     const carousel = new Carousel('.carousel')
     new Timeline(theme, carousel)
 
+    await loadGoogleFont('Poppins', '400;600');
+    await loadGoogleFont('Orbitron', '800');
+
     loading.hide()
 
-    const [{ Cursor }, { LogoRotator }, { Toast }, { Projects }, { AutoScroller }, { KeyboardHandler }, { loadGoogleFont }] =
-        await Promise.all([
-            import("./scripts/cursor"),
-            import("./scripts/logo"),
-            import("./scripts/toast"),
-            import("./scripts/projects"),
-            import("./scripts/scroll"),
-            import("./scripts/keyboard"),
-            import("./scripts/fonts"),
-        ])
-
-        // import { loadGoogleFont } from './scripts/fonts'
+    const [{ Cursor }, { LogoRotator }, { Toast }, { Projects }, { AutoScroller }, { KeyboardHandler }] =
+    await Promise.all([
+        import("./scripts/cursor"),
+        import("./scripts/logo"),
+        import("./scripts/toast"),
+        import("./scripts/projects"),
+        import("./scripts/scroll"),
+        import("./scripts/keyboard"),
+    ])
 
     new Cursor()
     new LogoRotator(".scroll-trigger")
-
-    await loadGoogleFont('Orbitron', '800');
 
     const projects = new Projects()
     const toast = new Toast()

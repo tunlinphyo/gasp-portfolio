@@ -16,7 +16,7 @@
         .intro-heading {
             font-size: clamp(2.5rem, 14vw, 14rem);
             line-height: 1.5;
-            font-weight: 800;
+            font-weight: 700;
             color: transparent;
             -webkit-text-stroke: clamp(2px, 0.25vw, 5px) var(--fg-color);
             background: none;
