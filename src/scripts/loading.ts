@@ -69,6 +69,13 @@ export class PageLoading {
     async init() {
         this.loadingTimeline
         .to('.animator--one', {
+            "--width": "2px",
+            duration: 1,
+        })
+        .to('.animator--three', {
+            "--width": "2px",
+        }, "<")
+        .to('.animator--one', {
             "--width": "80vw",
             duration: 1,
         })
@@ -82,6 +89,15 @@ export class PageLoading {
         disabledScroll.on()
 
         return new Promise(resolve => {
+            gsap.to('.loading-bouncer', {
+                scale: 0,
+                y: -200,
+                onComplete: () => {
+                    const el = document.querySelector<HTMLElement>('.loading-bouncer')
+                    el?.remove()
+                }
+            })
+
             setTimeout(() => {
                 this.loadingTimeline.kill()
 
@@ -123,7 +139,7 @@ export class PageLoading {
                             this.infiniteLoop()
                     }
                 }, "<")
-            }, 1000)
+            }, 1600)
         })
     }
 

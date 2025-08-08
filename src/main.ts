@@ -1,44 +1,61 @@
 import './style.css'
 
-import { PageLoading } from "./scripts/loading"
-import { ReducedMotionListener } from "./scripts/reduce-motion"
+window.addEventListener('DOMContentLoaded', () => {
+    main().catch(err => {
+        console.error(err)
+    })
+})
 
-window.onload = async () => {
+async function main() {
+    const [{ UmamiAnalytics }, { ReducedMotionListener }] = await Promise.all([
+        import("./scripts/umami"),
+        import("./scripts/reduce-motion")
+    ])
+    new UmamiAnalytics(import.meta.env.VITE_UMAMI_ANALYTICS, import.meta.env.VITE_UMAMI_SITE_ID)
+
     const motion = new ReducedMotionListener()
-    motion.listen(async (isReduced) => {
-        window.umami.track('Motion', { value: isReduced })
+    motion.listen((isReduced) => {
+        window.umami?.track?.('Motion', { value: isReduced })
         window.location.reload()
     })
 
-    const { UmamiAnalytics } = await import("./scripts/umami")
-    new UmamiAnalytics(import.meta.env.VITE_UMAMI_ANALYTICS, import.meta.env.VITE_UMAMI_SITE_ID)
-
     if (ReducedMotionListener.isReduced()) {
         const { Utils } = await import('./scripts/utils')
-        const { LogoRotator } = await import("./scripts/logo")
-
         await Utils.wait(1000)
+
+        const [{ gsap }, { ScrollTrigger }] = await Promise.all([
+            import("gsap"),
+            import("gsap/ScrollTrigger"),
+        ])
+        gsap.registerPlugin(ScrollTrigger)
+
+        const [{ App }, { LogoRotator }, { Projects }] = await Promise.all([
+            import("./scripts"),
+            import("./scripts/logo"),
+            import("./scripts/projects"),
+        ])
         new LogoRotator("body")
-
-        const { App } = await import("./scripts")
-        const { Projects } = await import("./scripts/projects")
-
-        App.noMotionHandle()
         new Projects()
+        App.noMotionHandle()
         return
     }
 
+    const { PageLoading } = await import('./scripts/loading')
     const loading = new PageLoading()
     await loading.init()
 
-    const { default: gsap } = await import("gsap")
-    const { default: ScrollTrigger } = await import("gsap/ScrollTrigger")
-    const { default: ScrollToPlugin } = await import("gsap/ScrollToPlugin")
+    const [{ gsap }, { ScrollTrigger }, { ScrollToPlugin }] = await Promise.all([
+        import("gsap"),
+        import("gsap/ScrollTrigger"),
+        import("gsap/ScrollToPlugin"),
+    ])
     gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
 
-    const { ThemeManager } = await import("./scripts/theme")
-    const { Carousel } = await import("./scripts/carousel")
-    const { Timeline } = await import("./scripts/timeline")
+    const [{ ThemeManager }, { Carousel }, { Timeline }] = await Promise.all([
+        import("./scripts/theme"),
+        import("./scripts/carousel"),
+        import("./scripts/timeline"),
+    ])
 
     const theme = new ThemeManager()
     const carousel = new Carousel('.carousel')
@@ -46,16 +63,23 @@ window.onload = async () => {
 
     loading.hide()
 
-    const { Cursor } = await import("./scripts/cursor")
-    const { LogoRotator } = await import("./scripts/logo")
+    const [{ Cursor }, { LogoRotator }, { Toast }, { Projects }, { AutoScroller }, { KeyboardHandler }, { loadGoogleFont }] =
+        await Promise.all([
+            import("./scripts/cursor"),
+            import("./scripts/logo"),
+            import("./scripts/toast"),
+            import("./scripts/projects"),
+            import("./scripts/scroll"),
+            import("./scripts/keyboard"),
+            import("./scripts/fonts"),
+        ])
+
+        // import { loadGoogleFont } from './scripts/fonts'
 
     new Cursor()
     new LogoRotator(".scroll-trigger")
 
-    const { Toast } = await import("./scripts/toast")
-    const { Projects } = await import("./scripts/projects")
-    const { AutoScroller } = await import("./scripts/scroll")
-    const { KeyboardHandler } = await import("./scripts/keyboard")
+    await loadGoogleFont('Orbitron', '800');
 
     const projects = new Projects()
     const toast = new Toast()
@@ -63,20 +87,18 @@ window.onload = async () => {
     new KeyboardHandler(projects, scroll, toast)
 
     const { App } = await import("./scripts")
-
     App.trackLinksClick()
     App.trackContactClick()
     App.animateHoverElemets()
 
-    const { Utils } = await import('./scripts/utils')
     const { BrowserCheck } = await import("./scripts/browser")
 
-    window.firework = false
-
     BrowserCheck.runIfComputerBrowser(async () => {
-        const { JapanSeason, Season } = await import("./scripts/season")
-        const { fallSketch, fireworkSketch, sakuraSketch, snowSketch } = await import("./scripts/p5")
-        const p5 = (await import("p5")).default
+        const [{ Utils }, { JapanSeason, Season }, { default: p5 }] = await Promise.all([
+            import('./scripts/utils'),
+            import("./scripts/season"),
+            import("p5"),
+        ])
 
         await Utils.wait(1000)
 
@@ -86,18 +108,22 @@ window.onload = async () => {
         switch (season) {
             case Season.SPRING:
                 document.body.classList.add('spring')
+                const { sakuraSketch } = await import("./scripts/p5/sakura")
                 new p5(sakuraSketch, mainEl)
                 break
             case Season.SUMMER:
                 document.body.classList.add('summer')
+                const { fireworkSketch } = await import("./scripts/p5/firework")
                 new p5(fireworkSketch, mainEl)
                 break
             case Season.AUTUMN:
                 document.body.classList.add('autumn')
+                const { fallSketch } = await import("./scripts/p5/fall")
                 new p5(fallSketch, mainEl)
                 break
             case Season.WINTER:
                 document.body.classList.add('winter')
+                const { snowSketch } = await import("./scripts/p5/snow")
                 new p5(snowSketch, mainEl)
                 break
             default:

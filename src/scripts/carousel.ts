@@ -21,7 +21,7 @@ export class Carousel {
     private init() {
         if (!this.carouselItems.length) return
 
-        Utils.applyStyles(this.carousel, { left: `${this.carouselItems[0].clientWidth * -1}px` })
+        Utils.applyStyles(this.carousel, { left: `${this.carouselItems[0].clientWidth * -2}px` })
 
         this.carouselItems.forEach((item) => {
             const width = item.clientWidth

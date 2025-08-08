@@ -1,30 +1,21 @@
 import p5 from 'p5'
-import { Petal } from './petal'
+import { Flowers } from './flowers'
 
-export class Flowers {
-    private p: p5
-    private petals: Petal[] = []
+export const sakuraSketch = (p: p5) => {
+    let flowers: Flowers
 
-    constructor(p: p5) {
-        this.p = p
+    p.setup = () => {
+        p.frameRate(60)
+        flowers = new Flowers(p)
+        flowers.setup()
     }
 
-    setup() {
-        const cnv = this.p.createCanvas(this.p.windowWidth, this.p.windowHeight)
-        cnv.attribute("aria-hidden", "true")
-        cnv.attribute("role", "presentation")
-        for (let i = 0; i < 10; i++) {
-            this.petals.push(new Petal(this.p))
-        }
+    p.draw = () => {
+        flowers.draw()
     }
 
-    draw() {
-        this.p.clear()
-        this.p.background(0, 0)
-
-        for (let petal of this.petals) {
-            petal.update()
-            petal.display()
-        }
+    p.windowResized = () => {
+        p.resizeCanvas(p.windowWidth, p.windowHeight)
     }
 }
+

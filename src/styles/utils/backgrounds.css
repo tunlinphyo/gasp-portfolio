@@ -11,11 +11,6 @@
     --h: 14vh;
     --color: var(--c-1);
 
-    background-image: url(https://i.ibb.co/nrmkm7d/five-bells-washed-out-logo.png);
-    background-size: 140%;
-    background-repeat: no-repeat;
-    background-position: center;
-
     @media (prefers-reduced-motion: reduce) {
         display: none;
     }

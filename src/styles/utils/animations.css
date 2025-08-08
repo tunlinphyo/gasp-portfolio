@@ -28,20 +28,36 @@
             height: var(--height);
             background-color: var(--fg-color);
             border-radius: var(--min-size);
-            /* background-color: var(--link-color); */
-            /* box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; */
-
-            /* backdrop-filter: invert(100%);
-            -webkit-backdrop-filter: invert(100%); */
 
             will-change: width, height;
 
-            /* &.animator--three {
-                background-color: cornflowerblue;
+            &.animator--one {
+                --width: 100vw;
             }
-            &.animator--four {
-                background-color: hotpink;
-            } */
         }
+    }
+
+    .loading-bouncer {
+        position: absolute;
+        width: 32px;
+        height: 32px;
+        border: 2px solid var(--fg-color);
+        /* background-color: var(--fg-color); */
+        border-radius: 50%;
+        animation: loadingBouncer 1.5s ease infinite;
+    }
+}
+
+@keyframes loadingBouncer {
+    0%, 100% {
+        translate: 0 -8px;
+        scale: 1 0.6;
+    }
+    20%, 80% {
+        scale: 1 1.1;
+    }
+    50% {
+        translate: 0 -60px;
+        scale: 1;
     }
 }

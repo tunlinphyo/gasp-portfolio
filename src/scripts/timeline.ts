@@ -400,132 +400,132 @@ export class Timeline {
         const animatorTwo = Utils.elem(".animator--two")
         const animatorThree = Utils.elem(".animator--three")
         const animatorFour = Utils.elem(".animator--four")
-        const MIN_SIZE = 2
+        const MIN_SIZE = '2px'
         const WMAX = Math.max(window.innerWidth, window.innerHeight)
         const SIZE = gsap.utils.clamp(30, WMAX * 0.1, 200)
 
 
         this.timeline
-        .to([animatorOne, animatorThree], { width: MIN_SIZE }, "introHide")
-        .to([animatorTwo, animatorFour], { height: MIN_SIZE }, "<")
+        .to([animatorOne, animatorThree], { '--width': MIN_SIZE }, "introHide")
+        .to([animatorTwo, animatorFour], { '--height': MIN_SIZE }, "<")
         .to([animatorThree, animatorFour], {
             rotate: 0,
             duration: 0
         }, ">")
-        .to(animatorOne, { width: "80vw" }, "<")
-        .to(animatorTwo, { height: SIZE }, ">")
-        .to(animatorOne, { width: SIZE }, ">")
+        .to(animatorOne, { '--width': "80vw" }, "<")
+        .to(animatorTwo, { '--height': SIZE + 'px' }, ">")
+        .to(animatorOne, { '--width': SIZE + 'px' }, ">")
         .to([animatorOne, animatorTwo], { rotate: 45 }, ">")
-        .to(animatorThree, { width: SIZE }, ">")
-        .to(animatorFour, { height: SIZE }, "<")
+        .to(animatorThree, { '--width': SIZE + 'px' }, ">")
+        .to(animatorFour, { '--height': SIZE + 'px' }, "<")
         .add("anmiGrowStart")
-        .to([animatorOne, animatorThree], { width: "100vmax" }, ">")
-        .to([animatorTwo, animatorFour], { height: "100vmax" }, "<")
+        .to([animatorOne, animatorThree], { '--width': "100vmax" }, ">")
+        .to([animatorTwo, animatorFour], { '--height': "100vmax" }, "<")
         .to(".animator-container", { y: 0 }, "<")
         .add("anmiGrowEnd")
         .to(".animator-container", { y: "25vh" }, "anmiGrowEnd")
-        .to([animatorOne, animatorThree], { width: MIN_SIZE }, "<")
-        .to([animatorTwo, animatorFour], { height: MIN_SIZE, }, "<")
+        .to([animatorOne, animatorThree], { '--width': MIN_SIZE }, "<")
+        .to([animatorTwo, animatorFour], { '--height': MIN_SIZE, }, "<")
         .add("anmiShrinkEnd")
-        .to(animatorThree, { width: "200vw", duration: 1 }, ">")
+        .to(animatorThree, { '--width': "200vw", duration: 1 }, ">")
         .to(".animator-container", { x: "-50vw" }, "<")
-        .to(animatorThree, { width: MIN_SIZE, duration: 1 }, ">")
-        .to(animatorThree, { width: "200vw", duration: 1 }, ">")
+        .to(animatorThree, { '--width': MIN_SIZE, duration: 1 }, ">")
+        .to(animatorThree, { '--width': "200vw", duration: 1 }, ">")
         .to(".animator-container", { x: "45vw" }, ">")
-        .to(animatorThree, { width: MIN_SIZE, duration: 1 }, ">")
-        .to(animatorFour, { height: "100vmax" }, ">")
+        .to(animatorThree, { '--width': MIN_SIZE, duration: 1 }, ">")
+        .to(animatorFour, { '--height': "100vmax" }, ">")
         .to(".animator-container", { y: 0 }, "<")
         .add("anmiRightGrowStart")
-        .to([animatorOne, animatorThree], { width: "100vmax" }, ">")
-        .to(animatorTwo, { height: "100vmax" }, "<")
+        .to([animatorOne, animatorThree], { '--width': "100vmax" }, ">")
+        .to(animatorTwo, { '--height': "100vmax" }, "<")
         .add("anmiRightGrowEnd")
-        .to([animatorTwo, animatorFour], { height: MIN_SIZE }, ">")
-        .to(animatorOne, { width: MIN_SIZE }, "<")
+        .to([animatorTwo, animatorFour], { '--height': MIN_SIZE }, ">")
+        .to(animatorOne, { '--width': MIN_SIZE }, "<")
         .to(".animator-container", { x: 0 }, ">")
-        .to(animatorThree, { width: MIN_SIZE }, "<")
+        .to(animatorThree, { '--width': MIN_SIZE }, "<")
         .add("lineMaxStart")
-        .to(animatorFour, { width: this.isLandscape() ? MIN_SIZE : "80vw", height: this.isLandscape() ? "80vh" : MIN_SIZE }, ">")
-        .to(animatorFour, { width: MIN_SIZE, height: MIN_SIZE, duration: 1 }, ">")
+        .to(animatorFour, { '--width': this.isLandscape() ? MIN_SIZE : "80vw", '--height': this.isLandscape() ? "80vh" : MIN_SIZE }, ">")
+        .to(animatorFour, { '--width': MIN_SIZE, '--height': MIN_SIZE, duration: 1 }, ">")
         .to(".animator-container", { y: this.isLandscape() ? "-45vh" : 0, duration: 1 }, "<")
         .to(animatorFour, {
-            width: this.isLandscape() ? MIN_SIZE : "80vw",
-            height: this.isLandscape() ? "80vh" : MIN_SIZE,
+            '--width': this.isLandscape() ? MIN_SIZE : "80vw",
+            '--height': this.isLandscape() ? "80vh" : MIN_SIZE,
             duration: 1,
         }, ">")
         .to(".animator-container", { y: 0, duration: 1 }, "<")
         .add("lineMaxSecondStart")
-        .to(animatorFour, { width: MIN_SIZE, height: MIN_SIZE, duration: 1 }, ">")
+        .to(animatorFour, { '--width': MIN_SIZE, '--height': MIN_SIZE, duration: 1 }, ">")
         .to(".animator-container", { y: this.isLandscape() ? "45vh" : 0, duration: 1 }, "<")
         .add("lineMaxSecondEnd")
-        .to(animatorFour, { width: this.isLandscape() ? MIN_SIZE : "80vw", height: this.isLandscape() ? "80vh" : MIN_SIZE, duration: 1 }, ">")
+        .to(animatorFour, { '--width': this.isLandscape() ? MIN_SIZE : "80vw", '--height': this.isLandscape() ? "80vh" : MIN_SIZE, duration: 1 }, ">")
         .to(".animator-container", { y: 0, duration: 1 }, "<")
         .to(".animator-container", { y: this.isLandscape() ? "-45vh" : 0, duration: 1 }, ">")
-        .to(animatorFour, { width: MIN_SIZE, height: MIN_SIZE, duration: 1,}, "<")
+        .to(animatorFour, { '--width': MIN_SIZE, '--height': MIN_SIZE, duration: 1,}, "<")
         .to(".animator-container", { y: 0, duration: 1 }, ">")
-        .to(animatorFour, { width: this.isLandscape() ? MIN_SIZE : "80vw", height: this.isLandscape() ? "80vh" : MIN_SIZE, duration: 1 }, "<")
+        .to(animatorFour, { '--width': this.isLandscape() ? MIN_SIZE : "80vw", '--height': this.isLandscape() ? "80vh" : MIN_SIZE, duration: 1 }, "<")
         .add("lineMinEnd")
-        .to(animatorFour, { width: MIN_SIZE, height: MIN_SIZE, duration: 1 }, ">")
+        .to(animatorFour, { '--width': MIN_SIZE, '--height': MIN_SIZE, duration: 1 }, ">")
 
         .add("animMoveRightStart")
         .to(animatorThree, {
             x: "25vw",
-            width: "50vw",
+            '--width': "50vw",
         }, ">")
         .to(".animator-container", {
             x: this.isLandscape() ? "25vw" : "40vw",
         }, "<")
         .to(animatorFour, {
-            height: this.isLandscape() ? "80vh" : "50vh",
+            '--height': this.isLandscape() ? "80vh" : "50vh",
         }, ">")
         .to(animatorThree, {
-            width: MIN_SIZE,
+            '--width': MIN_SIZE,
         }, ">")
         .to(animatorThree, {
-            width: "50vw",
+            '--width': "50vw",
         }, ">")
         .to(animatorThree, {
             x: 0,
-            width: MIN_SIZE,
+            '--width': MIN_SIZE,
         }, ">")
         .add("animMoveCenterStart")
         .to(animatorFour, {
-            height: MIN_SIZE,
+            '--height': MIN_SIZE,
         }, ">")
         .to(animatorFour, {
-            width: "100vw",
+            '--width': "100vw",
         }, ">")
         .to(".animator-container", {
             x: 0,
         }, "<")
         .to([animatorFour, animatorThree], {
             x: 0,
-            width: MIN_SIZE,
+            '--width': MIN_SIZE,
         }, ">")
         .to(".animator-container", {
             x: this.isLandscape() ? "-25vw" : "-45vw",
         }, "<")
         .add("starGrowStart")
         .to([animatorOne, animatorThree], {
-            width: "45vw",
+            '--width': "45vw",
         }, ">")
         .to([animatorTwo, animatorFour], {
-            height: "45vw",
+            '--height': "45vw",
         }, "<")
         .to([animatorOne, animatorTwo], {
             rotate: 0,
         }, ">")
         .to([animatorThree, animatorFour], {
-            width: MIN_SIZE,
-            height: MIN_SIZE,
+            '--width': MIN_SIZE,
+            '--height': MIN_SIZE,
         }, "<")
         .to([animatorOne, animatorTwo], {
             rotate: -45,
         }, ">")
         .to(animatorThree, {
-            width: "45vw",
+            '--width': "45vw",
         }, "<")
         .to(animatorFour, {
-            height: "45vw",
+            '--height': "45vw",
         }, "<")
         .add("starStopped")
     }
@@ -535,29 +535,29 @@ export class Timeline {
         const animatorTwo = Utils.elem(".animator--two")
         const animatorThree = Utils.elem(".animator--three")
         const animatorFour = Utils.elem(".animator--four")
-        const MIN_SIZE = 2
+        const MIN_SIZE = '2px'
         // const WMAX = Math.max(window.innerWidth, window.innerHeight)
         // const SIZE = gsap.utils.clamp(30, WMAX * 0.1, 200)
 
         this.timeline
         .to([animatorOne, animatorThree], {
-            width: MIN_SIZE,
+            '--width': MIN_SIZE,
             duration: 1,
         }, "controlShow")
         .to([animatorTwo, animatorFour], {
-            height: MIN_SIZE,
+            '--height': MIN_SIZE,
             duration: 1,
         }, "<")
         .add("starPaused")
         .to(animatorThree, {
-            width: "45vw",
+            '--width': "45vw",
         }, ">")
         .to(animatorThree, {
-            width: MIN_SIZE,
+            '--width': MIN_SIZE,
         }, ">")
         .add("starShrinkEnd")
         .to(animatorThree, {
-            width: this.isLandscape() ? "50vw" : "90vw",
+            '--width': this.isLandscape() ? "50vw" : "90vw",
         }, ">")
         .to(".animator-container", {
             x: 0,
