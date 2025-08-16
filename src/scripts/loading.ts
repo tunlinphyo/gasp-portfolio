@@ -89,14 +89,6 @@ export class PageLoading {
         disabledScroll.on()
 
         return new Promise(resolve => {
-            gsap.to('.loading-bouncer', {
-                height: 0,
-                y: '0',
-                onComplete: () => {
-                    const el = document.querySelector<HTMLElement>('.loading-bouncer')
-                    el?.remove()
-                }
-            })
 
             setTimeout(() => {
                 this.loadingTimeline.kill()
@@ -115,6 +107,14 @@ export class PageLoading {
                         resolve(true)
                     }
                 })
+                .to('.loading-bouncer', {
+                    height: 0,
+                    y: '-25vh',
+                    onComplete: () => {
+                        const el = document.querySelector<HTMLElement>('.loading-bouncer')
+                        el?.remove()
+                    }
+                }, "<")
                 .to('.animator--two', {
                     "--height": "25vh",
                     y: "12.5vh",

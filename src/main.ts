@@ -90,11 +90,16 @@ async function main() {
     App.trackContactClick()
     App.animateHoverElemets()
 
-    const { BrowserCheck } = await import("./scripts/browser")
+    const [{ Utils }, { BrowserCheck }] = await Promise.all([
+        import('./scripts/utils'),
+        import("./scripts/browser")
+    ])
+
+    Utils.elem('.projectCarousel-container').style.setProperty('--opacity', '0.2')
 
     BrowserCheck.runIfComputerBrowser(async () => {
-        const [{ Utils }, { JapanSeason, Season }, { default: p5 }] = await Promise.all([
-            import('./scripts/utils'),
+        const [{ JapanSeason, Season }, { default: p5 }] = await Promise.all([
+            
             import("./scripts/season"),
             import("p5"),
         ])

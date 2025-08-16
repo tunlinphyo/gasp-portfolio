@@ -40,7 +40,7 @@
     .loading-bouncer {
         position: absolute;
         width: var(--min-size);
-        height: 20vh;
+        height: 10vh;
         background-color: var(--fg-color);
         border-radius: var(--min-size);
         animation: loadingBouncer 1.5s ease infinite;
@@ -49,11 +49,11 @@
 
 @keyframes loadingBouncer {
     0%, 100% {
-        translate: 0 -4vh;
-        height: 8vh;
+        translate: 0 -3vh;
+        height: 6vh;
     }
     50% {
         translate: 0 -25vh;
-        height: 20vh;
+        height: 10vh;
     }
 }
