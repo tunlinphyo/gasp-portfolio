@@ -34,18 +34,20 @@ async function main() {
             import("./scripts/logo"),
             import("./scripts/projects"),
         ])
-        new LogoRotator("body")
-        new Projects()
+        new LogoRotator("body", gsap)
+        new Projects(gsap)
         App.noMotionHandle()
         return
     }
 
-    const { PageLoading } = await import('./scripts/loading')
-    const loading = new PageLoading()
+    const [{ gsap }, { PageLoading }] = await Promise.all([
+        import("gsap"),
+        import('./scripts/loading')
+    ]) 
+    const loading = new PageLoading(gsap)
     await loading.init()
 
-    const [{ gsap }, { ScrollTrigger }, { ScrollToPlugin }] = await Promise.all([
-        import("gsap"),
+    const [{ ScrollTrigger }, { ScrollToPlugin }] = await Promise.all([
         import("gsap/ScrollTrigger"),
         import("gsap/ScrollToPlugin"),
     ])
@@ -66,6 +68,7 @@ async function main() {
     await loadGoogleFont('Orbitron', '800');
 
     loading.hide()
+    document.body.style.overflow = 'auto'
 
     const [{ Cursor }, { LogoRotator }, { Toast }, { Projects }, { AutoScroller }, { KeyboardHandler }] =
     await Promise.all([
@@ -78,9 +81,9 @@ async function main() {
     ])
 
     new Cursor()
-    new LogoRotator(".scroll-trigger")
+    new LogoRotator(".scroll-trigger", gsap)
 
-    const projects = new Projects()
+    const projects = new Projects(gsap)
     const toast = new Toast()
     const scroll = new AutoScroller()
     new KeyboardHandler(projects, scroll, toast)

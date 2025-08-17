@@ -1,5 +1,3 @@
-import gsap from "gsap"
-// import { addClass, applyStyles, elem, innerHTML, innerText, removeClass, dataSet } from './helpers/utils';
 import { Utils } from './utils';
 import { ReducedMotionListener } from "./reduce-motion";
 
@@ -16,7 +14,7 @@ export class Projects {
     protected currentIndex: number = 0
     protected animating: boolean = false
 
-    constructor() {
+    constructor(private gsap: any) {
         this.projects = this.getPorjects()
         this.subscribe()
         this.renderData()
@@ -67,48 +65,10 @@ export class Projects {
 
         const controls = Utils.elem(".projectFooter")
 
-        const timeline = gsap.timeline()
+        const timeline = this.gsap.timeline()
 
         const leave = isNext ? -1 : 1
         const enter = isNext ? 1 : -1
-
-        // const isReduceMotion = ReducedMotionListener.isReduced()
-
-        // Utils.addClass(controls, "disabled")
-        // this.animating = true
-
-        // const project = Utils.elem(".projects .project")
-        // const width = this.rect.width * 0.9
-
-        // const getWidth = (isLeave: boolean) => {
-        //     return isReduceMotion
-        //         ? 100
-        //         : (isLeave ? window.innerWidth : width)
-        // }
-
-        // timeline.fromTo(project, {
-        //     x: 0,
-        // }, {
-        //     x: getWidth(leave < 0) * leave,
-        //     ease: "power4.in",
-        //     duration: isReduceMotion ? 0.1 : 0.5,
-        //     onComplete: () => {
-        //         this.renderData()
-        //     },
-        // })
-
-        // timeline.fromTo(project, {
-        //     x: getWidth(leave > 0) * enter,
-        // }, {
-        //     x: 0,
-        //     ease: "power4.out",
-        //     duration: isReduceMotion ? 0.1 : 0.5,
-        //     onComplete: () => {
-        //         Utils.removeClass(controls, "disabled")
-        //         this.animating = false
-        //         timeline.kill()
-        //     },
-        // })
 
         if (ReducedMotionListener.isReduced()) {
             this.renderData()

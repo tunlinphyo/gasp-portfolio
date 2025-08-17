@@ -1,10 +1,8 @@
-import gsap from "gsap";
-
 export class LogoRotator {
     private timeline: GSAPTimeline
 
-    constructor(trigger: string) {
-        this.timeline = gsap.timeline({
+    constructor(trigger: string, private gsap: any) {
+        this.timeline = this.gsap.timeline({
             scrollTrigger: {
                 trigger,
                 start: "top top",

@@ -1,7 +1,3 @@
-import gsap from "gsap"
-// import { Utils } from './utils'
-import disabledScroll from "./disabled-scroll"
-
 export class PageLoading {
     private loadingTimeline: GSAPTimeline
     private helloEnter: GSAPTween
@@ -13,25 +9,24 @@ export class PageLoading {
     private loadingFinished: Boolean = false
     private dataLoaded: Boolean = false
 
-    constructor() {
-        this.loadingTimeline = gsap.timeline({
+    constructor(private gsap: any) {
+        this.loadingTimeline = this.gsap.timeline({
             repeat: -1,
             paused: true,
         })
 
-        this.helloEnter = gsap.from(".intro-heading", {
+        this.helloEnter = this.gsap.from(".intro-heading", {
             opacity: 0,
             scale: 0,
             ease: "elastic.out",
             duration: 1.5,
             paused: true,
             onComplete: () => {
-                disabledScroll.off()
                 this.helloEnter.kill()
             }
         })
 
-        this.mouseEnter = gsap.to(".mouse", {
+        this.mouseEnter = this.gsap.to(".mouse", {
             y: 0,
             opacity: 1,
             ease: 'back.out',
@@ -42,7 +37,7 @@ export class PageLoading {
             }
         })
 
-        this.circleEnter = gsap.to(".bg", {
+        this.circleEnter = this.gsap.to(".bg", {
             scale: 1,
             ease: 'power1.out',
             stagger: 0.05,
@@ -52,7 +47,7 @@ export class PageLoading {
             }
         })
 
-        this.playEnter = gsap.to(".playPause", {
+        this.playEnter = this.gsap.to(".playPause", {
             scale: 1,
             opacity: 1,
             ease: 'elastic.out',
@@ -86,14 +81,13 @@ export class PageLoading {
 
         this.loadingTimeline.play()
         window.scrollTo(0, 0)
-        disabledScroll.on()
 
         return new Promise(resolve => {
 
             setTimeout(() => {
                 this.loadingTimeline.kill()
 
-                const hideTimeline = gsap.timeline()
+                const hideTimeline = this.gsap.timeline()
 
                 hideTimeline.to('.animator--one', {
                     "--width": '2px',
@@ -144,7 +138,7 @@ export class PageLoading {
     }
 
     infiniteLoop() {
-        this.loop = gsap.timeline({
+        this.loop = this.gsap.timeline({
             repeat: -1,
             defaults: { duration: 0.5, ease: "power1.inOut" },
             repeatRefresh: true,
@@ -184,7 +178,7 @@ export class PageLoading {
     hide() {
         this.dataLoaded = true
         if (!this.loadingFinished) return
-        gsap.to(".page-loading", {
+        this.gsap.to(".page-loading", {
             opacity: 0,
             onStart: () => {
                 this.killLoop()
