@@ -62,6 +62,8 @@ export class PageLoading {
     }
 
     async init() {
+        await new Promise(r => requestAnimationFrame(r))
+
         this.loadingTimeline
         .to('.animator--one', {
             "--width": "2px",
@@ -83,8 +85,7 @@ export class PageLoading {
         window.scrollTo(0, 0)
 
         return new Promise(resolve => {
-
-            setTimeout(() => {
+            this.gsap.delayedCall(1.6, () => {
                 this.loadingTimeline.kill()
 
                 const hideTimeline = this.gsap.timeline()
@@ -133,7 +134,7 @@ export class PageLoading {
                             this.infiniteLoop()
                     }
                 }, "<")
-            }, 1600)
+            })
         })
     }
 

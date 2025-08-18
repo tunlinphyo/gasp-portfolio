@@ -43,11 +43,11 @@ async function main() {
     const [{ gsap }, { PageLoading }] = await Promise.all([
         import("gsap"),
         import('./scripts/loading')
-    ]) 
+    ])
     const loading = new PageLoading(gsap)
-    await loading.init()
 
-    const [{ ScrollTrigger }, { ScrollToPlugin }] = await Promise.all([
+    const [_, { ScrollTrigger }, { ScrollToPlugin }] = await Promise.all([
+        loading.init(),
         import("gsap/ScrollTrigger"),
         import("gsap/ScrollToPlugin"),
     ])
@@ -64,11 +64,12 @@ async function main() {
     const carousel = new Carousel('.carousel')
     new Timeline(theme, carousel)
 
-    await loadGoogleFont('Poppins', '400;600');
-    await loadGoogleFont('Orbitron', '800');
+    await Promise.allSettled([
+        loadGoogleFont('Poppins', '400;600'),
+        loadGoogleFont('Orbitron', '800'),
+    ])
 
     loading.hide()
-    document.body.style.overflow = 'auto'
 
     const [{ Cursor }, { LogoRotator }, { Toast }, { Projects }, { AutoScroller }, { KeyboardHandler }] =
     await Promise.all([
@@ -88,6 +89,8 @@ async function main() {
     const scroll = new AutoScroller()
     new KeyboardHandler(projects, scroll, toast)
 
+    document.body.style.overflow = 'auto'
+
     const { App } = await import("./scripts")
     App.trackLinksClick()
     App.trackContactClick()
@@ -102,12 +105,9 @@ async function main() {
 
     BrowserCheck.runIfComputerBrowser(async () => {
         const [{ JapanSeason, Season }, { default: p5 }] = await Promise.all([
-            
             import("./scripts/season"),
             import("p5"),
         ])
-
-        await Utils.wait(1000)
 
         const season = JapanSeason.getCurrentSeason()
         const mainEl = Utils.elem('.page-main')
