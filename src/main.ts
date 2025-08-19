@@ -7,11 +7,7 @@ window.addEventListener('DOMContentLoaded', () => {
 })
 
 async function main() {
-    const [{ UmamiAnalytics }, { ReducedMotionListener }] = await Promise.all([
-        import("./scripts/umami"),
-        import("./scripts/reduce-motion")
-    ])
-    new UmamiAnalytics(import.meta.env.VITE_UMAMI_ANALYTICS, import.meta.env.VITE_UMAMI_SITE_ID)
+    const { ReducedMotionListener } = await import("./scripts/reduce-motion")
 
     const motion = new ReducedMotionListener()
     motion.listen((isReduced) => {
@@ -20,7 +16,13 @@ async function main() {
     })
 
     if (ReducedMotionListener.isReduced()) {
-        const { Utils } = await import('./scripts/utils')
+        const [{ UmamiAnalytics }, { Utils }] = await Promise.all([
+            import("./scripts/umami"),
+            import('./scripts/utils')
+        ])
+
+        new UmamiAnalytics(import.meta.env.VITE_UMAMI_ANALYTICS, import.meta.env.VITE_UMAMI_SITE_ID)
+        window.umami?.track?.('Motion', { value: true })
         await Utils.wait(1000)
 
         const [{ gsap }, { ScrollTrigger }] = await Promise.all([
@@ -71,7 +73,7 @@ async function main() {
 
     loading.hide()
 
-    const [{ Cursor }, { LogoRotator }, { Toast }, { Projects }, { AutoScroller }, { KeyboardHandler }] =
+    const [{ Cursor }, { LogoRotator }, { Toast }, { Projects }, { AutoScroller }, { KeyboardHandler }, { UmamiAnalytics }] =
     await Promise.all([
         import("./scripts/cursor"),
         import("./scripts/logo"),
@@ -79,7 +81,10 @@ async function main() {
         import("./scripts/projects"),
         import("./scripts/scroll"),
         import("./scripts/keyboard"),
+        import("./scripts/umami"),
     ])
+    new UmamiAnalytics(import.meta.env.VITE_UMAMI_ANALYTICS, import.meta.env.VITE_UMAMI_SITE_ID)
+    window.umami?.track?.('Motion', { value: false })
 
     new Cursor()
     new LogoRotator(".scroll-trigger", gsap)
@@ -88,8 +93,6 @@ async function main() {
     const toast = new Toast()
     const scroll = new AutoScroller()
     new KeyboardHandler(projects, scroll, toast)
-
-    document.body.style.overflow = 'auto'
 
     const { App } = await import("./scripts")
     App.trackLinksClick()

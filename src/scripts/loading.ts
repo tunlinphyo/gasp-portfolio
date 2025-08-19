@@ -23,6 +23,7 @@ export class PageLoading {
             paused: true,
             onComplete: () => {
                 this.helloEnter.kill()
+                document.body.style.overflow = 'auto'
             }
         })
 

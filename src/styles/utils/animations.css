@@ -49,8 +49,8 @@
 
 @keyframes loadingBouncer {
     0%, 100% {
-        translate: 0 -3vh;
-        height: 6vh;
+        translate: 0 -8px;
+        height: 16px;
     }
     50% {
         translate: 0 -25vh;
