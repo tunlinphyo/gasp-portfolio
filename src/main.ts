@@ -10,8 +10,7 @@ async function main() {
     const { ReducedMotionListener } = await import("./scripts/reduce-motion")
 
     const motion = new ReducedMotionListener()
-    motion.listen((isReduced) => {
-        window.umami?.track?.('Motion', { value: isReduced })
+    motion.listen(() => {
         window.location.reload()
     })
 

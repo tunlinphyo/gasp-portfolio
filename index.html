@@ -84,18 +84,18 @@
 
         <button type="button" tabindex="0" class="open-shortcuts cursor--link"
             data-cursor="Shortcut" aria-label="Shortcuts">
-            <svg viewBox="0 0 24 24" width="16" height="16">
+            <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="16" height="16">
                 <path fill="currentColor" d="m19.5,15h-2.5v-6h2.5c2.481,0,4.5-2.019,4.5-4.5S21.981,0,19.5,0s-4.5,2.019-4.5,4.5v2.5h-6v-2.5C9,2.019,6.981,0,4.5,0S0,2.019,0,4.5s2.019,4.5,4.5,4.5h2.5v6h-2.5c-2.481,0-4.5,2.019-4.5,4.5s2.019,4.5,4.5,4.5,4.5-2.019,4.5-4.5v-2.5h6v2.5c0,2.481,2.019,4.5,4.5,4.5s4.5-2.019,4.5-4.5-2.019-4.5-4.5-4.5Zm-2.5-10.5c0-1.378,1.121-2.5,2.5-2.5s2.5,1.122,2.5,2.5-1.121,2.5-2.5,2.5h-2.5v-2.5Zm-12.5,2.5c-1.379,0-2.5-1.122-2.5-2.5s1.121-2.5,2.5-2.5,2.5,1.122,2.5,2.5v2.5h-2.5Zm2.5,12.5c0,1.378-1.121,2.5-2.5,2.5s-2.5-1.122-2.5-2.5,1.121-2.5,2.5-2.5h2.5v2.5Zm2-4.5v-6h6v6h-6Zm10.5,7c-1.379,0-2.5-1.122-2.5-2.5v-2.5h2.5c1.379,0,2.5,1.122,2.5,2.5s-1.121,2.5-2.5,2.5Z"/>
             </svg>
         </button>
 
         <button type="button" tabindex="0" class="playPause cursor--link"
             data-cursor="play" aria-label="Play Pause">
-            <svg class="play" xmlns="http://www.w3.org/2000/svg" id="Filled" viewBox="0 0 24 24" width="24" height="24">
+            <svg aria-hidden="true" focusable="false" class="play" xmlns="http://www.w3.org/2000/svg" id="Filled" viewBox="0 0 24 24" width="24" height="24">
                 <path fill="currentColor"
                     d="M20.492,7.969,10.954.975A5,5,0,0,0,3,5.005V19a4.994,4.994,0,0,0,7.954,4.03l9.538-6.994a5,5,0,0,0,0-8.062Z" />
             </svg>
-            <svg class="pause" xmlns="http://www.w3.org/2000/svg" id="Filled" viewBox="0 0 24 24" width="24"
+            <svg aria-hidden="true" focusable="false" class="pause" xmlns="http://www.w3.org/2000/svg" id="Filled" viewBox="0 0 24 24" width="24"
                 height="24">
                 <path fill="currentColor"
                     d="M6.5,0A3.5,3.5,0,0,0,3,3.5v17a3.5,3.5,0,0,0,7,0V3.5A3.5,3.5,0,0,0,6.5,0Z" />
@@ -118,7 +118,7 @@
             </div>
         </section>
 
-        <section class="page page--about" role="group" aria-label="About Me">
+        <section class="page page--about" aria-label="About Me">
             <div class="about-container">
                 <div class="about-heading-container">
                     <div class="h2 about-heading" aria-hidden="true" role="presentation" inert>Software Engineer</div>
@@ -137,7 +137,7 @@
             </div>
         </section>
 
-        <section class="page page--technical" role="group" aria-label="Technical Profile">
+        <section class="page page--technical" aria-label="Technical Profile">
             <div class="techIntro-container">
                 <div class="techIntro-heading-container">
                     <div class="h2 techIntro-heading" aria-hidden="true" role="presentation" inert>Technical Profile</div>
@@ -243,7 +243,7 @@
                             <p>💪 Vue</p>
                         </li>
                         <li class="cursor--hover">
-                            <p lang="en">👍 Svelte</p>
+                            <p>👍 <span aria-label="Svelt">Svelte</span></p>
                         </li>
                         <li class="cursor--hover">
                             <p>👌 Angular</p>
@@ -316,7 +316,7 @@
             </div>
         </section>
 
-        <section class="page page--project" role="group" aria-label="Previous Works">
+        <section class="page page--project" aria-label="Previous Works">
             <div class="projectIntro-container">
                 <h2 class="projectIntro-heading" tabindex="0">Previous Works</h2>
                 <div class="projectIntro-message-container">
@@ -331,7 +331,7 @@
                 </div>
             </div>
 
-            <div class="project-container" role="presentation">
+            <div class="project-container">
                 <div class="projectCarousel-container" aria-hidden="true">
                     <ol class="carousel">
                         <li class="carousel-item">Expenses</li>
@@ -350,8 +350,8 @@
                 </div>
 
                 <div class="projects">
-                    <div class="project" hidden>
-                        <div class="project-heading-container">
+                    <div class="project" hidden id="currentProject">
+                        <div class="project-heading-container" aria-hidden="true" role="presentation">
                             <div class="project-heading" tabindex="0"></div>
                         </div>
                         <div class="project-label" inert></div>
@@ -362,30 +362,30 @@
                 </div>
 
                 <div class="projectFooter" inert>
-                    <button role="button" tabindex="0" class="control previous cursor--link" disabled data-cursor="Prev"
+                    <button aria-controls="currentProject" tabindex="0" class="control previous cursor--link" disabled data-cursor="Prev"
                         aria-label="Previous">
-                        <div class="icon">
+                        <div class="icon" aria-hidden="true" focusable="false">
                             <svg class="arrow" xmlns="http://www.w3.org/2000/svg" width="45" height="45"
                                 viewBox="0 0 24 24">
                                 <path d="M20 13H2L6 9" stroke="var(--icon-color)" stroke-width="1" fill="none"
                                     pathLength="100" stroke-dasharray="100" stroke-dashoffset="100" />
                             </svg>
                         </div>
-                        <svg class="circle" width="100%" height="100%" viewBox="0 0 80 80">
+                        <svg aria-hidden="true" focusable="false" class="circle" width="100%" height="100%" viewBox="0 0 80 80">
                             <circle cx="40" cy="40" r="39" fill="none" stroke="var(--stoke-color)" stroke-width="2"
                                 pathLength="100" stroke-dasharray="100" stroke-dashoffset="100" />
                         </svg>
                     </button>
-                    <button role="button" tabindex="0" class="control next cursor--link" disabled data-cursor="Next"
+                    <button aria-controls="currentProject" tabindex="0" class="control next cursor--link" disabled data-cursor="Next"
                         aria-label="Next">
-                        <div class="icon">
+                        <div class="icon" aria-hidden="true" focusable="false">
                             <svg class="arrow" xmlns="http://www.w3.org/2000/svg" width="45" height="45"
                                 viewBox="0 0 24 24">
                                 <path d="M4 13H20L15 9" stroke="var(--icon-color)" stroke-width="1" fill="none"
                                     pathLength="100" stroke-dasharray="100" stroke-dashoffset="100" />
                             </svg>
                         </div>
-                        <svg class="circle" width="100%" height="100%" viewBox="0 0 80 80">
+                        <svg aria-hidden="true" focusable="false" class="circle" width="100%" height="100%" viewBox="0 0 80 80">
                             <circle cx="40" cy="40" r="39" fill="none" stroke="var(--stoke-color)" stroke-width="2"
                                 pathLength="100" stroke-dasharray="100" stroke-dashoffset="100" />
                         </svg>
@@ -394,7 +394,7 @@
             </div>
 
             <ol class="projects-list visually-hidden">
-                <li>
+                <li role="group" aria-roledescription="slide" aria-label="1 of 8">
                     <h3>
                         <a href="https://tlp-expense.web.app/" aria-hidden="false" tabindex="-1"
                         aria-label="Expenses" target="_blank" rel="noopener noreferrer">Expenses</a>
@@ -409,7 +409,7 @@
                         on the home screen and used like a native app.
                     </p>
                 </li>
-                <li>
+                <li role="group" aria-roledescription="slide" aria-label="2 of 8">
                     <h3>
                         <a href="https://css-battle-codes.web.app/about" aria-hidden="false" tabindex="-1"
                         aria-label="CSSBattle Showcase" target="_blank" rel="noopener noreferrer">CSSBattle</a>
@@ -425,7 +425,7 @@
                         and the use of the latest CSS patterns and best practices.
                     </p>
                 </li>
-                <li>
+                <li role="group" aria-roledescription="slide" aria-label="3 of 8">
                     <h3>
                         <a href="https://paper-os.web.app/" aria-hidden="false" tabindex="-1" lang="en"
                             aria-label="OS Simulator" target="_blank" rel="noopener noreferrer">OS Simulator</a>
@@ -442,7 +442,7 @@
                         in a nostalgic, low-resolution environment.
                     </p>
                 </li>
-                <li>
+                <li role="group" aria-roledescription="slide" aria-label="4 of 8">
                     <h3 id="EcCubePlugins">
                         <a href="https://www.ec-cube.net/products/list.php?partner_id=2867/" aria-hidden="false"
                             tabindex="-1" aria-label="Ec-Cube Plugins" target="_blank"
@@ -461,7 +461,7 @@
                     <p class="aria-project-link">
                     </p>
                 </li>
-                <li>
+                <li role="group" aria-roledescription="slide" aria-label="5 of 8">
                     <h3 id="YomiuriShimbun">
                         <a href="https://aej.store.yomiuri.co.jp/" aria-hidden="false" tabindex="-1"
                             aria-label="Yomiuri Shimbun" target="_blank" rel="noopener noreferrer">Yomiuri Shimbun</a>
@@ -479,7 +479,7 @@
                     <p class="aria-project-link">
                     </p>
                 </li>
-                <li>
+                <li role="group" aria-roledescription="slide" aria-label="6 of 8">
                     <h3 id="CoreMobile">
                         <a href="https://www.coremobile.co.jp/" aria-hidden="false" tabindex="-1"
                             aria-label="CoreMobile" target="_blank" rel="noopener noreferrer">CoreMobile</a>
@@ -495,7 +495,7 @@
                         website was responsive and suitable for all devices using Next.js (React).
                     </p>
                 </li>
-                <li>
+                <li role="group" aria-roledescription="slide" aria-label="7 of 8">
                     <h3 id="UnitedArrows">United Arrows</h3>
                     <small aria-label="Technologies">
                         Apparel: EC &#10141; Vue, VueX
@@ -506,7 +506,7 @@
                         left behind by the previous developer.
                     </p>
                 </li>
-                <li>
+                <li role="group" aria-roledescription="slide" aria-label="8 of 8">
                     <h3 id="InhouseFurniture">
                         <a href="https://inhousemm.com/" aria-hidden="false" tabindex="-1"
                             aria-label="Inhouse Furniture" target="_blank" rel="noopener noreferrer">Inhouse Furniture</a>
@@ -525,7 +525,7 @@
             </ol>
         </section>
 
-        <section class="page page--contact" role="group" aria-label="Contact Me">
+        <section class="page page--contact" aria-label="Contact Me">
             <div class="contact-container">
                 <div class="contact-start">
                     <div class="contact-heading-container">
