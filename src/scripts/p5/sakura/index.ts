@@ -5,7 +5,7 @@ export const sakuraSketch = (p: p5) => {
     let flowers: Flowers
 
     p.setup = () => {
-        p.frameRate(60)
+        p.frameRate(40)
         flowers = new Flowers(p)
         flowers.setup()
     }

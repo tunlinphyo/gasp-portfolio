@@ -13,7 +13,7 @@ export const fallSketch = (p: p5) => {
     }
 
     p.setup = () => {
-        p.frameRate(60)
+        p.frameRate(40)
         leaves = new Leaves(p, img)
         leaves.setup()
     }

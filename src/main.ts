@@ -15,20 +15,23 @@ async function main() {
     })
 
     if (ReducedMotionListener.isReduced()) {
-        const [{ UmamiAnalytics }, { Utils }] = await Promise.all([
-            import("./scripts/umami"),
-            import('./scripts/utils')
-        ])
+        const { UmamiAnalytics } = await import("./scripts/umami")
 
         new UmamiAnalytics(import.meta.env.VITE_UMAMI_ANALYTICS, import.meta.env.VITE_UMAMI_SITE_ID)
         window.umami?.track?.('Motion', { value: true })
-        await Utils.wait(1000)
 
-        const [{ gsap }, { ScrollTrigger }] = await Promise.all([
+        const [{ gsap }, { ScrollTrigger }, { loadGoogleFont }] = await Promise.all([
             import("gsap"),
             import("gsap/ScrollTrigger"),
+            import("./scripts/fonts"),
         ])
         gsap.registerPlugin(ScrollTrigger)
+
+        await Promise.allSettled([
+            loadGoogleFont('Poppins', '400;600'),
+            loadGoogleFont('Orbitron', '800'),
+        ])
+        document.body.style.overflow = 'auto'
 
         const [{ App }, { LogoRotator }, { Projects }] = await Promise.all([
             import("./scripts"),
