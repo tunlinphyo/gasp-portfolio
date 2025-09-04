@@ -15,7 +15,7 @@ export class Leaves {
         this.p = p
         this.spritesheet = img
         // this.maxCount = this.p.constrain(Math.round(Math.sqrt(innerWidth * innerHeight) * 0.1), 50, 300)
-        this.maxCount = Math.round((this.p.windowWidth * this.p.windowHeight) ** (1 / 6))
+        this.maxCount = Math.round((this.p.windowWidth * this.p.windowHeight) ** (1 / 5))
         console.log(this.maxCount)
     }
 
